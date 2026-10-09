@@ -1,0 +1,3076 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Problemática do Setor Jurídico | Análise de Contratos | DESKTOP × SENAI</title>
+  <meta name="description" content="Apresentação executiva interativa - Projeto de Conclusão de Curso (Técnico em Administração, SENAI) sobre a otimização do fluxo de análise de contratos da DESKTOP com IA e automação.">
+  <meta name="theme-color" content="#FFCC14">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Problemática do Setor Jurídico | Análise de Contratos | DESKTOP × SENAI">
+  <meta property="og:description" content="Apresentação em slides horizontais interativos com diagnóstico SLA, Ishikawa, fluxos AS IS / TO BE e proposta de IA.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000'/><path d='M8 8 L16 16 L24 8 M16 16 L16 26' stroke='%23FFCC14' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+  <!-- Google Fonts: Sora (Headings) & DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS CSS E DESIGN SYSTEM
+       ========================================================================== */
+    :root {
+      --bg-0: #000000;
+      --bg-1: #0A0A0A;
+      --bg-2: #141414;
+      --bg-3: #1C1C1C;
+      --bg-card: rgba(20, 20, 20, 0.75);
+      --bg-card-hover: rgba(28, 28, 28, 0.9);
+      --yellow: #FFCC14;
+      --gold: #DDB015;
+      --red-dark: #800000;
+      --red-alert: #FF1F1F;
+      --text-1: #F2F2F2;
+      --text-2: #B5B5B5;
+      --text-muted: #757575;
+      --line: rgba(255, 204, 20, 0.18);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-gold: rgba(255, 204, 20, 0.35);
+      --glow-gold: 0 0 25px rgba(255, 204, 20, 0.25);
+      --glow-red: 0 0 25px rgba(255, 31, 31, 0.25);
+      
+      --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease-power: cubic-bezier(0.65, 0, 0.35, 1);
+      --transition-smooth: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      --header-height: 56px;
+      --nav-bar-height: 70px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-0);
+      color: var(--text-1);
+      font-family: var(--font-body);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Acessibilidade de foco */
+    :focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    /* Scrollbar personalizada para áreas com rolagem interna */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,204,20,0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--yellow);
+    }
+
+    /* ==========================================================================
+       2. CURSOR CUSTOMIZADO & EFEITOS DE FUNDO
+       ========================================================================== */
+    .custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--yellow);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
+      mix-blend-mode: difference;
+    }
+    .custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--yellow);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 100000;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px var(--yellow);
+    }
+    .cursor-hover {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(255, 204, 20, 0.15);
+      border-color: var(--yellow);
+    }
+
+    @media (hover: none) or (pointer: coarse) {
+      .custom-cursor, .custom-cursor-dot { display: none !important; }
+    }
+
+    /* Canvas de partículas douradas sutis */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    /* Camada de fundo global (Gradiente + Linhas Topográficas + Marca d'água 'Y') */
+    .global-ambient-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .ambient-radial-glow {
+      position: absolute;
+      top: -20%;
+      left: -15%;
+      width: 75vw;
+      height: 75vh;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0%, rgba(255, 204, 20, 0.02) 40%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .topographic-lines-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.65;
+      transition: transform 0.6s ease-out;
+    }
+
+    /* Marca d'água "Y" estilizada (3 retângulos de cantos arredondados) fiel ao slide original */
+    .brand-watermark-y {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(85vw, 680px);
+      height: min(85vh, 680px);
+      transform: translate(-50%, -50%);
+      opacity: 0.28;
+      pointer-events: none;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ==========================================================================
+       3. ESTRUTURA GERAL DOS SLIDES (HORIZONTAL SLIDER)
+       ========================================================================== */
+    .presentation-viewport {
+      position: relative;
+      width: 100vw;
+      height: 100dvh;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .slides-track {
+      display: flex;
+      width: 1200vw; /* 12 slides x 100vw */
+      height: 100%;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100dvh;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(1.2rem, 3.5vw, 4rem);
+      padding-top: calc(var(--header-height) + 1.2rem);
+      padding-bottom: calc(var(--nav-bar-height) + 1rem);
+      box-sizing: border-box;
+      overflow-y: auto;
+      overflow-x: hidden;
+      opacity: 0.15;
+      transform: scale(0.97);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Container de conteúdo dentro de cada slide */
+    .slide-content-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    /* ==========================================================================
+       4. CABEÇALHOS, BARRA DE NAVEGAÇÃO E CONTROLES DE INTERFACE
+       ========================================================================== */
+    /* Barra Superior */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .top-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--yellow));
+      box-shadow: 0 0 10px var(--yellow);
+      transition: width 0.4s ease;
+      z-index: 102;
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .brand-meta .badge {
+      background: rgba(255,204,20,0.12);
+      border: 1px solid rgba(255,204,20,0.4);
+      color: var(--yellow);
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-icon {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-1);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-icon:hover {
+      background: rgba(255, 204, 20, 0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    /* Contador do Slide "03 / 12" */
+    .slide-counter {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--text-1);
+      padding: 4px 12px;
+      background: rgba(20,20,20,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+    }
+    .slide-counter .current-num {
+      color: var(--yellow);
+      font-size: 1.15rem;
+    }
+
+    /* Barra Inferior de Navegação & Dots */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-bar-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .bottom-bar > * {
+      pointer-events: auto;
+    }
+
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .nav-hint-key {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-2);
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    /* Dots Centralizados */
+    .dots-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 14, 14, 0.75);
+      padding: 7px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+    .nav-dot:hover {
+      background: var(--yellow);
+      transform: scale(1.4);
+    }
+    .nav-dot.is-active {
+      width: 26px;
+      border-radius: 6px;
+      background: var(--yellow);
+      box-shadow: 0 0 10px rgba(255, 204, 20, 0.5);
+    }
+
+    /* Tooltip do Dot */
+    .nav-dot .dot-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      background: #111;
+      border: 1px solid var(--border-gold);
+      color: var(--text-1);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      font-family: var(--font-heading);
+    }
+    .nav-dot:hover .dot-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Botões Flutuantes de Navegação (Setas Laterais) */
+    .nav-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(28,28,28,0.85) 0%, rgba(10,10,10,0.85) 100%);
+      border: 1px solid rgba(255, 204, 20, 0.22);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 90;
+      transition: var(--transition-smooth);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .nav-arrow-btn:hover {
+      border-color: var(--yellow);
+      background: linear-gradient(135deg, rgba(40,40,40,0.95) 0%, rgba(18,18,18,0.95) 100%);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .nav-arrow-btn.prev { left: 24px; }
+    .nav-arrow-btn.next { right: 24px; }
+    .nav-arrow-btn:disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-arrow-btn { display: none; }
+      .nav-hints { display: none; }
+    }
+
+    /* ==========================================================================
+       5. COMPONENTES REUTILIZÁVEIS: TÍTULOS, LINHAS, CARDS, CHIPS
+       ========================================================================== */
+    .title-large {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5.2vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    .title-medium {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+
+    .title-small {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .highlight-yellow {
+      color: var(--yellow) !important;
+    }
+    .highlight-gold {
+      color: var(--gold) !important;
+    }
+    .highlight-red {
+      color: var(--red-alert) !important;
+    }
+
+    /* Linha divisória amarela com início grosso (marca registrada da apresentação) */
+    .brand-divider-line {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      height: 3px;
+      background: rgba(255, 204, 20, 0.35);
+      margin: 1.2rem 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .brand-divider-line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 90px;
+      height: 7px;
+      background: var(--yellow);
+      border-radius: 4px;
+      box-shadow: 0 0 12px var(--yellow);
+    }
+
+    /* Cards com Glassmorphism e Efeito de Borda Dourada */
+    .premium-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(1.2rem, 2.2vw, 2rem);
+      backdrop-filter: blur(16px);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,204,20,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .premium-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      border-color: rgba(255, 204, 20, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), var(--glow-gold);
+    }
+
+    /* Imagens temáticas com fallback */
+    .theme-image-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.22;
+      mask-image: linear-gradient(to right, transparent 0%, black 70%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 70%);
+    }
+    .theme-image-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.45) contrast(1.15);
+      transition: transform 1.2s ease;
+    }
+    .slide:hover .theme-image-bg img {
+      transform: scale(1.04);
+    }
+
+    /* Chips e Tags */
+    .badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-2);
+      transition: var(--transition-smooth);
+    }
+    .badge-chip:hover {
+      background: rgba(255, 204, 20, 0.12);
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       6. SLIDES ESPECÍFICOS (1 A 12)
+       ========================================================================== */
+
+    /* --- SLIDE 1: CAPA --- */
+    .slide-1 .cover-wrap {
+      max-width: 950px;
+      position: relative;
+      z-index: 10;
+    }
+    .slide-1 .top-sub {
+      font-family: var(--font-heading);
+      font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+    }
+    .slide-1 .main-pcc {
+      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+    }
+    .slide-1 .subtitle-problem {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4.2vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+    }
+    .slide-1 .subtitle-desc {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      letter-spacing: 0.25em;
+      color: var(--text-2);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+    .slide-1 .scroll-hint {
+      margin-top: 3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-2);
+      background: rgba(255, 204, 20, 0.08);
+      border: 1px solid rgba(255, 204, 20, 0.25);
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .slide-1 .scroll-hint:hover {
+      background: rgba(255, 204, 20, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-gold);
+      color: #fff;
+    }
+    .slide-1 .pulse-arrow {
+      animation: bounceX 1.6s infinite ease-in-out;
+      color: var(--yellow);
+    }
+    @keyframes bounceX {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(7px); }
+    }
+
+    /* --- SLIDE 2: QUEM SOMOS --- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hex-member-card {
+      position: relative;
+      background: var(--bg-2);
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hex-member-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-8px) rotate(0.8deg);
+      box-shadow: var(--glow-gold);
+    }
+    .hex-avatar-wrap {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 18px;
+      position: relative;
+      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      background: linear-gradient(135deg, var(--yellow), var(--gold));
+      padding: 3px;
+      transition: transform 0.4s ease;
+    }
+    .hex-member-card:hover .hex-avatar-wrap {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .hex-avatar-inner {
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hex-avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.9);
+      transition: filter 0.3s;
+    }
+    .hex-member-card:hover .hex-avatar-inner img {
+      filter: grayscale(0) brightness(1.05);
+    }
+    .member-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .member-role {
+      font-size: 0.85rem;
+      color: var(--yellow);
+      font-weight: 500;
+    }
+    .team-footer-quote {
+      text-align: center;
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      color: var(--text-2);
+      font-weight: 500;
+      padding: 16px 28px;
+      background: rgba(255,204,20,0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,204,20,0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 3: INTRODUÇÃO --- */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+    }
+    .intro-card {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .intro-card .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(255, 204, 20, 0.1);
+      border: 1px solid rgba(255, 204, 20, 0.3);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 850px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 4: PROBLEMÁTICA --- */
+    .problem-highlight-box {
+      background: rgba(20,20,20,0.85);
+      border-left: 4px solid var(--yellow);
+      padding: 30px;
+      border-radius: 0 16px 16px 0;
+      margin: 2rem 0;
+      font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+      line-height: 1.5;
+      color: var(--text-1);
+    }
+    /* Efeito de marca-texto animado */
+    .marker-highlight {
+      background: linear-gradient(90deg, rgba(255,204,20,0.25) 0%, rgba(255,204,20,0.35) 100%);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #FFF;
+      border-bottom: 2px solid var(--yellow);
+      box-shadow: 0 0 12px rgba(255,204,20,0.2);
+    }
+    .problem-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    /* --- SLIDE 5 & 7: DIAGNÓSTICO (SLA, RETRABALHO E FLUXO) --- */
+    .diagnostic-split {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      margin-top: 1.8rem;
+    }
+    @media (max-width: 980px) {
+      .diagnostic-split { grid-template-columns: 1fr; }
+    }
+
+    /* Barras de SLA Horizontal */
+    .sla-bars-wrapper {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sla-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sla-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .sla-track {
+      height: 22px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sla-fill {
+      height: 100%;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .sla-fill.current {
+      background: linear-gradient(90deg, #600000, var(--red-alert));
+      box-shadow: var(--glow-red);
+    }
+    .sla-fill.ideal {
+      background: linear-gradient(90deg, #b08d0e, var(--yellow));
+      box-shadow: var(--glow-gold);
+    }
+
+    /* Rosca de Retrabalho (Donut Chart SVG) */
+    .donut-chart-container {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 20px 0;
+    }
+    .donut-svg-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+    }
+    .donut-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .donut-bg-circle {
+      stroke: rgba(255,255,255,0.08);
+      stroke-width: 10;
+      fill: none;
+    }
+    .donut-progress-circle {
+      stroke: var(--yellow);
+      stroke-width: 10;
+      stroke-linecap: round;
+      fill: none;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .donut-center-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+
+    /* Fluxo Horizontal AS IS / TO BE */
+    .flow-rail-container {
+      margin-top: 24px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 12px 4px;
+    }
+    .flow-steps-rail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+    .flow-step-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-1);
+      position: relative;
+    }
+    .flow-step-card.bottleneck {
+      background: rgba(128, 0, 0, 0.3);
+      border-color: var(--red-alert);
+      color: #fff;
+      animation: pulseBottleneck 2s infinite ease-in-out;
+    }
+    .flow-step-card.highlight-ai {
+      background: rgba(255, 204, 20, 0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      box-shadow: var(--glow-gold);
+    }
+    @keyframes pulseBottleneck {
+      0%, 100% { box-shadow: 0 0 10px rgba(255,31,31,0.2); }
+      50% { box-shadow: 0 0 25px rgba(255,31,31,0.5); border-color: #ff5252; }
+    }
+    .flow-arrow-animated {
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      animation: shiftArrow 1.5s infinite linear;
+    }
+    @keyframes shiftArrow {
+      0% { transform: translateX(-3px); opacity: 0.6; }
+      50% { transform: translateX(3px); opacity: 1; }
+      100% { transform: translateX(-3px); opacity: 0.6; }
+    }
+
+    /* Slide 7: Toggle de Dados (Levantamento Inicial vs Atualizado) */
+    .data-toggle-bar {
+      display: inline-flex;
+      background: rgba(15,15,15,0.9);
+      border: 1px solid rgba(255,204,20,0.3);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .data-toggle-btn {
+      padding: 8px 18px;
+      border-radius: 25px;
+      border: none;
+      background: transparent;
+      color: var(--text-2);
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .data-toggle-btn.is-active {
+      background: var(--yellow);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 0 14px rgba(255, 204, 20, 0.4);
+    }
+
+    /* Faixa de Alerta Principais Gargalos */
+    .bottlenecks-alert-banner {
+      background: linear-gradient(90deg, rgba(128, 0, 0, 0.7) 0%, rgba(221, 176, 21, 0.4) 100%);
+      border: 1px solid rgba(255, 31, 31, 0.4);
+      border-radius: 14px;
+      padding: 16px 22px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    /* --- SLIDE 6: DIAGNÓSTICO (ISHIKAWA) --- */
+    .ishikawa-wrapper {
+      margin-top: 24px;
+      width: 100%;
+    }
+    .ishikawa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .ishikawa-card {
+      background: var(--bg-2);
+      border-radius: 14px;
+      padding: 20px 16px;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      position: relative;
+    }
+    .ishikawa-card.color-yellow {
+      border-top: 4px solid var(--yellow);
+    }
+    .ishikawa-card.color-red {
+      border-top: 4px solid var(--red-alert);
+    }
+    .ishikawa-card:hover, .ishikawa-card.is-selected {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .ishikawa-card.color-yellow:hover, .ishikawa-card.color-yellow.is-selected {
+      border-color: var(--yellow);
+      box-shadow: var(--glow-gold);
+    }
+    .ishikawa-card.color-red:hover, .ishikawa-card.color-red.is-selected {
+      border-color: var(--red-alert);
+      box-shadow: var(--glow-red);
+    }
+    .ishikawa-items-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ishikawa-items-list li {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.4;
+    }
+    .ishikawa-items-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--yellow);
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      .ishikawa-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .ishikawa-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 8: OBJETIVOS --- */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+    }
+    .objective-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px 24px;
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .objective-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+      box-shadow: var(--glow-gold);
+    }
+    .obj-num-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--yellow);
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .obj-micro-diagram {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--gold);
+    }
+
+    @media (max-width: 850px) {
+      .objectives-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 9: METODOLOGIA (7 FERRAMENTAS INTERATIVAS) --- */
+    .methodology-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .method-tool-chip {
+      background: var(--bg-2);
+      border: 1px solid rgba(255, 204, 20, 0.25);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .method-tool-chip:hover, .method-tool-chip.is-active {
+      background: var(--yellow);
+      color: #000;
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+      box-shadow: var(--glow-gold);
+    }
+    .method-detail-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 24px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* --- SLIDE 10: PROPOSTA & SCANNER DE IA --- */
+    .proposal-scanner-box {
+      background: #0E0E0E;
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .scanner-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      box-shadow: 0 0 18px var(--yellow), 0 0 35px var(--yellow);
+      animation: scanAnim 3s infinite ease-in-out;
+      pointer-events: none;
+    }
+    @keyframes scanAnim {
+      0% { top: 0%; opacity: 0.2; }
+      50% { top: 96%; opacity: 1; }
+      100% { top: 0%; opacity: 0.2; }
+    }
+    .scanner-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .scanner-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.03);
+      padding: 10px 16px;
+      border-radius: 8px;
+      border-left: 3px solid #333;
+    }
+    .scanner-item-row.valid {
+      border-left-color: #2ecc71;
+    }
+    .scanner-item-row.warning {
+      border-left-color: var(--yellow);
+    }
+
+    @media (max-width: 650px) {
+      .scanner-items { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 11: O QUE ESPERAMOS --- */
+    .expectations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 2.2rem;
+    }
+    .expect-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+    .expect-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+    }
+    .expect-value-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.3);
+      color: var(--yellow);
+      font-weight: 700;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .expect-value-badge.pending {
+      color: var(--text-2);
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      font-style: italic;
+    }
+
+    /* --- SLIDE 12: CONCLUSÃO --- */
+    .slide-12 .final-phrase {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 1050px;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: none;
+    }
+    .btn-action.primary {
+      background: var(--yellow);
+      color: #000;
+      box-shadow: 0 0 25px rgba(255, 204, 20, 0.4);
+    }
+    .btn-action.primary:hover {
+      background: #ffd633;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 35px rgba(255, 204, 20, 0.6);
+    }
+    .btn-action.secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .btn-action.secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================================================
+       7. MODO OVERVIEW (VISÃO GERAL EM GRADE)
+       ========================================================================== */
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .overview-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      padding-bottom: 2rem;
+    }
+    .overview-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .overview-card:hover {
+      border-color: var(--yellow);
+      transform: scale(1.03);
+      box-shadow: var(--glow-gold);
+    }
+    .overview-card.is-current {
+      border-color: var(--yellow);
+      background: rgba(255, 204, 20, 0.08);
+    }
+    .overview-card .num-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .overview-card .title-tag {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       8. MODAL DE ATALHOS DE TECLADO (?)
+       ========================================================================== */
+    .shortcuts-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(14px);
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 1.5rem;
+    }
+    .shortcuts-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .shortcuts-content {
+      background: var(--bg-1);
+      border: 1px solid var(--border-gold);
+      border-radius: 18px;
+      padding: 2rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+    }
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       9. AUTOPLAY PROGRESS INDICATOR
+       ========================================================================== */
+    .autoplay-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(20,20,20,0.7);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      color: var(--text-2);
+      cursor: pointer;
+    }
+    .autoplay-badge.is-playing {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       10. IMPRESSÃO (@media print - 1 slide por folha em 16:9)
+       ========================================================================== */
+    @media print {
+      body, html {
+        overflow: visible !important;
+        background: #000 !important;
+        color: #fff !important;
+      }
+      .custom-cursor, .custom-cursor-dot, .top-bar, .bottom-bar, .nav-arrow-btn, #ambient-canvas {
+        display: none !important;
+      }
+      .presentation-viewport {
+        height: auto !important;
+        overflow: visible !important;
+      }
+      .slides-track {
+        display: block !important;
+        width: 100% !important;
+        transform: none !important;
+      }
+      .slide {
+        width: 100vw !important;
+        height: 100vh !important;
+        page-break-after: always;
+        break-after: page;
+        opacity: 1 !important;
+        transform: none !important;
+        padding: 40px !important;
+        display: flex !important;
+      }
+    }
+
+    /* Redução de Movimento (Acessibilidade) */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .slides-track {
+        transition: transform 0.1s linear !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Cursor Customizado -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- 2. Partículas Douradas Sutis em Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- 3. Camada Global de Fundo: Gradiente, Linhas Topográficas e Marca d'Água 'Y' -->
+  <div class="global-ambient-layer">
+    <div class="ambient-radial-glow"></div>
+
+    <!-- Linhas Topográficas SVG -->
+    <svg class="topographic-lines-svg" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-100 250 C 300 150, 600 400, 1050 220 C 1300 110, 1500 350, 1600 300" stroke="rgba(255,204,20,0.14)" stroke-width="1.5" stroke-dasharray="6 4" />
+      <path d="M-80 420 C 250 320, 550 560, 950 380 C 1250 250, 1450 500, 1620 450" stroke="rgba(255,204,20,0.18)" stroke-width="1.8" />
+      <path d="M-50 620 C 280 540, 620 720, 1100 580 C 1350 500, 1520 680, 1650 630" stroke="rgba(255,204,20,0.12)" stroke-width="1.2" />
+      <path d="M-100 780 C 350 700, 700 880, 1180 740 C 1400 680, 1550 820, 1680 800" stroke="rgba(255,204,20,0.1)" stroke-width="1.2" />
+    </svg>
+
+    <!-- Marca d'água "Y" estilizada (3 retângulos arredondados fiéis ao original da apresentação) -->
+    <svg class="brand-watermark-y" id="brandWatermark" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g opacity="0.8">
+        <!-- Braço esquerdo inclinado -->
+        <rect x="110" y="100" width="160" height="220" rx="60" transform="rotate(-26 110 100)" fill="#1A1A1A" />
+        <!-- Braço direito inclinado -->
+        <rect x="330" y="40" width="160" height="220" rx="60" transform="rotate(26 330 40)" fill="#181818" />
+        <!-- Base / Tronco central -->
+        <rect x="220" y="240" width="160" height="260" rx="60" fill="#151515" />
+      </g>
+    </svg>
+  </div>
+
+  <!-- 4. Barra Superior (Progresso, Identidade, Controles) -->
+  <header class="top-bar">
+    <div class="top-progress-bar" id="topProgressBar"></div>
+    <div class="brand-meta">
+      <span class="badge">SENAI</span>
+      <span>DESKTOP × JURÍDICO</span>
+    </div>
+
+    <div class="top-controls">
+      <!-- Indicador Numérico -->
+      <div class="slide-counter" aria-live="polite">
+        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">12</span>
+      </div>
+
+      <!-- Autoplay Toggle -->
+      <button class="autoplay-badge" id="autoplayBtn" title="Reprodução automática (12s)">
+        <i data-lucide="play" style="width:14px; height:14px;"></i>
+        <span>Autoplay</span>
+      </button>
+
+      <!-- Botão Visão Geral (Overview) -->
+      <button class="btn-icon" id="openOverviewBtn" title="Visão geral (O)">
+        <i data-lucide="grid" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Botão Tela Cheia -->
+      <button class="btn-icon" id="fullscreenBtn" title="Tela cheia (F)">
+        <i data-lucide="maximize-2" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Botão Ajuda / Atalhos -->
+      <button class="btn-icon" id="shortcutsBtn" title="Atalhos do teclado (?)">
+        <i data-lucide="help-circle" style="width:18px; height:18px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 5. Botões Flutuantes de Navegação (Setas Laterais) -->
+  <button class="nav-arrow-btn prev" id="prevSlideBtn" aria-label="Slide anterior">
+    <i data-lucide="chevron-left" style="width:28px; height:28px;"></i>
+  </button>
+  <button class="nav-arrow-btn next" id="nextSlideBtn" aria-label="Próximo slide">
+    <i data-lucide="chevron-right" style="width:28px; height:28px;"></i>
+  </button>
+
+  <!-- 6. Viewport e Trilho dos 12 Slides -->
+  <main class="presentation-viewport" id="presentationViewport">
+    <div class="slides-track" id="slidesTrack">
+
+      <!-- ==========================================
+           SLIDE 1: CAPA
+           ========================================== -->
+      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 12: Capa">
+        <div class="slide-content-container">
+          <div class="cover-wrap">
+            <p class="top-sub">TÉCNICO EM ADMINISTRAÇÃO – <span class="highlight-yellow">SENAI</span></p>
+            <h1 class="main-pcc title-large">Projeto de <span class="highlight-yellow">Conclusão</span> de Curso</h1>
+            
+            <div class="brand-divider-line"></div>
+            
+            <h2 class="subtitle-problem">PROBLEMÁTICA DO SETOR JURÍDICO</h2>
+            <p class="subtitle-desc">ANÁLISE DE CONTRATOS</p>
+            
+            <div>
+              <button class="scroll-hint" id="startPresentationBtn">
+                <span>Deslize ou use → para começar</span>
+                <i data-lucide="arrow-right" class="pulse-arrow" style="width:18px; height:18px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 2: QUEM SOMOS?
+           ========================================== -->
+      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 12: Quem somos">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="users" style="width:14px; height:14px;"></i> EQUIPE DO PROJETO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Quem <span class="highlight-yellow">somos?</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <!-- 4 Integrantes em Hexágonos -->
+          <div class="team-grid" id="teamContainer">
+            <!-- Gerado dinamicamente via JS/config -->
+          </div>
+
+          <div class="team-footer-quote">
+            "Como vamos transformar desafios em oportunidades de receita."
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 3: INTRODUÇÃO
+           ========================================== -->
+      <section class="slide" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 12: Introdução">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="compass" style="width:14px; height:14px;"></i> CONTEXTO INSTITUCIONAL</p>
+          <h2 class="title-large highlight-yellow" style="letter-spacing: 0.12em; margin-top: 10px;">INTRODUÇÃO</h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="intro-grid">
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="wifi" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Quem é a <span class="highlight-yellow">DESKTOP</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Com mais de <strong style="color:#fff; font-size:1.3rem;" class="counter-number" data-target="20">0</strong> anos no mercado, é uma das principais operadoras de internet banda larga e fibra óptica do estado de São Paulo, conectando centenas de milhares de clientes.
+              </p>
+            </div>
+
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="scale" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Setor envolvido: <span class="highlight-yellow">Jurídico</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Área estratégica responsável pelo compliance, mitigação de riscos contratuais, validação legal e formalização de parcerias com fornecedores e clientes corporativos.
+              </p>
+            </div>
+
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="graduation-cap" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Papel do <span class="highlight-yellow">SENAI</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Foco no estímulo ao aprendizado prático dos alunos do curso Técnico em Administração e na proposição de soluções concretas e inovadoras para as problemáticas da DESKTOP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 4: PROBLEMÁTICA
+           ========================================== -->
+      <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 12: Problemática">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
+          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">PROBLEMÁTICA</h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="problem-highlight-box">
+            <span class="marker-highlight">Gargalos</span>, 
+            <span class="marker-highlight">idas e vindas</span> dos chamados entre as áreas, 
+            <span class="marker-highlight">documentos incompletos</span>, ausência de documentação, 
+            <span class="marker-highlight">falta de padronização</span> no atendimento etc., para então propor melhorias e tornar o fluxo mais ágil e padronizado.
+          </div>
+
+          <div class="problem-chips-grid">
+            <div class="badge-chip"><i data-lucide="repeat" style="width:16px; height:16px; color:var(--yellow);"></i> Retrabalho excessivo entre áreas</div>
+            <div class="badge-chip"><i data-lucide="file-question" style="width:16px; height:16px; color:var(--yellow);"></i> Minutas sem checklist padrão</div>
+            <div class="badge-chip"><i data-lucide="clock" style="width:16px; height:16px; color:var(--yellow);"></i> Tempo de espera prolongado</div>
+            <div class="badge-chip"><i data-lucide="alert-circle" style="width:16px; height:16px; color:var(--red-alert);"></i> Risco de perda de prazos comerciais</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 5: DIAGNÓSTICO (SLA E RETRABALHO)
+           ========================================== -->
+      <section class="slide" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 12: Diagnóstico Inicial">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
+          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">SLA e Retrabalho</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="diagnostic-split">
+            <!-- Card SLA -->
+            <div class="premium-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                  <i data-lucide="clock" style="color:var(--yellow); width:20px; height:20px;"></i>
+                  SLA Elevada (Tempo Médio)
+                </h3>
+                <span style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading);" class="highlight-red">
+                  +<span class="counter-number" data-target="140">0</span>%
+                </span>
+              </div>
+              <p style="font-size:0.85rem; color:var(--red-alert); font-weight:600; margin-top:2px;">Acima do tempo ideal aceitável</p>
+
+              <div class="sla-bars-wrapper">
+                <div class="sla-bar-item">
+                  <div class="sla-bar-label">
+                    <span style="color:var(--text-2);">Atual (Demanda Real)</span>
+                    <strong style="color:var(--red-alert);">12 dias</strong>
+                  </div>
+                  <div class="sla-track">
+                    <div class="sla-fill current" data-width="100%">12 dias</div>
+                  </div>
+                </div>
+
+                <div class="sla-bar-item">
+                  <div class="sla-bar-label">
+                    <span style="color:var(--text-2);">Ideal Esperado</span>
+                    <strong style="color:var(--yellow);">5 dias</strong>
+                  </div>
+                  <div class="sla-track">
+                    <div class="sla-fill ideal" data-width="41.6%">5 dias</div>
+                  </div>
+                </div>
+              </div>
+
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5;">
+                O tempo de conclusão dos contratos está acima do esperado, impactando diretamente no andamento das demandas comerciais da Desktop.
+              </p>
+            </div>
+
+            <!-- Card Retrabalho -->
+            <div class="premium-card">
+              <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                <i data-lucide="rotate-ccw" style="color:var(--yellow); width:20px; height:20px;"></i>
+                Retrabalho (Análise de Fluidez)
+              </h3>
+
+              <div class="donut-chart-container">
+                <div class="donut-svg-wrap">
+                  <svg viewBox="0 0 100 100">
+                    <circle class="donut-bg-circle" cx="50" cy="50" r="40" />
+                    <circle class="donut-progress-circle" cx="50" cy="50" r="40" 
+                            stroke-dasharray="251.2" stroke-dashoffset="251.2" data-offset="138" />
+                  </svg>
+                  <div class="donut-center-label">
+                    <span class="counter-number" data-target="45">0</span>%
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:1.1rem; color:#fff; font-weight:700;">Alta Taxa de Devolutivas</h4>
+                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 6px;">
+                    Contratos retornam diversas vezes para ajustes, correções e validações, gerando um ciclo vicioso de "vai e volta" entre as áreas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluxo AS IS com 7 etapas -->
+          <div style="margin-top: 24px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <i data-lucide="git-branch" style="color:var(--yellow); width:18px; height:18px;"></i>
+              <span style="font-weight:700; font-size:0.95rem;">Fluxo Atual (AS IS) — Etapas Contratuais</span>
+            </div>
+            <div class="flow-rail-container">
+              <div class="flow-steps-rail">
+                <div class="flow-step-card">1. Solicitação</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">2. Elaboração</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card bottleneck">
+                  <i data-lucide="alert-octagon" style="width:16px; height:16px; color:var(--red-alert);"></i>
+                  3. Análise Jurídica (Gargalo)
+                </div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card bottleneck">
+                  <i data-lucide="refresh-cw" style="width:16px; height:16px; color:var(--red-alert);"></i>
+                  4. Ajustes (Gargalo)
+                </div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">5. Validação</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">6. Aprimoramento</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card" style="border-color:var(--yellow); color:var(--yellow);">7. Assinatura</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 6: DIAGNÓSTICO (ISHIKAWA)
+           ========================================== -->
+      <section class="slide" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 12: Diagrama de Ishikawa">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> ANÁLISE DE CAUSAS-RAIZ</p>
+          <h2 class="title-large" style="margin-top: 10px;">Diagrama de <span class="highlight-yellow">Ishikawa</span></h2>
+          <p style="color:var(--text-2); font-size:1.1rem; margin-top:4px;">Por que o problema de lentidão e retrabalho acontece?</p>
+          <div class="brand-divider-line"></div>
+
+          <!-- Diagrama de Ishikawa Interativo em 4 Categorias -->
+          <div class="ishikawa-wrapper">
+            <div class="ishikawa-grid">
+              <!-- PESSOAS -->
+              <div class="ishikawa-card color-yellow" data-cat="pessoas">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <i data-lucide="users-2" style="color:var(--yellow); width:22px; height:22px;"></i>
+                  <h3 class="title-small" style="color:var(--yellow);">PESSOAS</h3>
+                </div>
+                <ul class="ishikawa-items-list">
+                  <li>Falta de alinhamento entre as áreas requisitantes.</li>
+                  <li>Interpretações diferentes das cláusulas legais.</li>
+                  <li>Necessidade constante de múltiplas validações.</li>
+                </ul>
+              </div>
+
+              <!-- PROCESSOS -->
+              <div class="ishikawa-card color-red" data-cat="processos">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <i data-lucide="sliders" style="color:var(--red-alert); width:22px; height:22px;"></i>
+                  <h3 class="title-small" style="color:var(--red-alert);">PROCESSOS</h3>
+                </div>
+                <ul class="ishikawa-items-list">
+                  <li>Fluxo contratual não padronizado entre departamentos.</li>
+                  <li>Ausência de checklists de conferência prévia.</li>
+                  <li>Etapas manuais e retrabalho recorrente.</li>
+                </ul>
+              </div>
+
+              <!-- TECNOLOGIA -->
+              <div class="ishikawa-card color-yellow" data-cat="tecnologia">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <i data-lucide="cpu" style="color:var(--yellow); width:22px; height:22px;"></i>
+                  <h3 class="title-small" style="color:var(--yellow);">TECNOLOGIA</h3>
+                </div>
+                <ul class="ishikawa-items-list">
+                  <li>Sistemas desconectados e sem automação inteligente.</li>
+                  <li>Falta de rastreabilidade das solicitações em aberto.</li>
+                  <li>Dificuldade no acompanhamento em tempo real do status.</li>
+                </ul>
+              </div>
+
+              <!-- DOCUMENTOS -->
+              <div class="ishikawa-card color-red" data-cat="documentos">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <i data-lucide="file-text" style="color:var(--red-alert); width:22px; height:22px;"></i>
+                  <h3 class="title-small" style="color:var(--red-alert);">DOCUMENTOS</h3>
+                </div>
+                <ul class="ishikawa-items-list">
+                  <li>Informações incompletas na solicitação original.</li>
+                  <li>Modelos contratuais desatualizados circulando.</li>
+                  <li>Divergências entre versões de minutas enviadas.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 7: DIAGNÓSTICO (INDICADORES ATUALIZADOS)
+           ========================================== -->
+      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 12: Indicadores Atualizados">
+        <div class="slide-content-container">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+            <div>
+              <p class="badge-chip"><i data-lucide="alert-circle" style="width:14px; height:14px; color:var(--red-alert);"></i> DADOS CRÍTICOS APROFUNDADOS</p>
+              <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-red">Indicadores Críticos</span></h2>
+            </div>
+
+            <!-- Toggle Inicial x Atualizado -->
+            <div class="data-toggle-bar">
+              <button class="data-toggle-btn" id="toggleInitialBtn">Inicial (12d, 45%)</button>
+              <button class="data-toggle-btn is-active" id="toggleUpdatedBtn">Atualizado (20d, 63%)</button>
+            </div>
+          </div>
+          <div class="brand-divider-line"></div>
+
+          <div class="diagnostic-split">
+            <!-- SLA Atualizada (20 dias x 5 dias -> +300%) -->
+            <div class="premium-card">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                  <i data-lucide="timer" style="color:var(--red-alert); width:22px; height:22px;"></i>
+                  SLA Elevada (Tempo Médio)
+                </h3>
+                <span style="font-size:2.2rem; font-weight:800; font-family:var(--font-heading);" class="highlight-red" id="slaPercentDisplay">
+                  +300%
+                </span>
+              </div>
+              <p style="font-size:0.85rem; color:var(--red-alert); font-weight:600;">Acima do ideal aceitável</p>
+
+              <div class="sla-bars-wrapper">
+                <div class="sla-bar-item">
+                  <div class="sla-bar-label">
+                    <span style="color:var(--text-2);">Demanda Real Atualizada</span>
+                    <strong style="color:var(--red-alert);" id="slaDaysRealDisplay">20 dias</strong>
+                  </div>
+                  <div class="sla-track">
+                    <div class="sla-fill current" id="slaRealBar" style="width:100%;">20 dias</div>
+                  </div>
+                </div>
+
+                <div class="sla-bar-item">
+                  <div class="sla-bar-label">
+                    <span style="color:var(--text-2);">Ideal Esperado</span>
+                    <strong style="color:var(--yellow);">5 dias</strong>
+                  </div>
+                  <div class="sla-track">
+                    <div class="sla-fill ideal" id="slaIdealBar" style="width:25%;">5 dias</div>
+                  </div>
+                </div>
+              </div>
+
+              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5;">
+                O tempo de análise cresceu de forma crítica, gerando insatisfação dos parceiros comerciais e morosidade no fechamento de contas.
+              </p>
+            </div>
+
+            <!-- Retrabalho Atualizado (63,13%) -->
+            <div class="premium-card">
+              <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                <i data-lucide="refresh-cw" style="color:var(--yellow); width:20px; height:20px;"></i>
+                Retrabalho Contratual
+              </h3>
+
+              <div class="donut-chart-container">
+                <div class="donut-svg-wrap">
+                  <svg viewBox="0 0 100 100">
+                    <circle class="donut-bg-circle" cx="50" cy="50" r="40" />
+                    <circle class="donut-progress-circle" id="donutUpdatedCircle" cx="50" cy="50" r="40" 
+                            stroke-dasharray="251.2" stroke-dashoffset="92.6" style="stroke:var(--red-alert);" />
+                  </svg>
+                  <div class="donut-center-label">
+                    <span id="reworkPercentDisplay" style="font-size:1.1rem; color:var(--red-alert);">63,13%</span>
+                  </div>
+                </div>
+                <div>
+                  <h4 style="font-size:1.1rem; color:#fff; font-weight:700;">Volume de Devolutivas</h4>
+                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 6px;">
+                    Este número mostra dados dos contratos que retornam diversas vezes para ajustes, correções e validações, gerando um ciclo vicioso de "vai e volta".
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Faixa de Alerta: Principais Gargalos -->
+          <div class="bottlenecks-alert-banner">
+            <i data-lucide="alert-triangle" style="width:28px; height:28px; color:#fff; flex-shrink:0;"></i>
+            <div style="flex:1;">
+              <strong style="color:#fff; text-transform:uppercase; font-size:0.95rem; letter-spacing:0.05em; display:block; margin-bottom:6px;">
+                Principais Gargalos Mapeados:
+              </strong>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Ajustes e correções recorrentes</span>
+                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Devolutivas entre as áreas</span>
+                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Falta de padronização documental</span>
+                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Falhas de comunicação</span>
+                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Baixa visibilidade do status contratual</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 8: OBJETIVOS
+           ========================================== -->
+      <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 12: Objetivos">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Nossos <span class="highlight-yellow">Objetivos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="objectives-grid">
+            <!-- 01 -->
+            <div class="objective-card">
+              <div class="obj-num-badge">01</div>
+              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">ANÁLISE INTELIGENTE DE CONTRATOS</h3>
+              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
+                Integrar inteligência artificial ao sistema <strong>LECOM</strong> para analisar contratos em tempo real, comparando-os com modelos predefinidos e identificando automaticamente informações ausentes ou inconsistentes.
+              </p>
+              <div class="obj-micro-diagram">
+                <i data-lucide="scan-line" style="width:20px; height:20px;"></i>
+                <span>Scanner IA + Lecom em tempo real</span>
+              </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="objective-card">
+              <div class="obj-num-badge">02</div>
+              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">VALIDAÇÃO CADASTRAL AUTOMATIZADA</h3>
+              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
+                Integrar consulta via CNPJ à base da Receita Federal por meio da <strong>API Serpro</strong>, permitindo verificar de imediato os dados cadastrais da empresa contratada e sua regularidade jurídica.
+              </p>
+              <div class="obj-micro-diagram">
+                <i data-lucide="shield-check" style="width:20px; height:20px;"></i>
+                <span>Checagem instantânea API Serpro</span>
+              </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="objective-card">
+              <div class="obj-num-badge">03</div>
+              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">CAPACITAÇÃO DOS SOLICITANTES</h3>
+              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
+                Disponibilizar treinamentos pela <strong>Universidade Desktop</strong> para orientar os colaboradores das áreas solicitantes sobre o preenchimento correto das informações e submissão das minutas.
+              </p>
+              <div class="obj-micro-diagram">
+                <i data-lucide="graduation-cap" style="width:20px; height:20px;"></i>
+                <span>Trilhas na Universidade Desktop</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 9: METODOLOGIA (7 FERRAMENTAS)
+           ========================================== -->
+      <section class="slide" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 12: Metodologia">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> GESTÃO E MELHORIA CONTÍNUA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Metodologia de <span class="highlight-yellow">Trabalho</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <p style="color:var(--text-2); font-size:1.1rem; line-height:1.6; max-width:920px;">
+            As metodologias utilizadas auxiliam na organização, análise e melhoria dos processos operacionais e administrativos. Clique nas ferramentas abaixo para explorar a aplicação prática de cada uma:
+          </p>
+
+          <!-- 7 Ferramentas Interativas em Chips -->
+          <div class="methodology-chips-grid" id="methodologyChips">
+            <button class="method-tool-chip is-active" data-tool="kanban"><i data-lucide="trello" style="width:16px;"></i> Kanban</button>
+            <button class="method-tool-chip" data-tool="sipoc"><i data-lucide="workflow" style="width:16px;"></i> SIPOC</button>
+            <button class="method-tool-chip" data-tool="ishikawa"><i data-lucide="git-pull-request" style="width:16px;"></i> Ishikawa</button>
+            <button class="method-tool-chip" data-tool="5w2h"><i data-lucide="help-circle" style="width:16px;"></i> 5W2H</button>
+            <button class="method-tool-chip" data-tool="pdca"><i data-lucide="refresh-cw" style="width:16px;"></i> PDCA</button>
+            <button class="method-tool-chip" data-tool="gut"><i data-lucide="bar-chart-2" style="width:16px;"></i> Matriz GUT</button>
+            <button class="method-tool-chip" data-tool="esforco"><i data-lucide="sliders" style="width:16px;"></i> Esforço × Impacto</button>
+          </div>
+
+          <!-- Card de Detalhe da Metodologia Selecionada -->
+          <div class="method-detail-card" id="methodDetailBox">
+            <div style="background:rgba(255,204,20,0.1); padding:16px; border-radius:12px; color:var(--yellow);" id="methodIconHolder">
+              <i data-lucide="trello" style="width:32px; height:32px;"></i>
+            </div>
+            <div>
+              <h3 class="title-small" id="methodTitleHolder" style="color:var(--yellow); margin-bottom:6px;">Kanban</h3>
+              <p id="methodDescHolder" style="color:var(--text-1); font-size:1rem; line-height:1.5;">
+                Permite acompanhar visualmente o status das tarefas e chamados contratuais em tempo real, limitando o trabalho em andamento (WIP) e expondo gargalos imediatos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: PROPOSTA & FLUXO TO BE COM IA
+           ========================================== -->
+      <section class="slide" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 12: Proposta">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Inteligência Artificial</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <p style="color:var(--text-2); font-size:1.15rem; line-height:1.6; max-width:980px;">
+            Integração de IA com capacidade de <strong>análise em tempo real</strong> do modelo de contrato desejado, identificando automaticamente informações faltantes ou incorretas antes do envio ao jurídico.
+          </p>
+
+          <!-- Simulador de Scanner Inteligente -->
+          <div class="proposal-scanner-box">
+            <div class="scanner-line"></div>
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <i data-lucide="bot" style="color:var(--yellow); width:24px; height:24px;"></i>
+                <span style="font-weight:700; color:#fff;">Motor de Pré-Validação Automatizada (LECOM + IA + Serpro)</span>
+              </div>
+              <span class="badge-chip" style="background:rgba(46, 204, 113, 0.15); border-color:#2ecc71; color:#2ecc71;">
+                Status: Scanner Ativo
+              </span>
+            </div>
+
+            <div class="scanner-items">
+              <div class="scanner-item-row valid">
+                <span>Consulta CNPJ Receita Federal (API Serpro)</span>
+                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> Válido</span>
+              </div>
+              <div class="scanner-item-row valid">
+                <span>Conformidade com Modelo Padrão de Minuta</span>
+                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> 100% OK</span>
+              </div>
+              <div class="scanner-item-row warning">
+                <span>Cláusula de Rescisão / Multa Contratual</span>
+                <span style="color:var(--yellow); font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="alert-triangle" style="width:16px;"></i> Ajustado</span>
+              </div>
+              <div class="scanner-item-row valid">
+                <span>Assinatura Digital & Poderes de Procuração</span>
+                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> Apto</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluxo TO BE Animado -->
+          <div style="margin-top: 24px;">
+            <span style="font-weight:700; font-size:0.95rem; color:var(--text-2);">Novo Fluxo Otimizado (TO BE):</span>
+            <div class="flow-rail-container">
+              <div class="flow-steps-rail">
+                <div class="flow-step-card">1. Solicitação</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+
+                <div class="flow-step-card highlight-ai">
+                  <i data-lucide="sparkles" style="width:18px; height:18px;"></i>
+                  2. Validação por IA (Checagem em Tempo Real + CNPJ Serpro)
+                </div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+
+                <div class="flow-step-card">3. Análise Jurídica Ágil (Sem Retrabalho)</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+
+                <div class="flow-step-card" style="border-color:var(--yellow); color:var(--yellow); font-weight:700;">
+                  <i data-lucide="check" style="width:18px; height:18px;"></i>
+                  4. Assinatura Final
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 11: O QUE ESPERAMOS
+           ========================================== -->
+      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 12: Resultados Esperados">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="trending-up" style="width:14px; height:14px;"></i> IMPACTO E BENEFÍCIOS</p>
+          <h2 class="title-large" style="margin-top: 10px;">O que <span class="highlight-yellow">esperamos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <!-- Cards de Expectativas com campos configuráveis -->
+          <div class="expectations-grid">
+            <div class="expect-card">
+              <div>
+                <i data-lucide="clock" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Redução de SLA</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Tempo de ciclo contratual encurtado drasticamente.</p>
+              </div>
+              <div class="expect-value-badge">20 dias ➔ 5 dias</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="repeat" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Redução de Retrabalho</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Eliminação dos retornos por erro documental básico.</p>
+              </div>
+              <div class="expect-value-badge">63% ➔ &lt; 10%</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="hourglass" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Economia de Horas Jurídicas</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Foco da equipe jurídica em análises estratégicas.</p>
+              </div>
+              <div class="expect-value-badge pending">A definir</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="dollar-sign" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">ROI Estimado</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Retorno financeiro sobre a implementação da solução.</p>
+              </div>
+              <div class="expect-value-badge pending">A definir</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="award" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Benefícios Qualitativos</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Maior satisfação das áreas clientes e padronização total.</p>
+              </div>
+              <div class="expect-value-badge">Alto Impacto</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 12: CONCLUSÃO
+           ========================================== -->
+      <section class="slide slide-12" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 12: Conclusão">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="flag" style="width:14px; height:14px;"></i> CONSIDERAÇÕES FINAIS</p>
+          <div class="brand-divider-line"></div>
+
+          <h2 class="final-phrase">
+            "Como vamos transformar desafios em <span class="highlight-yellow">oportunidades de receita</span>."
+          </h2>
+
+          <p style="color:var(--text-2); font-size:1.2rem; max-width:800px; margin-bottom:2.5rem; line-height:1.6;">
+            A modernização do setor jurídico da Desktop por meio de tecnologia e educação corporativa não apenas resolve gargalos operacionais, mas acelera novos negócios e fortalece o crescimento da organização.
+          </p>
+
+          <div class="actions-bar">
+            <button class="btn-action primary" id="restartBtn">
+              <i data-lucide="rotate-ccw" style="width:18px; height:18px;"></i>
+              <span>Reiniciar Apresentação</span>
+            </button>
+            <button class="btn-action secondary" id="overviewFinalBtn">
+              <i data-lucide="grid" style="width:18px; height:18px;"></i>
+              <span>Visão Geral</span>
+            </button>
+            <button class="btn-action secondary" id="printBtn" title="Exportar para impressão">
+              <i data-lucide="printer" style="width:18px; height:18px;"></i>
+              <span>Imprimir / PDF</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 7. Barra Inferior (Atalhos, Dots de Navegação) -->
+  <footer class="bottom-bar">
+    <div class="nav-hints">
+      <span><span class="nav-hint-key">←</span> <span class="nav-hint-key">→</span> Navegar</span>
+      <span><span class="nav-hint-key">Espaço</span> Avançar</span>
+      <span><span class="nav-hint-key">O</span> Visão geral</span>
+      <span><span class="nav-hint-key">F</span> Tela cheia</span>
+    </div>
+
+    <!-- Dots de Navegação -->
+    <div class="dots-container" id="dotsContainer" role="tablist" aria-label="Navegação por slides">
+      <!-- Gerado via JavaScript -->
+    </div>
+
+    <div style="font-size: 0.75rem; color: var(--text-muted);">
+      SENAI × DESKTOP © 2026
+    </div>
+  </footer>
+
+  <!-- 8. Modal: Modo Visão Geral (Overview) -->
+  <div class="overview-modal" id="overviewModal" role="dialog" aria-modal="true" aria-label="Visão geral de todos os slides">
+    <div class="overview-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <i data-lucide="grid" style="color:var(--yellow); width:24px; height:24px;"></i>
+        <h2 class="title-small">Visão Geral dos Slides</h2>
+      </div>
+      <button class="btn-icon" id="closeOverviewBtn" aria-label="Fechar visão geral">
+        <i data-lucide="x" style="width:20px; height:20px;"></i>
+      </button>
+    </div>
+    <div class="overview-grid" id="overviewGrid">
+      <!-- Miniaturas geradas via JS -->
+    </div>
+  </div>
+
+  <!-- 9. Modal: Atalhos de Teclado (?) -->
+  <div class="shortcuts-modal" id="shortcutsModal" role="dialog" aria-modal="true" aria-label="Atalhos de teclado">
+    <div class="shortcuts-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <h3 class="title-small" style="color:var(--yellow); display:flex; align-items:center; gap:8px;">
+          <i data-lucide="keyboard" style="width:20px; height:20px;"></i> Atalhos de Navegação
+        </h3>
+        <button class="btn-icon" id="closeShortcutsBtn" aria-label="Fechar modal">
+          <i data-lucide="x" style="width:18px; height:18px;"></i>
+        </button>
+      </div>
+
+      <div class="shortcut-row">
+        <span>Avançar slide</span>
+        <span><span class="nav-hint-key">→</span> <span class="nav-hint-key">Espaço</span> <span class="nav-hint-key">PgDn</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Voltar slide</span>
+        <span><span class="nav-hint-key">←</span> <span class="nav-hint-key">PgUp</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Primeiro / Último slide</span>
+        <span><span class="nav-hint-key">Home</span> / <span class="nav-hint-key">End</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Visão Geral (Overview)</span>
+        <span><span class="nav-hint-key">O</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Tela Cheia</span>
+        <span><span class="nav-hint-key">F</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Fechar modais</span>
+        <span><span class="nav-hint-key">Esc</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       11. JAVASCRIPT: DADOS, NAVEGAÇÃO, ANIMAÇÕES & INTERATIVIDADE
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
+       ========================================================================== */
+    const PRESENTATION_CONFIG = {
+      totalSlides: 12,
+      autoplayIntervalMs: 12000,
+      
+      // Integrantes do Grupo (Slide 2)
+      team: [
+        {
+          nome: "Integran 1",
+          funcao: "Pesquisa & Diagnóstico",
+          foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          nome: "Integran 2",
+          funcao: "Mapeamento de Processos",
+          foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          nome: "Integran 3",
+          funcao: "Análise Jurídica & SLA",
+          foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"
+        },
+        {
+          nome: "Integran 4",
+          funcao: "Proposta Tecnológica & IA",
+          foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+        }
+      ],
+
+      // Títulos dos Slides para Dots e Overview
+      slideTitles: [
+        "Capa",
+        "Quem somos?",
+        "Introdução",
+        "Problemática",
+        "Diagnóstico Inicial",
+        "Ishikawa",
+        "Indicadores Críticos",
+        "Objetivos",
+        "Metodologia",
+        "Proposta com IA",
+        "O que esperamos",
+        "Conclusão"
+      ],
+
+      // Dados Comparativos Slide 7 (Inicial vs Atualizado)
+      diagnosticsData: {
+        initial: {
+          slaDays: 12,
+          slaIdeal: 5,
+          slaPercent: "+140%",
+          reworkPercent: "45%",
+          reworkDonutOffset: 138, // 45% de 251.2
+          barWidthCurrent: "100%",
+          barWidthIdeal: "41.6%"
+        },
+        updated: {
+          slaDays: 20,
+          slaIdeal: 5,
+          slaPercent: "+300%",
+          reworkPercent: "63,13%",
+          reworkDonutOffset: 92.6, // 63.13% de 251.2
+          barWidthCurrent: "100%",
+          barWidthIdeal: "25%"
+        }
+      },
+
+      // Ferramentas Metodológicas (Slide 9)
+      methodologyDetails: {
+        kanban: {
+          title: "Kanban",
+          icon: "trello",
+          desc: "Permite acompanhar visualmente o status das tarefas e chamados contratuais em tempo real, limitando o trabalho em andamento (WIP) e expondo gargalos imediatos."
+        },
+        sipoc: {
+          title: "SIPOC",
+          icon: "workflow",
+          desc: "Oferece uma visão panorâmica de ponta a ponta: Fornecedores (Suppliers), Entradas (Inputs), Processos (Process), Saídas (Outputs) e Clientes (Customers) do fluxo contratual."
+        },
+        ishikawa: {
+          title: "Diagrama de Ishikawa",
+          icon: "git-pull-request",
+          desc: "Mapeia as causas-raiz dos problemas agrupadas por categorias (Pessoas, Processos, Tecnologia e Documentos), identificando a origem das falhas."
+        },
+        "5w2h": {
+          title: "5W2H",
+          icon: "help-circle",
+          desc: "Estrutura planos de ação definindo com clareza: O que (What), Por que (Why), Onde (Where), Quando (When), Quem (Who), Como (How) e Quanto custa (How much)."
+        },
+        pdca: {
+          title: "Ciclo PDCA",
+          icon: "refresh-cw",
+          desc: "Promove a melhoria contínua através do ciclo iterativo: Planejar (Plan), Executar (Do), Checar (Check) e Agir corretivamente (Act)."
+        },
+        gut: {
+          title: "Matriz GUT",
+          icon: "bar-chart-2",
+          desc: "Auxilia na priorização de problemas com base na Gravidade, Urgência e Tendência de piora se nada for feito de imediato."
+        },
+        esforco: {
+          title: "Matriz Esforço × Impacto",
+          icon: "sliders",
+          desc: "Prioriza ações de 'ganho rápido' (baixo esforço e alto impacto), garantindo resultados rápidos antes de projetos de alta complexidade."
+        }
+      }
+    };
+
+    /* ==========================================================================
+       ESTADO DA APLICAÇÃO
+       ========================================================================== */
+    const state = {
+      currentSlideIndex: 0,
+      totalSlides: PRESENTATION_CONFIG.totalSlides,
+      isAutoplayActive: false,
+      autoplayTimer: null,
+      isOverviewOpen: false,
+      isShortcutsOpen: false,
+      isAnimating: false,
+      // Touch / Swipe
+      touchStartX: 0,
+      touchStartY: 0,
+      touchEndX: 0,
+      touchEndY: 0,
+      isDragging: false,
+      dragOffset: 0,
+      lockScroll: false
+    };
+
+    /* ==========================================================================
+       ELEMENTOS DOM PRINCIPAIS
+       ========================================================================== */
+    const track = document.getElementById('slidesTrack');
+    const slides = document.querySelectorAll('.slide');
+    const topProgressBar = document.getElementById('topProgressBar');
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlidesNum = document.getElementById('totalSlidesNum');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+    const autoplayBtn = document.getElementById('autoplayBtn');
+    const overviewModal = document.getElementById('overviewModal');
+    const overviewGrid = document.getElementById('overviewGrid');
+    const shortcutsModal = document.getElementById('shortcutsModal');
+    const brandWatermark = document.getElementById('brandWatermark');
+
+    /* ==========================================================================
+       INICIALIZAÇÃO DA INTERFACE
+       ========================================================================== */
+    function init() {
+      // Configurar total de slides
+      totalSlidesNum.textContent = String(state.totalSlides).padStart(2, '0');
+
+      // Renderizar Integrantes da Equipe (Slide 2)
+      renderTeamMembers();
+
+      // Renderizar Dots de Navegação
+      renderNavDots();
+
+      // Renderizar Grid da Visão Geral (Overview)
+      renderOverviewGrid();
+
+      // Configurar Ícones Lucide
+      lucide.createIcons();
+
+      // Configurar Canvas de Partículas
+      initAmbientCanvas();
+
+      // Configurar Cursor Personalizado
+      initCustomCursor();
+
+      // Checar Hash da URL (ex.: #/3)
+      checkInitialHash();
+
+      // Configurar Eventos Globais
+      setupEventListeners();
+
+      // Ir para o slide inicial
+      goToSlide(state.currentSlideIndex, false);
+    }
+
+    /* Renderizar Integrantes */
+    function renderTeamMembers() {
+      const container = document.getElementById('teamContainer');
+      if (!container) return;
+      container.innerHTML = PRESENTATION_CONFIG.team.map((member, idx) => `
+        <div class="hex-member-card">
+          <div class="hex-avatar-wrap">
+            <div class="hex-avatar-inner">
+              <img src="${member.foto}" alt="${member.nome}" loading="lazy">
+            </div>
+          </div>
+          <h3 class="member-name">${member.nome}</h3>
+          <p class="member-role">${member.funcao}</p>
+        </div>
+      `).join('');
+    }
+
+    /* Renderizar Dots de Navegação */
+    function renderNavDots() {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < state.totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `nav-dot ${i === 0 ? 'is-active' : ''}`;
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Ir para slide ${i + 1}: ${PRESENTATION_CONFIG.slideTitles[i]}`);
+        dot.innerHTML = `<span class="dot-tooltip">${i + 1}. ${PRESENTATION_CONFIG.slideTitles[i]}</span>`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    /* Renderizar Visão Geral */
+    function renderOverviewGrid() {
+      overviewGrid.innerHTML = '';
+      PRESENTATION_CONFIG.slideTitles.forEach((title, idx) => {
+        const card = document.createElement('div');
+        card.className = `overview-card ${idx === state.currentSlideIndex ? 'is-current' : ''}`;
+        card.innerHTML = `
+          <div class="num-tag">SLIDE ${String(idx + 1).padStart(2, '0')}</div>
+          <div class="title-tag">${title}</div>
+        `;
+        card.addEventListener('click', () => {
+          goToSlide(idx);
+          toggleOverview(false);
+        });
+        overviewGrid.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       LÓGICA DE TRANSIÇÃO E NAVEGAÇÃO ENTRE SLIDES
+       ========================================================================== */
+    function goToSlide(index, animate = true) {
+      if (index < 0) index = 0;
+      if (index >= state.totalSlides) index = state.totalSlides - 1;
+
+      state.currentSlideIndex = index;
+      const targetPercent = -(index * 100);
+
+      // Movimento do trilho horizontal
+      if (animate) {
+        track.style.transition = 'transform 0.75s cubic-bezier(0.25, 1, 0.5, 1)';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translate3d(-${index * 100}vw, 0, 0)`;
+
+      // Atualizar classes ativas dos slides
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('is-active');
+        } else {
+          slide.classList.remove('is-active');
+        }
+      });
+
+      // Atualizar Barra de Progresso e Contador
+      const progressPercent = ((index + 1) / state.totalSlides) * 100;
+      topProgressBar.style.width = `${progressPercent}%`;
+      currentSlideNum.textContent = String(index + 1).padStart(2, '0');
+
+      // Atualizar Dots
+      const dots = dotsContainer.querySelectorAll('.nav-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('is-active', idx === index);
+      });
+
+      // Atualizar Botões Prev/Next
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === state.totalSlides - 1;
+
+      // Parallax sutil na marca d'água 'Y'
+      if (brandWatermark) {
+        const rotateDeg = (index % 2 === 0 ? 0 : 3);
+        const scaleVal = 1 + (index * 0.008);
+        brandWatermark.style.transform = `translate(-50%, -50%) rotate(${rotateDeg}deg) scale(${scaleVal})`;
+      }
+
+      // Atualizar Hash na URL
+      history.replaceState(null, null, `#/${index + 1}`);
+
+      // Atualizar cards da Visão Geral
+      const overviewCards = overviewGrid.querySelectorAll('.overview-card');
+      overviewCards.forEach((c, i) => c.classList.toggle('is-current', i === index));
+
+      // Disparar animações de entrada dos elementos do slide
+      triggerSlideAnimations(index);
+    }
+
+    function nextSlide() {
+      if (state.currentSlideIndex < state.totalSlides - 1) {
+        goToSlide(state.currentSlideIndex + 1);
+      } else if (state.isAutoplayActive) {
+        goToSlide(0); // Reiniciar no autoplay
+      }
+    }
+
+    function prevSlide() {
+      if (state.currentSlideIndex > 0) {
+        goToSlide(state.currentSlideIndex - 1);
+      }
+    }
+
+    /* Checar Hash da URL */
+    function checkInitialHash() {
+      const hash = window.location.hash;
+      const match = hash.match(/#\/(\d+)/);
+      if (match && match[1]) {
+        const slideIndex = parseInt(match[1], 10) - 1;
+        if (slideIndex >= 0 && slideIndex < state.totalSlides) {
+          state.currentSlideIndex = slideIndex;
+        }
+      }
+    }
+
+    /* ==========================================================================
+       ANIMAÇÕES DE ENTRADA DO SLIDE & CONTADORES NUMÉRICOS
+       ========================================================================== */
+    function triggerSlideAnimations(slideIndex) {
+      const currentSlide = slides[slideIndex];
+      if (!currentSlide) return;
+
+      // Animação com GSAP para stagger de elementos filhos
+      if (typeof gsap !== 'undefined') {
+        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card');
+        
+        gsap.fromTo(animElements, 
+          { opacity: 0, y: 25, filter: 'blur(4px)' },
+          { 
+            opacity: 1, 
+            y: 0, 
+            filter: 'blur(0px)', 
+            duration: 0.65, 
+            stagger: 0.07, 
+            ease: "power2.out" 
+          }
+        );
+      }
+
+      // Animar contadores numéricos presentes no slide
+      const counters = currentSlide.querySelectorAll('.counter-number');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target')) || 0;
+        animateNumber(counter, 0, target, 1200);
+      });
+
+      // Animar barras horizontais de SLA
+      const slaFills = currentSlide.querySelectorAll('.sla-fill');
+      slaFills.forEach(fill => {
+        const targetWidth = fill.getAttribute('data-width') || '100%';
+        fill.style.width = '0%';
+        setTimeout(() => {
+          fill.style.width = targetWidth;
+        }, 150);
+      });
+
+      // Animar rosca de retrabalho
+      const donutCircle = currentSlide.querySelector('.donut-progress-circle');
+      if (donutCircle) {
+        const offset = donutCircle.getAttribute('data-offset') || 138;
+        donutCircle.style.strokeDashoffset = '251.2';
+        setTimeout(() => {
+          donutCircle.style.strokeDashoffset = offset;
+        }, 200);
+      }
+    }
+
+    /* Função utilitária para animação suave de números */
+    function animateNumber(element, start, end, duration) {
+      let startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+        const current = Math.floor(start + (end - start) * easeProgress);
+        element.textContent = current;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          element.textContent = end;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ==========================================================================
+       GESTÃO DE EVENTOS (TECLADO, MOUSE, TOUCH, RESIZE)
+       ========================================================================== */
+    function setupEventListeners() {
+      // 1. Teclado
+      window.addEventListener('keydown', handleKeyboardNavigation);
+
+      // 2. Roda do Mouse / Trackpad (com debounce para não pular slides acidentalmente)
+      window.addEventListener('wheel', handleWheelScroll, { passive: false });
+
+      // 3. Arrastar / Swipe (Touch e Mouse Drag)
+      const viewport = document.getElementById('presentationViewport');
+      viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
+      viewport.addEventListener('touchmove', handleTouchMove, { passive: false });
+      viewport.addEventListener('touchend', handleTouchEnd);
+
+      // 4. Botões de Navegação
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      document.getElementById('startPresentationBtn').addEventListener('click', () => goToSlide(1));
+      document.getElementById('restartBtn').addEventListener('click', () => goToSlide(0));
+
+      // 5. Autoplay
+      autoplayBtn.addEventListener('click', toggleAutoplay);
+
+      // 6. Visão Geral (Overview)
+      document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
+      document.getElementById('overviewFinalBtn').addEventListener('click', () => toggleOverview(true));
+      document.getElementById('closeOverviewBtn').addEventListener('click', () => toggleOverview(false));
+
+      // 7. Tela Cheia
+      document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+
+      // 8. Modal de Atalhos
+      document.getElementById('shortcutsBtn').addEventListener('click', () => toggleShortcuts(true));
+      document.getElementById('closeShortcutsBtn').addEventListener('click', () => toggleShortcuts(false));
+
+      // 9. Impressão / PDF
+      document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+      // 10. Toggle de Dados (Slide 7: Inicial vs Atualizado)
+      setupDataToggleSlide7();
+
+      // 11. Chips Interativos de Metodologia (Slide 9)
+      setupMethodologyChips();
+
+      // 12. Ishikawa Interativo (Slide 6)
+      setupIshikawaInteraction();
+    }
+
+    /* Navegação por Teclado */
+    function handleKeyboardNavigation(e) {
+      if (state.isOverviewOpen || state.isShortcutsOpen) {
+        if (e.key === 'Escape') {
+          toggleOverview(false);
+          toggleShortcuts(false);
+        }
+        return;
+      }
+
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'PageDown':
+        case ' ': // Barra de espaço avança
+          e.preventDefault();
+          nextSlide();
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(state.totalSlides - 1);
+          break;
+        case 'f':
+        case 'F':
+          toggleFullscreen();
+          break;
+        case 'o':
+        case 'O':
+          toggleOverview(true);
+          break;
+        case '?':
+          toggleShortcuts(true);
+          break;
+      }
+    }
+
+    /* Scroll do Mouse / Trackpad com Lock de 850ms */
+    function handleWheelScroll(e) {
+      if (state.isOverviewOpen || state.isShortcutsOpen) return;
+
+      // Verificar se o slide atual tem scroll interno vertical
+      const currentSlideElem = slides[state.currentSlideIndex];
+      const hasVerticalScroll = currentSlideElem.scrollHeight > currentSlideElem.clientHeight;
+
+      if (hasVerticalScroll) {
+        // Permitir scroll normal dentro do slide se não estiver nos limites
+        const isAtBottom = currentSlideElem.scrollTop + currentSlideElem.clientHeight >= currentSlideElem.scrollHeight - 5;
+        const isAtTop = currentSlideElem.scrollTop <= 5;
+        
+        if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
+          return; // Deixa o conteúdo interno rolar
+        }
+      }
+
+      e.preventDefault();
+      if (state.lockScroll) return;
+
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+
+      if (Math.abs(delta) > 25) {
+        state.lockScroll = true;
+        if (delta > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        setTimeout(() => {
+          state.lockScroll = false;
+        }, 400);
+      }
+    }
+
+    /* Swipe / Touch Navigation */
+    function handleTouchStart(e) {
+      state.touchStartX = e.touches[0].clientX;
+      state.touchStartY = e.touches[0].clientY;
+      state.isDragging = true;
+    }
+
+    function handleTouchMove(e) {
+      if (!state.isDragging) return;
+      state.touchEndX = e.touches[0].clientX;
+      state.touchEndY = e.touches[0].clientY;
+
+      const diffX = state.touchStartX - state.touchEndX;
+      const diffY = state.touchStartY - state.touchEndY;
+
+      // Se o movimento for mais horizontal que vertical, bloqueia o scroll nativo da página
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        e.preventDefault();
+      }
+    }
+
+    function handleTouchEnd() {
+      if (!state.isDragging) return;
+      state.isDragging = false;
+
+      const diffX = state.touchStartX - state.touchEndX;
+      const diffY = state.touchStartY - state.touchEndY;
+
+      // Threshold de sensibilidade de swipe
+      if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }
+
+    /* ==========================================================================
+       MODAIS, AUTOPLAY & TELA CHEIA
+       ========================================================================== */
+    function toggleAutoplay() {
+      state.isAutoplayActive = !state.isAutoplayActive;
+      autoplayBtn.classList.toggle('is-playing', state.isAutoplayActive);
+
+      if (state.isAutoplayActive) {
+        autoplayBtn.querySelector('span').textContent = 'Pausar';
+        autoplayBtn.querySelector('i').setAttribute('data-lucide', 'pause');
+        state.autoplayTimer = setInterval(nextSlide, PRESENTATION_CONFIG.autoplayIntervalMs);
+      } else {
+        autoplayBtn.querySelector('span').textContent = 'Autoplay';
+        autoplayBtn.querySelector('i').setAttribute('data-lucide', 'play');
+        clearInterval(state.autoplayTimer);
+      }
+      lucide.createIcons();
+    }
+
+    function toggleOverview(open) {
+      state.isOverviewOpen = open;
+      overviewModal.classList.toggle('is-open', open);
+    }
+
+    function toggleShortcuts(open) {
+      state.isShortcutsOpen = open;
+      shortcutsModal.classList.toggle('is-open', open);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.log(err));
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    /* ==========================================================================
+       INTERAÇÕES ESPECÍFICAS DOS SLIDES
+       ========================================================================== */
+    // Slide 7: Toggle de Dados Inicial vs Atualizado
+    function setupDataToggleSlide7() {
+      const btnInitial = document.getElementById('toggleInitialBtn');
+      const btnUpdated = document.getElementById('toggleUpdatedBtn');
+      const slaPercent = document.getElementById('slaPercentDisplay');
+      const slaDays = document.getElementById('slaDaysRealDisplay');
+      const slaRealBar = document.getElementById('slaRealBar');
+      const slaIdealBar = document.getElementById('slaIdealBar');
+      const reworkPercent = document.getElementById('reworkPercentDisplay');
+      const donutCircle = document.getElementById('donutUpdatedCircle');
+
+      if (!btnInitial || !btnUpdated) return;
+
+      btnInitial.addEventListener('click', () => {
+        btnInitial.classList.add('is-active');
+        btnUpdated.classList.remove('is-active');
+
+        const d = PRESENTATION_CONFIG.diagnosticsData.initial;
+        slaPercent.textContent = d.slaPercent;
+        slaDays.textContent = `${d.slaDays} dias`;
+        slaRealBar.style.width = d.barWidthCurrent;
+        slaRealBar.textContent = `${d.slaDays} dias`;
+        slaIdealBar.style.width = d.barWidthIdeal;
+        reworkPercent.textContent = d.reworkPercent;
+        donutCircle.style.strokeDashoffset = d.reworkDonutOffset;
+      });
+
+      btnUpdated.addEventListener('click', () => {
+        btnUpdated.classList.add('is-active');
+        btnInitial.classList.remove('is-active');
+
+        const d = PRESENTATION_CONFIG.diagnosticsData.updated;
+        slaPercent.textContent = d.slaPercent;
+        slaDays.textContent = `${d.slaDays} dias`;
+        slaRealBar.style.width = d.barWidthCurrent;
+        slaRealBar.textContent = `${d.slaDays} dias`;
+        slaIdealBar.style.width = d.barWidthIdeal;
+        reworkPercent.textContent = d.reworkPercent;
+        donutCircle.style.strokeDashoffset = d.reworkDonutOffset;
+      });
+    }
+
+    // Slide 9: Ferramentas de Metodologia
+    function setupMethodologyChips() {
+      const chips = document.querySelectorAll('.method-tool-chip');
+      const titleHolder = document.getElementById('methodTitleHolder');
+      const descHolder = document.getElementById('methodDescHolder');
+      const iconHolder = document.getElementById('methodIconHolder');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+
+          const toolKey = chip.getAttribute('data-tool');
+          const data = PRESENTATION_CONFIG.methodologyDetails[toolKey];
+          if (data) {
+            titleHolder.textContent = data.title;
+            descHolder.textContent = data.desc;
+            iconHolder.innerHTML = `<i data-lucide="${data.icon}" style="width:32px; height:32px;"></i>`;
+            lucide.createIcons();
+          }
+        });
+      });
+    }
+
+    // Slide 6: Ishikawa Interativo
+    function setupIshikawaInteraction() {
+      const cards = document.querySelectorAll('.ishikawa-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          cards.forEach(c => {
+            if (c !== card) c.style.opacity = '0.4';
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          cards.forEach(c => c.style.opacity = '1');
+        });
+      });
+    }
+
+    /* ==========================================================================
+       CURSOR PERSONALIZADO & PARTÍCULAS
+       ========================================================================== */
+    function initCustomCursor() {
+      const cursor = document.getElementById('customCursor');
+      const dot = document.getElementById('customCursorDot');
+      if (!cursor || !dot) return;
+
+      window.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+      });
+
+      // Efeito ao pairar sobre elementos interativos
+      const interactives = document.querySelectorAll('button, .nav-dot, .premium-card, .hex-member-card, .overview-card, a');
+      interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+      });
+    }
+
+    /* Canvas de Partículas Douradas Discretas */
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const particleCount = 28;
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.6 + 0.6,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: -Math.random() * 0.4 - 0.1,
+          alpha: Math.random() * 0.4 + 0.1
+        });
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.y < 0) p.y = height;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 204, 20, ${p.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    }
+
+    // Inicializar quando a página carregar
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
