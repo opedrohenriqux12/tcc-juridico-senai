@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | DESKTOP × SENAI</title>
+  <title>Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | SENAI & DESKTOP</title>
   <meta name="description" content="Apresentação executiva interativa - Projeto de Conclusão de Curso (Técnico em Administração, SENAI) sobre a otimização do fluxo de solicitação de parecer jurídico da DESKTOP com IA e automação.">
   <meta name="theme-color" content="#FFCC14">
 
   <!-- Open Graph / Meta -->
-  <meta property="og:title" content="Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | DESKTOP × SENAI">
+  <meta property="og:title" content="Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | SENAI & DESKTOP">
   <meta property="og:description" content="Apresentação em slides horizontais interativos com diagnóstico SLA, Ishikawa, fluxos AS IS / TO BE e proposta de IA.">
   <meta property="og:type" content="website">
 
@@ -385,6 +385,9 @@
 
     /* Dots Centralizados */
     .dots-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -702,12 +705,12 @@
       color: #fff;
     }
     .slide-1 .pulse-arrow {
-      animation: bounceX 1.6s infinite ease-in-out;
+      animation: bounceX 4.5s infinite ease-in-out;
       color: var(--yellow);
     }
     @keyframes bounceX {
       0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(7px); }
+      50% { transform: translateX(4px); }
     }
 
     /* --- SLIDE 2: QUEM SOMOS --- */
@@ -1342,12 +1345,11 @@
       color: var(--yellow);
       display: flex;
       align-items: center;
-      animation: shiftArrow 1.5s infinite linear;
+      animation: shiftArrow 5.5s infinite ease-in-out;
     }
     @keyframes shiftArrow {
-      0% { transform: translateX(-3px); opacity: 0.6; }
-      50% { transform: translateX(3px); opacity: 1; }
-      100% { transform: translateX(-3px); opacity: 0.6; }
+      0%, 100% { transform: translateX(-2px); opacity: 0.65; }
+      50% { transform: translateX(2px); opacity: 0.95; }
     }
 
     /* Slide 7: Toggle de Dados (Levantamento Inicial vs Atualizado) */
@@ -2355,15 +2357,15 @@
        TEMA CLARO / DESKTOP (VERMELHO COM TONS DE DOURADO)
        ========================================================================== */
     body.theme-light {
-      --bg-0: #8E010E;
-      --bg-1: #9E0110;
-      --bg-2: #78010B;
-      --bg-3: #620008;
+      --bg-0: #7A010C;
+      --bg-1: #8C020E;
+      --bg-2: #650008;
+      --bg-3: #520006;
       --bg-card: rgba(85, 3, 10, 0.72);
       --bg-card-hover: rgba(115, 5, 15, 0.88);
       --yellow: #FFD43B;
       --gold: #FFC107;
-      --red-dark: #4A0005;
+      --red-dark: #3F0005;
       --red-alert: #FF4D4D;
       --text-1: #FFFFFF;
       --text-2: #FCE8E8;
@@ -2372,12 +2374,15 @@
       --border-subtle: rgba(255, 255, 255, 0.16);
       --border-gold: rgba(255, 212, 59, 0.45);
       --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
-      background: radial-gradient(circle at 50% 30%, #B80214 0%, #8E010E 60%, #630009 100%);
+      /* Degradê gradual da esquerda para a direita inspirado na identidade gamer Desktop */
+      background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
     }
 
     body.theme-light .global-ambient-layer {
-      background: radial-gradient(ellipse at 80% 20%, rgba(255, 212, 59, 0.12) 0%, transparent 55%),
-                  radial-gradient(ellipse at 15% 85%, rgba(255, 77, 77, 0.18) 0%, transparent 60%);
+      background: 
+        radial-gradient(circle at 85% 45%, rgba(255, 130, 20, 0.35) 0%, rgba(235, 36, 26, 0.2) 35%, transparent 65%),
+        radial-gradient(circle at 75% 25%, rgba(255, 212, 59, 0.22) 0%, transparent 45%),
+        linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 40%);
     }
 
     body.theme-light .topographic-lines-svg path {
@@ -2464,30 +2469,19 @@
     }
 
     .animated-brand-curves path {
-      animation: waveFloat 14s ease-in-out infinite alternate;
+      animation: waveFloat 45s ease-in-out infinite alternate;
       transform-origin: center;
+      will-change: transform;
     }
 
     .animated-brand-curves path:nth-child(2) {
-      animation-duration: 18s;
-      animation-delay: -3s;
+      animation-duration: 55s;
+      animation-delay: -12s;
     }
 
     .animated-brand-curves path:nth-child(3) {
-      animation-duration: 22s;
-      animation-delay: -6s;
-    }
-
-    @keyframes waveFloat {
-      0% {
-        transform: translateY(0) scale(1) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-18px) scale(1.02) rotate(0.8deg);
-      }
-      100% {
-        transform: translateY(12px) scale(0.99) rotate(-0.8deg);
-      }
+      animation-duration: 65s;
+      animation-delay: -25s;
     }
 
   </style>
@@ -2501,24 +2495,9 @@
   <!-- 2. Partículas Douradas Sutis em Canvas -->
   <canvas id="ambient-canvas"></canvas>
 
-  <!-- 3. Camada Global de Fundo: Gradiente, Linhas Topográficas e Marca d'Água 'Y' -->
+  <!-- 3. Camada Global de Fundo: Gradiente Gamer -->
   <div class="global-ambient-layer">
     <div class="ambient-radial-glow"></div>
-
-    <!-- Linhas Topográficas SVG -->
-    <svg class="topographic-lines-svg" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-100 250 C 300 150, 600 400, 1050 220 C 1300 110, 1500 350, 1600 300" stroke="rgba(255,204,20,0.14)" stroke-width="1.5" stroke-dasharray="6 4" />
-      <path d="M-80 420 C 250 320, 550 560, 950 380 C 1250 250, 1450 500, 1620 450" stroke="rgba(255,204,20,0.18)" stroke-width="1.8" />
-      <path d="M-50 620 C 280 540, 620 720, 1100 580 C 1350 500, 1520 680, 1650 630" stroke="rgba(255,204,20,0.12)" stroke-width="1.2" />
-      <path d="M-100 780 C 350 700, 700 880, 1180 740 C 1400 680, 1550 820, 1680 800" stroke="rgba(255,204,20,0.1)" stroke-width="1.2" />
-    </svg>
-
-    <!-- Curvas Dinâmicas Animadas Douradas ao Fundo (Identidade Desktop) -->
-    <svg class="animated-brand-curves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-120 450 C 180 180, 480 750, 850 380 C 1150 80, 1380 520, 1600 320" stroke="rgba(255, 212, 59, 0.28)" stroke-width="2.5" stroke-linecap="round" />
-      <path d="M-80 620 C 220 380, 560 820, 980 460 C 1280 200, 1420 680, 1620 540" stroke="rgba(255, 212, 59, 0.18)" stroke-width="1.8" stroke-dasharray="8 6" />
-      <path d="M-150 280 C 120 520, 420 180, 780 490 C 1080 740, 1320 220, 1640 400" stroke="rgba(255, 235, 150, 0.22)" stroke-width="2" />
-    </svg>
   </div>
 
   <!-- 4. Barra Superior (Progresso, Identidade, Controles) -->
@@ -2526,7 +2505,7 @@
     <div class="top-progress-bar" id="topProgressBar"></div>
     <div class="brand-meta">
       <span class="badge">SENAI</span>
-      <span>DESKTOP × JURÍDICO</span>
+      <span>Desktop | Jurídico</span>
     </div>
 
     <div class="top-controls">
@@ -2575,13 +2554,11 @@
             
             <div class="brand-divider-line"></div>
             
-            <h2 class="subtitle-problem">DOR RELATADA DO SETOR JURÍDICO</h2>
-            <p class="subtitle-desc">SOLICITAÇÃO DE PARECER JURÍDICO</p>
+            <h2 class="subtitle-problem">JURÍDICO & CONTRATOS</h2>
             
             <div>
               <button class="scroll-hint" id="startPresentationBtn">
-                <span>Deslize ou use → para começar</span>
-                <i data-lucide="arrow-right" class="pulse-arrow" style="width:18px; height:18px;"></i>
+                <span>Deslize para começar</span>
               </button>
             </div>
           </div>
@@ -2622,7 +2599,7 @@
               </div>
               <h3 class="title-small" style="margin-bottom: 12px;">Quem é a <span class="highlight-yellow">DESKTOP</span></h3>
               <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
-                Com mais de <strong style="color:#fff; font-size:1.3rem;" class="counter-number" data-target="20">0</strong> anos no mercado, é uma das principais operadoras de internet banda larga e fibra óptica do estado de São Paulo, conectando centenas de milhares de clientes.
+                Com <strong style="color:#fff; font-size:1.3rem;" class="counter-number" data-target="30">0</strong> anos no mercado, é uma das principais operadoras de internet banda larga e fibra óptica do estado de São Paulo, conectando centenas de milhares de clientes.
               </p>
             </div>
 
@@ -2655,7 +2632,7 @@
       <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 17: Dor Relatada">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
-          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA</h2>
+          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA - Solicitação de Parecer Jurídico</h2>
           <div class="brand-divider-line"></div>
 
           <div class="problem-highlight-box">
@@ -3424,11 +3401,11 @@
 
             <div class="expect-card">
               <div>
-                <i data-lucide="award" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
-                <h3 class="title-small">Benefícios Qualitativos</h3>
-                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Maior satisfação das áreas clientes e padronização total.</p>
+                <i data-lucide="smile" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Experiência dos Solicitantes</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Processo mais simples, transparente e sem frustração com devoluções de chamados.</p>
               </div>
-              <div class="expect-value-badge">Alto Impacto</div>
+              <div class="expect-value-badge">Maior Agilidade & Clareza</div>
             </div>
           </div>
         </div>
@@ -3456,7 +3433,7 @@
             </div>
 
             <p class="conclusao-footer-credits">
-              TÉCNICO EM ADMINISTRAÇÃO • SENAI × DESKTOP S.A.
+              TÉCNICO EM ADMINISTRAÇÃO • SENAI & DESKTOP S.A.
             </p>
           </div>
         </div>
@@ -3475,7 +3452,7 @@
     </div>
 
     <div style="font-size: 0.75rem; color: var(--text-muted);">
-      SENAI × DESKTOP © 2026
+      SENAI & DESKTOP © 2026
     </div>
   </footer>
 
@@ -4299,7 +4276,7 @@
       }
     }
 
-    /* Canvas de Partículas Douradas Discretas */
+    /* Canvas de Partículas Douradas Discretas com taxa de atualização normalizada (Delta Time) */
     function initAmbientCanvas() {
       const canvas = document.getElementById('ambient-canvas');
       if (!canvas) return;
@@ -4321,17 +4298,23 @@
           x: Math.random() * width,
           y: Math.random() * height,
           radius: Math.random() * 1.6 + 0.6,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: -Math.random() * 0.4 - 0.1,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: -Math.random() * 0.22 - 0.08,
           alpha: Math.random() * 0.4 + 0.1
         });
       }
 
-      function loop() {
+      let lastTime = 0;
+
+      function loop(currentTime) {
+        if (!lastTime) lastTime = currentTime;
+        const delta = Math.min((currentTime - lastTime) / 16.67, 2.5); // Normaliza para 60fps
+        lastTime = currentTime;
+
         ctx.clearRect(0, 0, width, height);
         particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
+          p.x += p.vx * delta;
+          p.y += p.vy * delta;
 
           if (p.y < 0) p.y = height;
           if (p.x < 0) p.x = width;
@@ -4344,7 +4327,7 @@
         });
         requestAnimationFrame(loop);
       }
-      loop();
+      requestAnimationFrame(loop);
     }
 
     // Inicializar quando a página carregar
