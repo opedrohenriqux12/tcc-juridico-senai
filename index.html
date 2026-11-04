@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Problemática do Setor Jurídico | Análise de Contratos | DESKTOP × SENAI</title>
-  <meta name="description" content="Apresentação executiva interativa - Projeto de Conclusão de Curso (Técnico em Administração, SENAI) sobre a otimização do fluxo de análise de contratos da DESKTOP com IA e automação.">
+  <title>Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | DESKTOP × SENAI</title>
+  <meta name="description" content="Apresentação executiva interativa - Projeto de Conclusão de Curso (Técnico em Administração, SENAI) sobre a otimização do fluxo de solicitação de parecer jurídico da DESKTOP com IA e automação.">
   <meta name="theme-color" content="#FFCC14">
 
   <!-- Open Graph / Meta -->
-  <meta property="og:title" content="Problemática do Setor Jurídico | Análise de Contratos | DESKTOP × SENAI">
+  <meta property="og:title" content="Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | DESKTOP × SENAI">
   <meta property="og:description" content="Apresentação em slides horizontais interativos com diagnóstico SLA, Ishikawa, fluxos AS IS / TO BE e proposta de IA.">
   <meta property="og:type" content="website">
 
@@ -205,7 +205,7 @@
 
     .slides-track {
       display: flex;
-      width: 1200vw; /* 12 slides x 100vw */
+      width: 1700vw; /* 17 slides x 100vw */
       height: 100%;
       will-change: transform;
       transform: translate3d(0, 0, 0);
@@ -222,7 +222,7 @@
       justify-content: center;
       align-items: center;
       padding: clamp(1.2rem, 3.5vw, 4rem);
-      padding-top: calc(var(--header-height) + 1.2rem);
+      padding-top: calc(var(--header-height) + 2.2rem);
       padding-bottom: calc(var(--nav-bar-height) + 1rem);
       box-sizing: border-box;
       overflow-y: auto;
@@ -241,13 +241,14 @@
     .slide-content-container {
       width: 100%;
       max-width: 1440px;
-      margin: 0 auto;
+      margin: auto auto;
       position: relative;
       z-index: 5;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: 100%;
+      padding-top: 10px;
+      padding-bottom: 20px;
     }
 
     /* ==========================================================================
@@ -481,17 +482,17 @@
        ========================================================================== */
     .title-large {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5.2vw, 4.8rem);
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
       font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       color: #FFFFFF;
       text-transform: uppercase;
     }
 
     .title-medium {
       font-family: var(--font-heading);
-      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -522,7 +523,7 @@
       max-width: 650px;
       height: 3px;
       background: rgba(255, 204, 20, 0.35);
-      margin: 1.2rem 0;
+      margin: 0.9rem 0 1.5rem 0;
       border-radius: 2px;
       overflow: hidden;
     }
@@ -618,8 +619,17 @@
        ========================================================================== */
 
     /* --- SLIDE 1: CAPA --- */
+    .slide-1 .slide-content-container {
+      align-items: center;
+      text-align: center;
+    }
     .slide-1 .cover-wrap {
-      max-width: 950px;
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
       position: relative;
       z-index: 10;
     }
@@ -628,26 +638,37 @@
       font-size: clamp(0.9rem, 1.4vw, 1.2rem);
       letter-spacing: 0.2em;
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       color: var(--text-2);
       text-transform: uppercase;
+      text-align: center;
     }
     .slide-1 .main-pcc {
-      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      font-size: clamp(2.6rem, 5.5vw, 5.2rem);
       line-height: 1.05;
       font-weight: 800;
       letter-spacing: -0.03em;
       margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .slide-1 .brand-divider-line {
+      margin: 1.5rem auto;
+    }
+    .slide-1 .brand-divider-line::before {
+      left: 50%;
+      transform: translateX(-50%);
     }
     .slide-1 .subtitle-problem {
       font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 4.2vw, 3.8rem);
+      font-size: clamp(1.8rem, 4vw, 3.6rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #FFFFFF;
-      line-height: 1.1;
+      line-height: 1.15;
       text-transform: uppercase;
-      margin-top: 1.5rem;
+      margin-top: 0.8rem;
+      text-align: center;
+      width: 100%;
     }
     .slide-1 .subtitle-desc {
       font-family: var(--font-heading);
@@ -655,11 +676,13 @@
       letter-spacing: 0.25em;
       color: var(--text-2);
       text-transform: uppercase;
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
       font-weight: 600;
+      text-align: center;
+      width: 100%;
     }
     .slide-1 .scroll-hint {
-      margin-top: 3rem;
+      margin-top: 2.8rem;
       display: inline-flex;
       align-items: center;
       gap: 12px;
@@ -807,7 +830,198 @@
       .intro-grid { grid-template-columns: 1fr; }
     }
 
-    /* --- SLIDE 4: PROBLEMÁTICA --- */
+            /* --- SLIDE 9: PROPOSTA IMPLEMENTAÇÕES NO LECOM --- */
+    .lecom-props-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 1.6rem;
+    }
+    @media (max-width: 1080px) {
+      .lecom-props-grid { grid-template-columns: 1fr; }
+    }
+    .lecom-prop-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: clamp(24px, 2.5vw, 36px);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .lecom-prop-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+      box-shadow: var(--glow-gold);
+    }
+    .lecom-prop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--yellow);
+    }
+    .lecom-prop-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    body.theme-light .lecom-prop-header {
+      border-bottom-color: rgba(255,212,59,0.25);
+    }
+    .lecom-prop-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 204, 20, 0.15);
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .lecom-prop-header h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+      font-weight: 700;
+      color: #fff;
+    }
+    .lecom-prop-card p {
+      color: #D6D6D6;
+      font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+      line-height: 1.7;
+      flex: 1;
+    }
+    body.theme-light .lecom-prop-card p {
+      color: #F8E2E2;
+    }
+    .lecom-prop-footer {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--yellow);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* --- SLIDE 10: VÍDEO DEMONSTRAÇÃO EM TELA CHEIA --- */
+    .video-slide-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-player-wrap {
+      width: 100%;
+      height: 64vh;
+      background: #000;
+      border: 2px solid rgba(255, 204, 20, 0.35);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7), var(--glow-gold);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-player-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .video-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    /* --- SLIDE NOVO: MAPEAMENTO E DIAGNÓSTICO DOS PROCESSOS --- */
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .mapping-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .mapping-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(20px, 2.2vw, 30px);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    .mapping-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--yellow);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mapping-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-gold);
+    }
+    .mapping-card:hover::before {
+      opacity: 1;
+    }
+    .mapping-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--yellow);
+    }
+    .mapping-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .mapping-card-content p {
+      color: #D1D1D1;
+      font-size: clamp(1rem, 1.15vw, 1.18rem);
+      line-height: 1.65;
+    }
+
+    /* --- SLIDE 4: DOR RELATADA --- */
     .problem-highlight-box {
       background: rgba(20,20,20,0.85);
       border-left: 4px solid var(--yellow);
@@ -833,6 +1047,152 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-top: 1.5rem;
+    }
+
+        /* --- TABELA E GRÁFICO COMPARATIVO: QUADRO 1 & FIGURA 1 --- */
+    .quadro-indicadores-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.2rem;
+    }
+    .quadro-indicadores-table th {
+      background: rgba(255, 204, 20, 0.12);
+      color: var(--yellow);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    body.theme-light .quadro-indicadores-table th {
+      background: rgba(255, 212, 59, 0.22);
+      color: #FFF;
+    }
+    .quadro-indicadores-table td {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      color: var(--text-1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(20, 20, 20, 0.4);
+    }
+    body.theme-light .quadro-indicadores-table td {
+      background: rgba(60, 2, 7, 0.45);
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    .quadro-indicadores-table tr:last-child td {
+      border-bottom: none;
+    }
+    .quadro-indicadores-table tr:hover td {
+      background: rgba(255, 204, 20, 0.06);
+    }
+    .table-val-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .table-val-badge.val-red {
+      color: var(--red-alert);
+    }
+    .table-val-badge.val-yellow {
+      color: var(--yellow);
+    }
+    .table-caption-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    body.theme-light .table-caption-sub {
+      color: #F8CFCF;
+    }
+
+    /* Gráfico de Barras Horizontais Fiel à Figura 1 */
+    .figura-sla-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .bar-label-tag {
+      width: 65px;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-2);
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .bar-track-area {
+      flex: 1;
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+    }
+    .bar-fill-blue {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #1E6B9E, #2A83BE);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(30, 107, 158, 0.35);
+      transition: width 1s ease-out;
+    }
+    .bar-fill-green {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, #168058, #20A775);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(22, 128, 88, 0.35);
+      transition: width 1s ease-out;
+    }
+    .bar-outside-val {
+      margin-left: 14px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #20A775;
+    }
+    .scale-ruler {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 81px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    body.theme-light .scale-ruler {
+      border-top-color: rgba(255, 212, 59, 0.3);
+      color: #F8CFCF;
     }
 
     /* --- SLIDE 5 & 7: DIAGNÓSTICO (SLA, RETRABALHO E FLUXO) --- */
@@ -1031,6 +1391,326 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
+        /* --- SLIDE 7: ESPINHA DE PEIXE DINÂMICA (ISHIKAWA) --- */
+    #slide-8 {
+      justify-content: flex-start !important;
+      padding-top: calc(var(--header-height) + 1.8rem) !important;
+    }
+    #slide-8 .slide-content-container {
+      margin: 0 auto !important;
+    }
+    .fishbone-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0.8rem auto 0 auto;
+      position: relative;
+    }
+    .fishbone-svg-wrap {
+      width: 100%;
+      position: relative;
+      background: rgba(18, 18, 18, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 12px 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+    .fishbone-svg {
+      width: 100%;
+      max-height: 54vh;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+    body.theme-light .fishbone-svg-wrap {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .fishbone-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+
+    /* Estilos dos ramos e elementos da espinha */
+    .bone-spine {
+      stroke: var(--yellow);
+      stroke-width: 4;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 6px rgba(255, 204, 20, 0.4));
+    }
+    .bone-branch {
+      stroke: #888;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      transition: stroke 0.3s, stroke-width 0.3s;
+    }
+    .bone-sub {
+      stroke: rgba(255, 255, 255, 0.25);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+    body.theme-light .bone-branch {
+      stroke: rgba(255, 212, 59, 0.6);
+    }
+    body.theme-light .bone-sub {
+      stroke: rgba(255, 255, 255, 0.35);
+    }
+
+    .fishbone-cat-group {
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .fishbone-cat-group:hover {
+      filter: brightness(1.2);
+    }
+    .fishbone-cat-group:hover .bone-branch {
+      stroke: var(--yellow);
+      stroke-width: 3.5;
+    }
+    .fishbone-cat-group:hover .bone-cat-box {
+      stroke: var(--yellow);
+      fill: rgba(255, 204, 20, 0.18);
+    }
+    .bone-cat-box {
+      fill: #141414;
+      stroke: #444;
+      stroke-width: 2;
+      rx: 8;
+      transition: all 0.3s ease;
+    }
+    body.theme-light .bone-cat-box {
+      fill: #5E010A;
+      stroke: rgba(255, 212, 59, 0.4);
+    }
+    .bone-cat-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      fill: #FFFFFF;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    .bone-cause-item {
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .bone-cause-item:hover text {
+      fill: var(--yellow);
+      font-weight: 600;
+      transform: scale(1.02);
+    }
+    .bone-cause-text {
+      font-family: var(--font-body);
+      font-size: 13px;
+      fill: #EAEAEA;
+      dominant-baseline: middle;
+      transition: fill 0.2s ease;
+    }
+    body.theme-light .bone-cause-text {
+      fill: #FDE8E8;
+    }
+    .bone-cause-dot {
+      fill: var(--yellow);
+      opacity: 0.7;
+      transition: r 0.2s ease, opacity 0.2s ease;
+    }
+    .bone-cause-item:hover .bone-cause-dot {
+      r: 4.5;
+      opacity: 1;
+      filter: drop-shadow(0 0 5px var(--yellow));
+    }
+
+    /* Cabeça do peixe (Efeito) */
+    .fish-head-box {
+      fill: #1A1A1A;
+      stroke: var(--yellow);
+      stroke-width: 2.5;
+      rx: 12;
+      filter: drop-shadow(0 0 15px rgba(255, 204, 20, 0.25));
+      transition: all 0.3s ease;
+    }
+    body.theme-light .fish-head-box {
+      fill: #550109;
+      stroke: var(--yellow);
+    }
+    .fish-head-group:hover .fish-head-box {
+      transform: scale(1.02);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 25px rgba(255, 204, 20, 0.5));
+    }
+
+    .fishbone-legend {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    body.theme-light .fishbone-legend {
+      color: #F8CFCF;
+    }
+    .fishbone-legend .legend-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow);
+      font-weight: 500;
+    }
+
+            /* --- SLIDE FLUXO TO-BE --- */
+    #slide-15 {
+      justify-content: flex-start !important;
+      padding-top: calc(var(--header-height) + 1.2rem) !important;
+    }
+    #slide-15 .slide-content-container {
+      margin: 0 auto !important;
+      max-width: 1540px !important;
+      padding-top: 0 !important;
+    }
+    .flowchart-tobe-container {
+      width: 100%;
+      background: rgba(18, 18, 18, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 12px 16px;
+      margin-top: 0.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.theme-light .flowchart-tobe-container {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .flowchart-tobe-frame {
+      width: 100%;
+      max-height: 64vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #FFFFFF;
+      padding: 6px;
+      cursor: zoom-in;
+      transition: var(--transition-smooth);
+    }
+    .flowchart-tobe-frame img {
+      width: 100%;
+      max-height: 62vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .tobe-legend-pills {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .tobe-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-2);
+    }
+    body.theme-light .tobe-pill {
+      background: rgba(50, 1, 5, 0.5);
+      color: #F8CFCF;
+    }
+    .tobe-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .tobe-dot.blue { background: #3B82F6; box-shadow: 0 0 8px #3B82F6; }
+    .tobe-dot.green { background: #10B981; box-shadow: 0 0 8px #10B981; }
+    .tobe-dot.yellow { background: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
+
+    /* --- SLIDE FLUXOGRAMA AS-IS --- */
+    .flowchart-asis-container {
+      width: 100%;
+      background: rgba(18, 18, 18, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 1.2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.theme-light .flowchart-asis-container {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .flowchart-img-frame {
+      width: 100%;
+      max-height: 52vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #FFFFFF;
+      padding: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      cursor: zoom-in;
+      transition: var(--transition-smooth);
+    }
+    .flowchart-img-frame img {
+      max-width: 100%;
+      max-height: 50vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .flowchart-lanes-info {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px) {
+      .flowchart-lanes-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .lane-chip-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-2);
+    }
+    body.theme-light .lane-chip-item {
+      background: rgba(50, 1, 5, 0.5);
+      color: #F8CFCF;
+    }
+    .lane-chip-item strong {
+      color: var(--yellow);
+    }
+
     /* --- SLIDE 6: DIAGNÓSTICO (ISHIKAWA) --- */
     .ishikawa-wrapper {
       margin-top: 24px;
@@ -1095,6 +1775,90 @@
     }
     @media (max-width: 580px) {
       .ishikawa-grid { grid-template-columns: 1fr; }
+    }
+
+        /* --- SLIDE DE PROPOSTAS & OBJETIVOS DETALHADOS --- */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 1.5rem;
+    }
+    .objective-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 20px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .objective-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-5px);
+      box-shadow: var(--glow-gold);
+    }
+    .obj-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    body.theme-light .obj-card-header {
+      border-bottom-color: rgba(255, 212, 59, 0.2);
+    }
+    .obj-num-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--yellow);
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.25);
+      border-radius: 8px;
+      padding: 4px 10px;
+      flex-shrink: 0;
+    }
+    .obj-card-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .objective-card p {
+      color: var(--text-2);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    body.theme-light .objective-card p {
+      color: #F8DCDC;
+    }
+    .objective-card p:last-of-type {
+      margin-bottom: 0;
+    }
+    .obj-footer-highlight {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: rgba(255, 204, 20, 0.08);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 204, 20, 0.2);
+      font-size: 0.82rem;
+      color: var(--yellow);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (max-width: 980px) {
+      .objectives-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* --- SLIDE 8: OBJETIVOS --- */
@@ -1277,8 +2041,101 @@
       font-style: italic;
     }
 
+        /* --- SLIDE 13: CONCLUSÃO (CENTRALIZADO & ELEGANTE) --- */
+    .slide-16 .slide-content-container {
+      align-items: center;
+      text-align: center;
+    }
+    .conclusao-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .conclusao-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 4.8vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+    .conclusao-divider {
+      margin: 1.5rem auto 2.2rem auto;
+    }
+    .conclusao-divider::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .conclusao-card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: clamp(28px, 3.5vw, 45px);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      margin-bottom: 2.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    body.theme-light .conclusao-card-box {
+      background: rgba(75, 2, 8, 0.78);
+      border-color: rgba(255, 212, 59, 0.35);
+    }
+    .conclusao-card-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--yellow), var(--gold));
+    }
+    .conclusao-impacto-text {
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      line-height: 1.6;
+      color: var(--text-1);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+    }
+    .conclusao-impacto-text strong {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+    .conclusao-thanks-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255, 204, 20, 0.2);
+    }
+    body.theme-light .conclusao-thanks-badge {
+      background: rgba(255, 212, 59, 0.2);
+      color: #FFF;
+      border-color: var(--yellow);
+    }
+    .conclusao-footer-credits {
+      color: var(--text-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
     /* --- SLIDE 12: CONCLUSÃO --- */
-    .slide-12 .final-phrase {
+    .slide-13 .final-phrase {
       font-family: var(--font-heading);
       font-size: clamp(2.4rem, 5.5vw, 4.8rem);
       font-weight: 800;
@@ -1493,6 +2350,146 @@
         transition: transform 0.1s linear !important;
       }
     }
+  
+    /* ==========================================================================
+       TEMA CLARO / DESKTOP (VERMELHO COM TONS DE DOURADO)
+       ========================================================================== */
+    body.theme-light {
+      --bg-0: #8E010E;
+      --bg-1: #9E0110;
+      --bg-2: #78010B;
+      --bg-3: #620008;
+      --bg-card: rgba(85, 3, 10, 0.72);
+      --bg-card-hover: rgba(115, 5, 15, 0.88);
+      --yellow: #FFD43B;
+      --gold: #FFC107;
+      --red-dark: #4A0005;
+      --red-alert: #FF4D4D;
+      --text-1: #FFFFFF;
+      --text-2: #FCE8E8;
+      --text-muted: #E5B4B4;
+      --line: rgba(255, 212, 59, 0.28);
+      --border-subtle: rgba(255, 255, 255, 0.16);
+      --border-gold: rgba(255, 212, 59, 0.45);
+      --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
+      background: radial-gradient(circle at 50% 30%, #B80214 0%, #8E010E 60%, #630009 100%);
+    }
+
+    body.theme-light .global-ambient-layer {
+      background: radial-gradient(ellipse at 80% 20%, rgba(255, 212, 59, 0.12) 0%, transparent 55%),
+                  radial-gradient(ellipse at 15% 85%, rgba(255, 77, 77, 0.18) 0%, transparent 60%);
+    }
+
+    body.theme-light .topographic-lines-svg path {
+      stroke: rgba(255, 225, 120, 0.28);
+    }
+
+    body.theme-light .top-bar {
+      background: linear-gradient(180deg, rgba(80, 2, 8, 0.92) 0%, rgba(80, 2, 8, 0) 100%);
+      border-bottom: 1px solid rgba(255, 212, 59, 0.2);
+    }
+
+    body.theme-light .bottom-bar {
+      background: linear-gradient(0deg, rgba(80, 2, 8, 0.95) 0%, rgba(80, 2, 8, 0) 100%);
+      border-top: 1px solid rgba(255, 212, 59, 0.15);
+    }
+
+    body.theme-light .btn-icon,
+    body.theme-light .slide-counter,
+    body.theme-light .autoplay-badge,
+    body.theme-light .nav-dots-container {
+      background: rgba(70, 2, 7, 0.85);
+      border-color: rgba(255, 212, 59, 0.3);
+      color: #fff;
+    }
+
+    body.theme-light .btn-icon:hover {
+      background: rgba(255, 212, 59, 0.25);
+      color: var(--yellow);
+    }
+
+    body.theme-light .badge {
+      background: var(--yellow);
+      color: #7A010C;
+      font-weight: 800;
+    }
+
+    body.theme-light .problem-highlight-box {
+      background: rgba(65, 2, 6, 0.85);
+      border-left-color: var(--yellow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    body.theme-light .badge-chip {
+      background: rgba(60, 2, 6, 0.7);
+      border-color: rgba(255, 212, 59, 0.35);
+      color: #fff;
+    }
+
+    body.theme-light .hex-avatar-inner {
+      background: #500207;
+    }
+
+    body.theme-light .nav-arrow-btn {
+      background: rgba(75, 2, 7, 0.8);
+      border-color: rgba(255, 212, 59, 0.35);
+      color: #fff;
+    }
+
+    body.theme-light .nav-arrow-btn:hover {
+      background: var(--yellow);
+      color: #7A010C;
+    }
+
+    body.theme-light .modal-backdrop {
+      background: rgba(45, 1, 4, 0.85);
+    }
+
+    body.theme-light .overview-card,
+    body.theme-light .shortcuts-modal {
+      background: #6B010B;
+      border-color: rgba(255, 212, 59, 0.35);
+    }
+
+    /* Linhas orgânicas fluidas animadas no fundo (estilo Desktop Telecom) */
+    .animated-brand-curves {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.45;
+      overflow: hidden;
+    }
+
+    .animated-brand-curves path {
+      animation: waveFloat 14s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    .animated-brand-curves path:nth-child(2) {
+      animation-duration: 18s;
+      animation-delay: -3s;
+    }
+
+    .animated-brand-curves path:nth-child(3) {
+      animation-duration: 22s;
+      animation-delay: -6s;
+    }
+
+    @keyframes waveFloat {
+      0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-18px) scale(1.02) rotate(0.8deg);
+      }
+      100% {
+        transform: translateY(12px) scale(0.99) rotate(-0.8deg);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1516,16 +2513,11 @@
       <path d="M-100 780 C 350 700, 700 880, 1180 740 C 1400 680, 1550 820, 1680 800" stroke="rgba(255,204,20,0.1)" stroke-width="1.2" />
     </svg>
 
-    <!-- Marca d'água "Y" estilizada (3 retângulos arredondados fiéis ao original da apresentação) -->
-    <svg class="brand-watermark-y" id="brandWatermark" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g opacity="0.8">
-        <!-- Braço esquerdo inclinado -->
-        <rect x="110" y="100" width="160" height="220" rx="60" transform="rotate(-26 110 100)" fill="#1A1A1A" />
-        <!-- Braço direito inclinado -->
-        <rect x="330" y="40" width="160" height="220" rx="60" transform="rotate(26 330 40)" fill="#181818" />
-        <!-- Base / Tronco central -->
-        <rect x="220" y="240" width="160" height="260" rx="60" fill="#151515" />
-      </g>
+    <!-- Curvas Dinâmicas Animadas Douradas ao Fundo (Identidade Desktop) -->
+    <svg class="animated-brand-curves" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-120 450 C 180 180, 480 750, 850 380 C 1150 80, 1380 520, 1600 320" stroke="rgba(255, 212, 59, 0.28)" stroke-width="2.5" stroke-linecap="round" />
+      <path d="M-80 620 C 220 380, 560 820, 980 460 C 1280 200, 1420 680, 1620 540" stroke="rgba(255, 212, 59, 0.18)" stroke-width="1.8" stroke-dasharray="8 6" />
+      <path d="M-150 280 C 120 520, 420 180, 780 490 C 1080 740, 1320 220, 1640 400" stroke="rgba(255, 235, 150, 0.22)" stroke-width="2" />
     </svg>
   </div>
 
@@ -1538,16 +2530,15 @@
     </div>
 
     <div class="top-controls">
+      <!-- Alternar Tema (Escuro / Vermelho Desktop) -->
+      <button class="btn-icon" id="themeToggleBtn" title="Alternar Modo Claro (Vermelho Desktop) / Escuro" aria-label="Alternar tema de cores">
+        <i data-lucide="sun" id="themeToggleIcon" style="width:18px; height:18px;"></i>
+      </button>
+
       <!-- Indicador Numérico -->
       <div class="slide-counter" aria-live="polite">
-        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">12</span>
+        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">17</span>
       </div>
-
-      <!-- Autoplay Toggle -->
-      <button class="autoplay-badge" id="autoplayBtn" title="Reprodução automática (12s)">
-        <i data-lucide="play" style="width:14px; height:14px;"></i>
-        <span>Autoplay</span>
-      </button>
 
       <!-- Botão Visão Geral (Overview) -->
       <button class="btn-icon" id="openOverviewBtn" title="Visão geral (O)">
@@ -1557,11 +2548,6 @@
       <!-- Botão Tela Cheia -->
       <button class="btn-icon" id="fullscreenBtn" title="Tela cheia (F)">
         <i data-lucide="maximize-2" style="width:18px; height:18px;"></i>
-      </button>
-
-      <!-- Botão Ajuda / Atalhos -->
-      <button class="btn-icon" id="shortcutsBtn" title="Atalhos do teclado (?)">
-        <i data-lucide="help-circle" style="width:18px; height:18px;"></i>
       </button>
     </div>
   </header>
@@ -1581,7 +2567,7 @@
       <!-- ==========================================
            SLIDE 1: CAPA
            ========================================== -->
-      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 12: Capa">
+      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 17: Capa">
         <div class="slide-content-container">
           <div class="cover-wrap">
             <p class="top-sub">TÉCNICO EM ADMINISTRAÇÃO – <span class="highlight-yellow">SENAI</span></p>
@@ -1589,8 +2575,8 @@
             
             <div class="brand-divider-line"></div>
             
-            <h2 class="subtitle-problem">PROBLEMÁTICA DO SETOR JURÍDICO</h2>
-            <p class="subtitle-desc">ANÁLISE DE CONTRATOS</p>
+            <h2 class="subtitle-problem">DOR RELATADA DO SETOR JURÍDICO</h2>
+            <p class="subtitle-desc">SOLICITAÇÃO DE PARECER JURÍDICO</p>
             
             <div>
               <button class="scroll-hint" id="startPresentationBtn">
@@ -1605,7 +2591,7 @@
       <!-- ==========================================
            SLIDE 2: QUEM SOMOS?
            ========================================== -->
-      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 12: Quem somos">
+      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 17: Quem somos">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="users" style="width:14px; height:14px;"></i> EQUIPE DO PROJETO</p>
           <h2 class="title-large" style="margin-top: 10px;">Quem <span class="highlight-yellow">somos?</span></h2>
@@ -1616,16 +2602,14 @@
             <!-- Gerado dinamicamente via JS/config -->
           </div>
 
-          <div class="team-footer-quote">
-            "Como vamos transformar desafios em oportunidades de receita."
-          </div>
+
         </div>
       </section>
 
       <!-- ==========================================
            SLIDE 3: INTRODUÇÃO
            ========================================== -->
-      <section class="slide" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 12: Introdução">
+      <section class="slide" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 17: Introdução">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="compass" style="width:14px; height:14px;"></i> CONTEXTO INSTITUCIONAL</p>
           <h2 class="title-large highlight-yellow" style="letter-spacing: 0.12em; margin-top: 10px;">INTRODUÇÃO</h2>
@@ -1666,12 +2650,12 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 4: PROBLEMÁTICA
+           SLIDE 4: DOR RELATADA
            ========================================== -->
-      <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 12: Problemática">
+      <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 17: Dor Relatada">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
-          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">PROBLEMÁTICA</h2>
+          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA</h2>
           <div class="brand-divider-line"></div>
 
           <div class="problem-highlight-box">
@@ -1691,79 +2675,205 @@
       </section>
 
       <!-- ==========================================
+           SLIDE 5: MAPEAMENTO DO PROCESSO
+           ========================================== -->
+      <section class="slide" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 17: Mapeamento do Processo">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> LEVANTAMENTO & IMERSÃO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Mapeamento e Diagnóstico dos <span class="highlight-yellow">Processos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="mapping-grid">
+            <!-- Item 1 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="briefcase" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Alinhamento Técnico com o Jurídico</h3>
+                <p>Realização de reuniões com a advogada <strong>Winnie Prudente</strong>, do setor Jurídico, para compreender os processos atuais e identificar gargalos e oportunidades de melhoria.</p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="messages-square" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Entrevistas com Solicitantes e Equipe</h3>
+                <p>Entrevistas com colaboradores do Jurídico e das demais áreas solicitantes, identificando dificuldades na comunicação, nos prazos, nas informações e na padronização das solicitações.</p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="file-search" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Análise e Definição de Prioridades</h3>
+                <p>Análise detalhada das informações coletadas para identificar as causas raízes dos problemas operacionais e definir prioridades estratégicas de atuação.</p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="sparkles" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Propostas de Melhoria Customizadas</h3>
+                <p>Desenvolvimento de propostas de melhoria práticas e inovadoras, alinhadas às necessidades dos colaboradores e à realidade do setor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 6: FLUXO ATUAL (AS-IS)
+           ========================================== -->
+      <section class="slide" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 17: Fluxo Atual AS-IS">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-branch" style="width:14px; height:14px;"></i> MAPEAMENTO DE PROCESSO EM RAIAS</p>
+          <h2 class="title-large" style="margin-top: 10px;">Fluxo Atual: <span class="highlight-yellow">Seção AS-IS</span></h2>
+          <p style="color:var(--text-2); font-size:1.05rem; margin-top:4px;">
+            Mapeamento ponta a ponta das solicitações de parecer jurídico e análise de contratos entre as 4 raias organizacionais:
+          </p>
+          <div class="brand-divider-line"></div>
+
+          <div class="flowchart-asis-container">
+            <div class="flowchart-img-frame" onclick="window.open('assets/fluxograma-as-is.jpg', '_blank')" title="Clique para ampliar em tela cheia">
+              <img src="assets/fluxograma-as-is.jpg" alt="Fluxograma AS-IS do Processo de Solicitação de Parecer Jurídico" loading="lazy">
+            </div>
+
+            <div class="flowchart-lanes-info">
+              <div class="lane-chip-item">
+                <i data-lucide="user" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 1:</strong> Solicitante</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="scale" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 2:</strong> Jurídico</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="briefcase" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 3:</strong> Diretor CC</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="file-check" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 4:</strong> Contratos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
            SLIDE 5: DIAGNÓSTICO (SLA E RETRABALHO)
            ========================================== -->
-      <section class="slide" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 12: Diagnóstico Inicial">
+      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: SLA e Retrabalho">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
           <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">SLA e Retrabalho</span></h2>
           <div class="brand-divider-line"></div>
 
           <div class="diagnostic-split">
-            <!-- Card SLA -->
+            <!-- Card 1: Quadro 1 – Indicadores do Setor Jurídico -->
             <div class="premium-card">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                 <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                  <i data-lucide="clock" style="color:var(--yellow); width:20px; height:20px;"></i>
-                  SLA Elevada (Tempo Médio)
+                  <i data-lucide="table" style="color:var(--yellow); width:20px; height:20px;"></i>
+                  Quadro 1 – Indicadores do Setor Jurídico
                 </h3>
-                <span style="font-size:1.8rem; font-weight:800; font-family:var(--font-heading);" class="highlight-red">
-                  +<span class="counter-number" data-target="140">0</span>%
-                </span>
-              </div>
-              <p style="font-size:0.85rem; color:var(--red-alert); font-weight:600; margin-top:2px;">Acima do tempo ideal aceitável</p>
-
-              <div class="sla-bars-wrapper">
-                <div class="sla-bar-item">
-                  <div class="sla-bar-label">
-                    <span style="color:var(--text-2);">Atual (Demanda Real)</span>
-                    <strong style="color:var(--red-alert);">12 dias</strong>
-                  </div>
-                  <div class="sla-track">
-                    <div class="sla-fill current" data-width="100%">12 dias</div>
-                  </div>
-                </div>
-
-                <div class="sla-bar-item">
-                  <div class="sla-bar-label">
-                    <span style="color:var(--text-2);">Ideal Esperado</span>
-                    <strong style="color:var(--yellow);">5 dias</strong>
-                  </div>
-                  <div class="sla-track">
-                    <div class="sla-fill ideal" data-width="41.6%">5 dias</div>
-                  </div>
-                </div>
+                <span class="badge-chip" style="font-size:0.75rem;">DADOS REAIS</span>
               </div>
 
-              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5;">
-                O tempo de conclusão dos contratos está acima do esperado, impactando diretamente no andamento das demandas comerciais da Desktop.
-              </p>
+              <table class="quadro-indicadores-table">
+                <thead>
+                  <tr>
+                    <th>Indicador</th>
+                    <th>Valor</th>
+                    <th>Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tempo médio atual</strong></td>
+                    <td><span class="table-val-badge val-red">20 dias</span></td>
+                    <td style="color:var(--text-2);">Tempo médio de resposta hoje</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Taxa de recusa</strong></td>
+                    <td><span class="table-val-badge val-red">18,93%</span></td>
+                    <td style="color:var(--text-2);">Quase 1 em cada 5 demandas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SLA esperado</strong></td>
+                    <td><span class="table-val-badge val-yellow">5 dias</span></td>
+                    <td style="color:var(--text-2);">Meta proposta para o atendimento</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-caption-sub">
+                <span>Fonte: Elaborado pelos autores (2026).</span>
+                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Gargalo Crítico de 300% acima do SLA</span>
+              </div>
             </div>
 
-            <!-- Card Retrabalho -->
+            <!-- Card 2: Figura 1 – Comparativo entre o SLA Atual e a Meta -->
             <div class="premium-card">
-              <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                <i data-lucide="rotate-ccw" style="color:var(--yellow); width:20px; height:20px;"></i>
-                Retrabalho (Análise de Fluidez)
-              </h3>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                  <i data-lucide="bar-chart-3" style="color:var(--yellow); width:20px; height:20px;"></i>
+                  Figura 1 – Comparativo: SLA Atual vs Meta
+                </h3>
+                <span style="font-family:var(--font-heading); font-weight:800; font-size:0.95rem; color:#20A775; background:rgba(32,167,117,0.15); padding:4px 10px; border-radius:20px; border:1px solid rgba(32,167,117,0.3);">
+                  Redução de 75%
+                </span>
+              </div>
 
-              <div class="donut-chart-container">
-                <div class="donut-svg-wrap">
-                  <svg viewBox="0 0 100 100">
-                    <circle class="donut-bg-circle" cx="50" cy="50" r="40" />
-                    <circle class="donut-progress-circle" cx="50" cy="50" r="40" 
-                            stroke-dasharray="251.2" stroke-dashoffset="251.2" data-offset="138" />
-                  </svg>
-                  <div class="donut-center-label">
-                    <span class="counter-number" data-target="45">0</span>%
+              <p style="font-size:0.86rem; color:var(--text-2); margin-top:2px;">
+                Comparação visual direta do tempo de resposta hoje versus a meta almejada com automação e IA.
+              </p>
+
+              <div class="figura-sla-bars">
+                <!-- Barra Atual -->
+                <div class="bar-row">
+                  <span class="bar-label-tag">Atual</span>
+                  <div class="bar-track-area">
+                    <div class="bar-fill-blue" style="width: 100%;">20 dias</div>
                   </div>
                 </div>
-                <div>
-                  <h4 style="font-size:1.1rem; color:#fff; font-weight:700;">Alta Taxa de Devolutivas</h4>
-                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 6px;">
-                    Contratos retornam diversas vezes para ajustes, correções e validações, gerando um ciclo vicioso de "vai e volta" entre as áreas.
-                  </p>
+
+                <!-- Barra Meta -->
+                <div class="bar-row">
+                  <span class="bar-label-tag">Meta</span>
+                  <div class="bar-track-area" style="background:transparent;">
+                    <div class="bar-fill-green" style="width: 25%;">5 dias</div>
+                    <span class="bar-outside-val" style="font-size:0.85rem; color:#20A775;">(esperado)</span>
+                  </div>
                 </div>
+
+                <!-- Régua de escala 0, 5, 10, 15, 20 -->
+                <div class="scale-ruler">
+                  <span>0</span>
+                  <span>5</span>
+                  <span>10</span>
+                  <span>15</span>
+                  <span>20</span>
+                </div>
+                <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:-10px;">
+                  Tempo de atendimento (dias)
+                </div>
+              </div>
+
+              <!-- Destaque Taxa de Recusa -->
+              <div style="margin-top:14px; padding:12px 16px; background:rgba(255,31,31,0.08); border:1px solid rgba(255,31,31,0.22); border-radius:10px; display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:0.9rem; color:var(--text-1); font-weight:500;">Taxa de Recusa Recorrente:</span>
+                <span style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; color:var(--red-alert);">18,93% <span style="font-size:0.8rem; font-weight:500; color:var(--text-2);">(1 em cada 5)</span></span>
               </div>
             </div>
           </div>
@@ -1810,173 +2920,245 @@
       <!-- ==========================================
            SLIDE 6: DIAGNÓSTICO (ISHIKAWA)
            ========================================== -->
-      <section class="slide" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 12: Diagrama de Ishikawa">
+      <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 17: Diagrama de Ishikawa">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> ANÁLISE DE CAUSAS-RAIZ</p>
           <h2 class="title-large" style="margin-top: 10px;">Diagrama de <span class="highlight-yellow">Ishikawa</span></h2>
           <p style="color:var(--text-2); font-size:1.1rem; margin-top:4px;">Por que o problema de lentidão e retrabalho acontece?</p>
           <div class="brand-divider-line"></div>
 
-          <!-- Diagrama de Ishikawa Interativo em 4 Categorias -->
-          <div class="ishikawa-wrapper">
-            <div class="ishikawa-grid">
-              <!-- PESSOAS -->
-              <div class="ishikawa-card color-yellow" data-cat="pessoas">
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <i data-lucide="users-2" style="color:var(--yellow); width:22px; height:22px;"></i>
-                  <h3 class="title-small" style="color:var(--yellow);">PESSOAS</h3>
-                </div>
-                <ul class="ishikawa-items-list">
-                  <li>Falta de alinhamento entre as áreas requisitantes.</li>
-                  <li>Interpretações diferentes das cláusulas legais.</li>
-                  <li>Necessidade constante de múltiplas validações.</li>
-                </ul>
-              </div>
+          <!-- Espinha de Peixe Dinâmica (Fiel à Imagem Brainstorming TCC) -->
+          <div class="fishbone-container">
+            <div class="fishbone-svg-wrap">
+                                          <svg class="fishbone-svg" viewBox="0 0 1000 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrowhead" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+                    <polygon points="0 0, 12 4.5, 0 9" fill="var(--yellow)" />
+                  </marker>
+                </defs>
 
-              <!-- PROCESSOS -->
-              <div class="ishikawa-card color-red" data-cat="processos">
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <i data-lucide="sliders" style="color:var(--red-alert); width:22px; height:22px;"></i>
-                  <h3 class="title-small" style="color:var(--red-alert);">PROCESSOS</h3>
-                </div>
-                <ul class="ishikawa-items-list">
-                  <li>Fluxo contratual não padronizado entre departamentos.</li>
-                  <li>Ausência de checklists de conferência prévia.</li>
-                  <li>Etapas manuais e retrabalho recorrente.</li>
-                </ul>
-              </div>
+                <!-- ESPINHA CENTRAL (Coluna Vertebral) -->
+                <line x1="90" y1="240" x2="745" y2="240" class="bone-spine" marker-end="url(#arrowhead)" />
 
-              <!-- TECNOLOGIA -->
-              <div class="ishikawa-card color-yellow" data-cat="tecnologia">
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <i data-lucide="cpu" style="color:var(--yellow); width:22px; height:22px;"></i>
-                  <h3 class="title-small" style="color:var(--yellow);">TECNOLOGIA</h3>
-                </div>
-                <ul class="ishikawa-items-list">
-                  <li>Sistemas desconectados e sem automação inteligente.</li>
-                  <li>Falta de rastreabilidade das solicitações em aberto.</li>
-                  <li>Dificuldade no acompanhamento em tempo real do status.</li>
-                </ul>
-              </div>
+                <!-- ================= 1. CATEGORIA: PESSOAS ================= -->
+                <g class="fishbone-cat-group" data-category="pessoas">
+                  <!-- Caixa de Categoria Superior -->
+                  <rect x="255" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="320" y="34" class="bone-cat-title">PESSOAS</text>
 
-              <!-- DOCUMENTOS -->
-              <div class="ishikawa-card color-red" data-cat="documentos">
-                <div style="display:flex; align-items:center; gap:10px;">
-                  <i data-lucide="file-text" style="color:var(--red-alert); width:22px; height:22px;"></i>
-                  <h3 class="title-small" style="color:var(--red-alert);">DOCUMENTOS</h3>
-                </div>
-                <ul class="ishikawa-items-list">
-                  <li>Informações incompletas na solicitação original.</li>
-                  <li>Modelos contratuais desatualizados circulando.</li>
-                  <li>Divergências entre versões de minutas enviadas.</li>
-                </ul>
-              </div>
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="320" y1="54" x2="375" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Treinamento não padronizado (Y=95, X_ramo=332) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="95" x2="332" y2="95" class="bone-sub" />
+                    <circle cx="332" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="95" text-anchor="end" class="bone-cause-text">Treinamento não padronizado</text>
+                  </g>
+
+                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=347) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="145" x2="347" y2="145" class="bone-sub" />
+                    <circle cx="347" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="145" text-anchor="end" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
+                  </g>
+
+                  <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=362) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="195" x2="362" y2="195" class="bone-sub" />
+                    <circle cx="362" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="195" text-anchor="end" class="bone-cause-text">Sobrecarga da equipe</text>
+                  </g>
+                </g>
+
+                <!-- ================= 2. CATEGORIA: PROCESSO ================= -->
+                <g class="fishbone-cat-group" data-category="processo">
+                  <!-- Caixa de Categoria Superior -->
+                  <rect x="535" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="600" y="34" class="bone-cat-title">PROCESSO</text>
+
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="600" y1="54" x2="655" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Ausência de fluxos formais (Y=95, X_ramo=612) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="95" x2="612" y2="95" class="bone-sub" />
+                    <circle cx="612" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="95" text-anchor="end" class="bone-cause-text">Ausência de fluxos formais</text>
+                  </g>
+
+                  <!-- Causa 2: Falta de pré-triagem (Y=145, X_ramo=627) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="145" x2="627" y2="145" class="bone-sub" />
+                    <circle cx="627" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="145" text-anchor="end" class="bone-cause-text">Falta de pré-triagem</text>
+                  </g>
+
+                  <!-- Causa 3: Atribuição inadequada de tarefas (Y=195, X_ramo=642) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="195" x2="642" y2="195" class="bone-sub" />
+                    <circle cx="642" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="195" text-anchor="end" class="bone-cause-text">Atribuição inadequada de tarefas</text>
+                  </g>
+                </g>
+
+                <!-- ================= 3. CATEGORIA: TECNOLOGIA ================= -->
+                <g class="fishbone-cat-group" data-category="tecnologia">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="320" y1="426" x2="375" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="250" y="426" width="140" height="40" class="bone-cat-box" />
+                  <text x="320" y="446" class="bone-cat-title">TECNOLOGIA</text>
+
+                  <!-- Causa 1: Uso de planilhas e pastas físicas (Y=285, X_ramo=362) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="285" x2="362" y2="285" class="bone-sub" />
+                    <circle cx="362" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="285" text-anchor="end" class="bone-cause-text">Uso de planilhas e pastas físicas</text>
+                  </g>
+
+                  <!-- Causa 2: Ferramentas não integradas (Y=335, X_ramo=347) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="335" x2="347" y2="335" class="bone-sub" />
+                    <circle cx="347" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="335" text-anchor="end" class="bone-cause-text">Ferramentas não integradas</text>
+                  </g>
+
+                  <!-- Causa 3: Sistemas com limitações (Y=385, X_ramo=332) -->
+                  <g class="bone-cause-item">
+                    <line x1="230" y1="385" x2="332" y2="385" class="bone-sub" />
+                    <circle cx="332" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="220" y="385" text-anchor="end" class="bone-cause-text">Sistemas com limitações</text>
+                  </g>
+                </g>
+
+                <!-- ================= 4. CATEGORIA: MEIO AMBIENTE ================= -->
+                <g class="fishbone-cat-group" data-category="meio-ambiente">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="600" y1="426" x2="655" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="525" y="426" width="150" height="40" class="bone-cat-box" />
+                  <text x="600" y="446" class="bone-cat-title">MEIO AMBIENTE</text>
+
+                  <!-- Causa 1: Comunicação desalinhada (Y=285, X_ramo=642) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="285" x2="642" y2="285" class="bone-sub" />
+                    <circle cx="642" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="285" text-anchor="end" class="bone-cause-text">Comunicação desalinhada</text>
+                  </g>
+
+                  <!-- Causa 2: Alta demanda de trabalho (Y=335, X_ramo=627) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="335" x2="627" y2="335" class="bone-sub" />
+                    <circle cx="627" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="335" text-anchor="end" class="bone-cause-text">Alta demanda de trabalho</text>
+                  </g>
+
+                  <!-- Causa 3: Falta de recursos (equipe, ferramentas e infraestrutura) (Y=385, X_ramo=612) -->
+                  <g class="bone-cause-item">
+                    <line x1="510" y1="385" x2="612" y2="385" class="bone-sub" />
+                    <circle cx="612" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="500" y="380" text-anchor="end" class="bone-cause-text">Falta de recursos (equipe, ferramentas</text>
+                    <text x="500" y="396" text-anchor="end" class="bone-cause-text">e infraestrutura)</text>
+                  </g>
+                </g>
+
+                <!-- ================= CABEÇA DO PEIXE: EFEITO CRÍTICO ================= -->
+                <g class="fish-head-group">
+                  <rect x="760" y="130" width="205" height="220" class="fish-head-box" />
+                  
+                  <text x="862" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
+                  
+                  <text x="862" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="862" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
+                  
+                  <text x="862" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  
+                  <line x1="785" y1="288" x2="940" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                  
+                  <text x="862" y="318" font-family="var(--font-heading)" font-size="15" font-weight="800" fill="var(--red-alert)" text-anchor="middle">Recusa de 18,93%</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="fishbone-legend">
+              <span class="legend-badge"><i data-lucide="mouse-pointer" style="width:14px; height:14px;"></i> Interativo: passe o cursor sobre as causas para destacar</span>
+              <span>Figura 2 – Causas do SLA de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==========================================
-           SLIDE 7: DIAGNÓSTICO (INDICADORES ATUALIZADOS)
+            <!-- ==========================================
+           SLIDE 9: PROPOSTAS DO GRUPO (INTRODUÇÃO)
            ========================================== -->
-      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 12: Indicadores Atualizados">
+      <section class="slide" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 17: Propostas">
         <div class="slide-content-container">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
-            <div>
-              <p class="badge-chip"><i data-lucide="alert-circle" style="width:14px; height:14px; color:var(--red-alert);"></i> DADOS CRÍTICOS APROFUNDADOS</p>
-              <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-red">Indicadores Críticos</span></h2>
-            </div>
-
-            <!-- Toggle Inicial x Atualizado -->
-            <div class="data-toggle-bar">
-              <button class="data-toggle-btn" id="toggleInitialBtn">Inicial (12d, 45%)</button>
-              <button class="data-toggle-btn is-active" id="toggleUpdatedBtn">Atualizado (20d, 63%)</button>
-            </div>
-          </div>
+          <p class="badge-chip"><i data-lucide="lightbulb" style="width:14px; height:14px; color:var(--yellow);"></i> PLANO DE AÇÃO INTEGRADO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Nossas <span class="highlight-yellow">Propostas</span></h2>
           <div class="brand-divider-line"></div>
 
-          <div class="diagnostic-split">
-            <!-- SLA Atualizada (20 dias x 5 dias -> +300%) -->
-            <div class="premium-card">
-              <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                  <i data-lucide="timer" style="color:var(--red-alert); width:22px; height:22px;"></i>
-                  SLA Elevada (Tempo Médio)
-                </h3>
-                <span style="font-size:2.2rem; font-weight:800; font-family:var(--font-heading);" class="highlight-red" id="slaPercentDisplay">
-                  +300%
-                </span>
-              </div>
-              <p style="font-size:0.85rem; color:var(--red-alert); font-weight:600;">Acima do ideal aceitável</p>
-
-              <div class="sla-bars-wrapper">
-                <div class="sla-bar-item">
-                  <div class="sla-bar-label">
-                    <span style="color:var(--text-2);">Demanda Real Atualizada</span>
-                    <strong style="color:var(--red-alert);" id="slaDaysRealDisplay">20 dias</strong>
-                  </div>
-                  <div class="sla-track">
-                    <div class="sla-fill current" id="slaRealBar" style="width:100%;">20 dias</div>
-                  </div>
-                </div>
-
-                <div class="sla-bar-item">
-                  <div class="sla-bar-label">
-                    <span style="color:var(--text-2);">Ideal Esperado</span>
-                    <strong style="color:var(--yellow);">5 dias</strong>
-                  </div>
-                  <div class="sla-track">
-                    <div class="sla-fill ideal" id="slaIdealBar" style="width:25%;">5 dias</div>
-                  </div>
-                </div>
-              </div>
-
-              <p style="font-size: 0.9rem; color: var(--text-2); line-height: 1.5;">
-                O tempo de análise cresceu de forma crítica, gerando insatisfação dos parceiros comerciais e morosidade no fechamento de contas.
-              </p>
-            </div>
-
-            <!-- Retrabalho Atualizado (63,13%) -->
-            <div class="premium-card">
-              <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                <i data-lucide="refresh-cw" style="color:var(--yellow); width:20px; height:20px;"></i>
-                Retrabalho Contratual
-              </h3>
-
-              <div class="donut-chart-container">
-                <div class="donut-svg-wrap">
-                  <svg viewBox="0 0 100 100">
-                    <circle class="donut-bg-circle" cx="50" cy="50" r="40" />
-                    <circle class="donut-progress-circle" id="donutUpdatedCircle" cx="50" cy="50" r="40" 
-                            stroke-dasharray="251.2" stroke-dashoffset="92.6" style="stroke:var(--red-alert);" />
-                  </svg>
-                  <div class="donut-center-label">
-                    <span id="reworkPercentDisplay" style="font-size:1.1rem; color:var(--red-alert);">63,13%</span>
-                  </div>
+          <div style="max-width: 1080px; margin: 1.2rem auto 0 auto; width: 100%;">
+            <!-- Introdução do que o grupo pensou -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: clamp(24px, 2.8vw, 38px); position: relative; overflow: hidden; backdrop-filter: blur(14px); box-shadow: 0 16px 36px rgba(0,0,0,0.45);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--yellow);"></div>
+              
+              <div style="display: flex; align-items: flex-start; gap: 18px; margin-bottom: 20px;">
+                <div style="background: rgba(255, 204, 20, 0.12); border: 1px solid rgba(255, 204, 20, 0.3); border-radius: 14px; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--yellow);">
+                  <i data-lucide="compass" style="width: 28px; height: 28px;"></i>
                 </div>
                 <div>
-                  <h4 style="font-size:1.1rem; color:#fff; font-weight:700;">Volume de Devolutivas</h4>
-                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin-top: 6px;">
-                    Este número mostra dados dos contratos que retornam diversas vezes para ajustes, correções e validações, gerando um ciclo vicioso de "vai e volta".
+                  <h3 style="font-family: var(--font-heading); font-size: clamp(1.2rem, 1.5vw, 1.5rem); font-weight: 700; color: #FFFFFF; margin: 0 0 6px 0;">
+                    Como o grupo estruturou a solução?
+                  </h3>
+                  <p style="font-size: clamp(1.02rem, 1.2vw, 1.15rem); color: var(--text-2); line-height: 1.7; margin: 0;">
+                    A partir do diagnóstico das causas-raiz levantadas no Ishikawa — como preenchimentos manuais inconsistentes, falta de validação prévia de minutas e dúvidas recorrentes dos solicitantes —, o grupo concebeu uma estratégia baseada em dois pilares complementares: <strong>Tecnologia e Automação no LECOM</strong> e <strong>Capacitação Contínua de Pessoas</strong>.
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Faixa de Alerta: Principais Gargalos -->
-          <div class="bottlenecks-alert-banner">
-            <i data-lucide="alert-triangle" style="width:28px; height:28px; color:#fff; flex-shrink:0;"></i>
-            <div style="flex:1;">
-              <strong style="color:#fff; text-transform:uppercase; font-size:0.95rem; letter-spacing:0.05em; display:block; margin-bottom:6px;">
-                Principais Gargalos Mapeados:
-              </strong>
-              <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Ajustes e correções recorrentes</span>
-                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Devolutivas entre as áreas</span>
-                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Falta de padronização documental</span>
-                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Falhas de comunicação</span>
-                <span class="badge-chip" style="background:rgba(0,0,0,0.4); color:#fff; border-color:rgba(255,255,255,0.2);">Baixa visibilidade do status contratual</span>
+              <!-- Três Pilares Resumidos -->
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px 16px;">
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="background: var(--yellow); color: #000; font-weight: 800; font-family: var(--font-heading); font-size: 0.85rem; width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">1</span>
+                    <h4 style="font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: var(--yellow); margin: 0;">Automação & IA</h4>
+                  </div>
+                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin: 0;">
+                    Análise prévia inteligente de contratos e validação cadastral via API diretamente na abertura.
+                  </p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px 16px;">
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="background: var(--yellow); color: #000; font-weight: 800; font-family: var(--font-heading); font-size: 0.85rem; width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">2</span>
+                    <h4 style="font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: var(--yellow); margin: 0;">Suporte no Fluxo</h4>
+                  </div>
+                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin: 0;">
+                    Assistente FAQ interativo via chat para tirar dúvidas frequentes em tempo real.
+                  </p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 14px; padding: 18px 16px;">
+                  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                    <span style="background: var(--yellow); color: #000; font-weight: 800; font-family: var(--font-heading); font-size: 0.85rem; width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">3</span>
+                    <h4 style="font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: var(--yellow); margin: 0;">Educação UniD</h4>
+                  </div>
+                  <p style="font-size: 0.88rem; color: var(--text-2); line-height: 1.5; margin: 0;">
+                    Treinamentos práticos na Universidade Desktop para qualificar e dar autonomia aos solicitantes.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Destaque inferior de impacto -->
+              <div style="margin-top: 22px; padding: 14px 18px; background: rgba(255, 204, 20, 0.08); border-radius: 12px; border: 1px solid rgba(255, 204, 20, 0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 10px; color: var(--yellow); font-size: 0.92rem; font-weight: 600;">
+                  <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+                  <span>Foco: Eliminar devoluções, reduzir o tempo de ciclo e blindar o processo contra erros manuais.</span>
+                </div>
+                <span style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">Avançar para ver as soluções em detalhes →</span>
               </div>
             </div>
           </div>
@@ -1984,51 +3166,203 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 8: OBJETIVOS
+           SLIDE 10: PROPOSTA: IMPLEMENTAÇÕES NO LECOM
            ========================================== -->
-      <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 12: Objetivos">
+      <section class="slide" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 17: Proposta: Implementações no Lecom">
         <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO</p>
+          <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Implementações no Lecom</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="lecom-props-grid">
+            <!-- 1. Análise Inteligente de Contratos -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">1</span>
+                <h3>Análise Inteligente de Contratos</h3>
+              </div>
+              <p>
+                Implementação de Inteligência Artificial na plataforma LECOM para analisar contratos automaticamente, identificando informações ausentes e inconsistências antes da avaliação jurídica, reduzindo retrabalho e agilizando o processo.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="bot" style="width:18px; height:18px;"></i>
+                <span>IA Integrada ao LECOM</span>
+              </div>
+            </div>
+
+            <!-- 2. Validação Cadastral Automatizada -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">2</span>
+                <h3>Validação Cadastral Automatizada</h3>
+              </div>
+              <p>
+                Integração da plataforma LECOM com a Receita Federal, via API, para validar automaticamente os dados cadastrais das empresas pelo CNPJ, reduzindo erros, divergências e conferências manuais.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="shield-check" style="width:18px; height:18px;"></i>
+                <span>Consulta API Receita Federal</span>
+              </div>
+            </div>
+
+            <!-- 3. Assistente FAQ via Chat -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">3</span>
+                <h3>Assistente FAQ via Chat</h3>
+              </div>
+              <p>
+                Disponibilização de um assistente virtual interativo via chat diretamente na plataforma LECOM, auxiliando o colaborador com respostas instantâneas para dúvidas frequentes de preenchimento e critérios do Jurídico.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="messages-square" style="width:18px; height:18px;"></i>
+                <span>Suporte em Tempo Real no Fluxo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: DEMONSTRAÇÃO PRÁTICA NO LECOM (VÍDEO)
+           ========================================== -->
+      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
+        <div class="slide-content-container">
+          <div class="video-slide-container">
+            <div class="video-top-bar">
+              <div>
+                <p class="badge-chip"><i data-lucide="play-circle" style="width:14px; height:14px; color:var(--yellow);"></i> DEMONSTRAÇÃO PRÁTICA</p>
+                <h2 class="title-large" style="font-size:1.8rem; margin-top:6px;">Demonstração no <span class="highlight-yellow">LECOM</span></h2>
+              </div>
+              <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" class="badge-chip" style="text-decoration:none; color:#fff;" title="Abrir vídeo no Google Drive">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Abrir no Drive
+              </a>
+            </div>
+
+            <div class="video-player-wrap">
+              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-lecom.png">
+                <source src="assets/demonstracao-lecom.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 11: PROPOSTA: CAPACITAÇÃO DOS SOLICITANTES
+           ========================================== -->
+      <section class="slide" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 17: Proposta: Capacitação dos Solicitantes">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="graduation-cap" style="width:14px; height:14px; color:var(--yellow);"></i> EDUCAÇÃO CORPORATIVA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Capacitação dos Solicitantes</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div style="max-width: 980px; margin: 1.5rem auto 0 auto; width: 100%;">
+            <div class="lecom-prop-card" style="padding: clamp(28px, 3.2vw, 44px);">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">3</span>
+                <h3>Capacitação dos Solicitantes</h3>
+              </div>
+              <p style="font-size: clamp(1.08rem, 1.35vw, 1.3rem); line-height: 1.75;">
+                Disponibilização de treinamentos na plataforma <strong>Universidade Desktop</strong> para orientar os colaboradores sobre o preenchimento correto das solicitações e o envio da documentação necessária, reduzindo erros, padronizando os processos e diminuindo as devoluções pelo setor Jurídico.
+              </p>
+              <div class="lecom-prop-footer" style="margin-top: 24px; font-size: 1rem;">
+                <i data-lucide="award" style="width:20px; height:20px;"></i>
+                <span>Trilhas Práticas e Autonomia para as Áreas Clientes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 12: DEMONSTRAÇÃO UNIVERSIDADE DESKTOP (VÍDEO)
+           ========================================== -->
+      <section class="slide" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
+        <div class="slide-content-container">
+          <div class="video-slide-container">
+            <div class="video-top-bar">
+              <div>
+                <p class="badge-chip"><i data-lucide="play-circle" style="width:14px; height:14px; color:var(--yellow);"></i> DEMONSTRAÇÃO PRÁTICA</p>
+                <h2 class="title-large" style="font-size:1.8rem; margin-top:6px;">Demonstração na <span class="highlight-yellow">Universidade Desktop</span></h2>
+              </div>
+              <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" class="badge-chip" style="text-decoration:none; color:#fff;" title="Abrir vídeo no Google Drive">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Abrir no Drive
+              </a>
+            </div>
+
+            <div class="video-player-wrap">
+              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-universidade.png">
+                <source src="assets/demonstracao-universidade.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: OBJETIVOS E DETALHAMENTO DAS PROPOSTAS
+           ========================================== -->
+      <section class="slide" id="slide-14" aria-roledescription="slide" aria-label="Slide 14 de 17: Objetivos">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO & PROPOSTAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Nossos <span class="highlight-yellow">Objetivos</span></h2>
           <div class="brand-divider-line"></div>
 
           <div class="objectives-grid">
-            <!-- 01 -->
+            <!-- 01. Análise Inteligente de Contratos -->
             <div class="objective-card">
-              <div class="obj-num-badge">01</div>
-              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">ANÁLISE INTELIGENTE DE CONTRATOS</h3>
-              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
-                Integrar inteligência artificial ao sistema <strong>LECOM</strong> para analisar contratos em tempo real, comparando-os com modelos predefinidos e identificando automaticamente informações ausentes ou inconsistentes.
+              <div class="obj-card-header">
+                <span class="obj-num-badge">01</span>
+                <h3>Análise Inteligente de Contratos</h3>
+              </div>
+              <p>
+                Por meio dessa funcionalidade, será possível identificar informações ausentes, divergências cadastrais e possíveis inconsistências antes do encaminhamento da solicitação para análise jurídica.
               </p>
-              <div class="obj-micro-diagram">
-                <i data-lucide="scan-line" style="width:20px; height:20px;"></i>
-                <span>Scanner IA + Lecom em tempo real</span>
+              <p>
+                Dessa forma, espera-se reduzir a necessidade de devoluções para correção, diminuir o retrabalho e proporcionar maior agilidade ao processo, mantendo a validação final sob responsabilidade dos profissionais do setor Jurídico.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="sparkles" style="width:16px; height:16px;"></i>
+                <span>Redução drástica do retrabalho com IA</span>
               </div>
             </div>
 
-            <!-- 02 -->
+            <!-- 02. Validação Cadastral Automatizada -->
             <div class="objective-card">
-              <div class="obj-num-badge">02</div>
-              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">VALIDAÇÃO CADASTRAL AUTOMATIZADA</h3>
-              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
-                Integrar consulta via CNPJ à base da Receita Federal por meio da <strong>API Serpro</strong>, permitindo verificar de imediato os dados cadastrais da empresa contratada e sua regularidade jurídica.
+              <div class="obj-card-header">
+                <span class="obj-num-badge">02</span>
+                <h3>Validação Cadastral Automatizada</h3>
+              </div>
+              <p>
+                Essa integração permitirá consultar e conferir informações cadastrais das empresas envolvidas nas solicitações, como razão social, situação cadastral e outros dados disponibilizados pelo serviço de consulta. O objetivo é identificar possíveis divergências antes que a demanda avance para as próximas etapas do processo.
               </p>
-              <div class="obj-micro-diagram">
-                <i data-lucide="shield-check" style="width:20px; height:20px;"></i>
-                <span>Checagem instantânea API Serpro</span>
+              <p>
+                Com a automatização dessa verificação, busca-se reduzir erros de preenchimento, evitar solicitações com dados inconsistentes e diminuir o tempo gasto com conferências manuais, contribuindo para maior confiabilidade das informações e eficiência no atendimento.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="shield-check" style="width:16px; height:16px;"></i>
+                <span>API Receita Federal + Verificação Instantânea</span>
               </div>
             </div>
 
-            <!-- 03 -->
+            <!-- 03. Capacitação dos Solicitantes -->
             <div class="objective-card">
-              <div class="obj-num-badge">03</div>
-              <h3 class="title-small" style="color:#fff; margin-bottom:12px;">CAPACITAÇÃO DOS SOLICITANTES</h3>
-              <p style="color:var(--text-2); font-size:0.95rem; line-height:1.6; flex:1;">
-                Disponibilizar treinamentos pela <strong>Universidade Desktop</strong> para orientar os colaboradores das áreas solicitantes sobre o preenchimento correto das informações e submissão das minutas.
+              <div class="obj-card-header">
+                <span class="obj-num-badge">03</span>
+                <h3>Capacitação dos Solicitantes</h3>
+              </div>
+              <p>
+                A iniciativa busca desenvolver maior autonomia dos solicitantes, padronizar a entrada das demandas e melhorar a comunicação entre as áreas envolvidas.
               </p>
-              <div class="obj-micro-diagram">
-                <i data-lucide="graduation-cap" style="width:20px; height:20px;"></i>
-                <span>Trilhas na Universidade Desktop</span>
+              <p>
+                Como resultado, espera-se reduzir erros recorrentes, aumentar a qualidade das informações recebidas e diminuir o volume de solicitações devolvidas por preenchimento incorreto ou documentação incompleta.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="graduation-cap" style="width:16px; height:16px;"></i>
+                <span>Trilhas Práticas na Universidade Desktop</span>
               </div>
             </div>
           </div>
@@ -2036,111 +3370,38 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 9: METODOLOGIA (7 FERRAMENTAS)
+           SLIDE 11: FLUXO FUTURO (TO-BE)
            ========================================== -->
-      <section class="slide" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 12: Metodologia">
+      <section class="slide" id="slide-15" aria-roledescription="slide" aria-label="Slide 15 de 17: Fluxo TO-BE">
         <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> GESTÃO E MELHORIA CONTÍNUA</p>
-          <h2 class="title-large" style="margin-top: 10px;">Metodologia de <span class="highlight-yellow">Trabalho</span></h2>
+          <p class="badge-chip"><i data-lucide="zap" style="width:14px; height:14px; color:var(--yellow);"></i> NOVO FLUXO DE SOLICITAÇÕES JURÍDICAS</p>
+          <h2 class="title-large" style="margin-top: 10px;">Fluxo Futuro: <span class="highlight-yellow">Seção TO-BE</span></h2>
+          <p style="color:var(--text-2); font-size:1.05rem; margin-top:4px;">
+            Proposta após implementação da IA e automações na gestão de contratos no <strong>LECOM</strong>.
+          </p>
           <div class="brand-divider-line"></div>
 
-          <p style="color:var(--text-2); font-size:1.1rem; line-height:1.6; max-width:920px;">
-            As metodologias utilizadas auxiliam na organização, análise e melhoria dos processos operacionais e administrativos. Clique nas ferramentas abaixo para explorar a aplicação prática de cada uma:
-          </p>
-
-          <!-- 7 Ferramentas Interativas em Chips -->
-          <div class="methodology-chips-grid" id="methodologyChips">
-            <button class="method-tool-chip is-active" data-tool="kanban"><i data-lucide="trello" style="width:16px;"></i> Kanban</button>
-            <button class="method-tool-chip" data-tool="sipoc"><i data-lucide="workflow" style="width:16px;"></i> SIPOC</button>
-            <button class="method-tool-chip" data-tool="ishikawa"><i data-lucide="git-pull-request" style="width:16px;"></i> Ishikawa</button>
-            <button class="method-tool-chip" data-tool="5w2h"><i data-lucide="help-circle" style="width:16px;"></i> 5W2H</button>
-            <button class="method-tool-chip" data-tool="pdca"><i data-lucide="refresh-cw" style="width:16px;"></i> PDCA</button>
-            <button class="method-tool-chip" data-tool="gut"><i data-lucide="bar-chart-2" style="width:16px;"></i> Matriz GUT</button>
-            <button class="method-tool-chip" data-tool="esforco"><i data-lucide="sliders" style="width:16px;"></i> Esforço × Impacto</button>
-          </div>
-
-          <!-- Card de Detalhe da Metodologia Selecionada -->
-          <div class="method-detail-card" id="methodDetailBox">
-            <div style="background:rgba(255,204,20,0.1); padding:16px; border-radius:12px; color:var(--yellow);" id="methodIconHolder">
-              <i data-lucide="trello" style="width:32px; height:32px;"></i>
-            </div>
-            <div>
-              <h3 class="title-small" id="methodTitleHolder" style="color:var(--yellow); margin-bottom:6px;">Kanban</h3>
-              <p id="methodDescHolder" style="color:var(--text-1); font-size:1rem; line-height:1.5;">
-                Permite acompanhar visualmente o status das tarefas e chamados contratuais em tempo real, limitando o trabalho em andamento (WIP) e expondo gargalos imediatos.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================
-           SLIDE 10: PROPOSTA & FLUXO TO BE COM IA
-           ========================================== -->
-      <section class="slide" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 12: Proposta">
-        <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
-          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Inteligência Artificial</span></h2>
-          <div class="brand-divider-line"></div>
-
-          <p style="color:var(--text-2); font-size:1.15rem; line-height:1.6; max-width:980px;">
-            Integração de IA com capacidade de <strong>análise em tempo real</strong> do modelo de contrato desejado, identificando automaticamente informações faltantes ou incorretas antes do envio ao jurídico.
-          </p>
-
-          <!-- Simulador de Scanner Inteligente -->
-          <div class="proposal-scanner-box">
-            <div class="scanner-line"></div>
-            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:12px;">
-              <div style="display:flex; align-items:center; gap:10px;">
-                <i data-lucide="bot" style="color:var(--yellow); width:24px; height:24px;"></i>
-                <span style="font-weight:700; color:#fff;">Motor de Pré-Validação Automatizada (LECOM + IA + Serpro)</span>
-              </div>
-              <span class="badge-chip" style="background:rgba(46, 204, 113, 0.15); border-color:#2ecc71; color:#2ecc71;">
-                Status: Scanner Ativo
-              </span>
+          <div class="flowchart-tobe-container">
+            <div class="flowchart-tobe-frame" onclick="window.open('assets/fluxograma-to-be.png', '_blank')" title="Clique para ampliar em tela cheia">
+              <img src="assets/fluxograma-to-be.png" alt="Desktop S.A. - Novo Fluxo de Solicitações Jurídicas TO-BE" loading="lazy">
             </div>
 
-            <div class="scanner-items">
-              <div class="scanner-item-row valid">
-                <span>Consulta CNPJ Receita Federal (API Serpro)</span>
-                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> Válido</span>
+            <div class="tobe-legend-pills">
+              <div class="tobe-pill">
+                <span class="tobe-dot blue"></span>
+                <span><strong>Azul:</strong> Novas automações (API Serpro e IA)</span>
               </div>
-              <div class="scanner-item-row valid">
-                <span>Conformidade com Modelo Padrão de Minuta</span>
-                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> 100% OK</span>
+              <div class="tobe-pill">
+                <span class="tobe-dot green"></span>
+                <span><strong>Verde:</strong> Capacitação e marcos</span>
               </div>
-              <div class="scanner-item-row warning">
-                <span>Cláusula de Rescisão / Multa Contratual</span>
-                <span style="color:var(--yellow); font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="alert-triangle" style="width:16px;"></i> Ajustado</span>
+              <div class="tobe-pill">
+                <span class="tobe-dot yellow"></span>
+                <span><strong>Amarelo:</strong> Decisões e correções</span>
               </div>
-              <div class="scanner-item-row valid">
-                <span>Assinatura Digital & Poderes de Procuração</span>
-                <span style="color:#2ecc71; font-weight:700; display:flex; align-items:center; gap:4px;"><i data-lucide="check-circle-2" style="width:16px;"></i> Apto</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fluxo TO BE Animado -->
-          <div style="margin-top: 24px;">
-            <span style="font-weight:700; font-size:0.95rem; color:var(--text-2);">Novo Fluxo Otimizado (TO BE):</span>
-            <div class="flow-rail-container">
-              <div class="flow-steps-rail">
-                <div class="flow-step-card">1. Solicitação</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-
-                <div class="flow-step-card highlight-ai">
-                  <i data-lucide="sparkles" style="width:18px; height:18px;"></i>
-                  2. Validação por IA (Checagem em Tempo Real + CNPJ Serpro)
-                </div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-
-                <div class="flow-step-card">3. Análise Jurídica Ágil (Sem Retrabalho)</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-
-                <div class="flow-step-card" style="border-color:var(--yellow); color:var(--yellow); font-weight:700;">
-                  <i data-lucide="check" style="width:18px; height:18px;"></i>
-                  4. Assinatura Final
-                </div>
+              <div class="tobe-pill" style="border-color:var(--yellow); background:rgba(255,204,20,0.1);">
+                <i data-lucide="target" style="color:var(--yellow); width:15px; height:15px;"></i>
+                <span style="color:#fff; font-weight:700;">Meta: Reduzir de 20 para 5 dias</span>
               </div>
             </div>
           </div>
@@ -2148,9 +3409,9 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 11: O QUE ESPERAMOS
+           SLIDE 12: O QUE ESPERAMOS
            ========================================== -->
-      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 12: Resultados Esperados">
+      <section class="slide" id="slide-16" aria-roledescription="slide" aria-label="Slide 16 de 17: Resultados Esperados">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="trending-up" style="width:14px; height:14px;"></i> IMPACTO E BENEFÍCIOS</p>
           <h2 class="title-large" style="margin-top: 10px;">O que <span class="highlight-yellow">esperamos</span></h2>
@@ -2171,9 +3432,9 @@
               <div>
                 <i data-lucide="repeat" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
                 <h3 class="title-small">Redução de Retrabalho</h3>
-                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Eliminação dos retornos por erro documental básico.</p>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Eliminação das devoluções e do ciclo de idas e vindas de minutas por inconsistências.</p>
               </div>
-              <div class="expect-value-badge">63% ➔ &lt; 10%</div>
+              <div class="expect-value-badge">Fluxo Contínuo</div>
             </div>
 
             <div class="expect-card">
@@ -2187,11 +3448,11 @@
 
             <div class="expect-card">
               <div>
-                <i data-lucide="dollar-sign" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
-                <h3 class="title-small">ROI Estimado</h3>
-                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Retorno financeiro sobre a implementação da solução.</p>
+                <i data-lucide="file-check-2" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Padronização no Envio das Solicitações</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Modelos de formulários consistentes, checklist obrigatório e conformidade cadastral prévia.</p>
               </div>
-              <div class="expect-value-badge pending">A definir</div>
+              <div class="expect-value-badge">100% Padronizado</div>
             </div>
 
             <div class="expect-card">
@@ -2207,34 +3468,29 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 12: CONCLUSÃO
+           SLIDE 13: CONCLUSÃO
            ========================================== -->
-      <section class="slide slide-12" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 12: Conclusão">
+      <section class="slide slide-16" id="slide-17" aria-roledescription="slide" aria-label="Slide 17 de 17: Conclusão">
         <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="flag" style="width:14px; height:14px;"></i> CONSIDERAÇÕES FINAIS</p>
-          <div class="brand-divider-line"></div>
+          <div class="conclusao-wrap">
+            <p class="badge-chip"><i data-lucide="flag" style="width:14px; height:14px;"></i> CONSIDERAÇÕES FINAIS</p>
+            <h2 class="conclusao-title">Conclusão</h2>
+            <div class="brand-divider-line conclusao-divider"></div>
 
-          <h2 class="final-phrase">
-            "Como vamos transformar desafios em <span class="highlight-yellow">oportunidades de receita</span>."
-          </h2>
+            <div class="conclusao-card-box">
+              <p class="conclusao-impacto-text">
+                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> transformam a gestão jurídica em um fluxo ágil, padronizado e sem retrabalho — reduzindo o tempo de resposta de <strong>20 para 5 dias</strong> e potencializando a eficiência operacional de toda a empresa.
+              </p>
 
-          <p style="color:var(--text-2); font-size:1.2rem; max-width:800px; margin-bottom:2.5rem; line-height:1.6;">
-            A modernização do setor jurídico da Desktop por meio de tecnologia e educação corporativa não apenas resolve gargalos operacionais, mas acelera novos negócios e fortalece o crescimento da organização.
-          </p>
+              <div class="conclusao-thanks-badge">
+                <i data-lucide="sparkles" style="width:22px; height:22px;"></i>
+                <span>Muito Obrigado!</span>
+              </div>
+            </div>
 
-          <div class="actions-bar">
-            <button class="btn-action primary" id="restartBtn">
-              <i data-lucide="rotate-ccw" style="width:18px; height:18px;"></i>
-              <span>Reiniciar Apresentação</span>
-            </button>
-            <button class="btn-action secondary" id="overviewFinalBtn">
-              <i data-lucide="grid" style="width:18px; height:18px;"></i>
-              <span>Visão Geral</span>
-            </button>
-            <button class="btn-action secondary" id="printBtn" title="Exportar para impressão">
-              <i data-lucide="printer" style="width:18px; height:18px;"></i>
-              <span>Imprimir / PDF</span>
-            </button>
+            <p class="conclusao-footer-credits">
+              TÉCNICO EM ADMINISTRAÇÃO • SENAI × DESKTOP S.A.
+            </p>
           </div>
         </div>
       </section>
@@ -2244,12 +3500,7 @@
 
   <!-- 7. Barra Inferior (Atalhos, Dots de Navegação) -->
   <footer class="bottom-bar">
-    <div class="nav-hints">
-      <span><span class="nav-hint-key">←</span> <span class="nav-hint-key">→</span> Navegar</span>
-      <span><span class="nav-hint-key">Espaço</span> Avançar</span>
-      <span><span class="nav-hint-key">O</span> Visão geral</span>
-      <span><span class="nav-hint-key">F</span> Tela cheia</span>
-    </div>
+    <div></div>
 
     <!-- Dots de Navegação -->
     <div class="dots-container" id="dotsContainer" role="tablist" aria-label="Navegação por slides">
@@ -2324,30 +3575,30 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 12,
+      totalSlides: 17,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
       team: [
         {
-          nome: "Integran 1",
-          funcao: "Pesquisa & Diagnóstico",
-          foto: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
+          nome: "Arthur",
+          funcao: "",
+          foto: "assets/team/arthur.jpg"
         },
         {
-          nome: "Integran 2",
-          funcao: "Mapeamento de Processos",
-          foto: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+          nome: "Heloisa",
+          funcao: "",
+          foto: "assets/team/heloisa.jpg"
         },
         {
-          nome: "Integran 3",
-          funcao: "Análise Jurídica & SLA",
-          foto: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80"
+          nome: "Isaias",
+          funcao: "",
+          foto: "assets/team/isaias.jpg"
         },
         {
-          nome: "Integran 4",
-          funcao: "Proposta Tecnológica & IA",
-          foto: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80"
+          nome: "Pedro",
+          funcao: "",
+          foto: "assets/team/pedro.jpg"
         }
       ],
 
@@ -2356,13 +3607,18 @@
         "Capa",
         "Quem somos?",
         "Introdução",
-        "Problemática",
-        "Diagnóstico Inicial",
+        "Dor Relatada",
+        "Mapeamento do Processo",
+        "Fluxo Atual (AS-IS)",
+        "Diagnóstico: SLA e Retrabalho",
         "Ishikawa",
-        "Indicadores Críticos",
-        "Objetivos",
-        "Metodologia",
-        "Proposta com IA",
+        "Propostas do Grupo",
+        "Proposta: Lecom",
+        "Demonstração Lecom",
+        "Proposta: Capacitação",
+        "Demonstração Universidade",
+        "Nossos Objetivos",
+        "Fluxo Futuro (TO-BE)",
         "O que esperamos",
         "Conclusão"
       ],
@@ -2471,6 +3727,9 @@
        INICIALIZAÇÃO DA INTERFACE
        ========================================================================== */
     function init() {
+      // Inicializar Tema (Salvo em localStorage)
+      initTheme();
+
       // Configurar total de slides
       totalSlidesNum.textContent = String(state.totalSlides).padStart(2, '0');
 
@@ -2514,7 +3773,7 @@
             </div>
           </div>
           <h3 class="member-name">${member.nome}</h3>
-          <p class="member-role">${member.funcao}</p>
+          ${member.funcao ? `<p class="member-role">${member.funcao}</p>` : ''}
         </div>
       `).join('');
     }
@@ -2646,7 +3905,7 @@
 
       // Animação com GSAP para stagger de elementos filhos
       if (typeof gsap !== 'undefined') {
-        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card');
+        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card, .mapping-card');
         
         gsap.fromTo(animElements, 
           { opacity: 0, y: 25, filter: 'blur(4px)' },
@@ -2730,7 +3989,7 @@
       document.getElementById('restartBtn').addEventListener('click', () => goToSlide(0));
 
       // 5. Autoplay
-      autoplayBtn.addEventListener('click', toggleAutoplay);
+      // autoplay removed
 
       // 6. Visão Geral (Overview)
       document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
@@ -2741,17 +4000,17 @@
       document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
 
       // 8. Modal de Atalhos
-      document.getElementById('shortcutsBtn').addEventListener('click', () => toggleShortcuts(true));
+      // shortcuts removed
       document.getElementById('closeShortcutsBtn').addEventListener('click', () => toggleShortcuts(false));
 
       // 9. Impressão / PDF
       document.getElementById('printBtn').addEventListener('click', () => window.print());
 
       // 10. Toggle de Dados (Slide 7: Inicial vs Atualizado)
-      setupDataToggleSlide7();
+      // setupDataToggleSlide7();
 
       // 11. Chips Interativos de Metodologia (Slide 9)
-      setupMethodologyChips();
+      // setupMethodologyChips();
 
       // 12. Ishikawa Interativo (Slide 6)
       setupIshikawaInteraction();
@@ -2759,6 +4018,11 @@
 
     /* Navegação por Teclado */
     function handleKeyboardNavigation(e) {
+      // Não interceptar comandos quando Ctrl ou Meta (Command) estiver pressionado (ex: zoom Ctrl + / -, atalhos do navegador)
+      if (e.ctrlKey || e.metaKey) {
+        return;
+      }
+
       if (state.isOverviewOpen || state.isShortcutsOpen) {
         if (e.key === 'Escape') {
           toggleOverview(false);
@@ -2803,6 +4067,11 @@
 
     /* Scroll do Mouse / Trackpad com Lock de 850ms */
     function handleWheelScroll(e) {
+      // Se a tecla Ctrl estiver pressionada, permitir zoom nativo do navegador sem interceptar
+      if (e.ctrlKey || e.metaKey) {
+        return;
+      }
+
       if (state.isOverviewOpen || state.isShortcutsOpen) return;
 
       // Verificar se o slide atual tem scroll interno vertical
@@ -3019,6 +4288,48 @@
         el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
       });
+    }
+
+    
+    /* ==========================================================================
+       SISTEMA DE TEMAS: MODO ESCURO VS MODO CLARO (VERMELHO DESKTOP)
+       ========================================================================== */
+    function initTheme() {
+      const savedTheme = localStorage.getItem('presentation-theme') || 'dark';
+      applyTheme(savedTheme);
+
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      applyTheme(newTheme);
+      localStorage.setItem('presentation-theme', newTheme);
+    }
+
+    function applyTheme(theme) {
+      const icon = document.getElementById('themeToggleIcon');
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (theme === 'light') {
+        document.body.classList.add('theme-light');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'moon');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#8E010E');
+      } else {
+        document.body.classList.remove('theme-light');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'sun');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#FFCC14');
+      }
+      if (window.lucide) {
+        lucide.createIcons();
+      }
     }
 
     /* Canvas de Partículas Douradas Discretas */
