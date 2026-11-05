@@ -27,27 +27,27 @@
 
   <style>
     /* ==========================================================================
-       1. VARIÁVEIS CSS E DESIGN SYSTEM
+       1. VARIÁVEIS CSS E DESIGN SYSTEM (TEMA VERMELHO DESKTOP BASE & TEMA VINHO)
        ========================================================================== */
     :root {
-      --bg-0: #000000;
-      --bg-1: #0A0A0A;
-      --bg-2: #141414;
-      --bg-3: #1C1C1C;
-      --bg-card: rgba(20, 20, 20, 0.75);
-      --bg-card-hover: rgba(28, 28, 28, 0.9);
-      --yellow: #FFCC14;
-      --gold: #DDB015;
-      --red-dark: #800000;
-      --red-alert: #FF1F1F;
-      --text-1: #F2F2F2;
-      --text-2: #B5B5B5;
-      --text-muted: #757575;
-      --line: rgba(255, 204, 20, 0.18);
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-gold: rgba(255, 204, 20, 0.35);
-      --glow-gold: 0 0 25px rgba(255, 204, 20, 0.25);
-      --glow-red: 0 0 25px rgba(255, 31, 31, 0.25);
+      --bg-0: #7A010C;
+      --bg-1: #8C020E;
+      --bg-2: #650008;
+      --bg-3: #520006;
+      --bg-card: rgba(85, 3, 10, 0.72);
+      --bg-card-hover: rgba(115, 5, 15, 0.88);
+      --yellow: #FFD43B;
+      --gold: #FFC107;
+      --red-dark: #3F0005;
+      --red-alert: #FF4D4D;
+      --text-1: #FFFFFF;
+      --text-2: #FCE8E8;
+      --text-muted: #E5B4B4;
+      --line: rgba(255, 212, 59, 0.28);
+      --border-subtle: rgba(255, 255, 255, 0.16);
+      --border-gold: rgba(255, 212, 59, 0.45);
+      --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
+      --glow-red: 0 0 25px rgba(235, 36, 26, 0.35);
       
       --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -69,11 +69,13 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: var(--bg-0);
+      background-color: #500007;
+      background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
       color: var(--text-1);
       font-family: var(--font-body);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
+      transition: background 0.5s ease;
     }
 
     /* Acessibilidade de foco */
@@ -99,44 +101,8 @@
     }
 
     /* ==========================================================================
-       2. CURSOR CUSTOMIZADO & EFEITOS DE FUNDO
-       ========================================================================== */
-    .custom-cursor {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--yellow);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
-      mix-blend-mode: difference;
-    }
-    .custom-cursor-dot {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 6px;
-      height: 6px;
-      background: var(--yellow);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 100000;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 10px var(--yellow);
-    }
-    .cursor-hover {
-      width: 44px;
-      height: 44px;
-      background-color: rgba(255, 204, 20, 0.15);
-      border-color: var(--yellow);
-    }
-
-    @media (hover: none) or (pointer: coarse) {
-      .custom-cursor, .custom-cursor-dot { display: none !important; }
+    .custom-cursor, .custom-cursor-dot {
+      display: none !important;
     }
 
     /* Canvas de partículas douradas sutis */
@@ -205,7 +171,7 @@
 
     .slides-track {
       display: flex;
-      width: 1700vw; /* 17 slides x 100vw */
+      width: 1800vw; /* 18 slides x 100vw */
       height: 100%;
       will-change: transform;
       transform: translate3d(0, 0, 0);
@@ -876,7 +842,7 @@
       padding-bottom: 14px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    body.theme-light .lecom-prop-header {
+    body.theme-red, body.theme-wine, body .lecom-prop-header {
       border-bottom-color: rgba(255,212,59,0.25);
     }
     .lecom-prop-num {
@@ -906,7 +872,7 @@
       line-height: 1.7;
       flex: 1;
     }
-    body.theme-light .lecom-prop-card p {
+    body.theme-red, body.theme-wine, body .lecom-prop-card p {
       color: #F8E2E2;
     }
     .lecom-prop-footer {
@@ -1072,7 +1038,7 @@
       text-align: left;
       border-bottom: 1px solid var(--border-subtle);
     }
-    body.theme-light .quadro-indicadores-table th {
+    body.theme-red, body.theme-wine, body .quadro-indicadores-table th {
       background: rgba(255, 212, 59, 0.22);
       color: #FFF;
     }
@@ -1083,7 +1049,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       background: rgba(20, 20, 20, 0.4);
     }
-    body.theme-light .quadro-indicadores-table td {
+    body.theme-red, body.theme-wine, body .quadro-indicadores-table td {
       background: rgba(60, 2, 7, 0.45);
       border-bottom-color: rgba(255, 255, 255, 0.1);
     }
@@ -1111,7 +1077,7 @@
       display: flex;
       justify-content: space-between;
     }
-    body.theme-light .table-caption-sub {
+    body.theme-red, body.theme-wine, body .table-caption-sub {
       color: #F8CFCF;
     }
 
@@ -1193,7 +1159,7 @@
       color: var(--text-muted);
       font-size: 0.78rem;
     }
-    body.theme-light .scale-ruler {
+    body.theme-red, body.theme-wine, body .scale-ruler {
       border-top-color: rgba(255, 212, 59, 0.3);
       color: #F8CFCF;
     }
@@ -1345,11 +1311,9 @@
       color: var(--yellow);
       display: flex;
       align-items: center;
-      animation: shiftArrow 5.5s infinite ease-in-out;
-    }
-    @keyframes shiftArrow {
-      0%, 100% { transform: translateX(-2px); opacity: 0.65; }
-      50% { transform: translateX(2px); opacity: 0.95; }
+      opacity: 0.8;
+      animation: none !important;
+      transform: none !important;
     }
 
     /* Slide 7: Toggle de Dados (Levantamento Inicial vs Atualizado) */
@@ -1393,18 +1357,18 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
 
-        /* --- SLIDE 7: ESPINHA DE PEIXE DINÂMICA (ISHIKAWA) --- */
     #slide-8 {
-      justify-content: flex-start !important;
-      padding-top: calc(var(--header-height) + 1.8rem) !important;
+      justify-content: center !important;
+      padding-top: calc(var(--header-height) + 1rem) !important;
+      padding-bottom: calc(var(--nav-bar-height) + 1rem) !important;
     }
     #slide-8 .slide-content-container {
-      margin: 0 auto !important;
+      margin: auto auto !important;
     }
     .fishbone-container {
       width: 100%;
-      max-width: 1280px;
-      margin: 0.8rem auto 0 auto;
+      max-width: 1380px;
+      margin: 1rem auto 0 auto;
       position: relative;
     }
     .fishbone-svg-wrap {
@@ -1413,23 +1377,17 @@
       background: rgba(18, 18, 18, 0.7);
       border: 1px solid var(--border-subtle);
       border-radius: 20px;
-      padding: 12px 18px;
+      padding: 16px 20px;
       backdrop-filter: blur(12px);
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
-    .fishbone-svg {
-      width: 100%;
-      max-height: 54vh;
-      height: auto;
-      display: block;
-      overflow: visible;
-    }
-    body.theme-light .fishbone-svg-wrap {
+    body.theme-red, body.theme-wine, body .fishbone-svg-wrap {
       background: rgba(75, 2, 8, 0.75);
       border-color: rgba(255, 212, 59, 0.3);
     }
     .fishbone-svg {
       width: 100%;
+      max-height: 58vh;
       height: auto;
       display: block;
       overflow: visible;
@@ -1453,10 +1411,10 @@
       stroke-width: 1.5;
       stroke-linecap: round;
     }
-    body.theme-light .bone-branch {
+    body.theme-red, body.theme-wine, body .bone-branch {
       stroke: rgba(255, 212, 59, 0.6);
     }
-    body.theme-light .bone-sub {
+    body.theme-red, body.theme-wine, body .bone-sub {
       stroke: rgba(255, 255, 255, 0.35);
     }
 
@@ -1476,49 +1434,56 @@
       fill: rgba(255, 204, 20, 0.18);
     }
     .bone-cat-box {
-      fill: #141414;
-      stroke: #444;
+      fill: #4A0108;
+      stroke: var(--yellow);
       stroke-width: 2;
       rx: 8;
       transition: all 0.3s ease;
     }
-    body.theme-light .bone-cat-box {
+    body.theme-red .bone-cat-box {
       fill: #5E010A;
-      stroke: rgba(255, 212, 59, 0.4);
+      stroke: var(--yellow);
+    }
+    body.theme-wine .bone-cat-box {
+      fill: #3A060D !important;
+      stroke: var(--yellow) !important;
     }
     .bone-cat-title {
       font-family: var(--font-heading);
       font-weight: 800;
       font-size: 14px;
       letter-spacing: 0.08em;
-      fill: #FFFFFF;
+      fill: #FFFFFF !important;
       text-anchor: middle;
       dominant-baseline: middle;
       text-transform: uppercase;
       pointer-events: none;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
     }
     .bone-cause-item {
       cursor: pointer;
       transition: all 0.25s ease;
     }
     .bone-cause-item:hover text {
-      fill: var(--yellow);
-      font-weight: 600;
+      fill: var(--yellow) !important;
+      font-weight: 700;
       transform: scale(1.02);
     }
     .bone-cause-text {
       font-family: var(--font-body);
-      font-size: 13px;
-      fill: #EAEAEA;
+      font-size: 13.5px;
+      fill: #FFFFFF !important;
       dominant-baseline: middle;
       transition: fill 0.2s ease;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7));
     }
-    body.theme-light .bone-cause-text {
-      fill: #FDE8E8;
+    body.theme-red .bone-cause-text,
+    body.theme-wine .bone-cause-text {
+      fill: #FFFFFF !important;
     }
     .bone-cause-dot {
       fill: var(--yellow);
-      opacity: 0.7;
+      opacity: 0.85;
       transition: r 0.2s ease, opacity 0.2s ease;
     }
     .bone-cause-item:hover .bone-cause-dot {
@@ -1527,18 +1492,22 @@
       filter: drop-shadow(0 0 5px var(--yellow));
     }
 
-    /* Cabeça do peixe (Efeito) */
+    /* Cabeça do peixe (Efeito SLA) */
     .fish-head-box {
-      fill: #1A1A1A;
+      fill: #550109;
       stroke: var(--yellow);
       stroke-width: 2.5;
       rx: 12;
       filter: drop-shadow(0 0 15px rgba(255, 204, 20, 0.25));
       transition: all 0.3s ease;
     }
-    body.theme-light .fish-head-box {
-      fill: #550109;
+    body.theme-red .fish-head-box {
+      fill: #5A010A;
       stroke: var(--yellow);
+    }
+    body.theme-wine .fish-head-box {
+      fill: #34050C !important;
+      stroke: var(--yellow) !important;
     }
     .fish-head-group:hover .fish-head-box {
       transform: scale(1.02);
@@ -1555,7 +1524,7 @@
       font-size: 0.88rem;
       color: var(--text-muted);
     }
-    body.theme-light .fishbone-legend {
+    body.theme-red, body.theme-wine, body .fishbone-legend {
       color: #F8CFCF;
     }
     .fishbone-legend .legend-badge {
@@ -1589,7 +1558,7 @@
       flex-direction: column;
       align-items: center;
     }
-    body.theme-light .flowchart-tobe-container {
+    body.theme-red, body.theme-wine, body .flowchart-tobe-container {
       background: rgba(75, 2, 8, 0.75);
       border-color: rgba(255, 212, 59, 0.3);
     }
@@ -1631,7 +1600,7 @@
       font-size: 0.86rem;
       color: var(--text-2);
     }
-    body.theme-light .tobe-pill {
+    body.theme-red, body.theme-wine, body .tobe-pill {
       background: rgba(50, 1, 5, 0.5);
       color: #F8CFCF;
     }
@@ -1658,7 +1627,7 @@
       flex-direction: column;
       align-items: center;
     }
-    body.theme-light .flowchart-asis-container {
+    body.theme-red, body.theme-wine, body .flowchart-asis-container {
       background: rgba(75, 2, 8, 0.75);
       border-color: rgba(255, 212, 59, 0.3);
     }
@@ -1705,7 +1674,7 @@
       font-size: 0.86rem;
       color: var(--text-2);
     }
-    body.theme-light .lane-chip-item {
+    body.theme-red, body.theme-wine, body .lane-chip-item {
       background: rgba(50, 1, 5, 0.5);
       color: #F8CFCF;
     }
@@ -1810,7 +1779,7 @@
       padding-bottom: 12px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    body.theme-light .obj-card-header {
+    body.theme-red, body.theme-wine, body .obj-card-header {
       border-bottom-color: rgba(255, 212, 59, 0.2);
     }
     .obj-num-badge {
@@ -1838,7 +1807,7 @@
       line-height: 1.6;
       margin-bottom: 10px;
     }
-    body.theme-light .objective-card p {
+    body.theme-red, body.theme-wine, body .objective-card p {
       color: #F8DCDC;
     }
     .objective-card p:last-of-type {
@@ -1910,45 +1879,82 @@
       .objectives-grid { grid-template-columns: 1fr; }
     }
 
-    /* --- SLIDE 9: METODOLOGIA (7 FERRAMENTAS INTERATIVAS) --- */
-    .methodology-chips-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+    /* --- SLIDE NOVO: FERRAMENTAS UTILIZADAS PARA MAPEAR O PROCESSO --- */
+    .tools-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      width: 100%;
+      margin-top: 1.6rem;
     }
-    .method-tool-chip {
-      background: var(--bg-2);
-      border: 1px solid rgba(255, 204, 20, 0.25);
-      border-radius: 10px;
-      padding: 12px 20px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #fff;
-      cursor: pointer;
-      transition: var(--transition-smooth);
+    @media (max-width: 992px) {
+      .tools-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .tools-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .tool-item-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(18px, 1.8vw, 24px);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 18px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
     }
-    .method-tool-chip:hover, .method-tool-chip.is-active {
-      background: var(--yellow);
-      color: #000;
+    .tool-item-box:hover {
       border-color: var(--yellow);
       transform: translateY(-3px);
       box-shadow: var(--glow-gold);
     }
-    .method-detail-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border-gold);
-      border-radius: 14px;
-      padding: 24px;
-      margin-top: 12px;
+    .tool-icon-col {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.28);
+      color: var(--yellow);
       display: flex;
       align-items: center;
-      gap: 20px;
-      animation: fadeIn 0.4s ease;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tool-divider-border {
+      width: 2px;
+      height: 48px;
+      background: var(--yellow);
+      opacity: 0.8;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .tool-text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .tool-name-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tool-desc-text {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.45;
+    }
+    .tool-item-box.full-width-tool {
+      grid-column: 1 / -1;
     }
 
     /* --- SLIDE 10: PROPOSTA & SCANNER DE IA --- */
@@ -2082,7 +2088,7 @@
       position: relative;
       overflow: hidden;
     }
-    body.theme-light .conclusao-card-box {
+    body.theme-red, body.theme-wine, body .conclusao-card-box {
       background: rgba(75, 2, 8, 0.78);
       border-color: rgba(255, 212, 59, 0.35);
     }
@@ -2122,7 +2128,7 @@
       text-transform: uppercase;
       box-shadow: 0 0 20px rgba(255, 204, 20, 0.2);
     }
-    body.theme-light .conclusao-thanks-badge {
+    body.theme-red, body.theme-wine, body .conclusao-thanks-badge {
       background: rgba(255, 212, 59, 0.2);
       color: #FFF;
       border-color: var(--yellow);
@@ -2354,9 +2360,9 @@
     }
   
     /* ==========================================================================
-       TEMA CLARO / DESKTOP (VERMELHO COM TONS DE DOURADO)
+       TEMA VERMELHO (PADRÃO / ATUAL) & TEMA VINHO (DESKTOP FIBRA ELEGANTE)
        ========================================================================== */
-    body.theme-light {
+    body, body.theme-red {
       --bg-0: #7A010C;
       --bg-1: #8C020E;
       --bg-2: #650008;
@@ -2378,82 +2384,222 @@
       background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
     }
 
-    body.theme-light .global-ambient-layer {
+    /* Variações no tema vermelho padrão */
+    .global-ambient-layer {
       background: 
         radial-gradient(circle at 85% 45%, rgba(255, 130, 20, 0.35) 0%, rgba(235, 36, 26, 0.2) 35%, transparent 65%),
         radial-gradient(circle at 75% 25%, rgba(255, 212, 59, 0.22) 0%, transparent 45%),
         linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 40%);
     }
 
-    body.theme-light .topographic-lines-svg path {
+    .topographic-lines-svg path {
       stroke: rgba(255, 225, 120, 0.28);
     }
 
-    body.theme-light .top-bar {
-      background: linear-gradient(180deg, rgba(80, 2, 8, 0.92) 0%, rgba(80, 2, 8, 0) 100%);
-      border-bottom: 1px solid rgba(255, 212, 59, 0.2);
+    .top-bar {
+      background: linear-gradient(180deg, rgba(80, 2, 8, 0.92) 0%, rgba(80, 2, 8, 0) 100%) !important;
+      border-bottom: 1px solid rgba(255, 212, 59, 0.2) !important;
     }
 
-    body.theme-light .bottom-bar {
-      background: linear-gradient(0deg, rgba(80, 2, 8, 0.95) 0%, rgba(80, 2, 8, 0) 100%);
-      border-top: 1px solid rgba(255, 212, 59, 0.15);
+    .bottom-bar {
+      background: linear-gradient(0deg, rgba(80, 2, 8, 0.95) 0%, rgba(80, 2, 8, 0) 100%) !important;
+      border-top: 1px solid rgba(255, 212, 59, 0.15) !important;
     }
 
-    body.theme-light .btn-icon,
-    body.theme-light .slide-counter,
-    body.theme-light .autoplay-badge,
-    body.theme-light .nav-dots-container {
+    .btn-icon,
+    .slide-counter,
+    .autoplay-badge,
+    .nav-dots-container {
       background: rgba(70, 2, 7, 0.85);
       border-color: rgba(255, 212, 59, 0.3);
       color: #fff;
     }
 
-    body.theme-light .btn-icon:hover {
+    .btn-icon:hover {
       background: rgba(255, 212, 59, 0.25);
       color: var(--yellow);
     }
 
-    body.theme-light .badge {
+    .badge {
       background: var(--yellow);
       color: #7A010C;
       font-weight: 800;
     }
 
-    body.theme-light .problem-highlight-box {
+    .problem-highlight-box {
       background: rgba(65, 2, 6, 0.85);
       border-left-color: var(--yellow);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    body.theme-light .badge-chip {
+    .badge-chip {
       background: rgba(60, 2, 6, 0.7);
       border-color: rgba(255, 212, 59, 0.35);
       color: #fff;
     }
 
-    body.theme-light .hex-avatar-inner {
+    .hex-avatar-inner {
       background: #500207;
     }
 
-    body.theme-light .nav-arrow-btn {
+    .nav-arrow-btn {
       background: rgba(75, 2, 7, 0.8);
       border-color: rgba(255, 212, 59, 0.35);
       color: #fff;
     }
 
-    body.theme-light .nav-arrow-btn:hover {
+    .nav-arrow-btn:hover {
       background: var(--yellow);
       color: #7A010C;
     }
 
-    body.theme-light .modal-backdrop {
+    .modal-backdrop {
       background: rgba(45, 1, 4, 0.85);
     }
 
-    body.theme-light .overview-card,
-    body.theme-light .shortcuts-modal {
+    .overview-card,
+    .shortcuts-modal {
       background: #6B010B;
       border-color: rgba(255, 212, 59, 0.35);
+    }
+
+    /* ==========================================================================
+       TEMA VINHO / BORDÔ ELEGANTE (DESKTOP FIBRA + CELULAR)
+       ========================================================================== */
+    body.theme-wine {
+      --bg-0: #260509;
+      --bg-1: #38080E;
+      --bg-2: #4C0B14;
+      --bg-3: #5E0E19;
+      --bg-card: rgba(48, 7, 13, 0.78);
+      --bg-card-hover: rgba(72, 11, 20, 0.92);
+      --yellow: #FFCC14;
+      --gold: #E5AC0B;
+      --red-dark: #1E0306;
+      --red-alert: #FF334B;
+      --text-1: #FFFFFF;
+      --text-2: #F5D7DC;
+      --text-muted: #D19BA4;
+      --line: rgba(255, 204, 20, 0.22);
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-gold: rgba(255, 204, 20, 0.38);
+      --glow-gold: 0 0 25px rgba(255, 204, 20, 0.3);
+      --glow-red: 0 0 25px rgba(114, 17, 30, 0.4);
+      /* Fundo Vinho Sofisticado Desktop Fibra */
+      background: linear-gradient(128deg, #1C0407 0%, #2E070C 28%, #440A12 58%, #5A0E18 84%, #6E121E 100%) !important;
+    }
+
+    body.theme-wine .global-ambient-layer {
+      background: 
+        radial-gradient(circle at 80% 40%, rgba(138, 20, 36, 0.42) 0%, rgba(90, 14, 24, 0.25) 35%, transparent 70%),
+        radial-gradient(circle at 20% 70%, rgba(70, 10, 18, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 70% 20%, rgba(255, 204, 20, 0.15) 0%, transparent 40%),
+        linear-gradient(90deg, rgba(15, 2, 4, 0.5) 0%, transparent 45%) !important;
+    }
+
+    body.theme-wine .topographic-lines-svg path {
+      stroke: rgba(255, 215, 140, 0.22) !important;
+    }
+
+    body.theme-wine .top-bar {
+      background: linear-gradient(180deg, rgba(32, 4, 8, 0.95) 0%, rgba(32, 4, 8, 0) 100%) !important;
+      border-bottom: 1px solid rgba(255, 204, 20, 0.18) !important;
+    }
+
+    body.theme-wine .bottom-bar {
+      background: linear-gradient(0deg, rgba(30, 4, 7, 0.96) 0%, rgba(30, 4, 7, 0) 100%) !important;
+      border-top: 1px solid rgba(255, 204, 20, 0.15) !important;
+    }
+
+    body.theme-wine .btn-icon,
+    body.theme-wine .slide-counter,
+    body.theme-wine .autoplay-badge,
+    body.theme-wine .nav-dots-container {
+      background: rgba(42, 6, 11, 0.88) !important;
+      border-color: rgba(255, 204, 20, 0.28) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .btn-icon:hover {
+      background: rgba(255, 204, 20, 0.2) !important;
+      color: var(--yellow) !important;
+    }
+
+    body.theme-wine .badge {
+      background: var(--yellow) !important;
+      color: #38080E !important;
+      font-weight: 800 !important;
+    }
+
+    body.theme-wine .problem-highlight-box {
+      background: rgba(40, 6, 11, 0.9) !important;
+      border-left-color: var(--yellow) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+    }
+
+    body.theme-wine .badge-chip {
+      background: rgba(45, 6, 12, 0.75) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .hex-avatar-inner {
+      background: #2D060C !important;
+    }
+
+    body.theme-wine .nav-arrow-btn {
+      background: rgba(48, 7, 13, 0.85) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .nav-arrow-btn:hover {
+      background: var(--yellow) !important;
+      color: #38080E !important;
+    }
+
+    body.theme-wine .modal-backdrop {
+      background: rgba(22, 3, 5, 0.88) !important;
+    }
+
+    body.theme-wine .overview-card,
+    body.theme-wine .shortcuts-modal {
+      background: #3B0910 !important;
+      border-color: rgba(255, 204, 20, 0.32) !important;
+    }
+
+    body.theme-wine .conclusao-card-box {
+      background: rgba(52, 7, 14, 0.82) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+    }
+
+    body.theme-wine .flowchart-tobe-container,
+    body.theme-wine .flowchart-asis-container {
+      background: rgba(35, 5, 9, 0.75) !important;
+      border-color: rgba(255, 204, 20, 0.22) !important;
+    }
+
+    body.theme-wine .fishbone-svg-wrap {
+      background: rgba(35, 5, 9, 0.72) !important;
+      border-color: rgba(255, 204, 20, 0.22) !important;
+    }
+
+    body.theme-wine .bone-cat-box {
+      fill: #34060C !important;
+      stroke: var(--yellow) !important;
+    }
+
+    body.theme-wine .fish-head-box {
+      fill: #34050C !important;
+      stroke: var(--yellow) !important;
+    }
+
+    body.theme-wine .quadro-indicadores-table th {
+      background: rgba(55, 8, 15, 0.85) !important;
+    }
+
+    body.theme-wine .quadro-indicadores-table td {
+      background: rgba(38, 5, 10, 0.65) !important;
     }
 
     /* Linhas orgânicas fluidas animadas no fundo (estilo Desktop Telecom) */
@@ -2488,10 +2634,6 @@
 </head>
 <body>
 
-  <!-- 1. Cursor Customizado -->
-  <div class="custom-cursor" id="customCursor"></div>
-  <div class="custom-cursor-dot" id="customCursorDot"></div>
-
   <!-- 2. Partículas Douradas Sutis em Canvas -->
   <canvas id="ambient-canvas"></canvas>
 
@@ -2509,14 +2651,14 @@
     </div>
 
     <div class="top-controls">
-      <!-- Alternar Tema (Escuro / Vermelho Desktop) -->
-      <button class="btn-icon" id="themeToggleBtn" title="Alternar Modo Claro (Vermelho Desktop) / Escuro" aria-label="Alternar tema de cores">
-        <i data-lucide="sun" id="themeToggleIcon" style="width:18px; height:18px;"></i>
+      <!-- Alternar Tema (Vermelho Desktop / Vinho Desktop) -->
+      <button class="btn-icon" id="themeToggleBtn" title="Alternar Tema (Vermelho Desktop / Vinho Bordô)" aria-label="Alternar tema de cores">
+        <i data-lucide="palette" id="themeToggleIcon" style="width:18px; height:18px;"></i>
       </button>
 
       <!-- Indicador Numérico -->
       <div class="slide-counter" aria-live="polite">
-        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">17</span>
+        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">18</span>
       </div>
 
       <!-- Botão Visão Geral (Overview) -->
@@ -2638,8 +2780,8 @@
           <div class="problem-highlight-box">
             <span class="marker-highlight">Gargalos</span>, 
             <span class="marker-highlight">idas e vindas</span> dos chamados entre as áreas, 
-            <span class="marker-highlight">documentos incompletos</span>, ausência de documentação, 
-            <span class="marker-highlight">falta de padronização</span> no atendimento etc., para então propor melhorias e tornar o fluxo mais ágil e padronizado.
+            <span class="marker-highlight">documentos incompletos</span>, 
+            ausência de documentação e <span class="marker-highlight">falta de padronização</span> no atendimento. Para então propor melhorias e tornar o fluxo mais ágil e padronizado.
           </div>
 
           <div class="problem-chips-grid">
@@ -2895,7 +3037,116 @@
       </section>
 
       <!-- ==========================================
-           SLIDE 6: DIAGNÓSTICO (ISHIKAWA)
+           SLIDE NOVO: FERRAMENTAS UTILIZADAS PARA MAPEAR O PROCESSO
+           ========================================== -->
+      <section class="slide" id="slide-ferramentas" aria-roledescription="slide" aria-label="Ferramentas Utilizadas para Mapear o Processo">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> METODOLOGIA APLICADA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Ferramentas Utilizadas para <span class="highlight-yellow">Mapear o Processo</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="tools-showcase-grid">
+            <!-- 1. KANBAN -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="18" rx="3.5"></rect>
+                  <line x1="2" y1="7" x2="22" y2="7"></line>
+                  <line x1="8.5" y1="7" x2="8.5" y2="21"></line>
+                  <line x1="15.5" y1="7" x2="15.5" y2="21"></line>
+                  <!-- Cards Coluna 1 -->
+                  <rect x="3.8" y="9.5" width="3.2" height="3" rx="0.8"></rect>
+                  <rect x="3.8" y="14.5" width="3.2" height="3" rx="0.8"></rect>
+                  <!-- Card Coluna 2 -->
+                  <rect x="10.2" y="9.5" width="3.4" height="3.5" rx="0.8"></rect>
+                  <!-- Card Coluna 3 -->
+                  <rect x="17.2" y="12.5" width="3.2" height="3" rx="0.8"></rect>
+                </svg>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Kanban</div>
+                <div class="tool-desc-text">Acompanha tarefas em andamento.</div>
+              </div>
+            </div>
+
+            <!-- 2. SIPOC -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="file-text" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">SIPOC</div>
+                <div class="tool-desc-text">Oferece uma visão geral do processo.</div>
+              </div>
+            </div>
+
+            <!-- 3. MATRIZ GUT -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="box" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Matriz GUT</div>
+                <div class="tool-desc-text">Auxilia na priorização dos problemas.</div>
+              </div>
+            </div>
+
+            <!-- 4. 5W2H -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="clipboard-list" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">5W2H</div>
+                <div class="tool-desc-text">Estrutura os planos de ação.</div>
+              </div>
+            </div>
+
+            <!-- 5. ISHIKAWA -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="git-pull-request" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Ishikawa</div>
+                <div class="tool-desc-text">Identifica as causas dos problemas.</div>
+              </div>
+            </div>
+
+            <!-- 6. PDCA -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="refresh-cw" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">PDCA</div>
+                <div class="tool-desc-text">Promove a melhoria contínua.</div>
+              </div>
+            </div>
+
+            <!-- 7. ESFORÇO × IMPACTO (Card amplo) -->
+            <div class="tool-item-box full-width-tool">
+              <div class="tool-icon-col">
+                <i data-lucide="trending-up" style="width:28px; height:28px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col" style="flex:1;">
+                <div class="tool-name-title">Esforço × Impacto</div>
+                <div class="tool-desc-text">Priorização ação — Auxilia na priorização das ações conforme impacto e esforço.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 8: DIAGNÓSTICO (ISHIKAWA)
            ========================================== -->
       <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 17: Diagrama de Ishikawa">
         <div class="slide-content-container">
@@ -2907,155 +3158,155 @@
           <!-- Espinha de Peixe Dinâmica (Fiel à Imagem Brainstorming TCC) -->
           <div class="fishbone-container">
             <div class="fishbone-svg-wrap">
-                                          <svg class="fishbone-svg" viewBox="0 0 1000 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <svg class="fishbone-svg" viewBox="0 0 1140 480" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <marker id="arrowhead" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
-                    <polygon points="0 0, 12 4.5, 0 9" fill="var(--yellow)" />
+                  <marker id="arrowhead" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto">
+                    <polygon points="0 0, 14 5, 0 10" fill="var(--yellow)" />
                   </marker>
                 </defs>
 
-                <!-- ESPINHA CENTRAL (Coluna Vertebral) -->
-                <line x1="90" y1="240" x2="745" y2="240" class="bone-spine" marker-end="url(#arrowhead)" />
+                <!-- ESPINHA CENTRAL (Coluna Vertebral alargada de 50 a 860) -->
+                <line x1="50" y1="240" x2="865" y2="240" class="bone-spine" marker-end="url(#arrowhead)" />
 
                 <!-- ================= 1. CATEGORIA: PESSOAS ================= -->
                 <g class="fishbone-cat-group" data-category="pessoas">
                   <!-- Caixa de Categoria Superior -->
-                  <rect x="255" y="14" width="130" height="40" class="bone-cat-box" />
-                  <text x="320" y="34" class="bone-cat-title">PESSOAS</text>
+                  <rect x="235" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="300" y="34" class="bone-cat-title">PESSOAS</text>
 
                   <!-- Ramo Principal Inclinado -->
-                  <line x1="320" y1="54" x2="375" y2="240" class="bone-branch" />
+                  <line x1="300" y1="54" x2="355" y2="240" class="bone-branch" />
 
-                  <!-- Causa 1: Treinamento não padronizado (Y=95, X_ramo=332) -->
+                  <!-- Causa 1: Treinamento não padronizado (Y=95, X_ramo=312) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="95" x2="332" y2="95" class="bone-sub" />
-                    <circle cx="332" cy="95" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="95" text-anchor="end" class="bone-cause-text">Treinamento não padronizado</text>
+                    <line x1="60" y1="95" x2="312" y2="95" class="bone-sub" />
+                    <circle cx="312" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="95" text-anchor="start" class="bone-cause-text">Treinamento não padronizado</text>
                   </g>
 
-                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=347) -->
+                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=327) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="145" x2="347" y2="145" class="bone-sub" />
-                    <circle cx="347" cy="145" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="145" text-anchor="end" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
+                    <line x1="60" y1="145" x2="327" y2="145" class="bone-sub" />
+                    <circle cx="327" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="145" text-anchor="start" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
                   </g>
 
-                  <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=362) -->
+                  <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=342) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="195" x2="362" y2="195" class="bone-sub" />
-                    <circle cx="362" cy="195" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="195" text-anchor="end" class="bone-cause-text">Sobrecarga da equipe</text>
+                    <line x1="60" y1="195" x2="342" y2="195" class="bone-sub" />
+                    <circle cx="342" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="195" text-anchor="start" class="bone-cause-text">Sobrecarga da equipe</text>
                   </g>
                 </g>
 
                 <!-- ================= 2. CATEGORIA: PROCESSO ================= -->
                 <g class="fishbone-cat-group" data-category="processo">
-                  <!-- Caixa de Categoria Superior -->
-                  <rect x="535" y="14" width="130" height="40" class="bone-cat-box" />
-                  <text x="600" y="34" class="bone-cat-title">PROCESSO</text>
+                  <!-- Caixa de Categoria Superior (Espaçamento alargado, agora em X=660) -->
+                  <rect x="595" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="660" y="34" class="bone-cat-title">PROCESSO</text>
 
                   <!-- Ramo Principal Inclinado -->
-                  <line x1="600" y1="54" x2="655" y2="240" class="bone-branch" />
+                  <line x1="660" y1="54" x2="715" y2="240" class="bone-branch" />
 
-                  <!-- Causa 1: Ausência de fluxos formais (Y=95, X_ramo=612) -->
+                  <!-- Causa 1: Ausência de fluxos formais (Y=95, X_ramo=672) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="95" x2="612" y2="95" class="bone-sub" />
-                    <circle cx="612" cy="95" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="95" text-anchor="end" class="bone-cause-text">Ausência de fluxos formais</text>
+                    <line x1="420" y1="95" x2="672" y2="95" class="bone-sub" />
+                    <circle cx="672" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="95" text-anchor="start" class="bone-cause-text">Ausência de fluxos formais</text>
                   </g>
 
-                  <!-- Causa 2: Falta de pré-triagem (Y=145, X_ramo=627) -->
+                  <!-- Causa 2: Falta de pré-triagem (Y=145, X_ramo=687) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="145" x2="627" y2="145" class="bone-sub" />
-                    <circle cx="627" cy="145" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="145" text-anchor="end" class="bone-cause-text">Falta de pré-triagem</text>
+                    <line x1="420" y1="145" x2="687" y2="145" class="bone-sub" />
+                    <circle cx="687" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="145" text-anchor="start" class="bone-cause-text">Falta de pré-triagem</text>
                   </g>
 
-                  <!-- Causa 3: Atribuição inadequada de tarefas (Y=195, X_ramo=642) -->
+                  <!-- Causa 3: Atribuição inadequada de tarefas (Y=195, X_ramo=702) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="195" x2="642" y2="195" class="bone-sub" />
-                    <circle cx="642" cy="195" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="195" text-anchor="end" class="bone-cause-text">Atribuição inadequada de tarefas</text>
+                    <line x1="420" y1="195" x2="702" y2="195" class="bone-sub" />
+                    <circle cx="702" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="195" text-anchor="start" class="bone-cause-text">Atribuição inadequada de tarefas</text>
                   </g>
                 </g>
 
                 <!-- ================= 3. CATEGORIA: TECNOLOGIA ================= -->
                 <g class="fishbone-cat-group" data-category="tecnologia">
                   <!-- Ramo Principal Inclinado -->
-                  <line x1="320" y1="426" x2="375" y2="240" class="bone-branch" />
+                  <line x1="300" y1="426" x2="355" y2="240" class="bone-branch" />
 
                   <!-- Caixa de Categoria Inferior -->
-                  <rect x="250" y="426" width="140" height="40" class="bone-cat-box" />
-                  <text x="320" y="446" class="bone-cat-title">TECNOLOGIA</text>
+                  <rect x="230" y="426" width="140" height="40" class="bone-cat-box" />
+                  <text x="300" y="446" class="bone-cat-title">TECNOLOGIA</text>
 
-                  <!-- Causa 1: Uso de planilhas e pastas físicas (Y=285, X_ramo=362) -->
+                  <!-- Causa 1: Uso de planilhas e pastas físicas (Y=285, X_ramo=342) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="285" x2="362" y2="285" class="bone-sub" />
-                    <circle cx="362" cy="285" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="285" text-anchor="end" class="bone-cause-text">Uso de planilhas e pastas físicas</text>
+                    <line x1="60" y1="285" x2="342" y2="285" class="bone-sub" />
+                    <circle cx="342" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="285" text-anchor="start" class="bone-cause-text">Uso de planilhas e pastas físicas</text>
                   </g>
 
-                  <!-- Causa 2: Ferramentas não integradas (Y=335, X_ramo=347) -->
+                  <!-- Causa 2: Ferramentas não integradas (Y=335, X_ramo=327) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="335" x2="347" y2="335" class="bone-sub" />
-                    <circle cx="347" cy="335" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="335" text-anchor="end" class="bone-cause-text">Ferramentas não integradas</text>
+                    <line x1="60" y1="335" x2="327" y2="335" class="bone-sub" />
+                    <circle cx="327" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="335" text-anchor="start" class="bone-cause-text">Ferramentas não integradas</text>
                   </g>
 
-                  <!-- Causa 3: Sistemas com limitações (Y=385, X_ramo=332) -->
+                  <!-- Causa 3: Sistemas com limitações (Y=385, X_ramo=312) -->
                   <g class="bone-cause-item">
-                    <line x1="230" y1="385" x2="332" y2="385" class="bone-sub" />
-                    <circle cx="332" cy="385" r="3.5" class="bone-cause-dot" />
-                    <text x="220" y="385" text-anchor="end" class="bone-cause-text">Sistemas com limitações</text>
+                    <line x1="60" y1="385" x2="312" y2="385" class="bone-sub" />
+                    <circle cx="312" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="385" text-anchor="start" class="bone-cause-text">Sistemas com limitações</text>
                   </g>
                 </g>
 
                 <!-- ================= 4. CATEGORIA: MEIO AMBIENTE ================= -->
                 <g class="fishbone-cat-group" data-category="meio-ambiente">
                   <!-- Ramo Principal Inclinado -->
-                  <line x1="600" y1="426" x2="655" y2="240" class="bone-branch" />
+                  <line x1="660" y1="426" x2="715" y2="240" class="bone-branch" />
 
                   <!-- Caixa de Categoria Inferior -->
-                  <rect x="525" y="426" width="150" height="40" class="bone-cat-box" />
-                  <text x="600" y="446" class="bone-cat-title">MEIO AMBIENTE</text>
+                  <rect x="585" y="426" width="150" height="40" class="bone-cat-box" />
+                  <text x="660" y="446" class="bone-cat-title">MEIO AMBIENTE</text>
 
-                  <!-- Causa 1: Comunicação desalinhada (Y=285, X_ramo=642) -->
+                  <!-- Causa 1: Comunicação desalinhada (Y=285, X_ramo=702) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="285" x2="642" y2="285" class="bone-sub" />
-                    <circle cx="642" cy="285" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="285" text-anchor="end" class="bone-cause-text">Comunicação desalinhada</text>
+                    <line x1="420" y1="285" x2="702" y2="285" class="bone-sub" />
+                    <circle cx="702" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="285" text-anchor="start" class="bone-cause-text">Comunicação desalinhada</text>
                   </g>
 
-                  <!-- Causa 2: Alta demanda de trabalho (Y=335, X_ramo=627) -->
+                  <!-- Causa 2: Alta demanda de trabalho (Y=335, X_ramo=687) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="335" x2="627" y2="335" class="bone-sub" />
-                    <circle cx="627" cy="335" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="335" text-anchor="end" class="bone-cause-text">Alta demanda de trabalho</text>
+                    <line x1="420" y1="335" x2="687" y2="335" class="bone-sub" />
+                    <circle cx="687" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="335" text-anchor="start" class="bone-cause-text">Alta demanda de trabalho</text>
                   </g>
 
-                  <!-- Causa 3: Falta de recursos (equipe, ferramentas e infraestrutura) (Y=385, X_ramo=612) -->
+                  <!-- Causa 3: Falta de recursos (equipe, ferramentas e infraestrutura) (Y=385, X_ramo=672) -->
                   <g class="bone-cause-item">
-                    <line x1="510" y1="385" x2="612" y2="385" class="bone-sub" />
-                    <circle cx="612" cy="385" r="3.5" class="bone-cause-dot" />
-                    <text x="500" y="380" text-anchor="end" class="bone-cause-text">Falta de recursos (equipe, ferramentas</text>
-                    <text x="500" y="396" text-anchor="end" class="bone-cause-text">e infraestrutura)</text>
+                    <line x1="420" y1="385" x2="672" y2="385" class="bone-sub" />
+                    <circle cx="672" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="380" text-anchor="start" class="bone-cause-text">Falta de recursos (equipe, ferramentas</text>
+                    <text x="410" y="396" text-anchor="start" class="bone-cause-text">e infraestrutura)</text>
                   </g>
                 </g>
 
                 <!-- ================= CABEÇA DO PEIXE: EFEITO CRÍTICO ================= -->
                 <g class="fish-head-group">
-                  <rect x="760" y="130" width="205" height="220" class="fish-head-box" />
+                  <rect x="880" y="130" width="220" height="220" class="fish-head-box" />
                   
-                  <text x="862" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
+                  <text x="990" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
                   
-                  <text x="862" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
-                  <text x="862" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
+                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="990" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
                   
-                  <text x="862" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
                   
-                  <line x1="785" y1="288" x2="940" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                  <line x1="905" y1="288" x2="1075" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
                   
-                  <text x="862" y="318" font-family="var(--font-heading)" font-size="15" font-weight="800" fill="var(--red-alert)" text-anchor="middle">Recusa de 18,93%</text>
+                  <text x="990" y="318" font-family="var(--font-heading)" font-size="15" font-weight="800" fill="var(--red-alert)" text-anchor="middle">Recusa de 18,93%</text>
                 </g>
               </svg>
             </div>
@@ -3519,7 +3770,7 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 17,
+      totalSlides: 18,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
@@ -3555,6 +3806,7 @@
         "Mapeamento do Processo",
         "Fluxo Atual (AS-IS)",
         "Diagnóstico: SLA e Retrabalho",
+        "Ferramentas de Mapeamento",
         "Ishikawa",
         "Propostas do Grupo",
         "Proposta: Lecom",
@@ -3849,7 +4101,7 @@
 
       // Animação com GSAP para stagger de elementos filhos
       if (typeof gsap !== 'undefined') {
-        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card, .mapping-card');
+        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card, .mapping-card, .tool-item-box');
         
         gsap.fromTo(animElements, 
           { opacity: 0, y: 25, filter: 'blur(4px)' },
@@ -4215,31 +4467,22 @@
        CURSOR PERSONALIZADO & PARTÍCULAS
        ========================================================================== */
     function initCustomCursor() {
-      const cursor = document.getElementById('customCursor');
-      const dot = document.getElementById('customCursorDot');
-      if (!cursor || !dot) return;
-
-      window.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-      });
-
-      // Efeito ao pairar sobre elementos interativos
-      const interactives = document.querySelectorAll('button, .nav-dot, .premium-card, .hex-member-card, .overview-card, a');
-      interactives.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-      });
+      // Cursor customizado desativado - utilizando cursor padrão do sistema
+      return;
     }
 
     
     /* ==========================================================================
-       SISTEMA DE TEMAS: MODO ESCURO VS MODO CLARO (VERMELHO DESKTOP)
+       SISTEMA DE TEMAS: TEMA VERMELHO DESKTOP VS TEMA VINHO BORDÔ
        ========================================================================== */
     function initTheme() {
-      const savedTheme = localStorage.getItem('presentation-theme') || 'dark';
+      let savedTheme = localStorage.getItem('presentation-theme');
+      // Migração: se o usuário tinha salvo 'dark' ou 'light', ajustamos para 'red' ou 'wine'
+      if (!savedTheme || savedTheme === 'dark' || savedTheme === 'red') {
+        savedTheme = 'red';
+      } else if (savedTheme === 'light' || savedTheme === 'wine') {
+        savedTheme = 'wine';
+      }
       applyTheme(savedTheme);
 
       const themeToggleBtn = document.getElementById('themeToggleBtn');
@@ -4249,27 +4492,37 @@
     }
 
     function toggleTheme() {
-      const currentTheme = document.body.classList.contains('theme-light') ? 'light' : 'dark';
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      const isWine = document.body.classList.contains('theme-wine');
+      const newTheme = isWine ? 'red' : 'wine';
       applyTheme(newTheme);
       localStorage.setItem('presentation-theme', newTheme);
     }
 
     function applyTheme(theme) {
       const icon = document.getElementById('themeToggleIcon');
+      const toggleBtn = document.getElementById('themeToggleBtn');
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      if (theme === 'light') {
-        document.body.classList.add('theme-light');
+
+      if (theme === 'wine') {
+        document.body.classList.remove('theme-red', 'theme-light');
+        document.body.classList.add('theme-wine');
         if (icon) {
-          icon.setAttribute('data-lucide', 'moon');
+          icon.setAttribute('data-lucide', 'sparkles');
         }
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#8E010E');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('title', 'Tema Atual: Vinho Bordô (Clique para Vermelho)');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#38080E');
       } else {
-        document.body.classList.remove('theme-light');
+        document.body.classList.remove('theme-wine', 'theme-light');
+        document.body.classList.add('theme-red');
         if (icon) {
-          icon.setAttribute('data-lucide', 'sun');
+          icon.setAttribute('data-lucide', 'flame');
         }
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#FFCC14');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('title', 'Tema Atual: Vermelho Gamer (Clique para Vinho)');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#B30816');
       }
       if (window.lucide) {
         lucide.createIcons();
