@@ -1,0 +1,4584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | SENAI & DESKTOP</title>
+  <meta name="description" content="Apresentação executiva interativa - Projeto de Conclusão de Curso (Técnico em Administração, SENAI) sobre a otimização do fluxo de solicitação de parecer jurídico da DESKTOP com IA e automação.">
+  <meta name="theme-color" content="#FFCC14">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Dor Relatada do Setor Jurídico | Solicitação de Parecer Jurídico | SENAI & DESKTOP">
+  <meta property="og:description" content="Apresentação em slides horizontais interativos com diagnóstico SLA, Ishikawa, fluxos AS IS / TO BE e proposta de IA.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/desktop-logo.jpg">
+  <link rel="apple-touch-icon" href="assets/desktop-logo.jpg">
+
+  <!-- Google Fonts: Sora (Headings) & DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <style>
+    /* ==========================================================================
+       1. VARIÁVEIS CSS E DESIGN SYSTEM (TEMA VERMELHO DESKTOP BASE & TEMA VINHO)
+       ========================================================================== */
+    :root {
+      --bg-0: #7A010C;
+      --bg-1: #8C020E;
+      --bg-2: #650008;
+      --bg-3: #520006;
+      --bg-card: rgba(85, 3, 10, 0.72);
+      --bg-card-hover: rgba(115, 5, 15, 0.88);
+      --yellow: #FFD43B;
+      --gold: #FFC107;
+      --red-dark: #3F0005;
+      --red-alert: #FF4D4D;
+      --text-1: #FFFFFF;
+      --text-2: #FCE8E8;
+      --text-muted: #E5B4B4;
+      --line: rgba(255, 212, 59, 0.28);
+      --border-subtle: rgba(255, 255, 255, 0.16);
+      --border-gold: rgba(255, 212, 59, 0.45);
+      --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
+      --glow-red: 0 0 25px rgba(235, 36, 26, 0.35);
+      
+      --font-heading: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease-power: cubic-bezier(0.65, 0, 0.35, 1);
+      --transition-smooth: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      --header-height: 56px;
+      --nav-bar-height: 70px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #500007;
+      background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
+      color: var(--text-1);
+      font-family: var(--font-body);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.5s ease;
+    }
+
+    /* Acessibilidade de foco */
+    :focus-visible {
+      outline: 2px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    /* Scrollbar personalizada para áreas com rolagem interna */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,204,20,0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--yellow);
+    }
+
+    /* ==========================================================================
+    .custom-cursor, .custom-cursor-dot {
+      display: none !important;
+    }
+
+    /* Canvas de partículas douradas sutis */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    /* Camada de fundo global (Gradiente + Linhas Topográficas + Marca d'água 'Y') */
+    .global-ambient-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .ambient-radial-glow {
+      position: absolute;
+      top: -20%;
+      left: -15%;
+      width: 75vw;
+      height: 75vh;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0%, rgba(255, 204, 20, 0.02) 40%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    /* ==========================================================================
+       3. ESTRUTURA GERAL DOS SLIDES (HORIZONTAL SLIDER)
+       ========================================================================== */
+    .presentation-viewport {
+      position: relative;
+      width: 100vw;
+      height: 100dvh;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .slides-track {
+      display: flex;
+      width: 1800vw; /* 18 slides x 100vw */
+      height: 100%;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100dvh;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: clamp(1.2rem, 3.5vw, 4rem);
+      padding-top: calc(var(--header-height) + 2.2rem);
+      padding-bottom: calc(var(--nav-bar-height) + 1rem);
+      box-sizing: border-box;
+      overflow-y: auto;
+      overflow-x: hidden;
+      opacity: 0.15;
+      transform: scale(0.97);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Container de conteúdo dentro de cada slide */
+    .slide-content-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: auto auto;
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
+
+    /* ==========================================================================
+       4. CABEÇALHOS, BARRA DE NAVEGAÇÃO E CONTROLES DE INTERFACE
+       ========================================================================== */
+    /* Barra Superior */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    .top-progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--yellow));
+      box-shadow: 0 0 10px var(--yellow);
+      transition: width 0.4s ease;
+      z-index: 102;
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .brand-logo-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(255, 204, 20, 0.35);
+      border: 1px solid rgba(255, 204, 20, 0.45);
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .brand-meta .badge {
+      background: rgba(255,204,20,0.12);
+      border: 1px solid rgba(255,204,20,0.4);
+      color: var(--yellow);
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .top-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-icon {
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-1);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .btn-icon:hover {
+      background: rgba(255, 204, 20, 0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: translateY(-2px);
+    }
+
+    /* Contador do Slide "03 / 12" */
+    .slide-counter {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: var(--text-1);
+      padding: 4px 12px;
+      background: rgba(20,20,20,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+    }
+    .slide-counter .current-num {
+      color: var(--yellow);
+      font-size: 1.15rem;
+    }
+
+    /* Barra Inferior de Navegação & Dots */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-bar-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 3vw, 2.5rem);
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .bottom-bar > * {
+      pointer-events: auto;
+    }
+
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .nav-hint-key {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 2px 7px;
+      border-radius: 4px;
+      color: var(--text-2);
+      font-weight: 600;
+      font-family: monospace;
+    }
+
+    /* Dots Centralizados */
+    .dots-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 14, 14, 0.75);
+      padding: 7px 14px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+    .nav-dot:hover {
+      background: var(--yellow);
+      transform: scale(1.4);
+    }
+    .nav-dot.is-active {
+      width: 26px;
+      border-radius: 6px;
+      background: var(--yellow);
+      box-shadow: 0 0 10px rgba(255, 204, 20, 0.5);
+    }
+
+    /* Tooltip do Dot */
+    .nav-dot .dot-tooltip {
+      position: absolute;
+      bottom: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      background: #111;
+      border: 1px solid var(--border-gold);
+      color: var(--text-1);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+      font-family: var(--font-heading);
+    }
+    .nav-dot:hover .dot-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Botões Flutuantes de Navegação (Setas Laterais) */
+    .nav-arrow-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(28,28,28,0.85) 0%, rgba(10,10,10,0.85) 100%);
+      border: 1px solid rgba(255, 204, 20, 0.22);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 90;
+      transition: var(--transition-smooth);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .nav-arrow-btn:hover {
+      border-color: var(--yellow);
+      background: linear-gradient(135deg, rgba(40,40,40,0.95) 0%, rgba(18,18,18,0.95) 100%);
+      box-shadow: var(--glow-gold);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .nav-arrow-btn.prev { left: 24px; }
+    .nav-arrow-btn.next { right: 24px; }
+    .nav-arrow-btn:disabled {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-arrow-btn { display: none; }
+      .nav-hints { display: none; }
+    }
+
+    /* ==========================================================================
+       5. COMPONENTES REUTILIZÁVEIS: TÍTULOS, LINHAS, CARDS, CHIPS
+       ========================================================================== */
+    .title-large {
+      font-family: var(--font-heading);
+      font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+    }
+
+    .title-medium {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+
+    .title-small {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+
+    .highlight-yellow {
+      color: var(--yellow) !important;
+    }
+    .highlight-gold {
+      color: var(--gold) !important;
+    }
+    .highlight-red {
+      color: var(--red-alert) !important;
+    }
+
+    /* Linha divisória amarela com início grosso (marca registrada da apresentação) */
+    .brand-divider-line {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      height: 3px;
+      background: rgba(255, 204, 20, 0.35);
+      margin: 0.9rem 0 1.5rem 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .brand-divider-line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -2px;
+      width: 90px;
+      height: 7px;
+      background: var(--yellow);
+      border-radius: 4px;
+      box-shadow: 0 0 12px var(--yellow);
+    }
+
+    /* Cards com Glassmorphism e Efeito de Borda Dourada */
+    .premium-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(1.2rem, 2.2vw, 2rem);
+      backdrop-filter: blur(16px);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,204,20,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .premium-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+      border-color: rgba(255, 204, 20, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), var(--glow-gold);
+    }
+
+    /* Imagens temáticas com fallback */
+    .theme-image-bg {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.22;
+      mask-image: linear-gradient(to right, transparent 0%, black 70%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 70%);
+    }
+    .theme-image-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.45) contrast(1.15);
+      transition: transform 1.2s ease;
+    }
+    .slide:hover .theme-image-bg img {
+      transform: scale(1.04);
+    }
+
+    /* Chips e Tags */
+    .badge-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-2);
+      transition: var(--transition-smooth);
+    }
+    .badge-chip:hover {
+      background: rgba(255, 204, 20, 0.12);
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       6. SLIDES ESPECÍFICOS (1 A 12)
+       ========================================================================== */
+
+    /* --- SLIDE 1: CAPA --- */
+    .slide-1 .slide-content-container {
+      align-items: center;
+      text-align: center;
+    }
+    .slide-1 .cover-wrap {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    .slide-1 .top-sub {
+      font-family: var(--font-heading);
+      font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--text-2);
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .slide-1 .main-pcc {
+      font-size: clamp(2.6rem, 5.5vw, 5.2rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .slide-1 .brand-divider-line {
+      margin: 1.5rem auto;
+    }
+    .slide-1 .brand-divider-line::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .slide-1 .subtitle-problem {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      line-height: 1.15;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+      text-align: center;
+      width: 100%;
+    }
+    .slide-1 .subtitle-desc {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      letter-spacing: 0.25em;
+      color: var(--text-2);
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+    }
+    .slide-1 .scroll-hint {
+      margin-top: 2.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-2);
+      background: rgba(255, 204, 20, 0.08);
+      border: 1px solid rgba(255, 204, 20, 0.25);
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .slide-1 .scroll-hint:hover {
+      background: rgba(255, 204, 20, 0.2);
+      transform: translateY(-2px);
+      box-shadow: var(--glow-gold);
+      color: #fff;
+    }
+    .slide-1 .pulse-arrow {
+      animation: bounceX 4.5s infinite ease-in-out;
+      color: var(--yellow);
+    }
+    @keyframes bounceX {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+
+    /* --- SLIDE 2: QUEM SOMOS --- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .hex-member-card {
+      position: relative;
+      background: var(--bg-2);
+      border-radius: 18px;
+      padding: 24px 18px;
+      text-align: center;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hex-member-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-8px) rotate(0.8deg);
+      box-shadow: var(--glow-gold);
+    }
+    .hex-avatar-wrap {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 18px;
+      position: relative;
+      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      background: linear-gradient(135deg, var(--yellow), var(--gold));
+      padding: 3px;
+      transition: transform 0.4s ease;
+    }
+    .hex-member-card:hover .hex-avatar-wrap {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    .hex-avatar-inner {
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hex-avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) brightness(0.9);
+      transition: filter 0.3s;
+    }
+    .hex-member-card:hover .hex-avatar-inner img {
+      filter: grayscale(0) brightness(1.05);
+    }
+    .member-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .member-role {
+      font-size: 0.85rem;
+      color: var(--yellow);
+      font-weight: 500;
+    }
+    .team-footer-quote {
+      text-align: center;
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      color: var(--text-2);
+      font-weight: 500;
+      padding: 16px 28px;
+      background: rgba(255,204,20,0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,204,20,0.2);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 3: INTRODUÇÃO --- */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+    }
+    .intro-card {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .intro-card .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(255, 204, 20, 0.1);
+      border: 1px solid rgba(255, 204, 20, 0.3);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 850px) {
+      .intro-grid { grid-template-columns: 1fr; }
+    }
+
+            /* --- SLIDE 9: PROPOSTA IMPLEMENTAÇÕES NO LECOM --- */
+    .lecom-props-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 1.6rem;
+    }
+    @media (max-width: 1080px) {
+      .lecom-props-grid { grid-template-columns: 1fr; }
+    }
+    .lecom-prop-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: clamp(24px, 2.5vw, 36px);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .lecom-prop-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+      box-shadow: var(--glow-gold);
+    }
+    .lecom-prop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--yellow);
+    }
+    .lecom-prop-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    body.theme-red, body.theme-wine, body .lecom-prop-header {
+      border-bottom-color: rgba(255,212,59,0.25);
+    }
+    .lecom-prop-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 204, 20, 0.15);
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--yellow);
+      flex-shrink: 0;
+    }
+    .lecom-prop-header h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+      font-weight: 700;
+      color: #fff;
+    }
+    .lecom-prop-card p {
+      color: #D6D6D6;
+      font-size: clamp(1.02rem, 1.2vw, 1.18rem);
+      line-height: 1.7;
+      flex: 1;
+    }
+    body.theme-red, body.theme-wine, body .lecom-prop-card p {
+      color: #F8E2E2;
+    }
+    .lecom-prop-footer {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--yellow);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* --- SLIDE 10: VÍDEO DEMONSTRAÇÃO EM TELA CHEIA --- */
+    .video-slide-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-player-wrap {
+      width: 100%;
+      height: 64vh;
+      background: #000;
+      border: 2px solid rgba(255, 204, 20, 0.35);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7), var(--glow-gold);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-player-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .video-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    /* --- SLIDE NOVO: MAPEAMENTO E DIAGNÓSTICO DOS PROCESSOS --- */
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .mapping-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .mapping-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(20px, 2.2vw, 30px);
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    .mapping-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--yellow);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .mapping-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+      box-shadow: var(--glow-gold);
+    }
+    .mapping-card:hover::before {
+      opacity: 1;
+    }
+    .mapping-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--yellow);
+    }
+    .mapping-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .mapping-card-content p {
+      color: #D1D1D1;
+      font-size: clamp(1rem, 1.15vw, 1.18rem);
+      line-height: 1.65;
+    }
+
+    /* --- SLIDE 4: DOR RELATADA --- */
+    .problem-highlight-box {
+      background: rgba(20,20,20,0.85);
+      border-left: 4px solid var(--yellow);
+      padding: 30px;
+      border-radius: 0 16px 16px 0;
+      margin: 2rem 0;
+      font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+      line-height: 1.5;
+      color: var(--text-1);
+    }
+    /* Efeito de marca-texto animado */
+    .marker-highlight {
+      background: linear-gradient(90deg, rgba(255,204,20,0.25) 0%, rgba(255,204,20,0.35) 100%);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #FFF;
+      border-bottom: 2px solid var(--yellow);
+      box-shadow: 0 0 12px rgba(255,204,20,0.2);
+    }
+    .problem-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+        /* --- TABELA E GRÁFICO COMPARATIVO: QUADRO 1 & FIGURA 1 --- */
+    .quadro-indicadores-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 1.2rem;
+    }
+    .quadro-indicadores-table th {
+      background: rgba(255, 204, 20, 0.12);
+      color: var(--yellow);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    body.theme-red, body.theme-wine, body .quadro-indicadores-table th {
+      background: rgba(255, 212, 59, 0.22);
+      color: #FFF;
+    }
+    .quadro-indicadores-table td {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      color: var(--text-1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(20, 20, 20, 0.4);
+    }
+    body.theme-red, body.theme-wine, body .quadro-indicadores-table td {
+      background: rgba(60, 2, 7, 0.45);
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    .quadro-indicadores-table tr:last-child td {
+      border-bottom: none;
+    }
+    .quadro-indicadores-table tr:hover td {
+      background: rgba(255, 204, 20, 0.06);
+    }
+    .table-val-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .table-val-badge.val-red {
+      color: var(--red-alert);
+    }
+    .table-val-badge.val-yellow {
+      color: var(--yellow);
+    }
+    .table-caption-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      justify-content: space-between;
+    }
+    body.theme-red, body.theme-wine, body .table-caption-sub {
+      color: #F8CFCF;
+    }
+
+    /* Gráfico de Barras Horizontais Fiel à Figura 1 */
+    .figura-sla-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .bar-label-tag {
+      width: 65px;
+      font-family: var(--font-heading);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-2);
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .bar-track-area {
+      flex: 1;
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+    }
+    .bar-fill-blue {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, #1E6B9E, #2A83BE);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(30, 107, 158, 0.35);
+      transition: width 1s ease-out;
+    }
+    .bar-fill-green {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, #168058, #20A775);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 14px;
+      color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 15px rgba(22, 128, 88, 0.35);
+      transition: width 1s ease-out;
+    }
+    .bar-outside-val {
+      margin-left: 14px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #20A775;
+    }
+    .scale-ruler {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 81px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    body.theme-red, body.theme-wine, body .scale-ruler {
+      border-top-color: rgba(255, 212, 59, 0.3);
+      color: #F8CFCF;
+    }
+
+    /* --- SLIDE 5 & 7: DIAGNÓSTICO (SLA, RETRABALHO E FLUXO) --- */
+    .diagnostic-split {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 28px;
+      margin-top: 1.8rem;
+    }
+    @media (max-width: 980px) {
+      .diagnostic-split { grid-template-columns: 1fr; }
+    }
+
+    /* Barras de SLA Horizontal */
+    .sla-bars-wrapper {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .sla-bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sla-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .sla-track {
+      height: 22px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sla-fill {
+      height: 100%;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .sla-fill.current {
+      background: linear-gradient(90deg, #600000, var(--red-alert));
+      box-shadow: var(--glow-red);
+    }
+    .sla-fill.ideal {
+      background: linear-gradient(90deg, #b08d0e, var(--yellow));
+      box-shadow: var(--glow-gold);
+    }
+
+    /* Rosca de Retrabalho (Donut Chart SVG) */
+    .donut-chart-container {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 20px 0;
+    }
+    .donut-svg-wrap {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+    }
+    .donut-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+    .donut-bg-circle {
+      stroke: rgba(255,255,255,0.08);
+      stroke-width: 10;
+      fill: none;
+    }
+    .donut-progress-circle {
+      stroke: var(--yellow);
+      stroke-width: 10;
+      stroke-linecap: round;
+      fill: none;
+      transition: stroke-dashoffset 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .donut-center-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+
+    /* Fluxo Horizontal AS IS / TO BE */
+    .flow-rail-container {
+      margin-top: 24px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 12px 4px;
+    }
+    .flow-steps-rail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+    .flow-step-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-1);
+      position: relative;
+    }
+    .flow-step-card.bottleneck {
+      background: rgba(128, 0, 0, 0.3);
+      border-color: var(--red-alert);
+      color: #fff;
+      animation: pulseBottleneck 2s infinite ease-in-out;
+    }
+    .flow-step-card.highlight-ai {
+      background: rgba(255, 204, 20, 0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      box-shadow: var(--glow-gold);
+    }
+    @keyframes pulseBottleneck {
+      0%, 100% { box-shadow: 0 0 10px rgba(255,31,31,0.2); }
+      50% { box-shadow: 0 0 25px rgba(255,31,31,0.5); border-color: #ff5252; }
+    }
+    .flow-arrow-animated {
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      opacity: 0.8;
+      animation: none !important;
+      transform: none !important;
+    }
+
+    /* Slide 7: Toggle de Dados (Levantamento Inicial vs Atualizado) */
+    .data-toggle-bar {
+      display: inline-flex;
+      background: rgba(15,15,15,0.9);
+      border: 1px solid rgba(255,204,20,0.3);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .data-toggle-btn {
+      padding: 8px 18px;
+      border-radius: 25px;
+      border: none;
+      background: transparent;
+      color: var(--text-2);
+      font-weight: 600;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .data-toggle-btn.is-active {
+      background: var(--yellow);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 0 14px rgba(255, 204, 20, 0.4);
+    }
+
+    /* Faixa de Alerta Principais Gargalos */
+    .bottlenecks-alert-banner {
+      background: linear-gradient(90deg, rgba(128, 0, 0, 0.7) 0%, rgba(221, 176, 21, 0.4) 100%);
+      border: 1px solid rgba(255, 31, 31, 0.4);
+      border-radius: 14px;
+      padding: 16px 22px;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    #slide-8 {
+      justify-content: center !important;
+      padding-top: calc(var(--header-height) + 1rem) !important;
+      padding-bottom: calc(var(--nav-bar-height) + 1rem) !important;
+    }
+    #slide-8 .slide-content-container {
+      margin: auto auto !important;
+    }
+    .fishbone-container {
+      width: 100%;
+      max-width: 1380px;
+      margin: 1rem auto 0 auto;
+      position: relative;
+    }
+    .fishbone-svg-wrap {
+      width: 100%;
+      position: relative;
+      background: rgba(18, 18, 18, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 16px 20px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+    }
+    body.theme-red, body.theme-wine, body .fishbone-svg-wrap {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .fishbone-svg {
+      width: 100%;
+      max-height: 58vh;
+      height: auto;
+      display: block;
+      overflow: visible;
+    }
+
+    /* Estilos dos ramos e elementos da espinha */
+    .bone-spine {
+      stroke: var(--yellow);
+      stroke-width: 4;
+      stroke-linecap: round;
+      filter: drop-shadow(0 0 6px rgba(255, 204, 20, 0.4));
+    }
+    .bone-branch {
+      stroke: #888;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      transition: stroke 0.3s, stroke-width 0.3s;
+    }
+    .bone-sub {
+      stroke: rgba(255, 255, 255, 0.25);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+    body.theme-red, body.theme-wine, body .bone-branch {
+      stroke: rgba(255, 212, 59, 0.6);
+    }
+    body.theme-red, body.theme-wine, body .bone-sub {
+      stroke: rgba(255, 255, 255, 0.35);
+    }
+
+    .fishbone-cat-group {
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .fishbone-cat-group:hover {
+      filter: brightness(1.2);
+    }
+    .fishbone-cat-group:hover .bone-branch {
+      stroke: var(--yellow);
+      stroke-width: 3.5;
+    }
+    .fishbone-cat-group:hover .bone-cat-box {
+      stroke: var(--yellow);
+      fill: rgba(255, 204, 20, 0.18);
+    }
+    .bone-cat-box {
+      fill: #4A0108;
+      stroke: var(--yellow);
+      stroke-width: 2;
+      rx: 8;
+      transition: all 0.3s ease;
+    }
+    body.theme-red .bone-cat-box {
+      fill: #5E010A;
+      stroke: var(--yellow);
+    }
+    body.theme-wine .bone-cat-box {
+      fill: #3A060D !important;
+      stroke: var(--yellow) !important;
+    }
+    .bone-cat-title {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      fill: #FFFFFF !important;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      text-transform: uppercase;
+      pointer-events: none;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
+    }
+    .bone-cause-item {
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .bone-cause-item:hover text {
+      fill: var(--yellow) !important;
+      font-weight: 700;
+      transform: scale(1.02);
+    }
+    .bone-cause-text {
+      font-family: var(--font-body);
+      font-size: 13.5px;
+      fill: #FFFFFF !important;
+      dominant-baseline: middle;
+      transition: fill 0.2s ease;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7));
+    }
+    body.theme-red .bone-cause-text,
+    body.theme-wine .bone-cause-text {
+      fill: #FFFFFF !important;
+    }
+    .bone-cause-dot {
+      fill: var(--yellow);
+      opacity: 0.85;
+      transition: r 0.2s ease, opacity 0.2s ease;
+    }
+    .bone-cause-item:hover .bone-cause-dot {
+      r: 4.5;
+      opacity: 1;
+      filter: drop-shadow(0 0 5px var(--yellow));
+    }
+
+    /* Cabeça do peixe (Efeito SLA) */
+    .fish-head-box {
+      fill: #550109;
+      stroke: var(--yellow);
+      stroke-width: 2.5;
+      rx: 12;
+      filter: drop-shadow(0 0 15px rgba(255, 204, 20, 0.25));
+      transition: all 0.3s ease;
+    }
+    body.theme-red .fish-head-box {
+      fill: #5A010A;
+      stroke: var(--yellow);
+    }
+    body.theme-wine .fish-head-box {
+      fill: #34050C !important;
+      stroke: var(--yellow) !important;
+    }
+    .fish-head-group:hover .fish-head-box {
+      transform: scale(1.02);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 25px rgba(255, 204, 20, 0.5));
+    }
+
+    .fishbone-legend {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    body.theme-red, body.theme-wine, body .fishbone-legend {
+      color: #F8CFCF;
+    }
+    .fishbone-legend .legend-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow);
+      font-weight: 500;
+    }
+
+            /* --- SLIDE FLUXO TO-BE --- */
+    #slide-15 {
+      justify-content: flex-start !important;
+      padding-top: calc(var(--header-height) + 1.2rem) !important;
+    }
+    #slide-15 .slide-content-container {
+      margin: 0 auto !important;
+      max-width: 1540px !important;
+      padding-top: 0 !important;
+    }
+    .flowchart-tobe-container {
+      width: 100%;
+      background: rgba(18, 18, 18, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 12px 16px;
+      margin-top: 0.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.theme-red, body.theme-wine, body .flowchart-tobe-container {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .flowchart-tobe-frame {
+      width: 100%;
+      max-height: 64vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #FFFFFF;
+      padding: 6px;
+      cursor: zoom-in;
+      transition: var(--transition-smooth);
+    }
+    .flowchart-tobe-frame img {
+      width: 100%;
+      max-height: 62vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .tobe-legend-pills {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .tobe-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-2);
+    }
+    body.theme-red, body.theme-wine, body .tobe-pill {
+      background: rgba(50, 1, 5, 0.5);
+      color: #F8CFCF;
+    }
+    .tobe-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .tobe-dot.blue { background: #3B82F6; box-shadow: 0 0 8px #3B82F6; }
+    .tobe-dot.green { background: #10B981; box-shadow: 0 0 8px #10B981; }
+    .tobe-dot.yellow { background: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
+
+    /* --- SLIDE FLUXOGRAMA AS-IS --- */
+    .flowchart-asis-container {
+      width: 100%;
+      background: rgba(18, 18, 18, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 16px;
+      margin-top: 1.2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    body.theme-red, body.theme-wine, body .flowchart-asis-container {
+      background: rgba(75, 2, 8, 0.75);
+      border-color: rgba(255, 212, 59, 0.3);
+    }
+    .flowchart-img-frame {
+      width: 100%;
+      max-height: 52vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #FFFFFF;
+      padding: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+      cursor: zoom-in;
+      transition: var(--transition-smooth);
+    }
+    .flowchart-img-frame img {
+      max-width: 100%;
+      max-height: 50vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .flowchart-lanes-info {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px) {
+      .flowchart-lanes-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .lane-chip-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--text-2);
+    }
+    body.theme-red, body.theme-wine, body .lane-chip-item {
+      background: rgba(50, 1, 5, 0.5);
+      color: #F8CFCF;
+    }
+    .lane-chip-item strong {
+      color: var(--yellow);
+    }
+
+    /* --- SLIDE 6: DIAGNÓSTICO (ISHIKAWA) --- */
+    .ishikawa-wrapper {
+      margin-top: 24px;
+      width: 100%;
+    }
+    .ishikawa-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .ishikawa-card {
+      background: var(--bg-2);
+      border-radius: 14px;
+      padding: 20px 16px;
+      border: 1px solid var(--border-subtle);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      position: relative;
+    }
+    .ishikawa-card.color-yellow {
+      border-top: 4px solid var(--yellow);
+    }
+    .ishikawa-card.color-red {
+      border-top: 4px solid var(--red-alert);
+    }
+    .ishikawa-card:hover, .ishikawa-card.is-selected {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+    .ishikawa-card.color-yellow:hover, .ishikawa-card.color-yellow.is-selected {
+      border-color: var(--yellow);
+      box-shadow: var(--glow-gold);
+    }
+    .ishikawa-card.color-red:hover, .ishikawa-card.color-red.is-selected {
+      border-color: var(--red-alert);
+      box-shadow: var(--glow-red);
+    }
+    .ishikawa-items-list {
+      list-style: none;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ishikawa-items-list li {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.4;
+    }
+    .ishikawa-items-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--yellow);
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      .ishikawa-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .ishikawa-grid { grid-template-columns: 1fr; }
+    }
+
+        /* --- SLIDE DE PROPOSTAS & OBJETIVOS DETALHADOS --- */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 1.5rem;
+    }
+    .objective-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 20px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .objective-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-5px);
+      box-shadow: var(--glow-gold);
+    }
+    .obj-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    body.theme-red, body.theme-wine, body .obj-card-header {
+      border-bottom-color: rgba(255, 212, 59, 0.2);
+    }
+    .obj-num-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--yellow);
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.25);
+      border-radius: 8px;
+      padding: 4px 10px;
+      flex-shrink: 0;
+    }
+    .obj-card-header h3 {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .objective-card p {
+      color: var(--text-2);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    body.theme-red, body.theme-wine, body .objective-card p {
+      color: #F8DCDC;
+    }
+    .objective-card p:last-of-type {
+      margin-bottom: 0;
+    }
+    .obj-footer-highlight {
+      margin-top: 14px;
+      padding: 10px 12px;
+      background: rgba(255, 204, 20, 0.08);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 204, 20, 0.2);
+      font-size: 0.82rem;
+      color: var(--yellow);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    @media (max-width: 980px) {
+      .objectives-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- SLIDE 8: OBJETIVOS --- */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2.5rem;
+    }
+    .objective-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 30px 24px;
+      transition: var(--transition-smooth);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .objective-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-6px);
+      box-shadow: var(--glow-gold);
+    }
+    .obj-num-badge {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--yellow);
+      opacity: 0.85;
+      margin-bottom: 12px;
+    }
+    .obj-micro-diagram {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.82rem;
+      color: var(--gold);
+    }
+
+    @media (max-width: 850px) {
+      .objectives-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE NOVO: FERRAMENTAS UTILIZADAS PARA MAPEAR O PROCESSO --- */
+    .tools-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      width: 100%;
+      margin-top: 1.6rem;
+    }
+    @media (max-width: 992px) {
+      .tools-showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .tools-showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .tool-item-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: clamp(18px, 1.8vw, 24px);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .tool-item-box:hover {
+      border-color: var(--yellow);
+      transform: translateY(-3px);
+      box-shadow: var(--glow-gold);
+    }
+    .tool-icon-col {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.28);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tool-divider-border {
+      width: 2px;
+      height: 48px;
+      background: var(--yellow);
+      opacity: 0.8;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .tool-text-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .tool-name-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tool-desc-text {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.45;
+    }
+    .tool-item-box.full-width-tool {
+      grid-column: 1 / -1;
+    }
+
+    /* --- SLIDE 10: PROPOSTA & SCANNER DE IA --- */
+    .proposal-scanner-box {
+      background: #0E0E0E;
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .scanner-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      box-shadow: 0 0 18px var(--yellow), 0 0 35px var(--yellow);
+      animation: scanAnim 3s infinite ease-in-out;
+      pointer-events: none;
+    }
+    @keyframes scanAnim {
+      0% { top: 0%; opacity: 0.2; }
+      50% { top: 96%; opacity: 1; }
+      100% { top: 0%; opacity: 0.2; }
+    }
+    .scanner-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .scanner-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.03);
+      padding: 10px 16px;
+      border-radius: 8px;
+      border-left: 3px solid #333;
+    }
+    .scanner-item-row.valid {
+      border-left-color: #2ecc71;
+    }
+    .scanner-item-row.warning {
+      border-left-color: var(--yellow);
+    }
+
+    @media (max-width: 650px) {
+      .scanner-items { grid-template-columns: 1fr; }
+    }
+
+    /* --- SLIDE 11: O QUE ESPERAMOS --- */
+    .expectations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 2.2rem;
+    }
+    .expect-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 22px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+    }
+    .expect-card:hover {
+      border-color: var(--yellow);
+      transform: translateY(-4px);
+    }
+    .expect-value-badge {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.3);
+      color: var(--yellow);
+      font-weight: 700;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .expect-value-badge.pending {
+      color: var(--text-2);
+      border-color: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      font-style: italic;
+    }
+
+        /* --- SLIDE 13: CONCLUSÃO (CENTRALIZADO & ELEGANTE) --- */
+    .slide-16 .slide-content-container {
+      align-items: center;
+      text-align: center;
+    }
+    .conclusao-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .conclusao-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 4.8vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+    .conclusao-divider {
+      margin: 1.5rem auto 2.2rem auto;
+    }
+    .conclusao-divider::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .conclusao-card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: clamp(28px, 3.5vw, 45px);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      margin-bottom: 2.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    body.theme-red, body.theme-wine, body .conclusao-card-box {
+      background: rgba(75, 2, 8, 0.78);
+      border-color: rgba(255, 212, 59, 0.35);
+    }
+    .conclusao-card-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--yellow), var(--gold));
+    }
+    .conclusao-impacto-text {
+      font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+      line-height: 1.6;
+      color: var(--text-1);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+    }
+    .conclusao-impacto-text strong {
+      color: var(--yellow);
+      font-weight: 700;
+    }
+    .conclusao-thanks-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 204, 20, 0.12);
+      border: 1px solid rgba(255, 204, 20, 0.35);
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2vw, 1.6rem);
+      font-weight: 800;
+      color: var(--yellow);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(255, 204, 20, 0.2);
+    }
+    body.theme-red, body.theme-wine, body .conclusao-thanks-badge {
+      background: rgba(255, 212, 59, 0.2);
+      color: #FFF;
+      border-color: var(--yellow);
+    }
+    .conclusao-footer-credits {
+      color: var(--text-2);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* --- SLIDE 12: CONCLUSÃO --- */
+    .slide-13 .final-phrase {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 1050px;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: none;
+    }
+    .btn-action.primary {
+      background: var(--yellow);
+      color: #000;
+      box-shadow: 0 0 25px rgba(255, 204, 20, 0.4);
+    }
+    .btn-action.primary:hover {
+      background: #ffd633;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 35px rgba(255, 204, 20, 0.6);
+    }
+    .btn-action.secondary {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .btn-action.secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: var(--yellow);
+      color: var(--yellow);
+      transform: translateY(-3px);
+    }
+
+    /* ==========================================================================
+       7. MODO OVERVIEW (VISÃO GERAL EM GRADE)
+       ========================================================================== */
+    .overview-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .overview-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .overview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      overflow-y: auto;
+      padding-bottom: 2rem;
+    }
+    .overview-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .overview-card:hover {
+      border-color: var(--yellow);
+      transform: scale(1.03);
+      box-shadow: var(--glow-gold);
+    }
+    .overview-card.is-current {
+      border-color: var(--yellow);
+      background: rgba(255, 204, 20, 0.08);
+    }
+    .overview-card .num-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .overview-card .title-tag {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       8. MODAL DE ATALHOS DE TECLADO (?)
+       ========================================================================== */
+    .shortcuts-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(14px);
+      z-index: 1100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      padding: 1.5rem;
+    }
+    .shortcuts-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .shortcuts-content {
+      background: var(--bg-1);
+      border: 1px solid var(--border-gold);
+      border-radius: 18px;
+      padding: 2rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.8);
+    }
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================================================
+       9. AUTOPLAY PROGRESS INDICATOR
+       ========================================================================== */
+    .autoplay-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(20,20,20,0.7);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      color: var(--text-2);
+      cursor: pointer;
+    }
+    .autoplay-badge.is-playing {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ==========================================================================
+       10. IMPRESSÃO (@media print - 1 slide por folha em 16:9)
+       ========================================================================== */
+    @media print {
+      body, html {
+        overflow: visible !important;
+        background: #000 !important;
+        color: #fff !important;
+      }
+      .custom-cursor, .custom-cursor-dot, .top-bar, .bottom-bar, .nav-arrow-btn, #ambient-canvas {
+        display: none !important;
+      }
+      .presentation-viewport {
+        height: auto !important;
+        overflow: visible !important;
+      }
+      .slides-track {
+        display: block !important;
+        width: 100% !important;
+        transform: none !important;
+      }
+      .slide {
+        width: 100vw !important;
+        height: 100vh !important;
+        page-break-after: always;
+        break-after: page;
+        opacity: 1 !important;
+        transform: none !important;
+        padding: 40px !important;
+        display: flex !important;
+      }
+    }
+
+    /* Redução de Movimento (Acessibilidade) */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .slides-track {
+        transition: transform 0.1s linear !important;
+      }
+    }
+  
+    /* ==========================================================================
+       TEMA VERMELHO (PADRÃO / ATUAL) & TEMA VINHO (DESKTOP FIBRA ELEGANTE)
+       ========================================================================== */
+    body, body.theme-red {
+      --bg-0: #7A010C;
+      --bg-1: #8C020E;
+      --bg-2: #650008;
+      --bg-3: #520006;
+      --bg-card: rgba(85, 3, 10, 0.72);
+      --bg-card-hover: rgba(115, 5, 15, 0.88);
+      --yellow: #FFD43B;
+      --gold: #FFC107;
+      --red-dark: #3F0005;
+      --red-alert: #FF4D4D;
+      --text-1: #FFFFFF;
+      --text-2: #FCE8E8;
+      --text-muted: #E5B4B4;
+      --line: rgba(255, 212, 59, 0.28);
+      --border-subtle: rgba(255, 255, 255, 0.16);
+      --border-gold: rgba(255, 212, 59, 0.45);
+      --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
+      /* Degradê gradual da esquerda para a direita inspirado na identidade gamer Desktop */
+      background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
+    }
+
+    /* Variações no tema vermelho padrão */
+    .global-ambient-layer {
+      background: 
+        radial-gradient(circle at 85% 45%, rgba(255, 130, 20, 0.35) 0%, rgba(235, 36, 26, 0.2) 35%, transparent 65%),
+        radial-gradient(circle at 75% 25%, rgba(255, 212, 59, 0.22) 0%, transparent 45%),
+        linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 40%);
+    }
+
+    .topographic-lines-svg path {
+      stroke: rgba(255, 225, 120, 0.28);
+    }
+
+    .top-bar {
+      background: linear-gradient(180deg, rgba(80, 2, 8, 0.92) 0%, rgba(80, 2, 8, 0) 100%) !important;
+      border-bottom: 1px solid rgba(255, 212, 59, 0.2) !important;
+    }
+
+    .bottom-bar {
+      background: linear-gradient(0deg, rgba(80, 2, 8, 0.95) 0%, rgba(80, 2, 8, 0) 100%) !important;
+      border-top: 1px solid rgba(255, 212, 59, 0.15) !important;
+    }
+
+    .btn-icon,
+    .slide-counter,
+    .autoplay-badge,
+    .nav-dots-container {
+      background: rgba(70, 2, 7, 0.85);
+      border-color: rgba(255, 212, 59, 0.3);
+      color: #fff;
+    }
+
+    .btn-icon:hover {
+      background: rgba(255, 212, 59, 0.25);
+      color: var(--yellow);
+    }
+
+    .badge {
+      background: var(--yellow);
+      color: #7A010C;
+      font-weight: 800;
+    }
+
+    .problem-highlight-box {
+      background: rgba(65, 2, 6, 0.85);
+      border-left-color: var(--yellow);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .badge-chip {
+      background: rgba(60, 2, 6, 0.7);
+      border-color: rgba(255, 212, 59, 0.35);
+      color: #fff;
+    }
+
+    .hex-avatar-inner {
+      background: #500207;
+    }
+
+    .nav-arrow-btn {
+      background: rgba(75, 2, 7, 0.8);
+      border-color: rgba(255, 212, 59, 0.35);
+      color: #fff;
+    }
+
+    .nav-arrow-btn:hover {
+      background: var(--yellow);
+      color: #7A010C;
+    }
+
+    .modal-backdrop {
+      background: rgba(45, 1, 4, 0.85);
+    }
+
+    .overview-card,
+    .shortcuts-modal {
+      background: #6B010B;
+      border-color: rgba(255, 212, 59, 0.35);
+    }
+
+    /* ==========================================================================
+       TEMA VINHO / BORDÔ ELEGANTE (DESKTOP FIBRA + CELULAR)
+       ========================================================================== */
+    body.theme-wine {
+      --bg-0: #260509;
+      --bg-1: #38080E;
+      --bg-2: #4C0B14;
+      --bg-3: #5E0E19;
+      --bg-card: rgba(48, 7, 13, 0.78);
+      --bg-card-hover: rgba(72, 11, 20, 0.92);
+      --yellow: #FFCC14;
+      --gold: #E5AC0B;
+      --red-dark: #1E0306;
+      --red-alert: #FF334B;
+      --text-1: #FFFFFF;
+      --text-2: #F5D7DC;
+      --text-muted: #D19BA4;
+      --line: rgba(255, 204, 20, 0.22);
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      --border-gold: rgba(255, 204, 20, 0.38);
+      --glow-gold: 0 0 25px rgba(255, 204, 20, 0.3);
+      --glow-red: 0 0 25px rgba(114, 17, 30, 0.4);
+      /* Fundo Vinho Sofisticado Desktop Fibra */
+      background: linear-gradient(128deg, #1C0407 0%, #2E070C 28%, #440A12 58%, #5A0E18 84%, #6E121E 100%) !important;
+    }
+
+    body.theme-wine .global-ambient-layer {
+      background: 
+        radial-gradient(circle at 80% 40%, rgba(138, 20, 36, 0.42) 0%, rgba(90, 14, 24, 0.25) 35%, transparent 70%),
+        radial-gradient(circle at 20% 70%, rgba(70, 10, 18, 0.35) 0%, transparent 50%),
+        radial-gradient(circle at 70% 20%, rgba(255, 204, 20, 0.15) 0%, transparent 40%),
+        linear-gradient(90deg, rgba(15, 2, 4, 0.5) 0%, transparent 45%) !important;
+    }
+
+    body.theme-wine .topographic-lines-svg path {
+      stroke: rgba(255, 215, 140, 0.22) !important;
+    }
+
+    body.theme-wine .top-bar {
+      background: linear-gradient(180deg, rgba(32, 4, 8, 0.95) 0%, rgba(32, 4, 8, 0) 100%) !important;
+      border-bottom: 1px solid rgba(255, 204, 20, 0.18) !important;
+    }
+
+    body.theme-wine .bottom-bar {
+      background: linear-gradient(0deg, rgba(30, 4, 7, 0.96) 0%, rgba(30, 4, 7, 0) 100%) !important;
+      border-top: 1px solid rgba(255, 204, 20, 0.15) !important;
+    }
+
+    body.theme-wine .btn-icon,
+    body.theme-wine .slide-counter,
+    body.theme-wine .autoplay-badge,
+    body.theme-wine .nav-dots-container {
+      background: rgba(42, 6, 11, 0.88) !important;
+      border-color: rgba(255, 204, 20, 0.28) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .btn-icon:hover {
+      background: rgba(255, 204, 20, 0.2) !important;
+      color: var(--yellow) !important;
+    }
+
+    body.theme-wine .badge {
+      background: var(--yellow) !important;
+      color: #38080E !important;
+      font-weight: 800 !important;
+    }
+
+    body.theme-wine .problem-highlight-box {
+      background: rgba(40, 6, 11, 0.9) !important;
+      border-left-color: var(--yellow) !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45) !important;
+    }
+
+    body.theme-wine .badge-chip {
+      background: rgba(45, 6, 12, 0.75) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .hex-avatar-inner {
+      background: #2D060C !important;
+    }
+
+    body.theme-wine .nav-arrow-btn {
+      background: rgba(48, 7, 13, 0.85) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+      color: #fff !important;
+    }
+
+    body.theme-wine .nav-arrow-btn:hover {
+      background: var(--yellow) !important;
+      color: #38080E !important;
+    }
+
+    body.theme-wine .modal-backdrop {
+      background: rgba(22, 3, 5, 0.88) !important;
+    }
+
+    body.theme-wine .overview-card,
+    body.theme-wine .shortcuts-modal {
+      background: #3B0910 !important;
+      border-color: rgba(255, 204, 20, 0.32) !important;
+    }
+
+    body.theme-wine .conclusao-card-box {
+      background: rgba(52, 7, 14, 0.82) !important;
+      border-color: rgba(255, 204, 20, 0.3) !important;
+    }
+
+    body.theme-wine .flowchart-tobe-container,
+    body.theme-wine .flowchart-asis-container {
+      background: rgba(35, 5, 9, 0.75) !important;
+      border-color: rgba(255, 204, 20, 0.22) !important;
+    }
+
+    body.theme-wine .fishbone-svg-wrap {
+      background: rgba(35, 5, 9, 0.72) !important;
+      border-color: rgba(255, 204, 20, 0.22) !important;
+    }
+
+    body.theme-wine .bone-cat-box {
+      fill: #34060C !important;
+      stroke: var(--yellow) !important;
+    }
+
+    body.theme-wine .fish-head-box {
+      fill: #34050C !important;
+      stroke: var(--yellow) !important;
+    }
+
+    body.theme-wine .quadro-indicadores-table th {
+      background: rgba(55, 8, 15, 0.85) !important;
+    }
+
+    body.theme-wine .quadro-indicadores-table td {
+      background: rgba(38, 5, 10, 0.65) !important;
+    }
+
+    /* Linhas orgânicas fluidas animadas no fundo (estilo Desktop Telecom) */
+    .animated-brand-curves {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.45;
+      overflow: hidden;
+    }
+
+    .animated-brand-curves path {
+      animation: waveFloat 45s ease-in-out infinite alternate;
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    .animated-brand-curves path:nth-child(2) {
+      animation-duration: 55s;
+      animation-delay: -12s;
+    }
+
+    .animated-brand-curves path:nth-child(3) {
+      animation-duration: 65s;
+      animation-delay: -25s;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 2. Partículas Douradas Sutis em Canvas -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- 3. Camada Global de Fundo: Gradiente Gamer -->
+  <div class="global-ambient-layer">
+    <div class="ambient-radial-glow"></div>
+  </div>
+
+  <!-- 4. Barra Superior (Progresso, Identidade, Controles) -->
+  <header class="top-bar">
+    <div class="top-progress-bar" id="topProgressBar"></div>
+    <div class="brand-meta">
+      <span class="badge">SENAI</span>
+      <img src="assets/desktop-logo.jpg" alt="Logo Desktop" class="brand-logo-img">
+      <span>Desktop | Jurídico</span>
+    </div>
+
+    <div class="top-controls">
+      <!-- Alternar Tema (Vermelho Desktop / Vinho Desktop) -->
+      <button class="btn-icon" id="themeToggleBtn" title="Alternar Tema (Vermelho Desktop / Vinho Bordô)" aria-label="Alternar tema de cores">
+        <i data-lucide="palette" id="themeToggleIcon" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Indicador Numérico -->
+      <div class="slide-counter" aria-live="polite">
+        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">18</span>
+      </div>
+
+      <!-- Botão Visão Geral (Overview) -->
+      <button class="btn-icon" id="openOverviewBtn" title="Visão geral (O)">
+        <i data-lucide="grid" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Botão Tela Cheia -->
+      <button class="btn-icon" id="fullscreenBtn" title="Tela cheia (F)">
+        <i data-lucide="maximize-2" style="width:18px; height:18px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- 5. Botões Flutuantes de Navegação (Setas Laterais) -->
+  <button class="nav-arrow-btn prev" id="prevSlideBtn" aria-label="Slide anterior">
+    <i data-lucide="chevron-left" style="width:28px; height:28px;"></i>
+  </button>
+  <button class="nav-arrow-btn next" id="nextSlideBtn" aria-label="Próximo slide">
+    <i data-lucide="chevron-right" style="width:28px; height:28px;"></i>
+  </button>
+
+  <!-- 6. Viewport e Trilho dos 12 Slides -->
+  <main class="presentation-viewport" id="presentationViewport">
+    <div class="slides-track" id="slidesTrack">
+
+      <!-- ==========================================
+           SLIDE 1: CAPA
+           ========================================== -->
+      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 17: Capa">
+        <div class="slide-content-container">
+          <div class="cover-wrap">
+            <div style="margin-bottom: 1.2rem;">
+              <img src="assets/desktop-logo.jpg" alt="Logo Desktop" style="width: clamp(65px, 6vw, 85px); height: clamp(65px, 6vw, 85px); border-radius: 18px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(255, 204, 20, 0.4); border: 2px solid rgba(255, 204, 20, 0.6); display: inline-block;">
+            </div>
+            <p class="top-sub">TÉCNICO EM ADMINISTRAÇÃO – <span class="highlight-yellow">SENAI</span></p>
+            <h1 class="main-pcc title-large">Projeto de <span class="highlight-yellow">Conclusão</span> de Curso</h1>
+            
+            <div class="brand-divider-line"></div>
+            
+            <h2 class="subtitle-problem">JURÍDICO & CONTRATOS</h2>
+            
+            <div>
+              <button class="scroll-hint" id="startPresentationBtn">
+                <span>Deslize para começar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 2: QUEM SOMOS?
+           ========================================== -->
+      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 17: Quem somos">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="users" style="width:14px; height:14px;"></i> EQUIPE DO PROJETO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Quem <span class="highlight-yellow">somos?</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <!-- 4 Integrantes em Hexágonos -->
+          <div class="team-grid" id="teamContainer">
+            <!-- Gerado dinamicamente via JS/config -->
+          </div>
+
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 3: INTRODUÇÃO
+           ========================================== -->
+      <section class="slide" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 17: Introdução">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="compass" style="width:14px; height:14px;"></i> CONTEXTO INSTITUCIONAL</p>
+          <h2 class="title-large highlight-yellow" style="letter-spacing: 0.12em; margin-top: 10px;">INTRODUÇÃO</h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="intro-grid">
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="wifi" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Quem é a <span class="highlight-yellow">DESKTOP</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Com <strong style="color:#fff; font-size:1.3rem;" class="counter-number" data-target="30">0</strong> anos no mercado, é uma das principais operadoras de internet banda larga e fibra óptica do estado de São Paulo, conectando centenas de milhares de clientes.
+              </p>
+            </div>
+
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="scale" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Setor envolvido: <span class="highlight-yellow">Jurídico</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Área estratégica responsável pelo compliance, mitigação de riscos contratuais, validação legal e formalização de parcerias com fornecedores e clientes corporativos.
+              </p>
+            </div>
+
+            <div class="premium-card intro-card">
+              <div class="icon-box">
+                <i data-lucide="graduation-cap" style="width:28px; height:28px;"></i>
+              </div>
+              <h3 class="title-small" style="margin-bottom: 12px;">Papel do <span class="highlight-yellow">SENAI</span></h3>
+              <p style="color: var(--text-2); line-height: 1.6; font-size: 1.05rem;">
+                Foco no estímulo ao aprendizado prático dos alunos do curso Técnico em Administração e na proposição de soluções concretas e inovadoras para as problemáticas da DESKTOP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 4: DOR RELATADA
+           ========================================== -->
+      <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 17: Dor Relatada">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
+          <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA - Solicitação de Parecer Jurídico</h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="problem-highlight-box">
+            <span class="marker-highlight">Gargalos</span>, 
+            <span class="marker-highlight">idas e vindas</span> dos chamados entre as áreas, 
+            <span class="marker-highlight">documentos incompletos</span>, 
+            ausência de documentação e <span class="marker-highlight">falta de padronização</span> no atendimento. Para então propor melhorias e tornar o fluxo mais ágil e padronizado.
+          </div>
+
+          <div class="problem-chips-grid">
+            <div class="badge-chip"><i data-lucide="repeat" style="width:16px; height:16px; color:var(--yellow);"></i> Retrabalho excessivo entre áreas</div>
+            <div class="badge-chip"><i data-lucide="file-question" style="width:16px; height:16px; color:var(--yellow);"></i> Minutas sem checklist padrão</div>
+            <div class="badge-chip"><i data-lucide="clock" style="width:16px; height:16px; color:var(--yellow);"></i> Tempo de espera prolongado</div>
+            <div class="badge-chip"><i data-lucide="alert-circle" style="width:16px; height:16px; color:var(--red-alert);"></i> Risco de perda de prazos comerciais</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 5: MAPEAMENTO DO PROCESSO
+           ========================================== -->
+      <section class="slide" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 17: Mapeamento do Processo">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> LEVANTAMENTO & IMERSÃO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Mapeamento e Diagnóstico dos <span class="highlight-yellow">Processos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="mapping-grid">
+            <!-- Item 1 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="briefcase" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Alinhamento Técnico com o Jurídico</h3>
+                <p>Realização de reuniões com a advogada <strong>Winnie Prudente</strong>, do setor Jurídico, para compreender os processos atuais e identificar gargalos e oportunidades de melhoria.</p>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="messages-square" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Entrevistas com Solicitantes e Equipe</h3>
+                <p>Entrevistas com colaboradores do Jurídico e das demais áreas solicitantes, identificando dificuldades na comunicação, nos prazos, nas informações e na padronização das solicitações.</p>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="file-search" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Análise e Definição de Prioridades</h3>
+                <p>Análise detalhada das informações coletadas para identificar as causas raízes dos problemas operacionais e definir prioridades estratégicas de atuação.</p>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="mapping-card">
+              <div class="mapping-icon-wrap">
+                <i data-lucide="sparkles" style="width:24px; height:24px;"></i>
+              </div>
+              <div class="mapping-card-content">
+                <h3>Propostas de Melhoria Customizadas</h3>
+                <p>Desenvolvimento de propostas de melhoria práticas e inovadoras, alinhadas às necessidades dos colaboradores e à realidade do setor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 6: FLUXO ATUAL (AS-IS)
+           ========================================== -->
+      <section class="slide" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 17: Fluxo Atual AS-IS">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-branch" style="width:14px; height:14px;"></i> MAPEAMENTO DE PROCESSO EM RAIAS</p>
+          <h2 class="title-large" style="margin-top: 10px;">Fluxo Atual: <span class="highlight-yellow">Seção AS-IS</span></h2>
+          <p style="color:var(--text-2); font-size:1.05rem; margin-top:4px;">
+            Mapeamento ponta a ponta das solicitações de parecer jurídico e análise de contratos entre as 4 raias organizacionais:
+          </p>
+          <div class="brand-divider-line"></div>
+
+          <div class="flowchart-asis-container">
+            <div class="flowchart-img-frame" onclick="window.open('assets/fluxograma-as-is.jpg', '_blank')" title="Clique para ampliar em tela cheia">
+              <img src="assets/fluxograma-as-is.jpg" alt="Fluxograma AS-IS do Processo de Solicitação de Parecer Jurídico" loading="lazy">
+            </div>
+
+            <div class="flowchart-lanes-info">
+              <div class="lane-chip-item">
+                <i data-lucide="user" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 1:</strong> Solicitante</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="scale" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 2:</strong> Jurídico</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="briefcase" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 3:</strong> Diretor CC</span>
+              </div>
+              <div class="lane-chip-item">
+                <i data-lucide="file-check" style="color:var(--yellow); width:16px; height:16px;"></i>
+                <span><strong>Raia 4:</strong> Contratos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 5: DIAGNÓSTICO (SLA E RETRABALHO)
+           ========================================== -->
+      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: SLA e Retrabalho">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
+          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">SLA e Retrabalho</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="diagnostic-split">
+            <!-- Card 1: Quadro 1 – Indicadores do Setor Jurídico -->
+            <div class="premium-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                  <i data-lucide="table" style="color:var(--yellow); width:20px; height:20px;"></i>
+                  Quadro 1 – Indicadores do Setor Jurídico
+                </h3>
+                <span class="badge-chip" style="font-size:0.75rem;">DADOS REAIS</span>
+              </div>
+
+              <table class="quadro-indicadores-table">
+                <thead>
+                  <tr>
+                    <th>Indicador</th>
+                    <th>Valor</th>
+                    <th>Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Tempo médio atual</strong></td>
+                    <td><span class="table-val-badge val-red">20 dias</span></td>
+                    <td style="color:var(--text-2);">Tempo médio de resposta hoje</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Taxa de recusa</strong></td>
+                    <td><span class="table-val-badge val-red">18,93%</span></td>
+                    <td style="color:var(--text-2);">Quase 1 em cada 5 demandas</td>
+                  </tr>
+                  <tr>
+                    <td><strong>SLA esperado</strong></td>
+                    <td><span class="table-val-badge val-yellow">5 dias</span></td>
+                    <td style="color:var(--text-2);">Meta proposta para o atendimento</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="table-caption-sub">
+                <span>Fonte: Elaborado pelos autores (2026).</span>
+                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Gargalo Crítico de 300% acima do SLA</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Figura 1 – Comparativo entre o SLA Atual e a Meta -->
+            <div class="premium-card">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
+                  <i data-lucide="bar-chart-3" style="color:var(--yellow); width:20px; height:20px;"></i>
+                  Figura 1 – Comparativo: SLA Atual vs Meta
+                </h3>
+                <span style="font-family:var(--font-heading); font-weight:800; font-size:0.95rem; color:#20A775; background:rgba(32,167,117,0.15); padding:4px 10px; border-radius:20px; border:1px solid rgba(32,167,117,0.3);">
+                  Redução de 75%
+                </span>
+              </div>
+
+              <p style="font-size:0.86rem; color:var(--text-2); margin-top:2px;">
+                Comparação visual direta do tempo de resposta hoje versus a meta almejada com automação e IA.
+              </p>
+
+              <div class="figura-sla-bars">
+                <!-- Barra Atual -->
+                <div class="bar-row">
+                  <span class="bar-label-tag">Atual</span>
+                  <div class="bar-track-area">
+                    <div class="bar-fill-blue" style="width: 100%;">20 dias</div>
+                  </div>
+                </div>
+
+                <!-- Barra Meta -->
+                <div class="bar-row">
+                  <span class="bar-label-tag">Meta</span>
+                  <div class="bar-track-area" style="background:transparent;">
+                    <div class="bar-fill-green" style="width: 25%;">5 dias</div>
+                    <span class="bar-outside-val" style="font-size:0.85rem; color:#20A775;">(esperado)</span>
+                  </div>
+                </div>
+
+                <!-- Régua de escala 0, 5, 10, 15, 20 -->
+                <div class="scale-ruler">
+                  <span>0</span>
+                  <span>5</span>
+                  <span>10</span>
+                  <span>15</span>
+                  <span>20</span>
+                </div>
+                <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:-10px;">
+                  Tempo de atendimento (dias)
+                </div>
+              </div>
+
+              <!-- Destaque Taxa de Recusa -->
+              <div style="margin-top:14px; padding:12px 16px; background:rgba(255,31,31,0.08); border:1px solid rgba(255,31,31,0.22); border-radius:10px; display:flex; align-items:center; justify-content:space-between;">
+                <span style="font-size:0.9rem; color:var(--text-1); font-weight:500;">Taxa de Recusa Recorrente:</span>
+                <span style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; color:var(--red-alert);">18,93% <span style="font-size:0.8rem; font-weight:500; color:var(--text-2);">(1 em cada 5)</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluxo AS IS com 7 etapas -->
+          <div style="margin-top: 24px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <i data-lucide="git-branch" style="color:var(--yellow); width:18px; height:18px;"></i>
+              <span style="font-weight:700; font-size:0.95rem;">Fluxo Atual (AS IS) — Etapas Contratuais</span>
+            </div>
+            <div class="flow-rail-container">
+              <div class="flow-steps-rail">
+                <div class="flow-step-card">1. Solicitação</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">2. Elaboração</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card bottleneck">
+                  <i data-lucide="alert-octagon" style="width:16px; height:16px; color:var(--red-alert);"></i>
+                  3. Análise Jurídica (Gargalo)
+                </div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card bottleneck">
+                  <i data-lucide="refresh-cw" style="width:16px; height:16px; color:var(--red-alert);"></i>
+                  4. Ajustes (Gargalo)
+                </div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">5. Validação</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card">6. Aprimoramento</div>
+                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
+                
+                <div class="flow-step-card" style="border-color:var(--yellow); color:var(--yellow);">7. Assinatura</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE NOVO: FERRAMENTAS UTILIZADAS PARA MAPEAR O PROCESSO
+           ========================================== -->
+      <section class="slide" id="slide-ferramentas" aria-roledescription="slide" aria-label="Ferramentas Utilizadas para Mapear o Processo">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> METODOLOGIA APLICADA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Ferramentas Utilizadas para <span class="highlight-yellow">Mapear o Processo</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="tools-showcase-grid">
+            <!-- 1. KANBAN -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="18" rx="3.5"></rect>
+                  <line x1="2" y1="7" x2="22" y2="7"></line>
+                  <line x1="8.5" y1="7" x2="8.5" y2="21"></line>
+                  <line x1="15.5" y1="7" x2="15.5" y2="21"></line>
+                  <!-- Cards Coluna 1 -->
+                  <rect x="3.8" y="9.5" width="3.2" height="3" rx="0.8"></rect>
+                  <rect x="3.8" y="14.5" width="3.2" height="3" rx="0.8"></rect>
+                  <!-- Card Coluna 2 -->
+                  <rect x="10.2" y="9.5" width="3.4" height="3.5" rx="0.8"></rect>
+                  <!-- Card Coluna 3 -->
+                  <rect x="17.2" y="12.5" width="3.2" height="3" rx="0.8"></rect>
+                </svg>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Kanban</div>
+                <div class="tool-desc-text">Acompanha tarefas em andamento.</div>
+              </div>
+            </div>
+
+            <!-- 2. SIPOC -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="file-text" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">SIPOC</div>
+                <div class="tool-desc-text">Oferece uma visão geral do processo.</div>
+              </div>
+            </div>
+
+            <!-- 3. MATRIZ GUT -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="box" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Matriz GUT</div>
+                <div class="tool-desc-text">Auxilia na priorização dos problemas.</div>
+              </div>
+            </div>
+
+            <!-- 4. 5W2H -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="clipboard-list" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">5W2H</div>
+                <div class="tool-desc-text">Estrutura os planos de ação.</div>
+              </div>
+            </div>
+
+            <!-- 5. ISHIKAWA -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="git-pull-request" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">Ishikawa</div>
+                <div class="tool-desc-text">Identifica as causas dos problemas.</div>
+              </div>
+            </div>
+
+            <!-- 6. PDCA -->
+            <div class="tool-item-box">
+              <div class="tool-icon-col">
+                <i data-lucide="refresh-cw" style="width:26px; height:26px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col">
+                <div class="tool-name-title">PDCA</div>
+                <div class="tool-desc-text">Promove a melhoria contínua.</div>
+              </div>
+            </div>
+
+            <!-- 7. ESFORÇO × IMPACTO (Card amplo) -->
+            <div class="tool-item-box full-width-tool">
+              <div class="tool-icon-col">
+                <i data-lucide="trending-up" style="width:28px; height:28px;"></i>
+              </div>
+              <div class="tool-divider-border"></div>
+              <div class="tool-text-col" style="flex:1;">
+                <div class="tool-name-title">Esforço × Impacto</div>
+                <div class="tool-desc-text">Priorização ação — Auxilia na priorização das ações conforme impacto e esforço.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 8: DIAGNÓSTICO (ISHIKAWA)
+           ========================================== -->
+      <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 17: Diagrama de Ishikawa">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> ANÁLISE DE CAUSAS-RAIZ</p>
+          <h2 class="title-large" style="margin-top: 10px;">Diagrama de <span class="highlight-yellow">Ishikawa</span></h2>
+          <p style="color:var(--text-2); font-size:1.1rem; margin-top:4px;">Por que o problema de lentidão e retrabalho acontece?</p>
+          <div class="brand-divider-line"></div>
+
+          <!-- Espinha de Peixe Dinâmica (Fiel à Imagem Brainstorming TCC) -->
+          <div class="fishbone-container">
+            <div class="fishbone-svg-wrap">
+                                          <svg class="fishbone-svg" viewBox="0 0 1140 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrowhead" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto">
+                    <polygon points="0 0, 14 5, 0 10" fill="var(--yellow)" />
+                  </marker>
+                </defs>
+
+                <!-- ESPINHA CENTRAL (Coluna Vertebral alargada de 50 a 860) -->
+                <line x1="50" y1="240" x2="865" y2="240" class="bone-spine" marker-end="url(#arrowhead)" />
+
+                <!-- ================= 1. CATEGORIA: PESSOAS ================= -->
+                <g class="fishbone-cat-group" data-category="pessoas">
+                  <!-- Caixa de Categoria Superior -->
+                  <rect x="235" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="300" y="34" class="bone-cat-title">PESSOAS</text>
+
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="300" y1="54" x2="355" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Treinamento não padronizado (Y=95, X_ramo=312) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="95" x2="312" y2="95" class="bone-sub" />
+                    <circle cx="312" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="95" text-anchor="start" class="bone-cause-text">Treinamento não padronizado</text>
+                  </g>
+
+                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=327) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="145" x2="327" y2="145" class="bone-sub" />
+                    <circle cx="327" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="145" text-anchor="start" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
+                  </g>
+
+                  <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=342) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="195" x2="342" y2="195" class="bone-sub" />
+                    <circle cx="342" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="195" text-anchor="start" class="bone-cause-text">Sobrecarga da equipe</text>
+                  </g>
+                </g>
+
+                <!-- ================= 2. CATEGORIA: PROCESSO ================= -->
+                <g class="fishbone-cat-group" data-category="processo">
+                  <!-- Caixa de Categoria Superior (Espaçamento alargado, agora em X=660) -->
+                  <rect x="595" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="660" y="34" class="bone-cat-title">PROCESSO</text>
+
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="660" y1="54" x2="715" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Ausência de fluxos formais (Y=95, X_ramo=672) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="95" x2="672" y2="95" class="bone-sub" />
+                    <circle cx="672" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="95" text-anchor="start" class="bone-cause-text">Ausência de fluxos formais</text>
+                  </g>
+
+                  <!-- Causa 2: Falta de pré-triagem (Y=145, X_ramo=687) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="145" x2="687" y2="145" class="bone-sub" />
+                    <circle cx="687" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="145" text-anchor="start" class="bone-cause-text">Falta de pré-triagem</text>
+                  </g>
+
+                  <!-- Causa 3: Atribuição inadequada de tarefas (Y=195, X_ramo=702) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="195" x2="702" y2="195" class="bone-sub" />
+                    <circle cx="702" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="195" text-anchor="start" class="bone-cause-text">Atribuição inadequada de tarefas</text>
+                  </g>
+                </g>
+
+                <!-- ================= 3. CATEGORIA: TECNOLOGIA ================= -->
+                <g class="fishbone-cat-group" data-category="tecnologia">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="300" y1="426" x2="355" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="230" y="426" width="140" height="40" class="bone-cat-box" />
+                  <text x="300" y="446" class="bone-cat-title">TECNOLOGIA</text>
+
+                  <!-- Causa 1: Uso de planilhas e pastas físicas (Y=285, X_ramo=342) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="285" x2="342" y2="285" class="bone-sub" />
+                    <circle cx="342" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="285" text-anchor="start" class="bone-cause-text">Uso de planilhas e pastas físicas</text>
+                  </g>
+
+                  <!-- Causa 2: Ferramentas não integradas (Y=335, X_ramo=327) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="335" x2="327" y2="335" class="bone-sub" />
+                    <circle cx="327" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="335" text-anchor="start" class="bone-cause-text">Ferramentas não integradas</text>
+                  </g>
+
+                  <!-- Causa 3: Sistemas com limitações (Y=385, X_ramo=312) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="385" x2="312" y2="385" class="bone-sub" />
+                    <circle cx="312" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="385" text-anchor="start" class="bone-cause-text">Sistemas com limitações</text>
+                  </g>
+                </g>
+
+                <!-- ================= 4. CATEGORIA: MEIO AMBIENTE ================= -->
+                <g class="fishbone-cat-group" data-category="meio-ambiente">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="660" y1="426" x2="715" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="585" y="426" width="150" height="40" class="bone-cat-box" />
+                  <text x="660" y="446" class="bone-cat-title">MEIO AMBIENTE</text>
+
+                  <!-- Causa 1: Comunicação desalinhada (Y=285, X_ramo=702) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="285" x2="702" y2="285" class="bone-sub" />
+                    <circle cx="702" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="285" text-anchor="start" class="bone-cause-text">Comunicação desalinhada</text>
+                  </g>
+
+                  <!-- Causa 2: Alta demanda de trabalho (Y=335, X_ramo=687) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="335" x2="687" y2="335" class="bone-sub" />
+                    <circle cx="687" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="335" text-anchor="start" class="bone-cause-text">Alta demanda de trabalho</text>
+                  </g>
+
+                  <!-- Causa 3: Falta de recursos (equipe, ferramentas e infraestrutura) (Y=385, X_ramo=672) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="385" x2="672" y2="385" class="bone-sub" />
+                    <circle cx="672" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="380" text-anchor="start" class="bone-cause-text">Falta de recursos (equipe, ferramentas</text>
+                    <text x="410" y="396" text-anchor="start" class="bone-cause-text">e infraestrutura)</text>
+                  </g>
+                </g>
+
+                <!-- ================= CABEÇA DO PEIXE: EFEITO CRÍTICO ================= -->
+                <g class="fish-head-group">
+                  <rect x="880" y="130" width="220" height="220" class="fish-head-box" />
+                  
+                  <text x="990" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
+                  
+                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="990" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
+                  
+                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  
+                  <line x1="905" y1="288" x2="1075" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                  
+                  <text x="990" y="318" font-family="var(--font-heading)" font-size="15" font-weight="800" fill="var(--red-alert)" text-anchor="middle">Recusa de 18,93%</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="fishbone-legend">
+              <span class="legend-badge"><i data-lucide="mouse-pointer" style="width:14px; height:14px;"></i> Interativo: passe o cursor sobre as causas para destacar</span>
+              <span>Figura 2 – Causas do SLA de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+            <!-- ==========================================
+           SLIDE 9: PROPOSTAS DO GRUPO (INTRODUÇÃO)
+           ========================================== -->
+      <section class="slide" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 17: Propostas">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="lightbulb" style="width:14px; height:14px; color:var(--yellow);"></i> PLANO DE AÇÃO INTEGRADO</p>
+          <h2 class="title-large" style="margin-top: 10px;">Nossas <span class="highlight-yellow">Propostas</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div style="max-width: 1000px; margin: 2rem auto 0 auto; width: 100%;">
+            <!-- Introdução do que o grupo pensou -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 20px; padding: clamp(28px, 3.5vw, 48px); position: relative; overflow: hidden; backdrop-filter: blur(14px); box-shadow: 0 16px 36px rgba(0,0,0,0.45);">
+              <div style="position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: var(--yellow);"></div>
+              
+              <div style="display: flex; align-items: flex-start; gap: 20px;">
+                <div style="background: rgba(255, 204, 20, 0.12); border: 1px solid rgba(255, 204, 20, 0.3); border-radius: 14px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--yellow); margin-top: 4px;">
+                  <i data-lucide="compass" style="width: 30px; height: 30px;"></i>
+                </div>
+                <div>
+                  <h3 style="font-family: var(--font-heading); font-size: clamp(1.3rem, 1.7vw, 1.7rem); font-weight: 700; color: #FFFFFF; margin: 0 0 16px 0;">
+                    Como o grupo estruturou a solução?
+                  </h3>
+                  <p style="font-size: clamp(1.08rem, 1.35vw, 1.3rem); color: var(--text-1); line-height: 1.8; margin: 0;">
+                    A partir do diagnóstico das causas-raizes levantadas no Ishikawa — como preenchimentos manuais inconsistentes, falta de validação prévia de minutas e dúvidas recorrentes dos solicitantes —, e através das ferramentas utilizadas para mapear o processo, nós definimos uma estratégia baseada em dois pilares complementares: <strong>Tecnologia e Automação no LECOM</strong> e <strong>Capacitação Contínua de Pessoas</strong>.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Destaque inferior de impacto -->
+              <div style="margin-top: 2rem; padding: 16px 20px; background: rgba(255, 204, 20, 0.08); border-radius: 12px; border: 1px solid rgba(255, 204, 20, 0.2); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+                <div style="display: flex; align-items: center; gap: 10px; color: var(--yellow); font-size: 0.98rem; font-weight: 600;">
+                  <i data-lucide="check-circle-2" style="width: 20px; height: 20px;"></i>
+                  <span>Foco: Eliminar devoluções, reduzir o tempo de ciclo e blindar o processo contra erros manuais.</span>
+                </div>
+                <span style="font-size: 0.88rem; color: var(--text-muted); font-style: italic;">Avançar para ver as soluções em detalhes →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: PROPOSTA: IMPLEMENTAÇÕES NO LECOM
+           ========================================== -->
+      <section class="slide" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 17: Proposta: Implementações no Lecom">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Implementações no Lecom</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="lecom-props-grid">
+            <!-- 1. Análise Inteligente de Contratos -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">1</span>
+                <h3>Análise Inteligente de Contratos</h3>
+              </div>
+              <p>
+                Implementação de Inteligência Artificial na plataforma LECOM para analisar contratos automaticamente, identificando informações ausentes e inconsistências antes da avaliação jurídica, reduzindo retrabalho e agilizando o processo.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="bot" style="width:18px; height:18px;"></i>
+                <span>IA Integrada ao LECOM</span>
+              </div>
+            </div>
+
+            <!-- 2. Validação Cadastral Automatizada -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">2</span>
+                <h3>Validação Cadastral Automatizada</h3>
+              </div>
+              <p>
+                Integração da plataforma LECOM com a Receita Federal, via API, para validar automaticamente os dados cadastrais das empresas pelo CNPJ, reduzindo erros, divergências e conferências manuais.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="shield-check" style="width:18px; height:18px;"></i>
+                <span>Consulta API Receita Federal</span>
+              </div>
+            </div>
+
+            <!-- 3. Assistente FAQ via Chat -->
+            <div class="lecom-prop-card">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">3</span>
+                <h3>Assistente FAQ via Chat</h3>
+              </div>
+              <p>
+                Disponibilização de um assistente virtual interativo via chat diretamente na plataforma LECOM, auxiliando o colaborador com respostas instantâneas para dúvidas frequentes de preenchimento e critérios do Jurídico.
+              </p>
+              <div class="lecom-prop-footer">
+                <i data-lucide="messages-square" style="width:18px; height:18px;"></i>
+                <span>Suporte em Tempo Real no Fluxo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: DEMONSTRAÇÃO PRÁTICA NO LECOM (VÍDEO)
+           ========================================== -->
+      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
+        <div class="slide-content-container">
+          <div class="video-slide-container">
+            <div class="video-top-bar">
+              <div>
+                <p class="badge-chip"><i data-lucide="play-circle" style="width:14px; height:14px; color:var(--yellow);"></i> DEMONSTRAÇÃO PRÁTICA</p>
+                <h2 class="title-large" style="font-size:1.8rem; margin-top:6px;">Demonstração no <span class="highlight-yellow">LECOM</span></h2>
+              </div>
+              <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" class="badge-chip" style="text-decoration:none; color:#fff;" title="Abrir vídeo no Google Drive">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Abrir no Drive
+              </a>
+            </div>
+
+            <div class="video-player-wrap">
+              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-lecom.png">
+                <source src="assets/demonstracao-lecom.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 11: PROPOSTA: CAPACITAÇÃO DOS SOLICITANTES
+           ========================================== -->
+      <section class="slide" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 17: Proposta: Capacitação dos Solicitantes">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="graduation-cap" style="width:14px; height:14px; color:var(--yellow);"></i> EDUCAÇÃO CORPORATIVA</p>
+          <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Capacitação dos Solicitantes</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div style="max-width: 980px; margin: 1.5rem auto 0 auto; width: 100%;">
+            <div class="lecom-prop-card" style="padding: clamp(28px, 3.2vw, 44px);">
+              <div class="lecom-prop-header">
+                <span class="lecom-prop-num">3</span>
+                <h3>Capacitação dos Solicitantes</h3>
+              </div>
+              <p style="font-size: clamp(1.08rem, 1.35vw, 1.3rem); line-height: 1.75;">
+                Disponibilização de treinamentos na plataforma <strong>Universidade Desktop</strong> para orientar os colaboradores sobre o preenchimento correto das solicitações e o envio da documentação necessária, reduzindo erros, padronizando os processos e diminuindo as devoluções pelo setor Jurídico.
+              </p>
+              <div class="lecom-prop-footer" style="margin-top: 24px; font-size: 1rem;">
+                <i data-lucide="award" style="width:20px; height:20px;"></i>
+                <span>Trilhas Práticas e Autonomia para as Áreas Clientes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 12: DEMONSTRAÇÃO UNIVERSIDADE DESKTOP (VÍDEO)
+           ========================================== -->
+      <section class="slide" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
+        <div class="slide-content-container">
+          <div class="video-slide-container">
+            <div class="video-top-bar">
+              <div>
+                <p class="badge-chip"><i data-lucide="play-circle" style="width:14px; height:14px; color:var(--yellow);"></i> DEMONSTRAÇÃO PRÁTICA</p>
+                <h2 class="title-large" style="font-size:1.8rem; margin-top:6px;">Demonstração na <span class="highlight-yellow">Universidade Desktop</span></h2>
+              </div>
+              <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" class="badge-chip" style="text-decoration:none; color:#fff;" title="Abrir vídeo no Google Drive">
+                <i data-lucide="external-link" style="width:14px; height:14px;"></i> Abrir no Drive
+              </a>
+            </div>
+
+            <div class="video-player-wrap">
+              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-universidade.png">
+                <source src="assets/demonstracao-universidade.mp4" type="video/mp4">
+                Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 10: OBJETIVOS E DETALHAMENTO DAS PROPOSTAS
+           ========================================== -->
+      <section class="slide" id="slide-14" aria-roledescription="slide" aria-label="Slide 14 de 17: Objetivos">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO & PROPOSTAS</p>
+          <h2 class="title-large" style="margin-top: 10px;">Nossos <span class="highlight-yellow">Objetivos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <div class="objectives-grid">
+            <!-- 01. Análise Inteligente de Contratos -->
+            <div class="objective-card">
+              <div class="obj-card-header">
+                <span class="obj-num-badge">01</span>
+                <h3>Análise Inteligente de Contratos</h3>
+              </div>
+              <p>
+                Por meio dessa funcionalidade, será possível identificar informações ausentes, divergências cadastrais e possíveis inconsistências antes do encaminhamento da solicitação para análise jurídica.
+              </p>
+              <p>
+                Dessa forma, espera-se reduzir a necessidade de devoluções para correção, diminuir o retrabalho e proporcionar maior agilidade ao processo, mantendo a validação final sob responsabilidade dos profissionais do setor Jurídico.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="sparkles" style="width:16px; height:16px;"></i>
+                <span>Redução drástica do retrabalho com IA</span>
+              </div>
+            </div>
+
+            <!-- 02. Validação Cadastral Automatizada -->
+            <div class="objective-card">
+              <div class="obj-card-header">
+                <span class="obj-num-badge">02</span>
+                <h3>Validação Cadastral Automatizada</h3>
+              </div>
+              <p>
+                Essa integração permitirá consultar e conferir informações cadastrais das empresas envolvidas nas solicitações, como razão social, situação cadastral e outros dados disponibilizados pelo serviço de consulta. O objetivo é identificar possíveis divergências antes que a demanda avance para as próximas etapas do processo.
+              </p>
+              <p>
+                Com a automatização dessa verificação, busca-se reduzir erros de preenchimento, evitar solicitações com dados inconsistentes e diminuir o tempo gasto com conferências manuais, contribuindo para maior confiabilidade das informações e eficiência no atendimento.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="shield-check" style="width:16px; height:16px;"></i>
+                <span>API Receita Federal + Verificação Instantânea</span>
+              </div>
+            </div>
+
+            <!-- 03. Capacitação dos Solicitantes -->
+            <div class="objective-card">
+              <div class="obj-card-header">
+                <span class="obj-num-badge">03</span>
+                <h3>Capacitação dos Solicitantes</h3>
+              </div>
+              <p>
+                A iniciativa busca desenvolver maior autonomia dos solicitantes, padronizar a entrada das demandas e melhorar a comunicação entre as áreas envolvidas.
+              </p>
+              <p>
+                Como resultado, espera-se reduzir erros recorrentes, aumentar a qualidade das informações recebidas e diminuir o volume de solicitações devolvidas por preenchimento incorreto ou documentação incompleta.
+              </p>
+              <div class="obj-footer-highlight">
+                <i data-lucide="graduation-cap" style="width:16px; height:16px;"></i>
+                <span>Trilhas Práticas na Universidade Desktop</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 11: FLUXO FUTURO (TO-BE)
+           ========================================== -->
+      <section class="slide" id="slide-15" aria-roledescription="slide" aria-label="Slide 15 de 17: Fluxo TO-BE">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="zap" style="width:14px; height:14px; color:var(--yellow);"></i> NOVO FLUXO DE SOLICITAÇÕES JURÍDICAS</p>
+          <h2 class="title-large" style="margin-top: 10px;">Fluxo Futuro: <span class="highlight-yellow">Seção TO-BE</span></h2>
+          <p style="color:var(--text-2); font-size:1.05rem; margin-top:4px;">
+            Proposta após implementação da IA e automações na gestão de contratos no <strong>LECOM</strong>.
+          </p>
+          <div class="brand-divider-line"></div>
+
+          <div class="flowchart-tobe-container">
+            <div class="flowchart-tobe-frame" onclick="window.open('assets/fluxograma-to-be.png', '_blank')" title="Clique para ampliar em tela cheia">
+              <img src="assets/fluxograma-to-be.png" alt="Desktop S.A. - Novo Fluxo de Solicitações Jurídicas TO-BE" loading="lazy">
+            </div>
+
+            <div class="tobe-legend-pills">
+              <div class="tobe-pill">
+                <span class="tobe-dot blue"></span>
+                <span><strong>Azul:</strong> Novas automações (API Serpro e IA)</span>
+              </div>
+              <div class="tobe-pill">
+                <span class="tobe-dot green"></span>
+                <span><strong>Verde:</strong> Capacitação e marcos</span>
+              </div>
+              <div class="tobe-pill">
+                <span class="tobe-dot yellow"></span>
+                <span><strong>Amarelo:</strong> Decisões e correções</span>
+              </div>
+              <div class="tobe-pill" style="border-color:var(--yellow); background:rgba(255,204,20,0.1);">
+                <i data-lucide="target" style="color:var(--yellow); width:15px; height:15px;"></i>
+                <span style="color:#fff; font-weight:700;">Meta: Reduzir de 20 para 5 dias</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 12: O QUE ESPERAMOS
+           ========================================== -->
+      <section class="slide" id="slide-16" aria-roledescription="slide" aria-label="Slide 16 de 17: Resultados Esperados">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="trending-up" style="width:14px; height:14px;"></i> IMPACTO E BENEFÍCIOS</p>
+          <h2 class="title-large" style="margin-top: 10px;">O que <span class="highlight-yellow">esperamos</span></h2>
+          <div class="brand-divider-line"></div>
+
+          <!-- Cards de Expectativas com campos configuráveis -->
+          <div class="expectations-grid">
+            <div class="expect-card">
+              <div>
+                <i data-lucide="clock" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Redução de SLA</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Tempo de ciclo contratual encurtado drasticamente.</p>
+              </div>
+              <div class="expect-value-badge">20 dias ➔ 5 dias</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="repeat" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Redução de Retrabalho</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Eliminação das devoluções e do ciclo de idas e vindas de minutas por inconsistências.</p>
+              </div>
+              <div class="expect-value-badge">Fluxo Contínuo</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="hourglass" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Economia de Horas Jurídicas</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Foco da equipe jurídica em análises estratégicas.</p>
+              </div>
+              <div class="expect-value-badge pending">A definir</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="file-check-2" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Padronização no Envio das Solicitações</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Modelos de formulários consistentes, checklist obrigatório e conformidade cadastral prévia.</p>
+              </div>
+              <div class="expect-value-badge">100% Padronizado</div>
+            </div>
+
+            <div class="expect-card">
+              <div>
+                <i data-lucide="smile" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
+                <h3 class="title-small">Experiência dos Solicitantes</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Processo mais simples, transparente e sem frustração com devoluções de chamados.</p>
+              </div>
+              <div class="expect-value-badge">Maior Agilidade & Clareza</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SLIDE 13: CONCLUSÃO
+           ========================================== -->
+      <section class="slide slide-16" id="slide-17" aria-roledescription="slide" aria-label="Slide 17 de 17: Conclusão">
+        <div class="slide-content-container">
+          <div class="conclusao-wrap">
+            <p class="badge-chip"><i data-lucide="flag" style="width:14px; height:14px;"></i> CONSIDERAÇÕES FINAIS</p>
+            <h2 class="conclusao-title">Conclusão</h2>
+            <div class="brand-divider-line conclusao-divider"></div>
+
+            <div class="conclusao-card-box">
+              <p class="conclusao-impacto-text">
+                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> transformam a gestão jurídica em um fluxo ágil, padronizado e sem retrabalho — reduzindo o tempo de resposta de <strong>20 para 5 dias</strong> e potencializando a eficiência operacional de toda a empresa.
+              </p>
+
+              <div class="conclusao-thanks-badge">
+                <i data-lucide="sparkles" style="width:22px; height:22px;"></i>
+                <span>Muito Obrigado!</span>
+              </div>
+            </div>
+
+            <p class="conclusao-footer-credits">
+              TÉCNICO EM ADMINISTRAÇÃO • SENAI & DESKTOP S.A.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 7. Barra Inferior (Atalhos, Dots de Navegação) -->
+  <footer class="bottom-bar">
+    <div></div>
+
+    <!-- Dots de Navegação -->
+    <div class="dots-container" id="dotsContainer" role="tablist" aria-label="Navegação por slides">
+      <!-- Gerado via JavaScript -->
+    </div>
+
+    <div style="font-size: 0.75rem; color: var(--text-muted);">
+      SENAI & DESKTOP © 2026
+    </div>
+  </footer>
+
+  <!-- 8. Modal: Modo Visão Geral (Overview) -->
+  <div class="overview-modal" id="overviewModal" role="dialog" aria-modal="true" aria-label="Visão geral de todos os slides">
+    <div class="overview-header">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <i data-lucide="grid" style="color:var(--yellow); width:24px; height:24px;"></i>
+        <h2 class="title-small">Visão Geral dos Slides</h2>
+      </div>
+      <button class="btn-icon" id="closeOverviewBtn" aria-label="Fechar visão geral">
+        <i data-lucide="x" style="width:20px; height:20px;"></i>
+      </button>
+    </div>
+    <div class="overview-grid" id="overviewGrid">
+      <!-- Miniaturas geradas via JS -->
+    </div>
+  </div>
+
+  <!-- 9. Modal: Atalhos de Teclado (?) -->
+  <div class="shortcuts-modal" id="shortcutsModal" role="dialog" aria-modal="true" aria-label="Atalhos de teclado">
+    <div class="shortcuts-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <h3 class="title-small" style="color:var(--yellow); display:flex; align-items:center; gap:8px;">
+          <i data-lucide="keyboard" style="width:20px; height:20px;"></i> Atalhos de Navegação
+        </h3>
+        <button class="btn-icon" id="closeShortcutsBtn" aria-label="Fechar modal">
+          <i data-lucide="x" style="width:18px; height:18px;"></i>
+        </button>
+      </div>
+
+      <div class="shortcut-row">
+        <span>Avançar slide</span>
+        <span><span class="nav-hint-key">→</span> <span class="nav-hint-key">Espaço</span> <span class="nav-hint-key">PgDn</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Voltar slide</span>
+        <span><span class="nav-hint-key">←</span> <span class="nav-hint-key">PgUp</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Primeiro / Último slide</span>
+        <span><span class="nav-hint-key">Home</span> / <span class="nav-hint-key">End</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Visão Geral (Overview)</span>
+        <span><span class="nav-hint-key">O</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Tela Cheia</span>
+        <span><span class="nav-hint-key">F</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Fechar modais</span>
+        <span><span class="nav-hint-key">Esc</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       11. JAVASCRIPT: DADOS, NAVEGAÇÃO, ANIMAÇÕES & INTERATIVIDADE
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
+       ========================================================================== */
+    const PRESENTATION_CONFIG = {
+      totalSlides: 18,
+      autoplayIntervalMs: 12000,
+      
+      // Integrantes do Grupo (Slide 2)
+      team: [
+        {
+          nome: "Arthur",
+          funcao: "",
+          foto: "assets/team/arthur.jpg"
+        },
+        {
+          nome: "Heloisa",
+          funcao: "",
+          foto: "assets/team/heloisa.jpg"
+        },
+        {
+          nome: "Isaias",
+          funcao: "",
+          foto: "assets/team/isaias.jpg"
+        },
+        {
+          nome: "Pedro",
+          funcao: "",
+          foto: "assets/team/pedro.jpg"
+        }
+      ],
+
+      // Títulos dos Slides para Dots e Overview
+      slideTitles: [
+        "Capa",
+        "Quem somos?",
+        "Introdução",
+        "Dor Relatada",
+        "Mapeamento do Processo",
+        "Fluxo Atual (AS-IS)",
+        "Diagnóstico: SLA e Retrabalho",
+        "Ferramentas de Mapeamento",
+        "Ishikawa",
+        "Propostas do Grupo",
+        "Proposta: Lecom",
+        "Demonstração Lecom",
+        "Proposta: Capacitação",
+        "Demonstração Universidade",
+        "Nossos Objetivos",
+        "Fluxo Futuro (TO-BE)",
+        "O que esperamos",
+        "Conclusão"
+      ],
+
+      // Dados Comparativos Slide 7 (Inicial vs Atualizado)
+      diagnosticsData: {
+        initial: {
+          slaDays: 12,
+          slaIdeal: 5,
+          slaPercent: "+140%",
+          reworkPercent: "45%",
+          reworkDonutOffset: 138, // 45% de 251.2
+          barWidthCurrent: "100%",
+          barWidthIdeal: "41.6%"
+        },
+        updated: {
+          slaDays: 20,
+          slaIdeal: 5,
+          slaPercent: "+300%",
+          reworkPercent: "63,13%",
+          reworkDonutOffset: 92.6, // 63.13% de 251.2
+          barWidthCurrent: "100%",
+          barWidthIdeal: "25%"
+        }
+      },
+
+      // Ferramentas Metodológicas (Slide 9)
+      methodologyDetails: {
+        kanban: {
+          title: "Kanban",
+          icon: "trello",
+          desc: "Permite acompanhar visualmente o status das tarefas e chamados contratuais em tempo real, limitando o trabalho em andamento (WIP) e expondo gargalos imediatos."
+        },
+        sipoc: {
+          title: "SIPOC",
+          icon: "workflow",
+          desc: "Oferece uma visão panorâmica de ponta a ponta: Fornecedores (Suppliers), Entradas (Inputs), Processos (Process), Saídas (Outputs) e Clientes (Customers) do fluxo contratual."
+        },
+        ishikawa: {
+          title: "Diagrama de Ishikawa",
+          icon: "git-pull-request",
+          desc: "Mapeia as causas-raiz dos problemas agrupadas por categorias (Pessoas, Processos, Tecnologia e Documentos), identificando a origem das falhas."
+        },
+        "5w2h": {
+          title: "5W2H",
+          icon: "help-circle",
+          desc: "Estrutura planos de ação definindo com clareza: O que (What), Por que (Why), Onde (Where), Quando (When), Quem (Who), Como (How) e Quanto custa (How much)."
+        },
+        pdca: {
+          title: "Ciclo PDCA",
+          icon: "refresh-cw",
+          desc: "Promove a melhoria contínua através do ciclo iterativo: Planejar (Plan), Executar (Do), Checar (Check) e Agir corretivamente (Act)."
+        },
+        gut: {
+          title: "Matriz GUT",
+          icon: "bar-chart-2",
+          desc: "Auxilia na priorização de problemas com base na Gravidade, Urgência e Tendência de piora se nada for feito de imediato."
+        },
+        esforco: {
+          title: "Matriz Esforço × Impacto",
+          icon: "sliders",
+          desc: "Prioriza ações de 'ganho rápido' (baixo esforço e alto impacto), garantindo resultados rápidos antes de projetos de alta complexidade."
+        }
+      }
+    };
+
+    /* ==========================================================================
+       ESTADO DA APLICAÇÃO
+       ========================================================================== */
+    const state = {
+      currentSlideIndex: 0,
+      totalSlides: PRESENTATION_CONFIG.totalSlides,
+      isAutoplayActive: false,
+      autoplayTimer: null,
+      isOverviewOpen: false,
+      isShortcutsOpen: false,
+      isAnimating: false,
+      // Touch / Swipe
+      touchStartX: 0,
+      touchStartY: 0,
+      touchEndX: 0,
+      touchEndY: 0,
+      isDragging: false,
+      dragOffset: 0,
+      lockScroll: false
+    };
+
+    /* ==========================================================================
+       ELEMENTOS DOM PRINCIPAIS
+       ========================================================================== */
+    const track = document.getElementById('slidesTrack');
+    const slides = document.querySelectorAll('.slide');
+    const topProgressBar = document.getElementById('topProgressBar');
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlidesNum = document.getElementById('totalSlidesNum');
+    const dotsContainer = document.getElementById('dotsContainer');
+    const prevBtn = document.getElementById('prevSlideBtn');
+    const nextBtn = document.getElementById('nextSlideBtn');
+    const autoplayBtn = document.getElementById('autoplayBtn');
+    const overviewModal = document.getElementById('overviewModal');
+    const overviewGrid = document.getElementById('overviewGrid');
+    const shortcutsModal = document.getElementById('shortcutsModal');
+    const brandWatermark = document.getElementById('brandWatermark');
+
+    /* ==========================================================================
+       INICIALIZAÇÃO DA INTERFACE
+       ========================================================================== */
+    function init() {
+      // Inicializar Tema (Salvo em localStorage)
+      initTheme();
+
+      // Configurar total de slides
+      totalSlidesNum.textContent = String(state.totalSlides).padStart(2, '0');
+
+      // Renderizar Integrantes da Equipe (Slide 2)
+      renderTeamMembers();
+
+      // Renderizar Dots de Navegação
+      renderNavDots();
+
+      // Renderizar Grid da Visão Geral (Overview)
+      renderOverviewGrid();
+
+      // Configurar Ícones Lucide
+      lucide.createIcons();
+
+      // Configurar Canvas de Partículas
+      initAmbientCanvas();
+
+      // Configurar Cursor Personalizado
+      initCustomCursor();
+
+      // Checar Hash da URL (ex.: #/3)
+      checkInitialHash();
+
+      // Configurar Eventos Globais
+      setupEventListeners();
+
+      // Ir para o slide inicial
+      goToSlide(state.currentSlideIndex, false);
+    }
+
+    /* Renderizar Integrantes */
+    function renderTeamMembers() {
+      const container = document.getElementById('teamContainer');
+      if (!container) return;
+      container.innerHTML = PRESENTATION_CONFIG.team.map((member, idx) => `
+        <div class="hex-member-card">
+          <div class="hex-avatar-wrap">
+            <div class="hex-avatar-inner">
+              <img src="${member.foto}" alt="${member.nome}" loading="lazy">
+            </div>
+          </div>
+          <h3 class="member-name">${member.nome}</h3>
+          ${member.funcao ? `<p class="member-role">${member.funcao}</p>` : ''}
+        </div>
+      `).join('');
+    }
+
+    /* Renderizar Dots de Navegação */
+    function renderNavDots() {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < state.totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `nav-dot ${i === 0 ? 'is-active' : ''}`;
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Ir para slide ${i + 1}: ${PRESENTATION_CONFIG.slideTitles[i]}`);
+        dot.innerHTML = `<span class="dot-tooltip">${i + 1}. ${PRESENTATION_CONFIG.slideTitles[i]}</span>`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    /* Renderizar Visão Geral */
+    function renderOverviewGrid() {
+      overviewGrid.innerHTML = '';
+      PRESENTATION_CONFIG.slideTitles.forEach((title, idx) => {
+        const card = document.createElement('div');
+        card.className = `overview-card ${idx === state.currentSlideIndex ? 'is-current' : ''}`;
+        card.innerHTML = `
+          <div class="num-tag">SLIDE ${String(idx + 1).padStart(2, '0')}</div>
+          <div class="title-tag">${title}</div>
+        `;
+        card.addEventListener('click', () => {
+          goToSlide(idx);
+          toggleOverview(false);
+        });
+        overviewGrid.appendChild(card);
+      });
+    }
+
+    /* ==========================================================================
+       LÓGICA DE TRANSIÇÃO E NAVEGAÇÃO ENTRE SLIDES
+       ========================================================================== */
+    function goToSlide(index, animate = true) {
+      if (index < 0) index = 0;
+      if (index >= state.totalSlides) index = state.totalSlides - 1;
+
+      state.currentSlideIndex = index;
+      const targetPercent = -(index * 100);
+
+      // Movimento do trilho horizontal
+      if (animate) {
+        track.style.transition = 'transform 0.75s cubic-bezier(0.25, 1, 0.5, 1)';
+      } else {
+        track.style.transition = 'none';
+      }
+      track.style.transform = `translate3d(-${index * 100}vw, 0, 0)`;
+
+      // Atualizar classes ativas dos slides
+      slides.forEach((slide, idx) => {
+        if (idx === index) {
+          slide.classList.add('is-active');
+        } else {
+          slide.classList.remove('is-active');
+        }
+      });
+
+      // Atualizar Barra de Progresso e Contador
+      const progressPercent = ((index + 1) / state.totalSlides) * 100;
+      topProgressBar.style.width = `${progressPercent}%`;
+      currentSlideNum.textContent = String(index + 1).padStart(2, '0');
+
+      // Atualizar Dots
+      const dots = dotsContainer.querySelectorAll('.nav-dot');
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('is-active', idx === index);
+      });
+
+      // Atualizar Botões Prev/Next
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === state.totalSlides - 1;
+
+      // Parallax sutil na marca d'água 'Y'
+      if (brandWatermark) {
+        const rotateDeg = (index % 2 === 0 ? 0 : 3);
+        const scaleVal = 1 + (index * 0.008);
+        brandWatermark.style.transform = `translate(-50%, -50%) rotate(${rotateDeg}deg) scale(${scaleVal})`;
+      }
+
+      // Atualizar Hash na URL
+      history.replaceState(null, null, `#/${index + 1}`);
+
+      // Atualizar cards da Visão Geral
+      const overviewCards = overviewGrid.querySelectorAll('.overview-card');
+      overviewCards.forEach((c, i) => c.classList.toggle('is-current', i === index));
+
+      // Disparar animações de entrada dos elementos do slide
+      triggerSlideAnimations(index);
+    }
+
+    function nextSlide() {
+      if (state.currentSlideIndex < state.totalSlides - 1) {
+        goToSlide(state.currentSlideIndex + 1);
+      } else if (state.isAutoplayActive) {
+        goToSlide(0); // Reiniciar no autoplay
+      }
+    }
+
+    function prevSlide() {
+      if (state.currentSlideIndex > 0) {
+        goToSlide(state.currentSlideIndex - 1);
+      }
+    }
+
+    /* Checar Hash da URL */
+    function checkInitialHash() {
+      const hash = window.location.hash;
+      const match = hash.match(/#\/(\d+)/);
+      if (match && match[1]) {
+        const slideIndex = parseInt(match[1], 10) - 1;
+        if (slideIndex >= 0 && slideIndex < state.totalSlides) {
+          state.currentSlideIndex = slideIndex;
+        }
+      }
+    }
+
+    /* ==========================================================================
+       ANIMAÇÕES DE ENTRADA DO SLIDE & CONTADORES NUMÉRICOS
+       ========================================================================== */
+    function triggerSlideAnimations(slideIndex) {
+      const currentSlide = slides[slideIndex];
+      if (!currentSlide) return;
+
+      // Animação com GSAP para stagger de elementos filhos
+      if (typeof gsap !== 'undefined') {
+        const animElements = currentSlide.querySelectorAll('.title-large, .title-medium, .brand-divider-line, .premium-card, .hex-member-card, .problem-highlight-box, .badge-chip, .objective-card, .expect-card, .mapping-card, .tool-item-box');
+        
+        gsap.fromTo(animElements, 
+          { opacity: 0, y: 25, filter: 'blur(4px)' },
+          { 
+            opacity: 1, 
+            y: 0, 
+            filter: 'blur(0px)', 
+            duration: 0.65, 
+            stagger: 0.07, 
+            ease: "power2.out" 
+          }
+        );
+      }
+
+      // Animar contadores numéricos presentes no slide
+      const counters = currentSlide.querySelectorAll('.counter-number');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target')) || 0;
+        animateNumber(counter, 0, target, 1200);
+      });
+
+      // Animar barras horizontais de SLA
+      const slaFills = currentSlide.querySelectorAll('.sla-fill');
+      slaFills.forEach(fill => {
+        const targetWidth = fill.getAttribute('data-width') || '100%';
+        fill.style.width = '0%';
+        setTimeout(() => {
+          fill.style.width = targetWidth;
+        }, 150);
+      });
+
+      // Animar rosca de retrabalho
+      const donutCircle = currentSlide.querySelector('.donut-progress-circle');
+      if (donutCircle) {
+        const offset = donutCircle.getAttribute('data-offset') || 138;
+        donutCircle.style.strokeDashoffset = '251.2';
+        setTimeout(() => {
+          donutCircle.style.strokeDashoffset = offset;
+        }, 200);
+      }
+    }
+
+    /* Função utilitária para animação suave de números */
+    function animateNumber(element, start, end, duration) {
+      let startTime = null;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+        const current = Math.floor(start + (end - start) * easeProgress);
+        element.textContent = current;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          element.textContent = end;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    /* ==========================================================================
+       GESTÃO DE EVENTOS (TECLADO, MOUSE, TOUCH, RESIZE)
+       ========================================================================== */
+    function setupEventListeners() {
+      // 1. Teclado
+      window.addEventListener('keydown', handleKeyboardNavigation);
+
+      // 2. Roda do Mouse / Trackpad (com debounce para não pular slides acidentalmente)
+      window.addEventListener('wheel', handleWheelScroll, { passive: false });
+
+      // 3. Arrastar / Swipe (Touch e Mouse Drag)
+      const viewport = document.getElementById('presentationViewport');
+      viewport.addEventListener('touchstart', handleTouchStart, { passive: true });
+      viewport.addEventListener('touchmove', handleTouchMove, { passive: false });
+      viewport.addEventListener('touchend', handleTouchEnd);
+
+      // 4. Botões de Navegação
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+      document.getElementById('startPresentationBtn').addEventListener('click', () => goToSlide(1));
+      document.getElementById('restartBtn').addEventListener('click', () => goToSlide(0));
+
+      // 5. Autoplay
+      // autoplay removed
+
+      // 6. Visão Geral (Overview)
+      document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
+      document.getElementById('overviewFinalBtn').addEventListener('click', () => toggleOverview(true));
+      document.getElementById('closeOverviewBtn').addEventListener('click', () => toggleOverview(false));
+
+      // 7. Tela Cheia
+      document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+
+      // 8. Modal de Atalhos
+      // shortcuts removed
+      document.getElementById('closeShortcutsBtn').addEventListener('click', () => toggleShortcuts(false));
+
+      // 9. Impressão / PDF
+      document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+      // 10. Toggle de Dados (Slide 7: Inicial vs Atualizado)
+      // setupDataToggleSlide7();
+
+      // 11. Chips Interativos de Metodologia (Slide 9)
+      // setupMethodologyChips();
+
+      // 12. Ishikawa Interativo (Slide 6)
+      setupIshikawaInteraction();
+    }
+
+    /* Navegação por Teclado */
+    function handleKeyboardNavigation(e) {
+      // Não interceptar comandos quando Ctrl ou Meta (Command) estiver pressionado (ex: zoom Ctrl + / -, atalhos do navegador)
+      if (e.ctrlKey || e.metaKey) {
+        return;
+      }
+
+      if (state.isOverviewOpen || state.isShortcutsOpen) {
+        if (e.key === 'Escape') {
+          toggleOverview(false);
+          toggleShortcuts(false);
+        }
+        return;
+      }
+
+      switch(e.key) {
+        case 'ArrowRight':
+        case 'PageDown':
+        case ' ': // Barra de espaço avança
+          e.preventDefault();
+          nextSlide();
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(state.totalSlides - 1);
+          break;
+        case 'f':
+        case 'F':
+          toggleFullscreen();
+          break;
+        case 'o':
+        case 'O':
+          toggleOverview(true);
+          break;
+        case '?':
+          toggleShortcuts(true);
+          break;
+      }
+    }
+
+    /* Scroll do Mouse / Trackpad com Lock de 850ms */
+    function handleWheelScroll(e) {
+      // Se a tecla Ctrl estiver pressionada, permitir zoom nativo do navegador sem interceptar
+      if (e.ctrlKey || e.metaKey) {
+        return;
+      }
+
+      if (state.isOverviewOpen || state.isShortcutsOpen) return;
+
+      // Verificar se o slide atual tem scroll interno vertical
+      const currentSlideElem = slides[state.currentSlideIndex];
+      const hasVerticalScroll = currentSlideElem.scrollHeight > currentSlideElem.clientHeight;
+
+      if (hasVerticalScroll) {
+        // Permitir scroll normal dentro do slide se não estiver nos limites
+        const isAtBottom = currentSlideElem.scrollTop + currentSlideElem.clientHeight >= currentSlideElem.scrollHeight - 5;
+        const isAtTop = currentSlideElem.scrollTop <= 5;
+        
+        if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
+          return; // Deixa o conteúdo interno rolar
+        }
+      }
+
+      e.preventDefault();
+      if (state.lockScroll) return;
+
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+
+      if (Math.abs(delta) > 25) {
+        state.lockScroll = true;
+        if (delta > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+        setTimeout(() => {
+          state.lockScroll = false;
+        }, 400);
+      }
+    }
+
+    /* Swipe / Touch Navigation */
+    function handleTouchStart(e) {
+      state.touchStartX = e.touches[0].clientX;
+      state.touchStartY = e.touches[0].clientY;
+      state.isDragging = true;
+    }
+
+    function handleTouchMove(e) {
+      if (!state.isDragging) return;
+      state.touchEndX = e.touches[0].clientX;
+      state.touchEndY = e.touches[0].clientY;
+
+      const diffX = state.touchStartX - state.touchEndX;
+      const diffY = state.touchStartY - state.touchEndY;
+
+      // Se o movimento for mais horizontal que vertical, bloqueia o scroll nativo da página
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        e.preventDefault();
+      }
+    }
+
+    function handleTouchEnd() {
+      if (!state.isDragging) return;
+      state.isDragging = false;
+
+      const diffX = state.touchStartX - state.touchEndX;
+      const diffY = state.touchStartY - state.touchEndY;
+
+      // Threshold de sensibilidade de swipe
+      if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }
+
+    /* ==========================================================================
+       MODAIS, AUTOPLAY & TELA CHEIA
+       ========================================================================== */
+    function toggleAutoplay() {
+      state.isAutoplayActive = !state.isAutoplayActive;
+      autoplayBtn.classList.toggle('is-playing', state.isAutoplayActive);
+
+      if (state.isAutoplayActive) {
+        autoplayBtn.querySelector('span').textContent = 'Pausar';
+        autoplayBtn.querySelector('i').setAttribute('data-lucide', 'pause');
+        state.autoplayTimer = setInterval(nextSlide, PRESENTATION_CONFIG.autoplayIntervalMs);
+      } else {
+        autoplayBtn.querySelector('span').textContent = 'Autoplay';
+        autoplayBtn.querySelector('i').setAttribute('data-lucide', 'play');
+        clearInterval(state.autoplayTimer);
+      }
+      lucide.createIcons();
+    }
+
+    function toggleOverview(open) {
+      state.isOverviewOpen = open;
+      overviewModal.classList.toggle('is-open', open);
+    }
+
+    function toggleShortcuts(open) {
+      state.isShortcutsOpen = open;
+      shortcutsModal.classList.toggle('is-open', open);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.log(err));
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    /* ==========================================================================
+       INTERAÇÕES ESPECÍFICAS DOS SLIDES
+       ========================================================================== */
+    // Slide 7: Toggle de Dados Inicial vs Atualizado
+    function setupDataToggleSlide7() {
+      const btnInitial = document.getElementById('toggleInitialBtn');
+      const btnUpdated = document.getElementById('toggleUpdatedBtn');
+      const slaPercent = document.getElementById('slaPercentDisplay');
+      const slaDays = document.getElementById('slaDaysRealDisplay');
+      const slaRealBar = document.getElementById('slaRealBar');
+      const slaIdealBar = document.getElementById('slaIdealBar');
+      const reworkPercent = document.getElementById('reworkPercentDisplay');
+      const donutCircle = document.getElementById('donutUpdatedCircle');
+
+      if (!btnInitial || !btnUpdated) return;
+
+      btnInitial.addEventListener('click', () => {
+        btnInitial.classList.add('is-active');
+        btnUpdated.classList.remove('is-active');
+
+        const d = PRESENTATION_CONFIG.diagnosticsData.initial;
+        slaPercent.textContent = d.slaPercent;
+        slaDays.textContent = `${d.slaDays} dias`;
+        slaRealBar.style.width = d.barWidthCurrent;
+        slaRealBar.textContent = `${d.slaDays} dias`;
+        slaIdealBar.style.width = d.barWidthIdeal;
+        reworkPercent.textContent = d.reworkPercent;
+        donutCircle.style.strokeDashoffset = d.reworkDonutOffset;
+      });
+
+      btnUpdated.addEventListener('click', () => {
+        btnUpdated.classList.add('is-active');
+        btnInitial.classList.remove('is-active');
+
+        const d = PRESENTATION_CONFIG.diagnosticsData.updated;
+        slaPercent.textContent = d.slaPercent;
+        slaDays.textContent = `${d.slaDays} dias`;
+        slaRealBar.style.width = d.barWidthCurrent;
+        slaRealBar.textContent = `${d.slaDays} dias`;
+        slaIdealBar.style.width = d.barWidthIdeal;
+        reworkPercent.textContent = d.reworkPercent;
+        donutCircle.style.strokeDashoffset = d.reworkDonutOffset;
+      });
+    }
+
+    // Slide 9: Ferramentas de Metodologia
+    function setupMethodologyChips() {
+      const chips = document.querySelectorAll('.method-tool-chip');
+      const titleHolder = document.getElementById('methodTitleHolder');
+      const descHolder = document.getElementById('methodDescHolder');
+      const iconHolder = document.getElementById('methodIconHolder');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('is-active'));
+          chip.classList.add('is-active');
+
+          const toolKey = chip.getAttribute('data-tool');
+          const data = PRESENTATION_CONFIG.methodologyDetails[toolKey];
+          if (data) {
+            titleHolder.textContent = data.title;
+            descHolder.textContent = data.desc;
+            iconHolder.innerHTML = `<i data-lucide="${data.icon}" style="width:32px; height:32px;"></i>`;
+            lucide.createIcons();
+          }
+        });
+      });
+    }
+
+    // Slide 6: Ishikawa Interativo
+    function setupIshikawaInteraction() {
+      const cards = document.querySelectorAll('.ishikawa-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          cards.forEach(c => {
+            if (c !== card) c.style.opacity = '0.4';
+          });
+        });
+        card.addEventListener('mouseleave', () => {
+          cards.forEach(c => c.style.opacity = '1');
+        });
+      });
+    }
+
+    /* ==========================================================================
+       CURSOR PERSONALIZADO & PARTÍCULAS
+       ========================================================================== */
+    function initCustomCursor() {
+      // Cursor customizado desativado - utilizando cursor padrão do sistema
+      return;
+    }
+
+    
+    /* ==========================================================================
+       SISTEMA DE TEMAS: TEMA VERMELHO DESKTOP VS TEMA VINHO BORDÔ
+       ========================================================================== */
+    function initTheme() {
+      let savedTheme = localStorage.getItem('presentation-theme');
+      // Migração: se o usuário tinha salvo 'dark' ou 'light', ajustamos para 'red' ou 'wine'
+      if (!savedTheme || savedTheme === 'dark' || savedTheme === 'red') {
+        savedTheme = 'red';
+      } else if (savedTheme === 'light' || savedTheme === 'wine') {
+        savedTheme = 'wine';
+      }
+      applyTheme(savedTheme);
+
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', toggleTheme);
+      }
+    }
+
+    function toggleTheme() {
+      const isWine = document.body.classList.contains('theme-wine');
+      const newTheme = isWine ? 'red' : 'wine';
+      applyTheme(newTheme);
+      localStorage.setItem('presentation-theme', newTheme);
+    }
+
+    function applyTheme(theme) {
+      const icon = document.getElementById('themeToggleIcon');
+      const toggleBtn = document.getElementById('themeToggleBtn');
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+      if (theme === 'wine') {
+        document.body.classList.remove('theme-red', 'theme-light');
+        document.body.classList.add('theme-wine');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'sparkles');
+        }
+        if (toggleBtn) {
+          toggleBtn.setAttribute('title', 'Tema Atual: Vinho Bordô (Clique para Vermelho)');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#38080E');
+      } else {
+        document.body.classList.remove('theme-wine', 'theme-light');
+        document.body.classList.add('theme-red');
+        if (icon) {
+          icon.setAttribute('data-lucide', 'flame');
+        }
+        if (toggleBtn) {
+          toggleBtn.setAttribute('title', 'Tema Atual: Vermelho Gamer (Clique para Vinho)');
+        }
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#B30816');
+      }
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    /* Canvas de Partículas Douradas Discretas com taxa de atualização normalizada (Delta Time) */
+    function initAmbientCanvas() {
+      const canvas = document.getElementById('ambient-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const particleCount = 28;
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.6 + 0.6,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: -Math.random() * 0.22 - 0.08,
+          alpha: Math.random() * 0.4 + 0.1
+        });
+      }
+
+      let lastTime = 0;
+
+      function loop(currentTime) {
+        if (!lastTime) lastTime = currentTime;
+        const delta = Math.min((currentTime - lastTime) / 16.67, 2.5); // Normaliza para 60fps
+        lastTime = currentTime;
+
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.x += p.vx * delta;
+          p.y += p.vy * delta;
+
+          if (p.y < 0) p.y = height;
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 204, 20, ${p.alpha})`;
+          ctx.fill();
+        });
+        requestAnimationFrame(loop);
+      }
+      requestAnimationFrame(loop);
+    }
+
+    // Inicializar quando a página carregar
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

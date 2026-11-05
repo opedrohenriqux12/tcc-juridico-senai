@@ -1,0 +1,170 @@
+﻿      <section class="slide" id="slide-8" aria-roledescription="slide" aria-label="Slide 8 de 17: Diagrama de Ishikawa">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> ANÁLISE DE CAUSAS-RAIZ</p>
+          <h2 class="title-large" style="margin-top: 10px;">Diagrama de <span class="highlight-yellow">Ishikawa</span></h2>
+          <p style="color:var(--text-2); font-size:1.1rem; margin-top:4px;">Por que o problema de lentidão e retrabalho acontece?</p>
+          <div class="brand-divider-line"></div>
+
+          <!-- Espinha de Peixe Dinâmica (Fiel à Imagem Brainstorming TCC) -->
+          <div class="fishbone-container">
+            <div class="fishbone-svg-wrap">
+                                          <svg class="fishbone-svg" viewBox="0 0 1140 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrowhead" markerWidth="14" markerHeight="10" refX="13" refY="5" orient="auto">
+                    <polygon points="0 0, 14 5, 0 10" fill="var(--yellow)" />
+                  </marker>
+                </defs>
+
+                <!-- ESPINHA CENTRAL (Coluna Vertebral alargada de 50 a 860) -->
+                <line x1="50" y1="240" x2="865" y2="240" class="bone-spine" marker-end="url(#arrowhead)" />
+
+                <!-- ================= 1. CATEGORIA: PESSOAS ================= -->
+                <g class="fishbone-cat-group" data-category="pessoas">
+                  <!-- Caixa de Categoria Superior -->
+                  <rect x="235" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="300" y="34" class="bone-cat-title">PESSOAS</text>
+
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="300" y1="54" x2="355" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Treinamento não padronizado (Y=95, X_ramo=312) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="95" x2="312" y2="95" class="bone-sub" />
+                    <circle cx="312" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="95" text-anchor="start" class="bone-cause-text">Treinamento não padronizado</text>
+                  </g>
+
+                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=327) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="145" x2="327" y2="145" class="bone-sub" />
+                    <circle cx="327" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="145" text-anchor="start" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
+                  </g>
+
+                  <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=342) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="195" x2="342" y2="195" class="bone-sub" />
+                    <circle cx="342" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="195" text-anchor="start" class="bone-cause-text">Sobrecarga da equipe</text>
+                  </g>
+                </g>
+
+                <!-- ================= 2. CATEGORIA: PROCESSO ================= -->
+                <g class="fishbone-cat-group" data-category="processo">
+                  <!-- Caixa de Categoria Superior (Espaçamento alargado, agora em X=660) -->
+                  <rect x="595" y="14" width="130" height="40" class="bone-cat-box" />
+                  <text x="660" y="34" class="bone-cat-title">PROCESSO</text>
+
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="660" y1="54" x2="715" y2="240" class="bone-branch" />
+
+                  <!-- Causa 1: Ausência de fluxos formais (Y=95, X_ramo=672) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="95" x2="672" y2="95" class="bone-sub" />
+                    <circle cx="672" cy="95" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="95" text-anchor="start" class="bone-cause-text">Ausência de fluxos formais</text>
+                  </g>
+
+                  <!-- Causa 2: Falta de pré-triagem (Y=145, X_ramo=687) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="145" x2="687" y2="145" class="bone-sub" />
+                    <circle cx="687" cy="145" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="145" text-anchor="start" class="bone-cause-text">Falta de pré-triagem</text>
+                  </g>
+
+                  <!-- Causa 3: Atribuição inadequada de tarefas (Y=195, X_ramo=702) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="195" x2="702" y2="195" class="bone-sub" />
+                    <circle cx="702" cy="195" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="195" text-anchor="start" class="bone-cause-text">Atribuição inadequada de tarefas</text>
+                  </g>
+                </g>
+
+                <!-- ================= 3. CATEGORIA: TECNOLOGIA ================= -->
+                <g class="fishbone-cat-group" data-category="tecnologia">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="300" y1="426" x2="355" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="230" y="426" width="140" height="40" class="bone-cat-box" />
+                  <text x="300" y="446" class="bone-cat-title">TECNOLOGIA</text>
+
+                  <!-- Causa 1: Uso de planilhas e pastas físicas (Y=285, X_ramo=342) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="285" x2="342" y2="285" class="bone-sub" />
+                    <circle cx="342" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="285" text-anchor="start" class="bone-cause-text">Uso de planilhas e pastas físicas</text>
+                  </g>
+
+                  <!-- Causa 2: Ferramentas não integradas (Y=335, X_ramo=327) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="335" x2="327" y2="335" class="bone-sub" />
+                    <circle cx="327" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="335" text-anchor="start" class="bone-cause-text">Ferramentas não integradas</text>
+                  </g>
+
+                  <!-- Causa 3: Sistemas com limitações (Y=385, X_ramo=312) -->
+                  <g class="bone-cause-item">
+                    <line x1="60" y1="385" x2="312" y2="385" class="bone-sub" />
+                    <circle cx="312" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="50" y="385" text-anchor="start" class="bone-cause-text">Sistemas com limitações</text>
+                  </g>
+                </g>
+
+                <!-- ================= 4. CATEGORIA: MEIO AMBIENTE ================= -->
+                <g class="fishbone-cat-group" data-category="meio-ambiente">
+                  <!-- Ramo Principal Inclinado -->
+                  <line x1="660" y1="426" x2="715" y2="240" class="bone-branch" />
+
+                  <!-- Caixa de Categoria Inferior -->
+                  <rect x="585" y="426" width="150" height="40" class="bone-cat-box" />
+                  <text x="660" y="446" class="bone-cat-title">MEIO AMBIENTE</text>
+
+                  <!-- Causa 1: Comunicação desalinhada (Y=285, X_ramo=702) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="285" x2="702" y2="285" class="bone-sub" />
+                    <circle cx="702" cy="285" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="285" text-anchor="start" class="bone-cause-text">Comunicação desalinhada</text>
+                  </g>
+
+                  <!-- Causa 2: Alta demanda de trabalho (Y=335, X_ramo=687) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="335" x2="687" y2="335" class="bone-sub" />
+                    <circle cx="687" cy="335" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="335" text-anchor="start" class="bone-cause-text">Alta demanda de trabalho</text>
+                  </g>
+
+                  <!-- Causa 3: Falta de recursos (equipe, ferramentas e infraestrutura) (Y=385, X_ramo=672) -->
+                  <g class="bone-cause-item">
+                    <line x1="420" y1="385" x2="672" y2="385" class="bone-sub" />
+                    <circle cx="672" cy="385" r="3.5" class="bone-cause-dot" />
+                    <text x="410" y="380" text-anchor="start" class="bone-cause-text">Falta de recursos (equipe, ferramentas</text>
+                    <text x="410" y="396" text-anchor="start" class="bone-cause-text">e infraestrutura)</text>
+                  </g>
+                </g>
+
+                <!-- ================= CABEÇA DO PEIXE: EFEITO CRÍTICO ================= -->
+                <g class="fish-head-group">
+                  <rect x="880" y="130" width="220" height="220" class="fish-head-box" />
+                  
+                  <text x="990" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
+                  
+                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="990" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
+                  
+                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  
+                  <line x1="905" y1="288" x2="1075" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+                  
+                  <text x="990" y="318" font-family="var(--font-heading)" font-size="15" font-weight="800" fill="var(--red-alert)" text-anchor="middle">Recusa de 18,93%</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="fishbone-legend">
+              <span class="legend-badge"><i data-lucide="mouse-pointer" style="width:14px; height:14px;"></i> Interativo: passe o cursor sobre as causas para destacar</span>
+              <span>Figura 2 – Causas do SLA de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
+            </div>
+          </div>
+        </div>
+      </section>
