@@ -1,5 +1,5 @@
-    /* ==========================================================================
-       1. VARIÁVEIS CSS E DESIGN SYSTEM (TEMA VERMELHO DESKTOP BASE & TEMA VINHO)
+ï»¿    /* ==========================================================================
+       1. VARIï¿½VEIS CSS E DESIGN SYSTEM (TEMA VERMELHO DESKTOP BASE & TEMA VINHO)
        ========================================================================== */
     :root {
       --bg-0: #7A010C;
@@ -56,7 +56,7 @@
       outline-offset: 3px;
     }
 
-    /* Scrollbar personalizada para áreas com rolagem interna */
+    /* Scrollbar personalizada para ï¿½reas com rolagem interna */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -75,7 +75,7 @@
     /* ==========================================================================
     
 
-    /* Canvas de partículas douradas sutis */
+    /* Canvas de partï¿½culas douradas sutis */
     #ambient-canvas {
       position: fixed;
       top: 0;
@@ -87,7 +87,7 @@
       opacity: 0.55;
     }
 
-    /* Camada de fundo global (Gradiente + Linhas Topográficas + Marca d'água 'Y') */
+    /* Camada de fundo global (Gradiente + Linhas Topogrï¿½ficas + Marca d'ï¿½gua 'Y') */
     .global-ambient-layer {
       position: fixed;
       inset: 0;
@@ -151,7 +151,7 @@
       transform: scale(1);
     }
 
-    /* Container de conteúdo dentro de cada slide */
+    /* Container de conteï¿½do dentro de cada slide */
     .slide-content-container {
       width: 100%;
       max-width: 1440px;
@@ -166,7 +166,7 @@
     }
 
     /* ==========================================================================
-       4. CABEÇALHOS, BARRA DE NAVEGAÇÃO E CONTROLES DE INTERFACE
+       4. CABEï¿½ALHOS, BARRA DE NAVEGAï¿½ï¿½O E CONTROLES DE INTERFACE
        ========================================================================== */
     /* Barra Superior */
     .top-bar {
@@ -205,6 +205,15 @@
       text-transform: uppercase;
       font-weight: 600;
       color: var(--text-2);
+    }
+
+    .brand-senai-logo {
+      height: 24px;
+      width: auto;
+      border-radius: 4px;
+      display: inline-block;
+      vertical-align: middle;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .brand-logo-img {
@@ -271,7 +280,7 @@
       font-size: 1.15rem;
     }
 
-    /* Barra Inferior de Navegação & Dots */
+    /* Barra Inferior de Navegaï¿½ï¿½o & Dots */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -367,7 +376,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Botões Flutuantes de Navegação (Setas Laterais) */
+    /* Botï¿½es Flutuantes de Navegaï¿½ï¿½o (Setas Laterais) */
     .nav-arrow-btn {
       position: fixed;
       top: 50%;
@@ -406,7 +415,7 @@
     }
 
     /* ==========================================================================
-       5. COMPONENTES REUTILIZÁVEIS: TÍTULOS, LINHAS, CARDS, CHIPS
+       5. COMPONENTES REUTILIZï¿½VEIS: Tï¿½TULOS, LINHAS, CARDS, CHIPS
        ========================================================================== */
     .title-large {
       font-family: var(--font-heading);
@@ -444,7 +453,7 @@
       color: var(--red-alert) !important;
     }
 
-    /* Linha divisória amarela com início grosso (marca registrada da apresentação) */
+    /* Linha divisï¿½ria amarela com inï¿½cio grosso (marca registrada da apresentaï¿½ï¿½o) */
     .brand-divider-line {
       position: relative;
       width: 100%;
@@ -497,7 +506,7 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), var(--glow-gold);
     }
 
-    /* Imagens temáticas com fallback */
+    /* Imagens temï¿½ticas com fallback */
     .theme-image-bg {
       position: absolute;
       right: 0;
@@ -543,7 +552,7 @@
     }
 
     /* ==========================================================================
-       6. SLIDES ESPECÍFICOS (1 A 12)
+       6. SLIDES ESPECï¿½FICOS (1 A 12)
        ========================================================================== */
 
     /* --- SLIDE 1: CAPA --- */
@@ -728,7 +737,7 @@
       .team-grid { grid-template-columns: 1fr; }
     }
 
-    /* --- SLIDE 3: INTRODUÇÃO --- */
+    /* --- SLIDE 3: INTRODUï¿½ï¿½O --- */
     .intro-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -758,7 +767,7 @@
       .intro-grid { grid-template-columns: 1fr; }
     }
 
-            /* --- SLIDE 9: PROPOSTA IMPLEMENTAÇÕES NO LECOM --- */
+            /* --- SLIDE 9: PROPOSTA IMPLEMENTAï¿½ï¿½ES NO LECOM --- */
     .lecom-props-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -844,7 +853,7 @@
       font-size: 0.9rem;
     }
 
-    /* --- SLIDE 10: VÍDEO DEMONSTRAÇÃO EM TELA CHEIA --- */
+    /* --- SLIDE 10: Vï¿½DEO DEMONSTRAï¿½ï¿½O EM TELA CHEIA --- */
     .video-slide-container {
       width: 100%;
       max-width: 1280px;
@@ -880,7 +889,7 @@
       margin-bottom: 12px;
     }
 
-    /* --- SLIDE NOVO: MAPEAMENTO E DIAGNÓSTICO DOS PROCESSOS --- */
+    /* --- SLIDE NOVO: MAPEAMENTO E DIAGNï¿½STICO DOS PROCESSOS --- */
     .mapping-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -977,7 +986,7 @@
       margin-top: 1.5rem;
     }
 
-        /* --- TABELA E GRÁFICO COMPARATIVO: QUADRO 1 & FIGURA 1 --- */
+        /* --- TABELA E GRï¿½FICO COMPARATIVO: QUADRO 1 & FIGURA 1 --- */
     .quadro-indicadores-table {
       width: 100%;
       border-collapse: separate;
@@ -1040,7 +1049,7 @@
       color: #F8CFCF;
     }
 
-    /* Gráfico de Barras Horizontais Fiel à Figura 1 */
+    /* Grï¿½fico de Barras Horizontais Fiel ï¿½ Figura 1 */
     .figura-sla-bars {
       display: flex;
       flex-direction: column;
@@ -1123,7 +1132,7 @@
       color: #F8CFCF;
     }
 
-    /* --- SLIDE 5 & 7: DIAGNÓSTICO (SLA, RETRABALHO E FLUXO) --- */
+    /* --- SLIDE 5 & 7: DIAGNï¿½STICO (SLA, RETRABALHO E FLUXO) --- */
     .diagnostic-split {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
@@ -1451,7 +1460,7 @@
       filter: drop-shadow(0 0 5px var(--yellow));
     }
 
-    /* Cabeça do peixe (Efeito SLA) */
+    /* Cabeï¿½a do peixe (Efeito SLA) */
     .fish-head-box {
       fill: #550109;
       stroke: var(--yellow);
@@ -1641,7 +1650,7 @@
       color: var(--yellow);
     }
 
-    /* --- SLIDE 6: DIAGNÓSTICO (ISHIKAWA) --- */
+    /* --- SLIDE 6: DIAGNï¿½STICO (ISHIKAWA) --- */
     .ishikawa-wrapper {
       margin-top: 24px;
       width: 100%;
@@ -1693,7 +1702,7 @@
       line-height: 1.4;
     }
     .ishikawa-items-list li::before {
-      content: '•';
+      content: 'ï¿½';
       position: absolute;
       left: 0;
       color: var(--yellow);
@@ -2008,7 +2017,7 @@
       font-style: italic;
     }
 
-        /* --- SLIDE 13: CONCLUSÃO (CENTRALIZADO & ELEGANTE) --- */
+        /* --- SLIDE 13: CONCLUSï¿½O (CENTRALIZADO & ELEGANTE) --- */
     .slide-16 .slide-content-container {
       align-items: center;
       text-align: center;
@@ -2101,7 +2110,7 @@
       margin-top: 10px;
     }
 
-    /* --- SLIDE 12: CONCLUSÃO --- */
+    /* --- SLIDE 12: CONCLUSï¿½O --- */
     .slide-13 .final-phrase {
       font-family: var(--font-heading);
       font-size: clamp(2.4rem, 5.5vw, 4.8rem);
@@ -2152,7 +2161,7 @@
     }
 
     /* ==========================================================================
-       7. MODO OVERVIEW (VISÃO GERAL EM GRADE)
+       7. MODO OVERVIEW (VISï¿½O GERAL EM GRADE)
        ========================================================================== */
     .overview-modal {
       position: fixed;
@@ -2275,7 +2284,7 @@
     }
 
     /* ==========================================================================
-       10. IMPRESSÃO (@media print - 1 slide por folha em 16:9)
+       10. IMPRESSï¿½O (@media print - 1 slide por folha em 16:9)
        ========================================================================== */
     @media print {
       body, html {
@@ -2307,7 +2316,7 @@
       }
     }
 
-    /* Redução de Movimento (Acessibilidade) */
+    /* Reduï¿½ï¿½o de Movimento (Acessibilidade) */
     @media (prefers-reduced-motion: reduce) {
       * {
         animation-duration: 0.01ms !important;
@@ -2319,7 +2328,7 @@
     }
   
     /* ==========================================================================
-       TEMA VERMELHO (PADRÃO / ATUAL) & TEMA VINHO (DESKTOP FIBRA ELEGANTE)
+       TEMA VERMELHO (PADRï¿½O / ATUAL) & TEMA VINHO (DESKTOP FIBRA ELEGANTE)
        ========================================================================== */
     body, body.theme-red {
       --bg-0: #7A010C;
@@ -2339,11 +2348,11 @@
       --border-subtle: rgba(255, 255, 255, 0.16);
       --border-gold: rgba(255, 212, 59, 0.45);
       --glow-gold: 0 0 25px rgba(255, 212, 59, 0.35);
-      /* Degradê gradual da esquerda para a direita inspirado na identidade gamer Desktop */
+      /* Degradï¿½ gradual da esquerda para a direita inspirado na identidade gamer Desktop */
       background: linear-gradient(108deg, #500007 0%, #68010B 22%, #85020E 45%, #B30816 72%, #D8131A 92%, #EB241A 100%);
     }
 
-    /* Variações no tema vermelho padrão */
+    /* Variaï¿½ï¿½es no tema vermelho padrï¿½o */
     .global-ambient-layer {
       background: 
         radial-gradient(circle at 85% 45%, rgba(255, 130, 20, 0.35) 0%, rgba(235, 36, 26, 0.2) 35%, transparent 65%),
@@ -2423,7 +2432,7 @@
     }
 
     /* ==========================================================================
-       TEMA VINHO / BORDÔ ELEGANTE (DESKTOP FIBRA + CELULAR)
+       TEMA VINHO / BORDï¿½ ELEGANTE (DESKTOP FIBRA + CELULAR)
        ========================================================================== */
     body.theme-wine {
       --bg-0: #260509;
@@ -2561,7 +2570,7 @@
       background: rgba(38, 5, 10, 0.65) !important;
     }
 
-    /* Linhas orgânicas fluidas animadas no fundo (estilo Desktop Telecom) */
+    /* Linhas orgï¿½nicas fluidas animadas no fundo (estilo Desktop Telecom) */
     .animated-brand-curves {
       position: absolute;
       inset: 0;
@@ -2589,3 +2598,17 @@
       animation-delay: -25s;
     }
 
+
+    /* ==========================================================================
+       MODO TELA CHEIA (FULLSCREEN): OCULTAR SETAS E CONTROLES DO CABEÃ‡ALHO
+       ========================================================================== */
+    :fullscreen .top-controls,
+    :-webkit-full-screen .top-controls,
+    body.is-fullscreen .top-controls,
+    :fullscreen .nav-arrow-btn,
+    :-webkit-full-screen .nav-arrow-btn,
+    body.is-fullscreen .nav-arrow-btn {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }

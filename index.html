@@ -22,6 +22,26 @@
 
   <!-- Folha de Estilos Modular -->
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    :fullscreen .top-controls,
+    :-webkit-full-screen .top-controls,
+    body.is-fullscreen .top-controls,
+    :fullscreen .nav-arrow-btn,
+    :-webkit-full-screen .nav-arrow-btn,
+    body.is-fullscreen .nav-arrow-btn {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    .brand-senai-logo {
+      height: 24px !important;
+      max-height: 24px !important;
+      width: auto !important;
+      max-width: 90px !important;
+      object-fit: contain !important;
+      border-radius: 4px !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -37,7 +57,7 @@
   <header class="top-bar">
     <div class="top-progress-bar" id="topProgressBar"></div>
     <div class="brand-meta">
-      <img src="assets/senai-logo.png" alt="Logo SENAI" class="brand-senai-logo">
+      <img src="assets/senai-logo.png" alt="Logo SENAI" class="brand-senai-logo" style="height: 24px; max-height: 24px; width: auto; max-width: 90px; border-radius: 4px; display: inline-block; vertical-align: middle; object-fit: contain;">
       <img src="assets/desktop-logo.jpg" alt="Logo Desktop" class="brand-logo-img">
       <span>Desktop | Jurídico</span>
     </div>
