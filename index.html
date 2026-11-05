@@ -23,16 +23,32 @@
   <!-- Folha de Estilos Modular -->
   <link rel="stylesheet" href="css/style.css">
   <style>
-    :fullscreen .top-controls,
-    :-webkit-full-screen .top-controls,
-    body.is-fullscreen .top-controls,
+    /* Regras Globais de Tela Cheia */
+    :fullscreen .top-bar,
+    :-webkit-full-screen .top-bar,
     :fullscreen .nav-arrow-btn,
     :-webkit-full-screen .nav-arrow-btn,
+    html:fullscreen .top-bar,
+    html:-webkit-full-screen .top-bar,
+    html:fullscreen .nav-arrow-btn,
+    html:-webkit-full-screen .nav-arrow-btn,
+    body.is-fullscreen .top-bar,
     body.is-fullscreen .nav-arrow-btn {
       display: none !important;
       opacity: 0 !important;
+      visibility: hidden !important;
       pointer-events: none !important;
     }
+
+    /* Ao estar em tela cheia, remove o padding superior dos slides reservado para o cabeçalho */
+    :fullscreen .slide,
+    :-webkit-full-screen .slide,
+    html:fullscreen .slide,
+    html:-webkit-full-screen .slide,
+    body.is-fullscreen .slide {
+      padding-top: 1.5rem !important;
+    }
+
     .brand-senai-logo {
       height: 24px !important;
       max-height: 24px !important;
