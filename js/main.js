@@ -37,7 +37,7 @@
         "Dor Relatada",
         "Mapeamento do Processo",
         "Fluxo Atual (AS-IS)",
-        "Diagnóstico: SLA e Retrabalho",
+        "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
         "Ishikawa",
         "Propostas do Grupo",
@@ -171,7 +171,7 @@
       renderOverviewGrid();
 
       // Configurar Ícones Lucide
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
 
       // Configurar Canvas de Partículas
       initAmbientCanvas();
@@ -184,6 +184,8 @@
 
       // Configurar Eventos Globais
       setupEventListeners();
+
+      setupVideoControls();
 
       // Ir para o slide inicial
       goToSlide(state.currentSlideIndex, false);
@@ -294,8 +296,74 @@
       const overviewCards = overviewGrid.querySelectorAll('.overview-card');
       overviewCards.forEach((c, i) => c.classList.toggle('is-current', i === index));
 
+      syncSlideVideos();
+
       // Disparar animações de entrada dos elementos do slide
       triggerSlideAnimations(index);
+    }
+
+    // Start only the active demonstration; never leave audio playing off-screen.
+    async function playSlideVideo(video) {
+      const slide = video.closest('.slide');
+      const playButton = slide.querySelector('[data-video-play]');
+      const soundButton = slide.querySelector('[data-video-sound]');
+      playButton.hidden = true;
+      soundButton.hidden = video.muted;
+      video.muted = false;
+      try {
+        await video.play();
+      } catch (error) {
+        if (!slide.classList.contains('is-active')) return;
+        if (error.name === 'NotAllowedError') {
+          video.muted = true;
+          try {
+            await video.play();
+          } catch (_) {
+            playButton.hidden = false;
+          }
+        } else if (error.name !== 'AbortError') {
+          playButton.hidden = false;
+        }
+      }
+      if (!slide.classList.contains('is-active')) video.pause();
+      soundButton.hidden = !video.muted;
+    }
+
+    function syncSlideVideos() {
+      const activeVideo = slides[state.currentSlideIndex].querySelector('video');
+      document.body.classList.toggle('is-video-slide', Boolean(activeVideo));
+      document.body.classList.toggle('is-flow-slide', slides[state.currentSlideIndex].classList.contains('slide--flow'));
+      document.querySelectorAll('.slide video').forEach(video => {
+        if (video !== activeVideo) video.pause();
+      });
+      if (!activeVideo) return;
+      // Re-entering a demonstration starts it from the beginning.
+      activeVideo.currentTime = 0;
+      playSlideVideo(activeVideo);
+      // Native fullscreen is allowed only during a user gesture.
+      if (!document.fullscreenElement && navigator.userActivation?.isActive) {
+        document.documentElement.requestFullscreen?.().catch(() => {});
+      }
+    }
+
+    function setupVideoControls() {
+      document.querySelectorAll('.slide--video').forEach(slide => {
+        const video = slide.querySelector('video');
+        slide.querySelector('[data-video-prev]').addEventListener('click', prevSlide);
+        slide.querySelector('[data-video-next]').addEventListener('click', nextSlide);
+        slide.querySelector('[data-video-fullscreen]').addEventListener('click', toggleFullscreen);
+        slide.querySelector('[data-video-play]').addEventListener('click', () => playSlideVideo(video));
+        slide.querySelector('[data-video-sound]').addEventListener('click', () => {
+          video.muted = false;
+          video.play().catch(() => { slide.querySelector('[data-video-play]').hidden = false; });
+        });
+        video.addEventListener('volumechange', () => {
+          slide.querySelector('[data-video-sound]').hidden = !video.muted;
+        });
+        video.addEventListener('play', () => {
+          slide.querySelector('[data-video-play]').hidden = true;
+        });
+      });
     }
 
     function nextSlide() {
@@ -414,14 +482,14 @@
       prevBtn.addEventListener('click', prevSlide);
       nextBtn.addEventListener('click', nextSlide);
       document.getElementById('startPresentationBtn').addEventListener('click', () => goToSlide(1));
-      document.getElementById('restartBtn').addEventListener('click', () => goToSlide(0));
+      document.getElementById('restartBtn')?.addEventListener('click', () => goToSlide(0));
 
       // 5. Autoplay
       // autoplay removed
 
       // 6. Visão Geral (Overview)
       document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
-      document.getElementById('overviewFinalBtn').addEventListener('click', () => toggleOverview(true));
+      document.getElementById('overviewFinalBtn')?.addEventListener('click', () => toggleOverview(true));
       document.getElementById('closeOverviewBtn').addEventListener('click', () => toggleOverview(false));
 
       // 7. Tela Cheia
@@ -432,7 +500,7 @@
       document.getElementById('closeShortcutsBtn').addEventListener('click', () => toggleShortcuts(false));
 
       // 9. Impressão / PDF
-      document.getElementById('printBtn').addEventListener('click', () => window.print());
+      document.getElementById('printBtn')?.addEventListener('click', () => window.print());
 
       // 10. Toggle de Dados (Slide 7: Inicial vs Atualizado)
       // setupDataToggleSlide7();
@@ -446,6 +514,7 @@
 
     /* Navegação por Teclado */
     function handleKeyboardNavigation(e) {
+      if (e.target instanceof Element && e.target.closest('video, button, a, input, textarea, select, [contenteditable="true"]')) return;
       // Não interceptar comandos quando Ctrl ou Meta (Command) estiver pressionado (ex: zoom Ctrl + / -, atalhos do navegador)
       if (e.ctrlKey || e.metaKey) {
         return;
@@ -536,8 +605,14 @@
 
     /* Swipe / Touch Navigation */
     function handleTouchStart(e) {
+      if (e.target instanceof Element && e.target.closest('video, button, a')) {
+        state.isDragging = false;
+        return;
+      }
       state.touchStartX = e.touches[0].clientX;
       state.touchStartY = e.touches[0].clientY;
+      state.touchEndX = state.touchStartX;
+      state.touchEndY = state.touchStartY;
       state.isDragging = true;
     }
 
@@ -588,7 +663,7 @@
         autoplayBtn.querySelector('i').setAttribute('data-lucide', 'play');
         clearInterval(state.autoplayTimer);
       }
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     function toggleOverview(open) {
@@ -674,7 +749,7 @@
             titleHolder.textContent = data.title;
             descHolder.textContent = data.desc;
             iconHolder.innerHTML = `<i data-lucide="${data.icon}" style="width:32px; height:32px;"></i>`;
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
           }
         });
       });
@@ -757,7 +832,7 @@
         if (themeColorMeta) themeColorMeta.setAttribute('content', '#B30816');
       }
       if (window.lucide) {
-        lucide.createIcons();
+        if (window.lucide) lucide.createIcons();
       }
     }
 

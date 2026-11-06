@@ -115,8 +115,10 @@
       <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 17: Capa">
         <div class="slide-content-container">
           <div class="cover-wrap">
-            <div style="margin-bottom: 1.2rem;">
-              <img src="assets/desktop-logo.jpg" alt="Logo Desktop" style="width: clamp(65px, 6vw, 85px); height: clamp(65px, 6vw, 85px); border-radius: 18px; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 20px rgba(255, 204, 20, 0.4); border: 2px solid rgba(255, 204, 20, 0.6); display: inline-block;">
+            <div class="cover-partner-logos" role="group" aria-label="SENAI e DESKTOP">
+              <img class="cover-senai-logo" src="assets/senai-logo.png" alt="SENAI">
+              <span class="cover-partner-divider" aria-hidden="true"></span>
+              <img class="cover-desktop-logo" src="assets/desktop-logo-completa.png" alt="DESKTOP">
             </div>
             <p class="top-sub">TÉCNICO EM ADMINISTRAÇÃO – <span class="highlight-yellow">SENAI</span></p>
             <h1 class="main-pcc title-large">Projeto de <span class="highlight-yellow">Conclusão</span> de Curso</h1>
@@ -147,7 +149,7 @@
 
         </div>
       </section>
-      <section class="slide" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 17: Introdução">
+      <section class="slide slide--reading" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 17: Introdução">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="compass" style="width:14px; height:14px;"></i> CONTEXTO INSTITUCIONAL</p>
           <h2 class="title-large highlight-yellow" style="letter-spacing: 0.12em; margin-top: 10px;">INTRODUÇÃO</h2>
@@ -186,7 +188,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 17: Dor Relatada">
+      <section class="slide slide--reading" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 17: Dor Relatada">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
           <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA - Solicitação de Parecer Jurídico</h2>
@@ -207,7 +209,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 17: Mapeamento do Processo">
+      <section class="slide slide--reading" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 17: Mapeamento do Processo">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> LEVANTAMENTO & IMERSÃO</p>
           <h2 class="title-large" style="margin-top: 10px;">Mapeamento e Diagnóstico dos <span class="highlight-yellow">Processos</span></h2>
@@ -260,7 +262,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 17: Fluxo Atual AS-IS">
+      <section class="slide slide--flow" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 17: Fluxo Atual AS-IS">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-branch" style="width:14px; height:14px;"></i> MAPEAMENTO DE PROCESSO EM RAIAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Fluxo Atual: <span class="highlight-yellow">Seção AS-IS</span></h2>
@@ -270,8 +272,8 @@
           <div class="brand-divider-line"></div>
 
           <div class="flowchart-asis-container">
-            <div class="flowchart-img-frame" onclick="window.open('assets/fluxograma-as-is.jpg', '_blank')" title="Clique para ampliar em tela cheia">
-              <img src="assets/fluxograma-as-is.jpg" alt="Fluxograma AS-IS do Processo de Solicitação de Parecer Jurídico" loading="lazy">
+            <div class="flowchart-img-frame" onclick="window.open('assets/fluxograma-as-is.png', '_blank')" title="Clique para ampliar em tela cheia">
+              <img src="assets/fluxograma-as-is.png" alt="Fluxograma AS-IS do Processo de Solicitação de Parecer Jurídico" loading="lazy">
             </div>
 
             <div class="flowchart-lanes-info">
@@ -295,10 +297,10 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: SLA e Retrabalho">
+      <section class="slide slide--reading" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: Tempo de resolução e Retrabalho">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
-          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">SLA e Retrabalho</span></h2>
+          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">Tempo de resolução e Retrabalho</span></h2>
           <div class="brand-divider-line"></div>
 
           <div class="diagnostic-split">
@@ -322,9 +324,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Tempo médio atual</strong></td>
+                    <td><strong>Tempo de resolução</strong></td>
                     <td><span class="table-val-badge val-red">20 dias</span></td>
-                    <td style="color:var(--text-2);">Tempo médio de resposta hoje</td>
+                    <td style="color:var(--text-2);">Mediana histórica: aproximadamente 20 dias corridos</td>
                   </tr>
                   <tr>
                     <td><strong>Taxa de recusa</strong></td>
@@ -332,33 +334,33 @@
                     <td style="color:var(--text-2);">Quase 1 em cada 5 demandas</td>
                   </tr>
                   <tr>
-                    <td><strong>SLA esperado</strong></td>
+                    <td><strong>Meta de tempo de resolução</strong></td>
                     <td><span class="table-val-badge val-yellow">5 dias</span></td>
-                    <td style="color:var(--text-2);">Meta proposta para o atendimento</td>
+                    <td style="color:var(--text-2);">Meta proposta de 5 dias, sujeita à validação</td>
                   </tr>
                 </tbody>
               </table>
 
               <div class="table-caption-sub">
-                <span>Fonte: Elaborado pelos autores (2026).</span>
-                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Gargalo Crítico de 300% acima do SLA</span>
+                <span>Fonte dos prazos: Lecom, Tabela geral - Etapas.xlsx (2022–2026); 4.972 chamados com encerramento identificável. Mediana: 20,19 dias corridos.</span>
+                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Meta proposta: reduzir o tempo de resolução</span>
               </div>
             </div>
 
-            <!-- Card 2: Figura 1 – Comparativo entre o SLA Atual e a Meta -->
+            <!-- Card 2: Figura 1 – Comparativo entre o tempo de resolução e a meta -->
             <div class="premium-card">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                 <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
                   <i data-lucide="bar-chart-3" style="color:var(--yellow); width:20px; height:20px;"></i>
-                  Figura 1 – Comparativo: SLA Atual vs Meta
+                  Figura 1 – Comparativo: Tempo de resolução vs Meta
                 </h3>
                 <span style="font-family:var(--font-heading); font-weight:800; font-size:0.95rem; color:#20A775; background:rgba(32,167,117,0.15); padding:4px 10px; border-radius:20px; border:1px solid rgba(32,167,117,0.3);">
-                  Redução de 75%
+                  Meta de redução de 75%
                 </span>
               </div>
 
               <p style="font-size:0.86rem; color:var(--text-2); margin-top:2px;">
-                Comparação visual direta do tempo de resposta hoje versus a meta almejada com automação e IA.
+                Tempo de resolução de referência: mediana histórica de aproximadamente 20 dias corridos. Meta proposta: 5 dias corridos, sujeita à validação.
               </p>
 
               <div class="figura-sla-bars">
@@ -388,7 +390,7 @@
                   <span>20</span>
                 </div>
                 <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:-10px;">
-                  Tempo de atendimento (dias)
+                  Tempo de resolução (dias corridos)
                 </div>
               </div>
 
@@ -438,7 +440,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-ferramentas" aria-roledescription="slide" aria-label="Ferramentas Utilizadas para Mapear o Processo">
+      <section class="slide slide--reading" id="slide-ferramentas" aria-roledescription="slide" aria-label="Ferramentas Utilizadas para Mapear o Processo">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> METODOLOGIA APLICADA</p>
           <h2 class="title-large" style="margin-top: 10px;">Ferramentas Utilizadas para <span class="highlight-yellow">Mapear o Processo</span></h2>
@@ -579,11 +581,11 @@
                     <text x="50" y="95" text-anchor="start" class="bone-cause-text">Treinamento não padronizado</text>
                   </g>
 
-                  <!-- Causa 2: Conhecimento tácito (não documentado) (Y=145, X_ramo=327) -->
+                  <!-- Causa 2: Conhecimento não documentado (Y=145, X_ramo=327) -->
                   <g class="bone-cause-item">
                     <line x1="60" y1="145" x2="327" y2="145" class="bone-sub" />
                     <circle cx="327" cy="145" r="3.5" class="bone-cause-dot" />
-                    <text x="50" y="145" text-anchor="start" class="bone-cause-text">Conhecimento tácito (não documentado)</text>
+                    <text x="50" y="145" text-anchor="start" class="bone-cause-text">Conhecimento não documentado</text>
                   </g>
 
                   <!-- Causa 3: Sobrecarga da equipe (Y=195, X_ramo=342) -->
@@ -694,10 +696,10 @@
                   
                   <text x="990" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
                   
-                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tempo de resolução</text>
                   <text x="990" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
                   
-                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(meta: 5 dias)</text>
                   
                   <line x1="905" y1="288" x2="1075" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
                   
@@ -708,12 +710,12 @@
 
             <div class="fishbone-legend">
               <span class="legend-badge"><i data-lucide="mouse-pointer" style="width:14px; height:14px;"></i> Interativo: passe o cursor sobre as causas para destacar</span>
-              <span>Figura 2 – Causas do SLA de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
+              <span>Figura 2 – Causas associadas ao tempo de resolução de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
             </div>
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 17: Propostas">
+      <section class="slide slide--reading" id="slide-9" aria-roledescription="slide" aria-label="Slide 9 de 17: Propostas">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="lightbulb" style="width:14px; height:14px; color:var(--yellow);"></i> PLANO DE AÇÃO INTEGRADO</p>
           <h2 class="title-large" style="margin-top: 10px;">Nossas <span class="highlight-yellow">Propostas</span></h2>
@@ -750,7 +752,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 17: Proposta: Implementações no Lecom">
+      <section class="slide slide--reading" id="slide-10" aria-roledescription="slide" aria-label="Slide 10 de 17: Proposta: Implementações no Lecom">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
           <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Implementações no Lecom</span></h2>
@@ -804,7 +806,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
+      <section class="slide slide--video" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -818,7 +820,14 @@
             </div>
 
             <div class="video-player-wrap">
-              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-lecom.png">
+              <div class="video-actions" aria-label="Controles da demonstração">
+                <button type="button" data-video-prev>Anterior</button>
+                <button type="button" data-video-play hidden>Reproduzir vídeo</button>
+                <button type="button" data-video-sound hidden>Ativar som</button>
+                <button type="button" data-video-fullscreen>Tela cheia</button>
+                <button type="button" data-video-next>Próximo</button>
+              </div>
+              <video controls playsinline preload="metadata" aria-label="Vídeo de demonstração" poster="assets/capa-demonstracao-lecom.png">
                 <source src="assets/demonstracao-lecom.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
               </video>
@@ -826,19 +835,19 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 17: Proposta: Capacitação dos Solicitantes">
+      <section class="slide slide--reading" id="slide-12" aria-roledescription="slide" aria-label="Slide 12 de 17: Proposta: Capacitação dos Solicitantes">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="graduation-cap" style="width:14px; height:14px; color:var(--yellow);"></i> EDUCAÇÃO CORPORATIVA</p>
           <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Capacitação dos Solicitantes</span></h2>
           <div class="brand-divider-line"></div>
 
-          <div style="max-width: 980px; margin: 1.5rem auto 0 auto; width: 100%;">
-            <div class="lecom-prop-card" style="padding: clamp(28px, 3.2vw, 44px);">
+          <div class="training-proposal-grid">
+            <div class="lecom-prop-card training-proposal-card">
               <div class="lecom-prop-header">
-                <span class="lecom-prop-num">3</span>
+                <span class="lecom-prop-num">1</span>
                 <h3>Capacitação dos Solicitantes</h3>
               </div>
-              <p style="font-size: clamp(1.08rem, 1.35vw, 1.3rem); line-height: 1.75;">
+              <p>
                 Disponibilização de treinamentos na plataforma <strong>Universidade Desktop</strong> para orientar os colaboradores sobre o preenchimento correto das solicitações e o envio da documentação necessária, reduzindo erros, padronizando os processos e diminuindo as devoluções pelo setor Jurídico.
               </p>
               <div class="lecom-prop-footer" style="margin-top: 24px; font-size: 1rem;">
@@ -846,10 +855,22 @@
                 <span>Trilhas Práticas e Autonomia para as Áreas Clientes</span>
               </div>
             </div>
+            <div class="lecom-prop-card training-people-card">
+              <div class="lecom-prop-header">
+                <i data-lucide="users" class="training-people-icon" aria-hidden="true"></i>
+                <h3>Pessoas no Ishikawa</h3>
+              </div>
+              <p>A capacitação se relaciona às causas identificadas na dimensão <strong>Pessoas</strong> do Ishikawa:</p>
+              <ul class="training-people-list">
+                <li><strong>Treinamento não padronizado</strong><span>Trilhas comuns para orientar o preenchimento e o envio de documentos.</span></li>
+                <li><strong>Conhecimento não documentado</strong><span>Guias e checklists para registrar e compartilhar as orientações.</span></li>
+                <li><strong>Sobrecarga da equipe</strong><span>Maior autonomia dos solicitantes para reduzir dúvidas e devoluções evitáveis.</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
+      <section class="slide slide--video" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -863,7 +884,14 @@
             </div>
 
             <div class="video-player-wrap">
-              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-universidade.png">
+              <div class="video-actions" aria-label="Controles da demonstração">
+                <button type="button" data-video-prev>Anterior</button>
+                <button type="button" data-video-play hidden>Reproduzir vídeo</button>
+                <button type="button" data-video-sound hidden>Ativar som</button>
+                <button type="button" data-video-fullscreen>Tela cheia</button>
+                <button type="button" data-video-next>Próximo</button>
+              </div>
+              <video controls playsinline preload="metadata" aria-label="Vídeo de demonstração" poster="assets/capa-demonstracao-universidade.png">
                 <source src="assets/demonstracao-universidade.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
               </video>
@@ -871,70 +899,23 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-14" aria-roledescription="slide" aria-label="Slide 14 de 17: Objetivos">
+      <section class="slide slide--reading" id="slide-14" aria-roledescription="slide" aria-label="Slide 14 de 17: Objetivos">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO & PROPOSTAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Nossos <span class="highlight-yellow">Objetivos</span></h2>
           <div class="brand-divider-line"></div>
 
-          <div class="objectives-grid">
-            <!-- 01. Análise Inteligente de Contratos -->
-            <div class="objective-card">
-              <div class="obj-card-header">
-                <span class="obj-num-badge">01</span>
-                <h3>Análise Inteligente de Contratos</h3>
-              </div>
-              <p>
-                Por meio dessa funcionalidade, será possível identificar informações ausentes, divergências cadastrais e possíveis inconsistências antes do encaminhamento da solicitação para análise jurídica.
-              </p>
-              <p>
-                Dessa forma, espera-se reduzir a necessidade de devoluções para correção, diminuir o retrabalho e proporcionar maior agilidade ao processo, mantendo a validação final sob responsabilidade dos profissionais do setor Jurídico.
-              </p>
-              <div class="obj-footer-highlight">
-                <i data-lucide="sparkles" style="width:16px; height:16px;"></i>
-                <span>Redução drástica do retrabalho com IA</span>
-              </div>
-            </div>
-
-            <!-- 02. Validação Cadastral Automatizada -->
-            <div class="objective-card">
-              <div class="obj-card-header">
-                <span class="obj-num-badge">02</span>
-                <h3>Validação Cadastral Automatizada</h3>
-              </div>
-              <p>
-                Essa integração permitirá consultar e conferir informações cadastrais das empresas envolvidas nas solicitações, como razão social, situação cadastral e outros dados disponibilizados pelo serviço de consulta. O objetivo é identificar possíveis divergências antes que a demanda avance para as próximas etapas do processo.
-              </p>
-              <p>
-                Com a automatização dessa verificação, busca-se reduzir erros de preenchimento, evitar solicitações com dados inconsistentes e diminuir o tempo gasto com conferências manuais, contribuindo para maior confiabilidade das informações e eficiência no atendimento.
-              </p>
-              <div class="obj-footer-highlight">
-                <i data-lucide="shield-check" style="width:16px; height:16px;"></i>
-                <span>API Receita Federal + Verificação Instantânea</span>
-              </div>
-            </div>
-
-            <!-- 03. Capacitação dos Solicitantes -->
-            <div class="objective-card">
-              <div class="obj-card-header">
-                <span class="obj-num-badge">03</span>
-                <h3>Capacitação dos Solicitantes</h3>
-              </div>
-              <p>
-                A iniciativa busca desenvolver maior autonomia dos solicitantes, padronizar a entrada das demandas e melhorar a comunicação entre as áreas envolvidas.
-              </p>
-              <p>
-                Como resultado, espera-se reduzir erros recorrentes, aumentar a qualidade das informações recebidas e diminuir o volume de solicitações devolvidas por preenchimento incorreto ou documentação incompleta.
-              </p>
-              <div class="obj-footer-highlight">
-                <i data-lucide="graduation-cap" style="width:16px; height:16px;"></i>
-                <span>Trilhas Práticas na Universidade Desktop</span>
-              </div>
-            </div>
-          </div>
+          <ul class="objectives-targets" aria-label="Metas desejadas para o processo">
+            <li><strong>Tempo de resolução:</strong> buscar a meta de 5 dias corridos.</li>
+            <li><strong>Menos retrabalho:</strong> reduzir devoluções e ajustes recorrentes.</li>
+            <li><strong>Informações completas:</strong> padronizar dados e documentos desde a abertura.</li>
+            <li><strong>Validação cadastral:</strong> identificar inconsistências antes da análise jurídica.</li>
+            <li><strong>Solicitantes capacitados:</strong> ampliar a autonomia e melhorar a comunicação entre áreas.</li>
+          </ul>
+          <p class="objectives-targets-note">Metas propostas, sujeitas à validação em piloto. A decisão final permanece com o Jurídico.</p>
         </div>
       </section>
-      <section class="slide" id="slide-15" aria-roledescription="slide" aria-label="Slide 15 de 17: Fluxo TO-BE">
+      <section class="slide slide--flow" id="slide-15" aria-roledescription="slide" aria-label="Slide 15 de 17: Fluxo TO-BE">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="zap" style="width:14px; height:14px; color:var(--yellow);"></i> NOVO FLUXO DE SOLICITAÇÕES JURÍDICAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Fluxo Futuro: <span class="highlight-yellow">Seção TO-BE</span></h2>
@@ -963,13 +944,13 @@
               </div>
               <div class="tobe-pill" style="border-color:var(--yellow); background:rgba(255,204,20,0.1);">
                 <i data-lucide="target" style="color:var(--yellow); width:15px; height:15px;"></i>
-                <span style="color:#fff; font-weight:700;">Meta: Reduzir de 20 para 5 dias</span>
+                <span style="color:#fff; font-weight:700;">Meta de tempo de resolução: 5 dias</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-16" aria-roledescription="slide" aria-label="Slide 16 de 17: Resultados Esperados">
+      <section class="slide slide--reading" id="slide-16" aria-roledescription="slide" aria-label="Slide 16 de 17: Resultados Esperados">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="trending-up" style="width:14px; height:14px;"></i> IMPACTO E BENEFÍCIOS</p>
           <h2 class="title-large" style="margin-top: 10px;">O que <span class="highlight-yellow">esperamos</span></h2>
@@ -980,8 +961,8 @@
             <div class="expect-card">
               <div>
                 <i data-lucide="clock" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
-                <h3 class="title-small">Redução de SLA</h3>
-                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Tempo de ciclo contratual encurtado drasticamente.</p>
+                <h3 class="title-small">Redução do tempo de resolução</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Meta proposta para reduzir o tempo de resolução dos chamados.</p>
               </div>
               <div class="expect-value-badge">20 dias ➔ 5 dias</div>
             </div>
@@ -1033,7 +1014,7 @@
 
             <div class="conclusao-card-box">
               <p class="conclusao-impacto-text">
-                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> transformam a gestão jurídica em um fluxo ágil, padronizado e sem retrabalho — reduzindo o tempo de resposta de <strong>20 para 5 dias</strong> e potencializando a eficiência operacional de toda a empresa.
+                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> têm como objetivo tornar a gestão jurídica mais ágil e padronizada, com menos retrabalho. A referência histórica de tempo de resolução é de <strong>20 dias corridos (mediana)</strong>, e a <strong>meta proposta é de 5 dias corridos</strong>, sujeita à validação.
               </p>
 
               <div class="conclusao-thanks-badge">
