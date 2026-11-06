@@ -804,7 +804,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
+      <section class="slide slide--video" id="slide-11" aria-roledescription="slide" aria-label="Slide 11 de 17: Demonstração em Vídeo">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -818,7 +818,14 @@
             </div>
 
             <div class="video-player-wrap">
-              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-lecom.png">
+              <div class="video-actions" aria-label="Controles da demonstração">
+                <button type="button" data-video-prev>Anterior</button>
+                <button type="button" data-video-play hidden>Reproduzir vídeo</button>
+                <button type="button" data-video-sound hidden>Ativar som</button>
+                <button type="button" data-video-fullscreen>Tela cheia</button>
+                <button type="button" data-video-next>Próximo</button>
+              </div>
+              <video controls playsinline preload="metadata" aria-label="Vídeo de demonstração" poster="assets/capa-demonstracao-lecom.png">
                 <source src="assets/demonstracao-lecom.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/14qINZ1tm1i7pz5R52AoHvmP5jhFQUxyg/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
               </video>
@@ -849,7 +856,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
+      <section class="slide slide--video" id="slide-13" aria-roledescription="slide" aria-label="Slide 13 de 17: Demonstração Universidade Desktop">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -863,7 +870,14 @@
             </div>
 
             <div class="video-player-wrap">
-              <video controls playsinline preload="metadata" poster="assets/capa-demonstracao-universidade.png">
+              <div class="video-actions" aria-label="Controles da demonstração">
+                <button type="button" data-video-prev>Anterior</button>
+                <button type="button" data-video-play hidden>Reproduzir vídeo</button>
+                <button type="button" data-video-sound hidden>Ativar som</button>
+                <button type="button" data-video-fullscreen>Tela cheia</button>
+                <button type="button" data-video-next>Próximo</button>
+              </div>
+              <video controls playsinline preload="metadata" aria-label="Vídeo de demonstração" poster="assets/capa-demonstracao-universidade.png">
                 <source src="assets/demonstracao-universidade.mp4" type="video/mp4">
                 Seu navegador não suporta a reprodução de vídeo. <a href="https://drive.google.com/file/d/1gO1XjFJPkrSKspcRwcW04iMFedznaEmD/view?usp=sharing" target="_blank" style="color:var(--yellow);">Clique aqui para assistir no Google Drive</a>.
               </video>
