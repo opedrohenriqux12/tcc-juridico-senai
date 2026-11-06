@@ -2749,3 +2749,56 @@
       .cover-partner-logos .cover-senai-logo { width: 110px; }
       .cover-partner-logos .cover-desktop-logo { width: 150px; height: 50px; }
     }
+
+    /* Tipografia comum para leitura dos cards em projeção. */
+    :root {
+      --card-reading-size: clamp(22px, 1.67vw, 28px);
+      --card-heading-size: clamp(25px, 1.95vw, 32px);
+      --card-support-size: clamp(18px, 1.3vw, 22px);
+    }
+    .slide--reading {
+      justify-content: flex-start;
+      padding-left: clamp(20px, 3vw, 48px);
+      padding-right: clamp(20px, 3vw, 48px);
+      padding-top: calc(var(--header-height) + 16px);
+      padding-bottom: calc(var(--nav-bar-height) + 12px);
+    }
+    .slide--reading .slide-content-container { max-width: 1540px; flex-shrink: 0; }
+    .slide--reading .title-large { font-size: clamp(28px, 2.8vw, 44px); }
+    .slide--reading :is(.intro-card, .mapping-card, .lecom-prop-card, .objective-card, .expect-card, .premium-card) p,
+    .slide--reading .training-people-list {
+      font-size: var(--card-reading-size) !important;
+      line-height: 1.45 !important;
+    }
+    .slide--reading :is(.intro-card, .mapping-card, .lecom-prop-card, .objective-card, .expect-card, .premium-card) h3 {
+      font-size: var(--card-heading-size) !important;
+      line-height: 1.25;
+    }
+    .slide--reading :is(.lecom-prop-footer, .obj-footer-highlight, .training-proposal-card .lecom-prop-footer) {
+      font-size: var(--card-support-size) !important;
+      line-height: 1.35;
+    }
+    .slide--reading .training-people-list span { line-height: 1.4; }
+    .slide--reading :is(.intro-card, .mapping-card, .lecom-prop-card, .objective-card, .expect-card) {
+      padding: clamp(18px, 1.8vw, 28px);
+    }
+    .slide--reading .training-people-list { gap: 14px; }
+    .slide--reading :is(.intro-grid, .mapping-grid, .lecom-props-grid, .objectives-grid, .expectations-grid, .training-proposal-grid) {
+      margin-top: 18px; gap: 20px;
+    }
+    .slide--reading .tool-desc-text { font-size: var(--card-support-size); line-height: 1.4; }
+    .slide--reading .tool-name-title { font-size: var(--card-reading-size); }
+    .slide--reading .quadro-indicadores-table { font-size: var(--card-support-size); }
+    .slide--reading .problem-highlight-box { font-size: var(--card-reading-size); line-height: 1.5; }
+    @media (max-width: 1100px) {
+      .slide--reading .objectives-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      :root {
+        --card-reading-size: 18px;
+        --card-heading-size: 22px;
+        --card-support-size: 16px;
+      }
+      .slide--reading .title-large { font-size: 28px; }
+      .slide--reading .slide-content-container { margin-top: 0; }
+    }
