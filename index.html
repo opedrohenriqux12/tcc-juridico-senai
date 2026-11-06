@@ -299,145 +299,40 @@
       </section>
       <section class="slide slide--reading" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: Tempo de resolução e Retrabalho">
         <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
+          <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO DOS CHAMADOS ENCERRADOS</p>
           <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">Tempo de resolução e Retrabalho</span></h2>
           <div class="brand-divider-line"></div>
 
-          <div class="diagnostic-split">
-            <!-- Card 1: Quadro 1 – Indicadores do Setor Jurídico -->
-            <div class="premium-card">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                  <i data-lucide="table" style="color:var(--yellow); width:20px; height:20px;"></i>
-                  Quadro 1 – Indicadores do Setor Jurídico
-                </h3>
-                <span class="badge-chip" style="font-size:0.75rem;">DADOS REAIS</span>
+          <div class="diagnostic-evidence-grid">
+            <div class="premium-card diagnostic-duration-card">
+              <h3 class="title-small">Mediana de dias corridos</h3>
+              <div class="diagnostic-duration-chart" role="img" aria-label="Mediana do tempo da abertura à última etapa finalizada: sem etapas rejeitadas, 5,4 dias; com ao menos uma etapa rejeitada, 28,2 dias.">
+                <div class="diagnostic-duration-row">
+                  <span>Sem rejeição</span>
+                  <div class="diagnostic-duration-track"><div class="diagnostic-duration-bar diagnostic-duration-bar--without" style="width:19.148936%;"></div></div>
+                  <strong>5,4 dias</strong>
+                </div>
+                <div class="diagnostic-duration-row">
+                  <span>Com rejeição</span>
+                  <div class="diagnostic-duration-track"><div class="diagnostic-duration-bar diagnostic-duration-bar--with" style="width:100%;"></div></div>
+                  <strong>28,2 dias</strong>
+                </div>
               </div>
-
-              <table class="quadro-indicadores-table">
-                <thead>
-                  <tr>
-                    <th>Indicador</th>
-                    <th>Valor</th>
-                    <th>Observação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Tempo de resolução</strong></td>
-                    <td><span class="table-val-badge val-red">20 dias</span></td>
-                    <td style="color:var(--text-2);">Mediana histórica: aproximadamente 20 dias corridos</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Taxa de recusa</strong></td>
-                    <td><span class="table-val-badge val-red">18,93%</span></td>
-                    <td style="color:var(--text-2);">Quase 1 em cada 5 demandas</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Meta de tempo de resolução</strong></td>
-                    <td><span class="table-val-badge val-yellow">5 dias</span></td>
-                    <td style="color:var(--text-2);">Meta proposta de 5 dias, sujeita à validação</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <div class="table-caption-sub">
-                <span>Fonte dos prazos: Lecom, Tabela geral - Etapas.xlsx (2022–2026); 4.972 chamados com encerramento identificável. Mediana: 20,19 dias corridos.</span>
-                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Meta proposta: reduzir o tempo de resolução</span>
-              </div>
+              <p class="diagnostic-ratio">A diferença é de <strong>mais de 5 vezes.</strong></p>
+              <div class="diagnostic-group-note">Com rejeição: chamado com ao menos uma etapa rejeitada.</div>
             </div>
-
-            <!-- Card 2: Figura 1 – Comparativo entre o tempo de resolução e a meta -->
-            <div class="premium-card">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-                <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
-                  <i data-lucide="bar-chart-3" style="color:var(--yellow); width:20px; height:20px;"></i>
-                  Figura 1 – Comparativo: Tempo de resolução vs Meta
-                </h3>
-                <span style="font-family:var(--font-heading); font-weight:800; font-size:0.95rem; color:#20A775; background:rgba(32,167,117,0.15); padding:4px 10px; border-radius:20px; border:1px solid rgba(32,167,117,0.3);">
-                  Meta de redução de 75%
-                </span>
-              </div>
-
-              <p style="font-size:0.86rem; color:var(--text-2); margin-top:2px;">
-                Tempo de resolução de referência: mediana histórica de aproximadamente 20 dias corridos. Meta proposta: 5 dias corridos, sujeita à validação.
-              </p>
-
-              <div class="figura-sla-bars">
-                <!-- Barra Atual -->
-                <div class="bar-row">
-                  <span class="bar-label-tag">Atual</span>
-                  <div class="bar-track-area">
-                    <div class="bar-fill-blue" style="width: 100%;">20 dias</div>
-                  </div>
-                </div>
-
-                <!-- Barra Meta -->
-                <div class="bar-row">
-                  <span class="bar-label-tag">Meta</span>
-                  <div class="bar-track-area" style="background:transparent;">
-                    <div class="bar-fill-green" style="width: 25%;">5 dias</div>
-                    <span class="bar-outside-val" style="font-size:0.85rem; color:#20A775;">(esperado)</span>
-                  </div>
-                </div>
-
-                <!-- Régua de escala 0, 5, 10, 15, 20 -->
-                <div class="scale-ruler">
-                  <span>0</span>
-                  <span>5</span>
-                  <span>10</span>
-                  <span>15</span>
-                  <span>20</span>
-                </div>
-                <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:-10px;">
-                  Tempo de resolução (dias corridos)
-                </div>
-              </div>
-
-              <!-- Destaque Taxa de Recusa -->
-              <div style="margin-top:14px; padding:12px 16px; background:rgba(255,31,31,0.08); border:1px solid rgba(255,31,31,0.22); border-radius:10px; display:flex; align-items:center; justify-content:space-between;">
-                <span style="font-size:0.9rem; color:var(--text-1); font-weight:500;">Taxa de Recusa Recorrente:</span>
-                <span style="font-family:var(--font-heading); font-size:1.15rem; font-weight:800; color:var(--red-alert);">18,93% <span style="font-size:0.8rem; font-weight:500; color:var(--text-2);">(1 em cada 5)</span></span>
-              </div>
+            <div class="premium-card diagnostic-rejection-card">
+              <h3 class="title-small">Nos 5.193 chamados analisados</h3>
+              <ul class="diagnostic-rejection-list">
+                <li><span>Ao menos <strong>1 etapa</strong> rejeitada</span><strong class="diagnostic-rejection-value">64,8%</strong></li>
+                <li><span>Ao menos <strong>2 etapas</strong> rejeitadas</span><strong class="diagnostic-rejection-value">44,6%</strong></li>
+                <li><span>Ao menos <strong>3 etapas</strong> rejeitadas</span><strong class="diagnostic-rejection-value">32,5%</strong></li>
+              </ul>
+              <div class="diagnostic-group-note">Percentuais cumulativos: um chamado pode estar nas três faixas.</div>
             </div>
           </div>
 
-          <!-- Fluxo AS IS com 7 etapas -->
-          <div style="margin-top: 24px;">
-            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
-              <i data-lucide="git-branch" style="color:var(--yellow); width:18px; height:18px;"></i>
-              <span style="font-weight:700; font-size:0.95rem;">Fluxo Atual (AS IS) — Etapas Contratuais</span>
-            </div>
-            <div class="flow-rail-container">
-              <div class="flow-steps-rail">
-                <div class="flow-step-card">1. Solicitação</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card">2. Elaboração</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card bottleneck">
-                  <i data-lucide="alert-octagon" style="width:16px; height:16px; color:var(--red-alert);"></i>
-                  3. Análise Jurídica (Gargalo)
-                </div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card bottleneck">
-                  <i data-lucide="refresh-cw" style="width:16px; height:16px; color:var(--red-alert);"></i>
-                  4. Ajustes (Gargalo)
-                </div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card">5. Validação</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card">6. Aprimoramento</div>
-                <div class="flow-arrow-animated"><i data-lucide="arrow-right" style="width:18px; height:18px;"></i></div>
-                
-                <div class="flow-step-card" style="border-color:var(--yellow); color:var(--yellow);">7. Assinatura</div>
-              </div>
-            </div>
-          </div>
+          <p class="diagnostic-base-note">Base: 5.193 chamados encerrados (aprovados ou rejeitados) entre 2022 e 2026. Tempo medido da abertura à última etapa finalizada, em dias corridos.</p>
         </div>
       </section>
       <section class="slide slide--reading" id="slide-ferramentas" aria-roledescription="slide" aria-label="Ferramentas Utilizadas para Mapear o Processo">
