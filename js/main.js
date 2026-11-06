@@ -332,6 +332,7 @@
     function syncSlideVideos() {
       const activeVideo = slides[state.currentSlideIndex].querySelector('video');
       document.body.classList.toggle('is-video-slide', Boolean(activeVideo));
+      document.body.classList.toggle('is-flow-slide', slides[state.currentSlideIndex].classList.contains('slide--flow'));
       document.querySelectorAll('.slide video').forEach(video => {
         if (video !== activeVideo) video.pause();
       });

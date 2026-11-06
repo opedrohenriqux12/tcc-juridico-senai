@@ -2675,3 +2675,55 @@
     @media (max-width: 900px) {
       .training-proposal-grid { grid-template-columns: 1fr; }
     }
+
+    /* Fluxogramas: priorizar a imagem na projeção, preservando as legendas. */
+    body.is-flow-slide .top-bar,
+    body.is-flow-slide .bottom-bar { display: none; }
+    body.is-flow-slide .slide.slide--flow,
+    body.is-flow-slide #slide-15 {
+      padding: 12px 48px !important;
+      justify-content: flex-start !important;
+    }
+    body.is-flow-slide .slide--flow .slide-content-container,
+    body.is-flow-slide #slide-15 .slide-content-container {
+      display: flex; flex-direction: column; align-items: stretch;
+      width: 100%; max-width: none !important; height: 100%; min-height: 0;
+      margin: 0 !important; padding: 0 !important; gap: 6px;
+    }
+    .slide--flow .slide-content-container > .badge-chip { align-self: flex-start; flex-shrink: 0; }
+    .slide--flow .title-large { font-size: clamp(1.4rem, 2.4vw, 2.2rem); margin: 0 !important; flex-shrink: 0; }
+    .slide--flow .slide-content-container > p:not(.badge-chip) { font-size: .95rem !important; margin: 0 !important; flex-shrink: 0; }
+    .slide--flow .brand-divider-line { margin: 2px 0 4px; flex-shrink: 0; }
+    .slide--flow .flowchart-asis-container,
+    .slide--flow .flowchart-tobe-container {
+      flex: 1; min-height: 0; margin-top: 0; padding: 8px; gap: 8px;
+    }
+    .slide--flow .flowchart-img-frame,
+    .slide--flow .flowchart-tobe-frame {
+      flex: 1; min-height: 0; max-height: none; height: 0; padding: 2px;
+    }
+    .slide--flow .flowchart-img-frame img,
+    .slide--flow .flowchart-tobe-frame img {
+      width: 100%; height: 100%; max-width: 100%; max-height: none;
+      object-fit: contain;
+    }
+    .slide--flow .flowchart-lanes-info,
+    .slide--flow .tobe-legend-pills { flex-shrink: 0; margin-top: 0; gap: 8px; }
+    .slide--flow .lane-chip-item,
+    .slide--flow .tobe-pill { padding: 6px 10px; }
+    body.is-flow-slide > .nav-arrow-btn { width: 32px; height: 44px; }
+    body.is-flow-slide > .nav-arrow-btn.prev { left: 6px; }
+    body.is-flow-slide > .nav-arrow-btn.next { right: 6px; }
+    @media (max-width: 700px) {
+      body.is-flow-slide .slide.slide--flow,
+    body.is-flow-slide #slide-15 { padding: 12px !important; }
+      body.is-flow-slide .slide--flow .slide-content-container,
+    body.is-flow-slide #slide-15 .slide-content-container { height: auto; min-height: 100%; }
+      .slide--flow .flowchart-asis-container,
+      .slide--flow .flowchart-tobe-container { flex: none; }
+      .slide--flow .flowchart-img-frame,
+      .slide--flow .flowchart-tobe-frame { flex: none; height: auto; min-height: 180px; }
+      .slide--flow .flowchart-img-frame img,
+      .slide--flow .flowchart-tobe-frame img { height: auto; }
+      .slide--flow .tobe-pill { width: 100%; }
+    }
