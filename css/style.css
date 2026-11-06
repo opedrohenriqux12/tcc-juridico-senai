@@ -2802,3 +2802,27 @@
       .slide--reading .title-large { font-size: 28px; }
       .slide--reading .slide-content-container { margin-top: 0; }
     }
+
+    /* Objetivos resumidos em tópicos de leitura rápida para projeção. */
+    .objectives-targets {
+      list-style: none; display: grid; gap: clamp(16px, 2.2vh, 28px);
+      width: 100%; max-width: 1320px; margin: 24px 0 0; padding: 0;
+    }
+    .objectives-targets li {
+      position: relative; padding-left: 30px;
+      font-size: clamp(24px, 2vw, 34px); line-height: 1.4; color: var(--text-1);
+    }
+    .objectives-targets li::before {
+      content: ''; position: absolute; left: 0; top: .55em;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--yellow);
+    }
+    .objectives-targets strong { color: var(--yellow); font-weight: 700; }
+    .slide--reading .objectives-targets-note {
+      margin-top: 28px; max-width: 1320px;
+      font-size: var(--card-support-size); line-height: 1.45; color: var(--text-2);
+    }
+    @media (max-width: 700px) {
+      .objectives-targets { gap: 20px; margin-top: 18px; }
+      .objectives-targets li { font-size: 21px; padding-left: 24px; }
+      .objectives-targets li::before { width: 8px; height: 8px; }
+    }
