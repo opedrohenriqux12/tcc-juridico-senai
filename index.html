@@ -295,10 +295,10 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: SLA e Retrabalho">
+      <section class="slide" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 17: Diagnóstico: Tempo de resolução e Retrabalho">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO INICIAL (LEVANTAMENTO)</p>
-          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">SLA e Retrabalho</span></h2>
+          <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">Tempo de resolução e Retrabalho</span></h2>
           <div class="brand-divider-line"></div>
 
           <div class="diagnostic-split">
@@ -322,9 +322,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Tempo médio atual</strong></td>
+                    <td><strong>Tempo de resolução</strong></td>
                     <td><span class="table-val-badge val-red">20 dias</span></td>
-                    <td style="color:var(--text-2);">Tempo médio de resposta hoje</td>
+                    <td style="color:var(--text-2);">Mediana histórica: aproximadamente 20 dias corridos</td>
                   </tr>
                   <tr>
                     <td><strong>Taxa de recusa</strong></td>
@@ -332,33 +332,33 @@
                     <td style="color:var(--text-2);">Quase 1 em cada 5 demandas</td>
                   </tr>
                   <tr>
-                    <td><strong>SLA esperado</strong></td>
+                    <td><strong>Meta de tempo de resolução</strong></td>
                     <td><span class="table-val-badge val-yellow">5 dias</span></td>
-                    <td style="color:var(--text-2);">Meta proposta para o atendimento</td>
+                    <td style="color:var(--text-2);">Meta proposta de 5 dias, sujeita à validação</td>
                   </tr>
                 </tbody>
               </table>
 
               <div class="table-caption-sub">
-                <span>Fonte: Elaborado pelos autores (2026).</span>
-                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Gargalo Crítico de 300% acima do SLA</span>
+                <span>Fonte dos prazos: Lecom, Tabela geral - Etapas.xlsx (2022–2026); 4.972 chamados com encerramento identificável. Mediana: 20,19 dias corridos.</span>
+                <span style="color:var(--red-alert); font-weight:600;"><i data-lucide="alert-triangle" style="width:13px; height:13px; display:inline; vertical-align:middle;"></i> Meta proposta: reduzir o tempo de resolução</span>
               </div>
             </div>
 
-            <!-- Card 2: Figura 1 – Comparativo entre o SLA Atual e a Meta -->
+            <!-- Card 2: Figura 1 – Comparativo entre o tempo de resolução e a meta -->
             <div class="premium-card">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                 <h3 class="title-small" style="display:flex; align-items:center; gap:8px;">
                   <i data-lucide="bar-chart-3" style="color:var(--yellow); width:20px; height:20px;"></i>
-                  Figura 1 – Comparativo: SLA Atual vs Meta
+                  Figura 1 – Comparativo: Tempo de resolução vs Meta
                 </h3>
                 <span style="font-family:var(--font-heading); font-weight:800; font-size:0.95rem; color:#20A775; background:rgba(32,167,117,0.15); padding:4px 10px; border-radius:20px; border:1px solid rgba(32,167,117,0.3);">
-                  Redução de 75%
+                  Meta de redução de 75%
                 </span>
               </div>
 
               <p style="font-size:0.86rem; color:var(--text-2); margin-top:2px;">
-                Comparação visual direta do tempo de resposta hoje versus a meta almejada com automação e IA.
+                Tempo de resolução de referência: mediana histórica de aproximadamente 20 dias corridos. Meta proposta: 5 dias corridos, sujeita à validação.
               </p>
 
               <div class="figura-sla-bars">
@@ -388,7 +388,7 @@
                   <span>20</span>
                 </div>
                 <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:-10px;">
-                  Tempo de atendimento (dias)
+                  Tempo de resolução (dias corridos)
                 </div>
               </div>
 
@@ -694,10 +694,10 @@
                   
                   <text x="990" y="162" font-family="var(--font-heading)" font-size="12" font-weight="700" fill="var(--text-2)" text-anchor="middle" letter-spacing="0.1em">EFEITO</text>
                   
-                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">SLA médio de</text>
+                  <text x="990" y="200" font-family="var(--font-heading)" font-size="18" font-weight="800" fill="#FFFFFF" text-anchor="middle">Tempo de resolução</text>
                   <text x="990" y="230" font-family="var(--font-heading)" font-size="24" font-weight="800" fill="var(--yellow)" text-anchor="middle">20 dias</text>
                   
-                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(esperado: 5 dias)</text>
+                  <text x="990" y="268" font-family="var(--font-body)" font-size="12" fill="var(--text-2)" text-anchor="middle">(meta: 5 dias)</text>
                   
                   <line x1="905" y1="288" x2="1075" y2="288" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
                   
@@ -708,7 +708,7 @@
 
             <div class="fishbone-legend">
               <span class="legend-badge"><i data-lucide="mouse-pointer" style="width:14px; height:14px;"></i> Interativo: passe o cursor sobre as causas para destacar</span>
-              <span>Figura 2 – Causas do SLA de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
+              <span>Figura 2 – Causas associadas ao tempo de resolução de 20 dias e da recusa de 18,93% (brainstorming com a equipe)</span>
             </div>
           </div>
         </div>
@@ -963,7 +963,7 @@
               </div>
               <div class="tobe-pill" style="border-color:var(--yellow); background:rgba(255,204,20,0.1);">
                 <i data-lucide="target" style="color:var(--yellow); width:15px; height:15px;"></i>
-                <span style="color:#fff; font-weight:700;">Meta: Reduzir de 20 para 5 dias</span>
+                <span style="color:#fff; font-weight:700;">Meta de tempo de resolução: 5 dias</span>
               </div>
             </div>
           </div>
@@ -980,8 +980,8 @@
             <div class="expect-card">
               <div>
                 <i data-lucide="clock" style="color:var(--yellow); width:28px; height:28px; margin-bottom:12px;"></i>
-                <h3 class="title-small">Redução de SLA</h3>
-                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Tempo de ciclo contratual encurtado drasticamente.</p>
+                <h3 class="title-small">Redução do tempo de resolução</h3>
+                <p style="color:var(--text-2); font-size:0.88rem; margin-top:6px;">Meta proposta para reduzir o tempo de resolução dos chamados.</p>
               </div>
               <div class="expect-value-badge">20 dias ➔ 5 dias</div>
             </div>
@@ -1033,7 +1033,7 @@
 
             <div class="conclusao-card-box">
               <p class="conclusao-impacto-text">
-                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> transformam a gestão jurídica em um fluxo ágil, padronizado e sem retrabalho — reduzindo o tempo de resposta de <strong>20 para 5 dias</strong> e potencializando a eficiência operacional de toda a empresa.
+                A integração de <strong>Inteligência Artificial</strong>, a <strong>validação cadastral automatizada via API</strong> e a <strong>capacitação contínua na Universidade Desktop</strong> têm como objetivo tornar a gestão jurídica mais ágil e padronizada, com menos retrabalho. A referência histórica de tempo de resolução é de <strong>20 dias corridos (mediana)</strong>, e a <strong>meta proposta é de 5 dias corridos</strong>, sujeita à validação.
               </p>
 
               <div class="conclusao-thanks-badge">

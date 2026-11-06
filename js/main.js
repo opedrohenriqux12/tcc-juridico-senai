@@ -37,7 +37,7 @@
         "Dor Relatada",
         "Mapeamento do Processo",
         "Fluxo Atual (AS-IS)",
-        "Diagnóstico: SLA e Retrabalho",
+        "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
         "Ishikawa",
         "Propostas do Grupo",
