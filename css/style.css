@@ -2728,7 +2728,7 @@
       .slide--flow .tobe-pill { width: 100%; }
     }
 
-    /* Marcas das instituições parceiras na capa. */
+    /* Logos fornecidas, lado a lado na capa. */
     .cover-partner-logos {
       display: flex; align-items: center; justify-content: center;
       gap: clamp(16px, 2.5vw, 36px); margin: 0 0 1.2rem;
@@ -2739,22 +2739,13 @@
       max-width: 40%; object-fit: contain;
     }
     .cover-partner-divider { width: 1px; height: 54px; background: rgba(255, 212, 59, .45); }
-    .cover-desktop-brand { display: flex; align-items: center; gap: 10px; }
-    .cover-desktop-brand > img {
-      width: clamp(48px, 5vw, 72px); height: clamp(48px, 5vw, 72px);
-      object-fit: contain; border-radius: 12px;
+    .cover-partner-logos .cover-desktop-logo {
+      width: clamp(180px, 26vw, 340px); height: clamp(60px, 6vw, 85px);
+      object-fit: cover; object-position: center; border-radius: 8px;
     }
-    .cover-desktop-name {
-      font-family: var(--font-heading); font-size: clamp(24px, 3.3vw, 46px);
-      font-weight: 800; font-style: italic; letter-spacing: -.045em;
-      color: #fff; white-space: nowrap;
-    }
-    .cover-desktop-name > span { color: #ffbd00; }
     @media (max-width: 520px) {
       .cover-partner-logos { gap: 12px; }
       .cover-partner-divider { height: 38px; }
-      .cover-desktop-brand { gap: 5px; }
       .cover-partner-logos .cover-senai-logo { width: 110px; }
-      .cover-desktop-brand > img { width: 38px; height: 38px; }
-      .cover-desktop-name { font-size: 24px; }
+      .cover-partner-logos .cover-desktop-logo { width: 150px; height: 50px; }
     }
