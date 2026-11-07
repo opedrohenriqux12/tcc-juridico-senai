@@ -9,22 +9,22 @@
       team: [
         {
           nome: "Arthur",
-          funcao: "",
+          funcao: "Logística (EMS)",
           foto: "assets/team/arthur.jpg"
         },
         {
           nome: "Heloisa",
-          funcao: "",
+          funcao: "Backoffice",
           foto: "assets/team/heloisa.jpg"
         },
         {
           nome: "Isaias",
-          funcao: "",
+          funcao: "Logística",
           foto: "assets/team/isaias.jpg"
         },
         {
           nome: "Pedro",
-          funcao: "",
+          funcao: "NOC",
           foto: "assets/team/pedro.jpg"
         }
       ],
@@ -183,6 +183,18 @@
 
       // Configurar Eventos Globais
       setupEventListeners();
+
+      // Keep the header hidden in API fullscreen and browser fullscreen (F11).
+      const fullscreenDisplay = window.matchMedia('(display-mode: fullscreen)');
+      const syncFullscreenState = () => {
+        document.body.classList.toggle('is-fullscreen', Boolean(
+          document.fullscreenElement || document.webkitFullscreenElement || fullscreenDisplay.matches
+        ));
+      };
+      document.addEventListener('fullscreenchange', syncFullscreenState);
+      document.addEventListener('webkitfullscreenchange', syncFullscreenState);
+      fullscreenDisplay.addEventListener('change', syncFullscreenState);
+      syncFullscreenState();
 
       setupVideoControls();
 
