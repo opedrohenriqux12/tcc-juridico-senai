@@ -2,7 +2,7 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 18,
+      totalSlides: 17,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
@@ -47,7 +47,6 @@
         "Demonstração Universidade",
         "Nossos Objetivos",
         "Fluxo Futuro (TO-BE)",
-        "O que esperamos",
         "Conclusão"
       ],
 
