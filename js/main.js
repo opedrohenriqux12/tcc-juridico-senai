@@ -139,8 +139,6 @@
     const track = document.getElementById('slidesTrack');
     const slides = document.querySelectorAll('.slide');
     const topProgressBar = document.getElementById('topProgressBar');
-    const currentSlideNum = document.getElementById('currentSlideNum');
-    const totalSlidesNum = document.getElementById('totalSlidesNum');
     const dotsContainer = document.getElementById('dotsContainer');
     const prevBtn = document.getElementById('prevSlideBtn');
     const nextBtn = document.getElementById('nextSlideBtn');
@@ -156,9 +154,6 @@
     function init() {
       // Inicializar Tema (Salvo em localStorage)
       initTheme();
-
-      // Configurar total de slides
-      totalSlidesNum.textContent = String(state.totalSlides).padStart(2, '0');
 
       // Renderizar Integrantes da Equipe (Slide 2)
       renderTeamMembers();
@@ -221,11 +216,13 @@
 
     /* Renderizar Dots de Navegação */
     function renderNavDots() {
-      dotsContainer.innerHTML = '';
+      dotsContainer.innerHTML = '<span class="fiber-core" aria-hidden="true"></span><span class="fiber-progress" aria-hidden="true"></span><span class="fiber-signal" aria-hidden="true"></span><span class="fiber-terminal fiber-terminal--start" aria-hidden="true"></span><span class="fiber-terminal fiber-terminal--end" aria-hidden="true"></span>';
+      dotsContainer.style.setProperty('--fiber-stops', state.totalSlides);
       for (let i = 0; i < state.totalSlides; i++) {
-        const dot = document.createElement('div');
+        const dot = document.createElement('button');
+        dot.type = 'button';
         dot.className = `nav-dot ${i === 0 ? 'is-active' : ''}`;
-        dot.setAttribute('role', 'tab');
+        if (i === 0) dot.setAttribute('aria-current', 'step');
         dot.setAttribute('aria-label', `Ir para slide ${i + 1}: ${PRESENTATION_CONFIG.slideTitles[i]}`);
         dot.innerHTML = `<span class="dot-tooltip">${i + 1}. ${PRESENTATION_CONFIG.slideTitles[i]}</span>`;
         dot.addEventListener('click', () => goToSlide(i));
@@ -281,13 +278,16 @@
       // Atualizar Barra de Progresso e Contador
       const progressPercent = ((index + 1) / state.totalSlides) * 100;
       topProgressBar.style.width = `${progressPercent}%`;
-      currentSlideNum.textContent = String(index + 1).padStart(2, '0');
 
       // Atualizar Dots
       const dots = dotsContainer.querySelectorAll('.nav-dot');
       dots.forEach((dot, idx) => {
         dot.classList.toggle('is-active', idx === index);
+        if (idx === index) dot.setAttribute('aria-current', 'step');
+        else dot.removeAttribute('aria-current');
       });
+
+      dotsContainer.style.setProperty('--fiber-progress', `${((index + 0.5) / state.totalSlides) * 100}%`);
 
       // Atualizar Botões Prev/Next
       prevBtn.disabled = index === 0;
@@ -499,7 +499,6 @@
       // autoplay removed
 
       // 6. Visão Geral (Overview)
-      document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
       document.getElementById('overviewFinalBtn')?.addEventListener('click', () => toggleOverview(true));
       document.getElementById('closeOverviewBtn').addEventListener('click', () => toggleOverview(false));
 
