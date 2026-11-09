@@ -2740,14 +2740,14 @@
     }
     .cover-partner-divider { width: 1px; height: 54px; background: rgba(255, 212, 59, .45); }
     .cover-partner-logos .cover-desktop-logo {
-      width: clamp(180px, 26vw, 340px); height: clamp(60px, 6vw, 85px);
+      width: clamp(120px, 15vw, 210px); height: clamp(31px, 3.84vw, 54px);
       object-fit: cover; object-position: center; border-radius: 8px;
     }
     @media (max-width: 520px) {
       .cover-partner-logos { gap: 12px; }
       .cover-partner-divider { height: 38px; }
       .cover-partner-logos .cover-senai-logo { width: 110px; }
-      .cover-partner-logos .cover-desktop-logo { width: 150px; height: 50px; }
+      .cover-partner-logos .cover-desktop-logo { width: 110px; height: 28px; }
     }
 
     /* Tipografia comum para leitura dos cards em projeção. */
