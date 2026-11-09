@@ -73,6 +73,8 @@
   <header class="top-bar">
     <div class="top-progress-bar" id="topProgressBar"></div>
     <div class="brand-meta">
+      <img src="assets/senai-logo.png" alt="Logo SENAI" class="brand-senai-logo" style="height: 24px; max-height: 24px; width: auto; max-width: 90px; border-radius: 4px; display: inline-block; vertical-align: middle; object-fit: contain;">
+      <img src="assets/desktop-logo.jpg" alt="Logo Desktop" class="brand-logo-img">
       <span>Desktop | Jurídico</span>
     </div>
 
@@ -80,6 +82,16 @@
       <!-- Alternar Tema (Vermelho Desktop / Vinho Desktop) -->
       <button class="btn-icon" id="themeToggleBtn" title="Alternar Tema (Vermelho Desktop / Vinho Bordô)" aria-label="Alternar tema de cores">
         <i data-lucide="palette" id="themeToggleIcon" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Indicador Numérico -->
+      <div class="slide-counter" aria-live="polite">
+        <span class="current-num" id="currentSlideNum">01</span> / <span id="totalSlidesNum">17</span>
+      </div>
+
+      <!-- Botão Visão Geral (Overview) -->
+      <button class="btn-icon" id="openOverviewBtn" title="Visão geral (O)">
+        <i data-lucide="grid" style="width:18px; height:18px;"></i>
       </button>
 
       <!-- Botão Tela Cheia -->

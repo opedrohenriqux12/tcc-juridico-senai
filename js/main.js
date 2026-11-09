@@ -139,6 +139,8 @@
     const track = document.getElementById('slidesTrack');
     const slides = document.querySelectorAll('.slide');
     const topProgressBar = document.getElementById('topProgressBar');
+    const currentSlideNum = document.getElementById('currentSlideNum');
+    const totalSlidesNum = document.getElementById('totalSlidesNum');
     const dotsContainer = document.getElementById('dotsContainer');
     const prevBtn = document.getElementById('prevSlideBtn');
     const nextBtn = document.getElementById('nextSlideBtn');
@@ -154,6 +156,8 @@
     function init() {
       // Inicializar Tema (Salvo em localStorage)
       initTheme();
+
+      totalSlidesNum.textContent = String(state.totalSlides).padStart(2, '0');
 
       // Renderizar Integrantes da Equipe (Slide 2)
       renderTeamMembers();
@@ -278,6 +282,7 @@
       // Atualizar Barra de Progresso e Contador
       const progressPercent = ((index + 1) / state.totalSlides) * 100;
       topProgressBar.style.width = `${progressPercent}%`;
+      currentSlideNum.textContent = String(index + 1).padStart(2, '0');
 
       // Atualizar Dots
       const dots = dotsContainer.querySelectorAll('.nav-dot');
@@ -499,6 +504,7 @@
       // autoplay removed
 
       // 6. Visão Geral (Overview)
+      document.getElementById('openOverviewBtn').addEventListener('click', () => toggleOverview(true));
       document.getElementById('overviewFinalBtn')?.addEventListener('click', () => toggleOverview(true));
       document.getElementById('closeOverviewBtn').addEventListener('click', () => toggleOverview(false));
 
