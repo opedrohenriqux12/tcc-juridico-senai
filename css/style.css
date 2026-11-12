@@ -2703,3 +2703,15 @@
       #slide-8 { justify-content: flex-start !important; }
       #slide-8 .slide-content-container { margin: 0 auto !important; }
     }
+
+    /* Explicação da mediana abaixo dos gráficos, com leitura ampliada. */
+    #slide-7 { justify-content: flex-start; }
+    #slide-7 .slide-content-container { margin: 0 auto; }
+    .diagnostic-method-note { margin-top: 24px; padding: 22px 26px; border: 1px solid var(--border-subtle); border-left: 4px solid var(--yellow); border-radius: 14px; background: var(--bg-2); text-align: left; }
+    #slide-7 .diagnostic-method-note p { font-size: clamp(22px, 1.6vw, 28px); line-height: 1.45; color: var(--text-1); margin: 0; }
+    #slide-7 .diagnostic-method-note p + p { margin-top: 14px; }
+    .diagnostic-method-note strong { color: var(--yellow); }
+    @media (max-width: 640px) {
+      .diagnostic-method-note { padding: 18px; }
+      #slide-7 .diagnostic-method-note p { font-size: 20px; }
+    }
