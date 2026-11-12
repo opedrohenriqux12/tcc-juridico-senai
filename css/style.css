@@ -2678,8 +2678,8 @@
     .swot-subtitle { color: var(--text-2); font-size: 1rem; margin-top: 8px; }
     .swot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 20px; text-align: left; }
     .swot-card { padding: 20px 24px; border: 1px solid var(--border-subtle); border-top: 3px solid var(--yellow); border-radius: 16px; background: var(--bg-2); }
-    .swot-card h3 { display: flex; align-items: center; gap: 12px; color: var(--yellow); font-family: var(--font-heading); font-size: 1.7rem; margin-bottom: 14px; }
-    .swot-card ul { padding-left: 20px; color: var(--text-1); font-size: 1.35rem; line-height: 1.45; }
+    .swot-card h3 { display: flex; align-items: center; gap: 12px; color: var(--yellow); font-family: var(--font-heading); font-size: clamp(30px, 2.1vw, 40px); margin-bottom: 14px; }
+    .swot-card ul { padding-left: 20px; color: var(--text-1); font-size: clamp(26px, 1.65vw, 32px); line-height: 1.3; font-weight: 500; }
     .swot-card li + li { margin-top: 8px; }
     .swot-source { color: var(--text-2); font-size: .85rem; margin-top: 14px; text-align: left; }
     @media (max-width: 640px) {
@@ -2689,14 +2689,14 @@
       #slide-8 { justify-content: flex-start !important; }
     }
 
-    .swot-icon { width: 36px; height: 36px; flex-shrink: 0; }
+    .swot-icon { width: 42px; height: 42px; flex-shrink: 0; }
 
     @media (min-width: 641px) and (max-height: 800px) {
       #slide-8 { padding-top: calc(var(--header-height) + .25rem) !important; padding-bottom: calc(var(--nav-bar-height) + .25rem) !important; }
       .swot-grid { gap: 12px; margin-top: 12px; }
       .swot-card { padding: 8px 20px; }
       .swot-card h3 { margin-bottom: 8px; }
-      .swot-card ul { line-height: 1.35; }
+      .swot-card ul { line-height: 1.2; }
       .swot-card li + li { margin-top: 6px; }
     }
     @media (max-height: 800px), (max-width: 640px) {
@@ -2714,4 +2714,18 @@
     @media (max-width: 640px) {
       .diagnostic-method-note { padding: 18px; }
       #slide-7 .diagnostic-method-note p { font-size: 20px; }
+    }
+
+    /* Aproveita a largura da projeção para manter os textos ampliados. */
+    #slide-8 .slide-content-container { max-width: 1800px; }
+    @media (min-width: 641px) and (max-height: 800px) {
+      #slide-8 .brand-divider-line { margin-top: 10px; margin-bottom: 10px; }
+      .swot-card { padding: 10px 18px; }
+      .swot-icon { width: 34px; height: 34px; }
+    }
+
+    @media (min-width: 641px) and (max-height: 800px) {
+      #slide-8 .badge-chip { display: none; }
+      #slide-8 .slide-content-container { padding-top: 0; padding-bottom: 0; }
+      #slide-8 .title-large { margin-top: 0 !important; }
     }
