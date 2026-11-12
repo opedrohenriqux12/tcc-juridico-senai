@@ -2746,3 +2746,5 @@
     /* Centraliza a explicação da capacitação entre o cabeçalho e o rodapé. */
     #slide-12 .training-proposal-card { display: grid; grid-template-rows: auto 1fr auto; }
     #slide-12 .training-proposal-card > p { align-self: center; text-align: center; margin: 16px 0; }
+
+    #slide-4 .problem-context { margin: 0 0 24px; font: inherit; color: inherit; }
