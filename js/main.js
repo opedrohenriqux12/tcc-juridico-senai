@@ -45,8 +45,8 @@
         "Demonstração Lecom",
         "Proposta: Capacitação",
         "Demonstração Universidade",
-        "Nossos Objetivos",
         "Fluxo Futuro (TO-BE)",
+        "Nossos Objetivos",
         "Conclusão"
       ],
 
