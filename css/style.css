@@ -2729,3 +2729,16 @@
       #slide-8 .slide-content-container { padding-top: 0; padding-bottom: 0; }
       #slide-8 .title-large { margin-top: 0 !important; }
     }
+
+    /* Propostas e conclusão com o mesmo tamanho de leitura da SWOT. */
+    #slide-9 .proposals-main-text, #slide-17 .conclusao-impacto-text {
+      font-size: clamp(26px, 1.65vw, 32px); line-height: 1.3; font-weight: 500;
+    }
+    #slide-17 .conclusao-wrap { max-width: 1200px; }
+    @media (max-width: 640px) {
+      #slide-9 .proposals-main-text, #slide-17 .conclusao-impacto-text { font-size: 1.2rem; }
+    }
+    @media (max-height: 800px), (max-width: 640px) {
+      #slide-9, #slide-17 { justify-content: flex-start; }
+      #slide-9 .slide-content-container, #slide-17 .slide-content-container { margin: 0 auto; }
+    }
