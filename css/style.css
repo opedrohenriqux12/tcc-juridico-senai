@@ -1336,176 +1336,6 @@
     #slide-8 .slide-content-container {
       margin: auto auto !important;
     }
-    .fishbone-container {
-      width: 100%;
-      max-width: 1380px;
-      margin: 1rem auto 0 auto;
-      position: relative;
-    }
-    .fishbone-svg-wrap {
-      width: 100%;
-      position: relative;
-      background: rgba(18, 18, 18, 0.7);
-      border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: 16px 20px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
-    }
-    body.theme-red, body.theme-wine, body .fishbone-svg-wrap {
-      background: rgba(75, 2, 8, 0.75);
-      border-color: rgba(255, 212, 59, 0.3);
-    }
-    .fishbone-svg {
-      width: 100%;
-      max-height: 58vh;
-      height: auto;
-      display: block;
-      overflow: visible;
-    }
-
-    /* Estilos dos ramos e elementos da espinha */
-    .bone-spine {
-      stroke: var(--yellow);
-      stroke-width: 4;
-      stroke-linecap: round;
-      filter: drop-shadow(0 0 6px rgba(255, 204, 20, 0.4));
-    }
-    .bone-branch {
-      stroke: #888;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      transition: stroke 0.3s, stroke-width 0.3s;
-    }
-    .bone-sub {
-      stroke: rgba(255, 255, 255, 0.25);
-      stroke-width: 1.5;
-      stroke-linecap: round;
-    }
-    body.theme-red, body.theme-wine, body .bone-branch {
-      stroke: rgba(255, 212, 59, 0.6);
-    }
-    body.theme-red, body.theme-wine, body .bone-sub {
-      stroke: rgba(255, 255, 255, 0.35);
-    }
-
-    .fishbone-cat-group {
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
-    .fishbone-cat-group:hover {
-      filter: brightness(1.2);
-    }
-    .fishbone-cat-group:hover .bone-branch {
-      stroke: var(--yellow);
-      stroke-width: 3.5;
-    }
-    .fishbone-cat-group:hover .bone-cat-box {
-      stroke: var(--yellow);
-      fill: rgba(255, 204, 20, 0.18);
-    }
-    .bone-cat-box {
-      fill: #4A0108;
-      stroke: var(--yellow);
-      stroke-width: 2;
-      rx: 8;
-      transition: all 0.3s ease;
-    }
-    body.theme-red .bone-cat-box {
-      fill: #5E010A;
-      stroke: var(--yellow);
-    }
-    body.theme-wine .bone-cat-box {
-      fill: #3A060D !important;
-      stroke: var(--yellow) !important;
-    }
-    .bone-cat-title {
-      font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: 0.08em;
-      fill: #FFFFFF !important;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      text-transform: uppercase;
-      pointer-events: none;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
-    }
-    .bone-cause-item {
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .bone-cause-item:hover text {
-      fill: var(--yellow) !important;
-      font-weight: 700;
-      transform: scale(1.02);
-    }
-    .bone-cause-text {
-      font-family: var(--font-body);
-      font-size: 13.5px;
-      fill: #FFFFFF !important;
-      dominant-baseline: middle;
-      transition: fill 0.2s ease;
-      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.7));
-    }
-    body.theme-red .bone-cause-text,
-    body.theme-wine .bone-cause-text {
-      fill: #FFFFFF !important;
-    }
-    .bone-cause-dot {
-      fill: var(--yellow);
-      opacity: 0.85;
-      transition: r 0.2s ease, opacity 0.2s ease;
-    }
-    .bone-cause-item:hover .bone-cause-dot {
-      r: 4.5;
-      opacity: 1;
-      filter: drop-shadow(0 0 5px var(--yellow));
-    }
-
-    /* Cabe�a do peixe (Efeito SLA) */
-    .fish-head-box {
-      fill: #550109;
-      stroke: var(--yellow);
-      stroke-width: 2.5;
-      rx: 12;
-      filter: drop-shadow(0 0 15px rgba(255, 204, 20, 0.25));
-      transition: all 0.3s ease;
-    }
-    body.theme-red .fish-head-box {
-      fill: #5A010A;
-      stroke: var(--yellow);
-    }
-    body.theme-wine .fish-head-box {
-      fill: #34050C !important;
-      stroke: var(--yellow) !important;
-    }
-    .fish-head-group:hover .fish-head-box {
-      transform: scale(1.02);
-      stroke-width: 3;
-      filter: drop-shadow(0 0 25px rgba(255, 204, 20, 0.5));
-    }
-
-    .fishbone-legend {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 10px;
-      padding: 0 10px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-    body.theme-red, body.theme-wine, body .fishbone-legend {
-      color: #F8CFCF;
-    }
-    .fishbone-legend .legend-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--yellow);
-      font-weight: 500;
-    }
-
             /* --- SLIDE FLUXO TO-BE --- */
     #slide-15 {
       justify-content: flex-start !important;
@@ -1651,72 +1481,6 @@
     }
     .lane-chip-item strong {
       color: var(--yellow);
-    }
-
-    /* --- SLIDE 6: DIAGN�STICO (ISHIKAWA) --- */
-    .ishikawa-wrapper {
-      margin-top: 24px;
-      width: 100%;
-    }
-    .ishikawa-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-    .ishikawa-card {
-      background: var(--bg-2);
-      border-radius: 14px;
-      padding: 20px 16px;
-      border: 1px solid var(--border-subtle);
-      transition: var(--transition-smooth);
-      cursor: pointer;
-      position: relative;
-    }
-    .ishikawa-card.color-yellow {
-      border-top: 4px solid var(--yellow);
-    }
-    .ishikawa-card.color-red {
-      border-top: 4px solid var(--red-alert);
-    }
-    .ishikawa-card:hover, .ishikawa-card.is-selected {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-    .ishikawa-card.color-yellow:hover, .ishikawa-card.color-yellow.is-selected {
-      border-color: var(--yellow);
-      box-shadow: var(--glow-gold);
-    }
-    .ishikawa-card.color-red:hover, .ishikawa-card.color-red.is-selected {
-      border-color: var(--red-alert);
-      box-shadow: var(--glow-red);
-    }
-    .ishikawa-items-list {
-      list-style: none;
-      margin-top: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .ishikawa-items-list li {
-      font-size: 0.88rem;
-      color: var(--text-2);
-      padding-left: 14px;
-      position: relative;
-      line-height: 1.4;
-    }
-    .ishikawa-items-list li::before {
-      content: '�';
-      position: absolute;
-      left: 0;
-      color: var(--yellow);
-      font-weight: bold;
-    }
-
-    @media (max-width: 900px) {
-      .ishikawa-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 580px) {
-      .ishikawa-grid { grid-template-columns: 1fr; }
     }
 
         /* --- SLIDE DE PROPOSTAS & OBJETIVOS DETALHADOS --- */
@@ -2550,10 +2314,6 @@
       border-color: rgba(255, 204, 20, 0.22) !important;
     }
 
-    body.theme-wine .fishbone-svg-wrap {
-      background: rgba(35, 5, 9, 0.72) !important;
-      border-color: rgba(255, 204, 20, 0.22) !important;
-    }
 
     body.theme-wine .bone-cat-box {
       fill: #34060C !important;
@@ -2913,3 +2673,18 @@
     button.nav-dot { border: 0; padding: 0; appearance: none; }
     .nav-dot:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
     .nav-dot:focus-visible .dot-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Matriz SWOT */
+    .swot-subtitle { color: var(--text-2); font-size: 1rem; margin-top: 8px; }
+    .swot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 20px; text-align: left; }
+    .swot-card { padding: 20px 24px; border: 1px solid var(--border-subtle); border-top: 3px solid var(--yellow); border-radius: 16px; background: var(--bg-2); }
+    .swot-card h3 { color: var(--yellow); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px; }
+    .swot-card ul { padding-left: 20px; color: var(--text-1); font-size: 1rem; line-height: 1.5; }
+    .swot-card li + li { margin-top: 8px; }
+    .swot-source { color: var(--text-2); font-size: .85rem; margin-top: 14px; text-align: left; }
+    @media (max-width: 640px) {
+      .swot-grid { grid-template-columns: 1fr; gap: 12px; }
+      .swot-card { padding: 16px 18px; }
+      .swot-card ul { font-size: .95rem; }
+      #slide-8 { justify-content: flex-start !important; }
+    }

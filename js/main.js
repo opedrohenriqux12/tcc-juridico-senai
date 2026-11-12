@@ -39,7 +39,7 @@
         "Fluxo Atual (AS-IS)",
         "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
-        "Ishikawa",
+        "Matriz SWOT",
         "Propostas do Grupo",
         "Proposta: Lecom",
         "Demonstração Lecom",
@@ -84,10 +84,10 @@
           icon: "workflow",
           desc: "Oferece uma visão panorâmica de ponta a ponta: Fornecedores (Suppliers), Entradas (Inputs), Processos (Process), Saídas (Outputs) e Clientes (Customers) do fluxo contratual."
         },
-        ishikawa: {
-          title: "Diagrama de Ishikawa",
-          icon: "git-pull-request",
-          desc: "Mapeia as causas-raiz dos problemas agrupadas por categorias (Pessoas, Processos, Tecnologia e Documentos), identificando a origem das falhas."
+        swot: {
+          title: "Matriz SWOT",
+          icon: "grid-2x2",
+          desc: "Analisa as forças e fraquezas do processo, além das oportunidades e ameaças do ambiente externo."
         },
         "5w2h": {
           title: "5W2H",
@@ -517,8 +517,6 @@
       // 11. Chips Interativos de Metodologia (Slide 9)
       // setupMethodologyChips();
 
-      // 12. Ishikawa Interativo (Slide 6)
-      setupIshikawaInteraction();
     }
 
     /* Navegação por Teclado */
@@ -760,21 +758,6 @@
             iconHolder.innerHTML = `<i data-lucide="${data.icon}" style="width:32px; height:32px;"></i>`;
             if (window.lucide) lucide.createIcons();
           }
-        });
-      });
-    }
-
-    // Slide 6: Ishikawa Interativo
-    function setupIshikawaInteraction() {
-      const cards = document.querySelectorAll('.ishikawa-card');
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-          cards.forEach(c => {
-            if (c !== card) c.style.opacity = '0.4';
-          });
-        });
-        card.addEventListener('mouseleave', () => {
-          cards.forEach(c => c.style.opacity = '1');
         });
       });
     }
