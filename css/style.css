@@ -2742,3 +2742,7 @@
       #slide-9, #slide-17 { justify-content: flex-start; }
       #slide-9 .slide-content-container, #slide-17 .slide-content-container { margin: 0 auto; }
     }
+
+    /* Centraliza a explicação da capacitação entre o cabeçalho e o rodapé. */
+    #slide-12 .training-proposal-card { display: grid; grid-template-rows: auto 1fr auto; }
+    #slide-12 .training-proposal-card > p { align-self: center; text-align: center; margin: 16px 0; }
