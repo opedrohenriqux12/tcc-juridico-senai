@@ -2758,3 +2758,15 @@
     @media (max-width: 700px) {
       :is(#slide-kanban, #slide-ishikawa) .slide-content-container > :is(.kanban-intro, .ishikawa-intro) { font-size: 19px !important; }
     }
+
+    /* Foco das propostas com destaque de leitura para projeção. */
+    .proposals-focus { margin-top: 28px; padding: 24px 28px; background: rgba(255, 204, 20, .14); border: 2px solid var(--yellow); border-radius: 16px; }
+    .proposals-focus-heading { display: flex; align-items: center; gap: 12px; color: var(--yellow); font-size: clamp(26px, 1.8vw, 34px); margin-bottom: 12px; }
+    .proposals-focus-heading svg { width: 32px; height: 32px; flex-shrink: 0; }
+    #slide-9 .proposals-focus-text { font-size: clamp(28px, 1.8vw, 36px); line-height: 1.35; margin: 0; color: #fff; font-weight: 600; }
+    .proposals-focus-text strong { color: var(--yellow); }
+    .proposals-next-hint { font-size: 14px; color: var(--text-muted); font-style: italic; margin: 14px 0 0; }
+    @media (max-width: 640px) {
+      .proposals-focus { padding: 18px; }
+      #slide-9 .proposals-focus-text { font-size: 22px; }
+    }
