@@ -2,7 +2,7 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 18,
+      totalSlides: 20,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
@@ -40,6 +40,8 @@
         "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
         "Mapeador de processos",
+        "Kanban: Organização da equipe",
+        "Diagrama de Ishikawa",
         "Matriz SWOT",
         "Propostas do Grupo",
         "Proposta: Lecom",
