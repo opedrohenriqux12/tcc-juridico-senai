@@ -2,7 +2,7 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 17,
+      totalSlides: 18,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
@@ -39,6 +39,7 @@
         "Fluxo Atual (AS-IS)",
         "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
+        "Mapeador de processos",
         "Matriz SWOT",
         "Propostas do Grupo",
         "Proposta: Lecom",

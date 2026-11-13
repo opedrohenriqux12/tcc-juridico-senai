@@ -2748,3 +2748,7 @@
     #slide-12 .training-proposal-card > p { align-self: center; text-align: center; margin: 16px 0; }
 
     #slide-4 .problem-context { margin: 0 0 24px; font: inherit; color: inherit; }
+
+    .process-mapper-frame { cursor: zoom-in; background: #09090b; }
+    .process-mapper-frame:fullscreen { width: 100vw; height: 100dvh; padding: 0; border: 0; border-radius: 0; }
+    .process-mapper-frame:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
