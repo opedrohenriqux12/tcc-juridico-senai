@@ -2770,3 +2770,19 @@
       .proposals-focus { padding: 18px; }
       #slide-9 .proposals-focus-text { font-size: 22px; }
     }
+
+    /* Acesso às plataformas após a conclusão. */
+    .qr-access-intro { color: var(--text-2); font-size: 1.05rem; margin: 0 0 24px; }
+    .qr-access-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 40px); }
+    .qr-access-card { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 24px 18px; border: 1px solid rgba(255,204,20,.3); border-radius: 20px; background: rgba(0,0,0,.22); color: var(--text-1); text-align: center; text-decoration: none; }
+    .qr-access-card img { display: block; width: min(100%, 280px); height: auto; aspect-ratio: 1; }
+    .qr-access-card h3 { color: var(--yellow); font-size: clamp(18px, 1.7vw, 26px); line-height: 1.3; margin: 0; }
+    .qr-access-card > span { color: var(--text-2); font-size: .95rem; margin-top: auto; }
+    .qr-access-card:hover { border-color: var(--yellow); }
+    .qr-access-card:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; }
+    @media (max-width: 700px) {
+      .slide--qr { justify-content: flex-start; }
+      .slide--qr .slide-content-container { flex-shrink: 0; }
+      .qr-access-grid { grid-template-columns: 1fr; }
+      .qr-access-card img { width: min(100%, 240px); }
+    }
