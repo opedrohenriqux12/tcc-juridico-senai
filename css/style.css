@@ -2798,16 +2798,62 @@
       margin: 0 0 24px;
     }
     .qr-thanks-word { display: inline-block; white-space: nowrap; }
-    .qr-thanks-letter { color: #fff; }
+    .qr-thanks-letter { display: inline-block; color: #fff; }
     .slide--qr.is-active .qr-thanks-letter {
       animation: qr-thanks-loading 3.8s ease-in-out infinite;
       animation-delay: calc(var(--letter) * 0.12s);
     }
     @keyframes qr-thanks-loading {
-      0%, 8%, 100% { color: #fff; text-shadow: none; }
-      25%, 45% { color: var(--yellow); text-shadow: 0 0 14px rgba(255, 212, 59, .35); }
-      60%, 72% { color: var(--gold); text-shadow: 0 0 10px rgba(255, 193, 7, .25); }
+      0%, 8%, 100% { color: #fff; text-shadow: none; transform: translateY(0); }
+      25%, 45% { transform: translateY(-3px); color: var(--yellow); text-shadow: 0 0 14px rgba(255, 212, 59, .35); }
+      60%, 72% { transform: translateY(0); color: var(--gold); text-shadow: 0 0 10px rgba(255, 193, 7, .25); }
     }
     @media (prefers-reduced-motion: reduce) {
       .slide--qr.is-active .qr-thanks-letter { animation: none; color: var(--yellow); }
+    }
+
+    /* Encerramento: entrada em cascata e luz ambiente sem cobrir os QR codes. */
+    .slide--qr .qr-thanks { position: relative; isolation: isolate; }
+    .qr-thanks::before {
+      content: "";
+      position: absolute;
+      inset: -24px 15%;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse, rgba(255, 193, 7, .18), transparent 70%);
+      opacity: .4;
+    }
+    .slide--qr.is-active .qr-thanks::before { animation: qr-ambient-glow 4s ease-in-out infinite; }
+    .slide--qr.is-active .qr-thanks { animation: qr-reveal .7s ease-out both; }
+    .qr-access-card {
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .slide--qr.is-active .qr-access-card {
+      animation: qr-reveal .7s cubic-bezier(.2,.7,.3,1) backwards;
+      animation-delay: .2s;
+    }
+    .slide--qr.is-active .qr-access-card:nth-child(2) { animation-delay: .35s; }
+    .slide--qr.is-active .qr-access-card:nth-child(3) { animation-delay: .5s; }
+    .qr-access-card:is(:hover, :focus-visible) {
+      transform: translateY(-6px);
+      border-color: var(--yellow);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, .24), 0 0 24px rgba(255, 193, 7, .2);
+      background: rgba(0, 0, 0, .32);
+    }
+    .qr-access-card > span > span { display: inline-block; transition: transform .25s ease; }
+    .qr-access-card:is(:hover, :focus-visible) > span > span { transform: translate(3px, -3px); }
+    @keyframes qr-reveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes qr-ambient-glow {
+      0%, 100% { opacity: .4; transform: scale(.9); }
+      50% { opacity: 1; transform: scale(1.08); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slide--qr.is-active :is(.qr-thanks, .qr-access-card),
+      .slide--qr.is-active .qr-thanks::before { animation: none; }
+      .slide--qr .qr-access-card, .qr-access-card > span > span { transition: none; }
+      .slide--qr .qr-access-card:is(:hover, :focus-visible),
+      .qr-access-card:is(:hover, :focus-visible) > span > span { transform: none; }
     }
