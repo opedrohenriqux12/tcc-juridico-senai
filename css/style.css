@@ -2786,3 +2786,28 @@
       .qr-access-grid { grid-template-columns: 1fr; }
       .qr-access-card img { width: min(100%, 240px); }
     }
+
+    /* Agradecimento com preenchimento sequencial na paleta do projeto. */
+    .qr-thanks {
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: center;
+      margin: 0 0 24px;
+    }
+    .qr-thanks-word { display: inline-block; white-space: nowrap; }
+    .qr-thanks-letter { color: #fff; }
+    .slide--qr.is-active .qr-thanks-letter {
+      animation: qr-thanks-loading 3.8s ease-in-out infinite;
+      animation-delay: calc(var(--letter) * 0.12s);
+    }
+    @keyframes qr-thanks-loading {
+      0%, 8%, 100% { color: #fff; text-shadow: none; }
+      25%, 45% { color: var(--yellow); text-shadow: 0 0 14px rgba(255, 212, 59, .35); }
+      60%, 72% { color: var(--gold); text-shadow: 0 0 10px rgba(255, 193, 7, .25); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .slide--qr.is-active .qr-thanks-letter { animation: none; color: var(--yellow); }
+    }
