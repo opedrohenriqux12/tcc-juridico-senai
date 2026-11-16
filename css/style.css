@@ -2501,7 +2501,7 @@
     .cover-partner-divider { width: 1px; height: 54px; background: rgba(255, 212, 59, .45); }
     .cover-partner-logos .cover-desktop-logo {
       width: clamp(120px, 15vw, 210px); height: clamp(31px, 3.84vw, 54px);
-      object-fit: cover; object-position: center; border-radius: 8px;
+      object-fit: cover; object-position: center 40%; border-radius: 8px;
     }
     @media (max-width: 520px) {
       .cover-partner-logos { gap: 12px; }
