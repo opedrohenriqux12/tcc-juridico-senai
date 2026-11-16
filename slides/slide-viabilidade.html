@@ -1,40 +1,40 @@
-      <section class="slide slide--reading slide--viability" id="slide-viabilidade" aria-roledescription="slide" aria-label="Slide 7 de 22: Viabilidade">
+      <section class="slide slide--reading slide--viability" id="slide-viabilidade" aria-roledescription="slide" aria-label="Slide 19 de 22: Viabilidade">
         <div class="slide-content-container">
-          <p class="badge-chip"><i data-lucide="calculator" style="width:14px; height:14px;"></i> INVESTIMENTO CONFORME O USO</p>
+          <p class="badge-chip"><i data-lucide="calculator" style="width:14px; height:14px;"></i> INVESTIMENTO ANUAL EM APIs</p>
           <h2 class="title-large" style="margin-top:10px;">Viabilidade</h2>
-          <p class="viability-lead">IA como apoio à análise jurídica: FAQ, revisão de modelos de contratos e sugestões de melhoria.</p>
+          <p class="viability-lead">IA para FAQ e revisão de contratos, com consulta cadastral por API de CNPJ.</p>
           <div class="brand-divider-line"></div>
           <div class="viability-grid">
             <div class="premium-card viability-scope">
-              <h3>Onde a IA atua</h3>
+              <h3>O que está no orçamento</h3>
               <ul class="viability-roles">
                 <li><strong>FAQ:</strong> responder dúvidas com base nas orientações internas.</li>
                 <li><strong>Contratos:</strong> comparar modelos, apontar lacunas, inconsistências e melhorias; revisar após ajustes.</li>
-                <li><strong>CNPJ:</strong> consultar dados por API cadastral específica (ex.: Serpro). A IA pode interpretar o retorno; não substitui a fonte oficial.</li>
+                <li><strong>CNPJ:</strong> consultar e atualizar dados cadastrais por API específica. Provisão de <strong>R$ 1,00/consulta</strong>, a cotar com fornecedor; não é tarifa oficial.</li>
               </ul>
-              <div class="viability-human">A IA apoia a análise. A decisão e a validação jurídica permanecem com a equipe.</div>
+              <div class="viability-human">A IA apoia a análise. A decisão e a validação jurídica permanecem com a equipe.<br><br>Orçamento apenas de APIs: exclui implantação, integração, OCR, hospedagem, manutenção e tributos. Ganho de produtividade a validar em piloto.</div>
             </div>
             <div class="premium-card viability-budget">
-              <div class="viability-model">Gemini 3.8 Flash · projeção de consumo</div>
-              <div class="viability-price">R$ 43,15<span> / mês estimados</span></div>
-              <p class="viability-base">Base histórica: ≈ 149 análises/mês de jan. a ago. de 2026, incluindo reanálises (1.193 ÷ 8 meses).</p>
+              <div class="viability-model">Gemini 3.8 Flash + API cadastral de CNPJ</div>
+              <div class="viability-price">R$ 2.305,77<span> / ano estimados</span></div>
+              <p class="viability-base">Base: ≈ 149 análises/mês (jan.–ago./2026), incluindo reanálises. Projeção de 12 meses nesse ritmo.</p>
               <table class="viability-table">
-                <caption class="sr-only">Uma requisição por análise e uma por pergunta ao FAQ; custo mensal estimado</caption>
-                <thead><tr><th scope="col">Uso da IA</th><th scope="col">Requisições / mês</th><th scope="col">Custo / mês</th></tr></thead>
+                <caption class="sr-only">Projeção anual de consumo de IA e provisão para consulta cadastral de CNPJ</caption>
+                <thead><tr><th scope="col">Serviço</th><th scope="col">Volume / ano</th><th scope="col">Custo / ano</th></tr></thead>
                 <tbody>
-                  <tr><th scope="row">Análises jurídicas</th><td>149 análises = 149 requisições</td><td>R$ 24,59</td></tr>
-                  <tr><th scope="row">FAQ (hipótese)</th><td>1.000 perguntas = 1.000 requisições</td><td>R$ 18,56</td></tr>
-                  <tr><th scope="row">Total estimado</th><td>1.149 requisições</td><td>R$ 43,15</td></tr>
+                  <tr><th scope="row">IA · análises</th><td>1.788 requisições</td><td>R$ 295,02</td></tr>
+                  <tr><th scope="row">IA · FAQ</th><td>12.000 perguntas*</td><td>R$ 222,75</td></tr>
+                  <tr><th scope="row">API · CNPJ</th><td>Até 1.788 consultas*</td><td>R$ 1.788,00</td></tr>
+                  <tr><th scope="row">Total em APIs</th><td>≈ R$ 192,15/mês</td><td>R$ 2.305,77</td></tr>
                 </tbody>
               </table>
-              <p class="viability-unit"><strong>1 análise = 1 consulta completa à IA.</strong> Uma nova conferência gera outra requisição; as reanálises já estão na média de 149.</p>
-              <p class="viability-unit">Das 149 análises, ≈ <strong>96 tiveram etapa rejeitada</strong>, envolvendo ≈ 62 chamados/mês. Custo desse recorte: ≈ <strong>R$ 15,84</strong>, já incluído no total.</p>
+              <p class="viability-unit"><strong>1 análise = 1 requisição à IA.</strong> Reanálises já estão na média. CNPJ usa outra API, com provisão de até uma consulta por análise.</p>
             </div>
           </div>
           <div class="viability-notes">
-            <p><strong>Premissas:</strong> contrato: 20 mil tokens de entrada + 4 mil de saída por chamada; FAQ: 2 mil + 500. Câmbio hipotético: R$ 5,50/US$. Uma requisição por análise ou pergunta é hipótese de operação. O FAQ considera 1.000 perguntas/mês hipotéticas. Custo unitário: R$ 0,165 por análise e R$ 0,0185625 por pergunta ao FAQ. Base arredondada de 149,125 análises/mês; completude de agosto não confirmada.</p>
-            <p><strong>Tarifa fornecida:</strong> US$ 0,75/milhão de tokens de entrada e US$ 3,75/milhão de saída; modelo e preços sujeitos à confirmação na contratação. <a href="https://cloud.google.com/model-garden/pricing?hl=pt-BR" target="_blank" rel="noopener noreferrer">Referência de preços</a>.</p>
-            <p><strong>Gasto variável:</strong> depende dos tokens, das revisões e do uso do FAQ. Não inclui API de CNPJ, OCR, hospedagem, integração, manutenção ou tributos. Viabilidade final depende do ganho de produtividade validado em piloto.</p>
+            <p><strong>*Hipóteses:</strong> 1.000 perguntas ao FAQ/mês e até 149 consultas CNPJ/mês a R$ 1,00 cada (provisão a cotar, sem tarifa validada). Cache e reaproveitamento cadastral podem reduzir consultas.</p>
+            <p><strong>IA:</strong> contrato: 20 mil tokens de entrada + 4 mil de saída; FAQ: 2 mil + 500. Tarifas fornecidas: US$ 0,75/milhão de entrada e US$ 3,75/milhão de saída; câmbio hipotético R$ 5,50. Modelo e preços a confirmar. <a href="https://cloud.google.com/model-garden/pricing?hl=pt-BR" target="_blank" rel="noopener noreferrer">Referência</a>.</p>
+            <p><strong>Consumo variável:</strong> base arredondada de 149,125 análises/mês; agosto sem completude confirmada.</p>
           </div>
         </div>
       </section>

@@ -37,7 +37,6 @@
         "Dor Relatada",
         "Mapeamento do Processo",
         "Fluxo Atual (AS-IS)",
-        "Viabilidade",
         "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
         "Mapeador de processos",
@@ -50,6 +49,7 @@
         "Proposta: Capacitação",
         "Demonstração Universidade",
         "Fluxo Futuro (TO-BE)",
+        "Viabilidade",
         "Nossos Objetivos",
         "Conclusão",
         "Acesse as plataformas"
