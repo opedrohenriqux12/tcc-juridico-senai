@@ -2894,3 +2894,9 @@
   .viability-notes { margin-top: 12px; gap: 5px; }
   .slide--viability .viability-notes p { font-size: 13px; }
 }
+/* Mantém as premissas legíveis sem herdar o texto ampliado dos demais slides. */
+.slide--viability .premium-card p.viability-base,
+.slide--viability .premium-card p.viability-unit {
+  font-size: clamp(16px, 1.15vw, 19px) !important;
+  line-height: 1.4 !important;
+}
