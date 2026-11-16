@@ -2857,3 +2857,40 @@
       .slide--qr .qr-access-card:is(:hover, :focus-visible),
       .qr-access-card:is(:hover, :focus-visible) > span > span { transform: none; }
     }
+
+/* Viabilidade: hipóteses de consumo, com custos separados da consulta cadastral. */
+.slide--viability .viability-lead { color: var(--text-2); font-size: clamp(17px, 1.35vw, 22px); line-height: 1.4; }
+.viability-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 22px; }
+.viability-grid > .premium-card { min-width: 0; padding: clamp(18px, 1.7vw, 28px); }
+.slide--viability .viability-grid h3 { font-size: clamp(22px, 1.8vw, 28px); margin: 0 0 16px; }
+.viability-roles { padding-left: 22px; margin: 0; display: grid; gap: 14px; font-size: clamp(17px, 1.3vw, 21px); line-height: 1.45; }
+.viability-roles strong { color: var(--yellow); }
+.viability-human { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 18px; font-size: clamp(16px, 1.15vw, 19px); line-height: 1.4; color: var(--text-2); }
+.viability-model { font-size: clamp(16px, 1.25vw, 20px); font-weight: 700; }
+.viability-price { margin: 10px 0; font-family: 'Sora', sans-serif; font-size: clamp(30px, 3.1vw, 49px); font-weight: 800; color: var(--yellow); line-height: 1.2; }
+.viability-price span { font-size: .45em; color: var(--text-2); font-weight: 500; }
+.slide--viability .viability-base, .slide--viability .viability-unit { font-size: clamp(16px, 1.15vw, 19px); line-height: 1.4; color: var(--text-2); margin: 10px 0; }
+.viability-table { width: 100%; border-collapse: collapse; text-align: left; font-size: clamp(16px, 1.2vw, 20px); line-height: 1.4; }
+.viability-table th, .viability-table td { padding: 12px 7px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.viability-table thead th { color: var(--text-2); font-size: .85em; }
+.viability-table td:last-child { white-space: nowrap; font-weight: 700; color: var(--yellow); }
+.viability-table small { font-size: .85em; color: var(--text-2); }
+.viability-notes { margin-top: 18px; display: grid; gap: 7px; }
+.slide--viability .viability-notes p { margin: 0; font-size: clamp(14px, 1vw, 17px); line-height: 1.45; color: var(--text-2); }
+.viability-notes a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 850px) { .viability-grid { grid-template-columns: 1fr; } .viability-price { font-size: 34px; } }
+
+.viability-table .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.slide--viability .premium-card p.viability-base,
+.slide--viability .premium-card p.viability-unit { font-size: clamp(16px, 1.15vw, 19px); line-height: 1.4; }
+@media (min-width: 851px) and (max-height: 800px) {
+  .slide--viability .brand-divider-line { margin-top: 12px; margin-bottom: 16px; }
+  .viability-grid > .premium-card { padding: 18px; }
+  .viability-roles { font-size: 17px; gap: 9px; }
+  .viability-human { font-size: 16px; padding-top: 10px; margin-top: 12px; }
+  .viability-price { font-size: 36px; margin: 7px 0; }
+  .viability-table { font-size: 16px; }
+  .viability-table th, .viability-table td { padding: 8px 6px; }
+  .viability-notes { margin-top: 12px; gap: 5px; }
+  .slide--viability .viability-notes p { font-size: 13px; }
+}

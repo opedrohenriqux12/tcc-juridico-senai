@@ -100,7 +100,7 @@
   <!-- Viewport e Trilho dos Slides -->
   <main class="presentation-viewport" id="presentationViewport">
     <div class="slides-track" id="slidesTrack">
-      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 21: Capa">
+      <section class="slide slide-1 is-active" id="slide-1" aria-roledescription="slide" aria-label="Slide 1 de 22: Capa">
         <div class="slide-content-container">
           <div class="cover-wrap">
             <div class="cover-partner-logos" role="group" aria-label="SENAI e DESKTOP">
@@ -123,7 +123,7 @@
           </div>
         </div>
       </section>
-      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 21: Quem somos">
+      <section class="slide" id="slide-2" aria-roledescription="slide" aria-label="Slide 2 de 22: Quem somos">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="users" style="width:14px; height:14px;"></i> EQUIPE DO PROJETO</p>
           <h2 class="title-large" style="margin-top: 10px;">Quem <span class="highlight-yellow">somos?</span></h2>
@@ -137,7 +137,7 @@
 
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 21: Introdução">
+      <section class="slide slide--reading" id="slide-3" aria-roledescription="slide" aria-label="Slide 3 de 22: Introdução">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="compass" style="width:14px; height:14px;"></i> CONTEXTO INSTITUCIONAL</p>
           <h2 class="title-large highlight-yellow" style="letter-spacing: 0.12em; margin-top: 10px;">INTRODUÇÃO</h2>
@@ -176,7 +176,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 21: Dor Relatada">
+      <section class="slide slide--reading" id="slide-4" aria-roledescription="slide" aria-label="Slide 4 de 22: Dor Relatada">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="alert-triangle" style="width:14px; height:14px;"></i> INTRODUÇÃO / DESAFIOS</p>
           <h2 class="title-large highlight-yellow" style="margin-top: 10px;">DOR RELATADA - Solicitação de Parecer Jurídico</h2>
@@ -198,7 +198,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 21: Mapeamento do Processo">
+      <section class="slide slide--reading" id="slide-5" aria-roledescription="slide" aria-label="Slide 5 de 22: Mapeamento do Processo">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px;"></i> LEVANTAMENTO & IMERSÃO</p>
           <h2 class="title-large" style="margin-top: 10px;">Mapeamento e Diagnóstico dos <span class="highlight-yellow">Processos</span></h2>
@@ -251,7 +251,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--flow" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 21: Fluxo Atual AS-IS">
+      <section class="slide slide--flow" id="slide-6" aria-roledescription="slide" aria-label="Slide 6 de 22: Fluxo Atual AS-IS">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-branch" style="width:14px; height:14px;"></i> MAPEAMENTO DE PROCESSO EM RAIAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Fluxo Atual: <span class="highlight-yellow">Seção AS-IS</span></h2>
@@ -286,7 +286,45 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-7" aria-roledescription="slide" aria-label="Slide 7 de 21: Diagnóstico: Tempo de resolução e Retrabalho">
+      <section class="slide slide--reading slide--viability" id="slide-viabilidade" aria-roledescription="slide" aria-label="Slide 7 de 22: Viabilidade">
+        <div class="slide-content-container">
+          <p class="badge-chip"><i data-lucide="calculator" style="width:14px; height:14px;"></i> INVESTIMENTO CONFORME O USO</p>
+          <h2 class="title-large" style="margin-top:10px;">Viabilidade</h2>
+          <p class="viability-lead">IA como apoio à análise jurídica: FAQ, revisão de modelos de contratos e sugestões de melhoria.</p>
+          <div class="brand-divider-line"></div>
+          <div class="viability-grid">
+            <div class="premium-card viability-scope">
+              <h3>Onde a IA atua</h3>
+              <ul class="viability-roles">
+                <li><strong>FAQ:</strong> responder dúvidas com base nas orientações internas.</li>
+                <li><strong>Contratos:</strong> comparar modelos, apontar lacunas, inconsistências e melhorias; revisar após ajustes.</li>
+                <li><strong>CNPJ:</strong> consultar dados por API cadastral específica (ex.: Serpro). A IA pode interpretar o retorno; não substitui a fonte oficial.</li>
+              </ul>
+              <div class="viability-human">A IA apoia a análise. A decisão e a validação jurídica permanecem com a equipe.</div>
+            </div>
+            <div class="premium-card viability-budget">
+              <div class="viability-model">Gemini 3.8 Flash · projeção de consumo</div>
+              <div class="viability-price">R$ 327 <span>a</span> R$ 809<span> / mês</span></div>
+              <p class="viability-base">Base histórica: ≈ 234 análises de solicitações por mês em 2025, incluindo reanálises.</p>
+              <table class="viability-table">
+                <caption class="sr-only">Hipóteses de uso mensal e custo estimado da API de inteligência artificial</caption>
+                <thead><tr><th scope="col">Cenário</th><th scope="col">Uso mensal estimado</th><th scope="col">IA / mês</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Ampliado</th><td>234 análises × 8 envios à IA = 1.872 requisições<br>+ 1.000 perguntas ao FAQ<br><small>Total: 2.872 requisições à API/mês</small></td><td>R$ 327</td></tr>
+                  <tr><th scope="row">Intensivo</th><td>234 análises × 20 envios à IA = 4.680 requisições<br>+ 2.000 perguntas ao FAQ<br><small>Total: 6.680 requisições à API/mês</small></td><td>R$ 809</td></tr>
+                </tbody>
+              </table>
+              <p class="viability-unit">Cada envio à IA é uma requisição. Custo estimado por envio: contrato ≈ <strong>R$ 0,165</strong>; pergunta ao FAQ ≈ <strong>R$ 0,019</strong>.</p>
+            </div>
+          </div>
+          <div class="viability-notes">
+            <p><strong>Premissas:</strong> contrato: 20 mil tokens de entrada + 4 mil de saída por chamada; FAQ: 2 mil + 500. Câmbio hipotético: R$ 5,50/US$. 8 ou 20 envios por análise são hipóteses de interação, não dados da planilha. Cada pergunta ao FAQ considera uma requisição.</p>
+            <p><strong>Tarifa fornecida:</strong> US$ 0,75/milhão de tokens de entrada e US$ 3,75/milhão de saída; modelo e preços sujeitos à confirmação na contratação. <a href="https://cloud.google.com/model-garden/pricing?hl=pt-BR" target="_blank" rel="noopener noreferrer">Referência de preços</a>.</p>
+            <p><strong>Gasto variável:</strong> depende dos tokens, das revisões e do uso do FAQ. Não inclui API de CNPJ, OCR, hospedagem, integração, manutenção ou tributos. Viabilidade final depende do ganho de produtividade validado em piloto.</p>
+          </div>
+        </div>
+      </section>
+      <section class="slide slide--reading" id="slide-7" aria-roledescription="slide" aria-label="Slide 8 de 22: Diagnóstico: Tempo de resolução e Retrabalho">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="activity" style="width:14px; height:14px;"></i> DIAGNÓSTICO DOS CHAMADOS ENCERRADOS</p>
           <h2 class="title-large" style="margin-top: 10px;">Diagnóstico: <span class="highlight-yellow">Tempo de resolução e Retrabalho</span></h2>
@@ -328,7 +366,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-ferramentas" aria-roledescription="slide" aria-label="Slide 8 de 21: Ferramentas Utilizadas para Mapear o Processo">
+      <section class="slide slide--reading" id="slide-ferramentas" aria-roledescription="slide" aria-label="Slide 9 de 22: Ferramentas Utilizadas para Mapear o Processo">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="layers" style="width:14px; height:14px;"></i> METODOLOGIA APLICADA</p>
           <h2 class="title-large" style="margin-top: 10px;">Ferramentas Utilizadas para <span class="highlight-yellow">Mapear o Processo</span></h2>
@@ -433,7 +471,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--flow" id="slide-mapeador" aria-roledescription="slide" aria-label="Slide 9 de 21: Mapeador de processos">
+      <section class="slide slide--flow" id="slide-mapeador" aria-roledescription="slide" aria-label="Slide 10 de 22: Mapeador de processos">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="workflow" style="width:14px; height:14px; color:var(--yellow);"></i> FERRAMENTA DE MAPEAMENTO</p>
           <h2 class="title-large">Mapeador de <span class="highlight-yellow">processos</span></h2>
@@ -445,7 +483,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--flow" id="slide-kanban" aria-roledescription="slide" aria-label="Slide 10 de 21: Kanban — Organização da equipe">
+      <section class="slide slide--flow" id="slide-kanban" aria-roledescription="slide" aria-label="Slide 11 de 22: Kanban — Organização da equipe">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="columns-3" style="width:14px; height:14px; color:var(--yellow);"></i> ORGANIZAÇÃO E DISTRIBUIÇÃO DE TAREFAS</p>
           <h2 class="title-large">Kanban: <span class="highlight-yellow">Organização da equipe</span></h2>
@@ -458,7 +496,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--flow" id="slide-ishikawa" aria-roledescription="slide" aria-label="Slide 11 de 21: Diagrama de Ishikawa">
+      <section class="slide slide--flow" id="slide-ishikawa" aria-roledescription="slide" aria-label="Slide 12 de 22: Diagrama de Ishikawa">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="git-merge" style="width:14px; height:14px; color:var(--yellow);"></i> ANÁLISE DAS POSSÍVEIS CAUSAS</p>
           <h2 class="title-large">Diagrama de <span class="highlight-yellow">Ishikawa</span></h2>
@@ -471,7 +509,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--swot" id="slide-8" aria-roledescription="slide" aria-label="Slide 12 de 21: Matriz SWOT">
+      <section class="slide slide--swot" id="slide-8" aria-roledescription="slide" aria-label="Slide 13 de 22: Matriz SWOT">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="grid-2x2" style="width:14px; height:14px;"></i> ANÁLISE ESTRATÉGICA</p>
           <h2 class="title-large" style="margin-top: 10px;">Matriz <span class="highlight-yellow">SWOT</span></h2>
@@ -510,7 +548,7 @@
           <p class="swot-source">Fonte: Elaborado pelos autores (2026).</p>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-9" aria-roledescription="slide" aria-label="Slide 13 de 21: Propostas">
+      <section class="slide slide--reading" id="slide-9" aria-roledescription="slide" aria-label="Slide 14 de 22: Propostas">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="lightbulb" style="width:14px; height:14px; color:var(--yellow);"></i> PLANO DE AÇÃO INTEGRADO</p>
           <h2 class="title-large" style="margin-top: 10px;">Nossas <span class="highlight-yellow">Propostas</span></h2>
@@ -545,7 +583,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-10" aria-roledescription="slide" aria-label="Slide 14 de 21: Proposta: Implementações no Lecom">
+      <section class="slide slide--reading" id="slide-10" aria-roledescription="slide" aria-label="Slide 15 de 22: Proposta: Implementações no Lecom">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="sparkles" style="width:14px; height:14px; color:var(--yellow);"></i> SOLUÇÃO PROPOSTA</p>
           <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Implementações no Lecom</span></h2>
@@ -599,7 +637,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--video" id="slide-11" aria-roledescription="slide" aria-label="Slide 15 de 21: Demonstração em Vídeo">
+      <section class="slide slide--video" id="slide-11" aria-roledescription="slide" aria-label="Slide 16 de 22: Demonstração em Vídeo">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -628,7 +666,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-12" aria-roledescription="slide" aria-label="Slide 16 de 21: Proposta: Capacitação dos solicitantes">
+      <section class="slide slide--reading" id="slide-12" aria-roledescription="slide" aria-label="Slide 17 de 22: Proposta: Capacitação dos solicitantes">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="graduation-cap" style="width:14px; height:14px; color:var(--yellow);"></i> EDUCAÇÃO CORPORATIVA</p>
           <h2 class="title-large" style="margin-top: 10px;">Proposta: <span class="highlight-yellow">Capacitação dos solicitantes</span></h2>
@@ -663,7 +701,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--video" id="slide-13" aria-roledescription="slide" aria-label="Slide 17 de 21: Demonstração Universidade Desktop">
+      <section class="slide slide--video" id="slide-13" aria-roledescription="slide" aria-label="Slide 18 de 22: Demonstração Universidade Desktop">
         <div class="slide-content-container">
           <div class="video-slide-container">
             <div class="video-top-bar">
@@ -692,7 +730,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--flow" id="slide-15" aria-roledescription="slide" aria-label="Slide 18 de 21: Fluxo TO-BE">
+      <section class="slide slide--flow" id="slide-15" aria-roledescription="slide" aria-label="Slide 19 de 22: Fluxo TO-BE">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="zap" style="width:14px; height:14px; color:var(--yellow);"></i> NOVO FLUXO DE SOLICITAÇÕES JURÍDICAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Fluxo Futuro: <span class="highlight-yellow">Seção TO-BE</span></h2>
@@ -730,7 +768,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--reading" id="slide-14" aria-roledescription="slide" aria-label="Slide 19 de 21: Objetivos">
+      <section class="slide slide--reading" id="slide-14" aria-roledescription="slide" aria-label="Slide 20 de 22: Objetivos">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="target" style="width:14px; height:14px;"></i> PLANO ESTRATÉGICO & PROPOSTAS</p>
           <h2 class="title-large" style="margin-top: 10px;">Nossos <span class="highlight-yellow">Objetivos</span></h2>
@@ -746,7 +784,7 @@
           <p class="objectives-targets-note">Metas propostas, sujeitas à validação em piloto. A decisão final permanece com o Jurídico.</p>
         </div>
       </section>
-      <section class="slide slide-16" id="slide-17" aria-roledescription="slide" aria-label="Slide 20 de 21: Conclusão">
+      <section class="slide slide-16" id="slide-17" aria-roledescription="slide" aria-label="Slide 21 de 22: Conclusão">
         <div class="slide-content-container">
           <div class="conclusao-wrap">
             <p class="badge-chip"><i data-lucide="flag" style="width:14px; height:14px;"></i> CONSIDERAÇÕES FINAIS</p>
@@ -766,7 +804,7 @@
           </div>
         </div>
       </section>
-      <section class="slide slide--qr" id="slide-qrcodes" aria-roledescription="slide" aria-label="Slide 21 de 21: Acesse as plataformas">
+      <section class="slide slide--qr" id="slide-qrcodes" aria-roledescription="slide" aria-label="Slide 22 de 22: Acesse as plataformas">
         <div class="slide-content-container">
           <p class="badge-chip"><i data-lucide="qr-code" style="width:14px; height:14px;"></i> EXPLORE O PROJETO</p>
           <h2 class="title-large" style="margin-top:10px;">Acesse as <span class="highlight-yellow">plataformas</span></h2>

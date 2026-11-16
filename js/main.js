@@ -2,7 +2,7 @@
        CONFIGURAÇÃO DOS DADOS DA APRESENTAÇÃO (FÁCIL EDIÇÃO)
        ========================================================================== */
     const PRESENTATION_CONFIG = {
-      totalSlides: 21,
+      totalSlides: 22,
       autoplayIntervalMs: 12000,
       
       // Integrantes do Grupo (Slide 2)
@@ -37,6 +37,7 @@
         "Dor Relatada",
         "Mapeamento do Processo",
         "Fluxo Atual (AS-IS)",
+        "Viabilidade",
         "Diagnóstico: Tempo de resolução e Retrabalho",
         "Ferramentas de Mapeamento",
         "Mapeador de processos",
