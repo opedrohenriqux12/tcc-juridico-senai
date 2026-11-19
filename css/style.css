@@ -1614,13 +1614,18 @@
       .objectives-grid { grid-template-columns: 1fr; }
     }
 
-    /* --- SLIDE NOVO: FERRAMENTAS UTILIZADAS PARA MAPEAR O PROCESSO --- */
+    /* --- FERRAMENTAS UTILIZADAS --- */
+    .tool-category-title {
+      margin: 1rem 0 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--yellow);
+    }
     .tools-showcase-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
       width: 100%;
-      margin-top: 1.6rem;
     }
     @media (max-width: 992px) {
       .tools-showcase-grid {
@@ -1636,10 +1641,10 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 16px;
-      padding: clamp(18px, 1.8vw, 24px);
+      padding: clamp(10px, 1.2vw, 16px);
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: clamp(8px, 1vw, 14px);
       transition: var(--transition-smooth);
       position: relative;
       overflow: hidden;
@@ -1687,9 +1692,6 @@
       font-size: 0.88rem;
       color: var(--text-2);
       line-height: 1.45;
-    }
-    .tool-item-box.full-width-tool {
-      grid-column: 1 / -1;
     }
 
     /* --- SLIDE 10: PROPOSTA & SCANNER DE IA --- */
